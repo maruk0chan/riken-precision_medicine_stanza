@@ -9,5 +9,10 @@
   "engines": {
     "node": ">=14"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "lodash.camelcase": "^4.3.0",
+    "rollup-plugin-svelte": "^7.1.4",
+    "svelte": "^3.57.0"
+  }
 }
