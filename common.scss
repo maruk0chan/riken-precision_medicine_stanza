@@ -1,11 +1,10 @@
-/*
+:host {
+  --togostanza-fadeout-opacity: 0.2;
+  --togostanza-fadeout-transition: opacity 0.2s ease-in;
 
-You can set up a global style here that is commonly used in each stanza.
-
-Example:
-
-h1 {
-  font-size: 24px;
+  display: block;
+  background-color: var(--togostanza-theme-background_color);
+  font-family: var(--togostanza-fonts-font_family);
+  color: var(--togostanza-fonts-font_color);
+  font-size: calc(var(--togostanza-fonts-font_size_primary) * 1px);
 }
-
-*/
