@@ -1,20 +1,39 @@
 <script>
-  export let sayTo;
-  let counter = 0;
-
-  function handleClick() {
-    counter += 1;
-  }
 </script>
 
-<h1>Hello, {sayTo}!</h1>
-<p class="greetings">Hello, {sayTo}.</p>
-
-<p>clicked {counter} time(s)</p>
-<button on:click={handleClick}>Click me</button>
+<table>
+  <tr>
+    <th>Variant</th>
+    <th>HGVS</th>
+    <th>MGeND</th>
+    <th>ClinVar</th>
+    <th>Calculation</th>
+    <th>Indicator1</th>
+    <th>Indicator2</th>
+    <th>Indicator3</th>
+    <th>Indicator4</th>
+    <th>Indicator5</th>
+    <th>Indicator6</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Me</td>
+  </tr>
+</table>
 
 <style>
-  p.greetings {
-    color: red;
+  table {
+    border-collapse: collapse;
+    white-space: nowrap;
+  }
+  tr {
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
   }
 </style>
