@@ -1,4 +1,13 @@
 <script>
+  import metadata from "./metadata.json";
+  import { camelCase } from "lodash";
+
+  const params = metadata["stanza:parameter"].map((param) => {
+    return {
+      name: camelCase(param["stanza:key"]),
+    };
+  });
+  console.log(params);
 </script>
 
 <table>

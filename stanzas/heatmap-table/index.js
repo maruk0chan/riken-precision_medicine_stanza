@@ -11,11 +11,14 @@ function toCamelCase(params) {
 }
 
 export default class HeatmapTable extends Stanza {
+  app = null;
   async render() {
-    this.app = new App({
-      target: this.root.querySelector("main"),
-      props: toCamelCase(this.params),
-    });
+    if (!this.app) {
+      this.app = new App({
+        target: this.root.querySelector("main"),
+        props: toCamelCase(this.params),
+      });
+    }
   }
 
   handleAttributeChange() {
