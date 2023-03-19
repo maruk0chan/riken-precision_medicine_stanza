@@ -1,3 +1,31 @@
+// Reset CSS
+html,
+body,
+div,
+span,
+ul,
+li,
+table,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+li {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Host CSS
 :host {
   --togostanza-fadeout-opacity: 0.2;
   --togostanza-fadeout-transition: opacity 0.2s ease-in;

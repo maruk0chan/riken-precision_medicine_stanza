@@ -1,0 +1,17 @@
+{
+  "ignoreFiles": [
+    "node_modules/**/*",
+    "dist/**/*",
+    "stanzas/**/*.js",
+    "stanzas/**/*.ts"
+  ],
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-order", "stylelint-scss"],
+  "rules": {
+    "no-invalid-double-slash-comments": null,
+    "custom-property-pattern": null,
+    "at-rule-no-unknown": null,
+    "rule-empty-line-before": "never-multi-line"
+  },
+  "customSyntax": "postcss-scss"
+}

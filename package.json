@@ -4,23 +4,38 @@
   "license": "MIT",
   "repository": "https://github.com/YukikoNoda/heatmap-table.git",
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "svelte-fa": "^3.0.3",
     "togostanza": "github:togostanza/togostanza"
   },
   "engines": {
     "node": ">=14"
   },
   "private": true,
+  "scripts": {
+    "stylelint": "npx stylelint '**/*.scss' --fix"
+  },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
+    "autoprefixer": "^10.4.14",
     "eslint": "^8.36.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "lodash.camelcase": "^4.3.0",
     "postcss": "^8.4.21",
     "postcss-load-config": "^4.0.1",
+    "postcss-scss": "^4.0.6",
+    "postcss-syntax": "^0.36.2",
     "prettier": "^2.8.4",
     "prettier-plugin-svelte": "^2.9.0",
     "rollup-plugin-svelte": "^7.1.4",
+    "sass": "^1.59.3",
+    "stylelint": "^15.3.0",
+    "stylelint-config-recess-order": "^4.0.0",
+    "stylelint-config-standard": "^31.0.0",
+    "stylelint-config-standard-scss": "^7.0.1",
+    "stylelint-order": "^6.0.3",
     "svelte": "^3.57.0",
     "svelte-language-server": "^0.15.8",
     "svelte-preprocess": "^5.0.2",

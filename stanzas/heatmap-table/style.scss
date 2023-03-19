@@ -1,10 +1,143 @@
-@use '@/common.scss';
-
+@use "@/common.scss";
 main {
   padding: 1rem 2rem;
 }
-
-p.greeting {
-  margin: 0;
-  text-align: var(--togostanza-fonts-font_align);
+.mutation-icon {
+  padding-left: 2px;
+  margin-right: 7px;
+}
+.calc-icon {
+  margin-right: 4px;
+}
+.arrow {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+  border-radius: 50%;
+  vertical-align: middle;
+  &::after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: -7px;
+    left: 3px;
+    width: 5px;
+    height: 5px;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    transform: rotate(45deg);
+  }
+}
+.heatmap-table {
+  display: flex;
+  ul {
+    padding: 10px;
+    li {
+      white-space: nowrap;
+      border-radius: 2px;
+      padding: 2px 5px;
+      cursor: pointer;
+      .num {
+        padding: 0 5px;
+        margin-left: 4px;
+        border-radius: 2px;
+        background-color: rgb(255 255 255 / 20%);
+      }
+    }
+    &.column-left {
+      background-color: rgb(0 0 0 / 50%);
+      > li:hover {
+        color: #000;
+        .num {
+          background-color: rgb(0 0 0 / 20%);
+        }
+      }
+      > .variants {
+        font-weight: bold;
+        &:hover {
+          background-color: #5fdede;
+          clip-path: polygon(0% 0%, 92% 0%, 100% 50%, 92% 100%, 0% 100%);
+        }
+      }
+      > .calc-list {
+        margin-left: 5px;
+        &:hover {
+          background-color: #fcb900;
+        }
+      }
+    }
+    &.drugs {
+      background-color: rgb(0 0 0 / 40%);
+      :nth-child(1) {
+        font-weight: bold;
+      }
+      > .druglist {
+        margin-left: 5px;
+        &:hover {
+          white-space: nowrap;
+          border-radius: 2px;
+          padding: 2px 5px;
+          background-color: #fcb900;
+          color: #000;
+        }
+      }
+      .arrow {
+        background-color: #fcb900;
+      }
+    }
+  }
+  .table-container {
+    background-color: rgb(0 0 0 / 30%);
+    padding: 20px;
+    table {
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+      white-space: nowrap;
+      padding: 10px;
+      thead {
+        th {
+          padding-right: 40px;
+          text-align: left;
+          border-bottom: 1px solid #fff;
+          &.th-variant {
+            color: #5fdede;
+          }
+          &.th-significance {
+            color: #d683d3;
+          }
+          &.th-calculation {
+            color: #fcb900;
+          }
+          &.th-heatmap {
+            position: relative;
+            top: -5px;
+            rotate: -15deg;
+            padding: 0;
+            padding-top: 14px;
+            font-size: 11px;
+          }
+        }
+      }
+      tr {
+        &:not(:last-child) {
+          border-bottom: 1px solid rgb(255 255 255 / 20%);
+        }
+      }
+      td {
+        padding: 5px 0;
+        &.td-variant {
+          > .arrow {
+            background-color: #5fdede;
+          }
+        }
+        &.calculation {
+          color: #fcb900;
+          > .arrow {
+            background-color: #fcb900;
+          }
+        }
+      }
+    }
+  }
 }
