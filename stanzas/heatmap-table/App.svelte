@@ -2,10 +2,14 @@
   import metadata from "./metadata.json";
   import { camelCase } from "lodash";
   import Fa from "svelte-fa";
-  import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
+  import { faCircleChevronRight } from "@fortawesome/pro-duotone-svg-icons";
 
   const drugIcon = "../assets/drug.png";
   const proteinIcon = "../assets/protein.png";
+  const arrowTheme = {
+    secondaryOpacity: 1,
+    primaryColor: "#000",
+  };
 
   const params = metadata["stanza:parameter"].map((param) => {
     return {
@@ -49,50 +53,51 @@
     <li class="druglist">
       Gefitinib<Fa
         icon={faCircleChevronRight}
-        class="fa-arrow calc-arrow"
-        color="#fcb900"
-      /><span class="fa-span" />
+        {...arrowTheme}
+        secondary{...arrowTheme}
+        secondaryColor="#fcb900"
+      />
     </li>
     <li class="druglist">
       Elotinib<Fa
         icon={faCircleChevronRight}
-        class="fa-arrow"
-        color="#fcb900"
+        {...arrowTheme}
+        secondaryColor="#fcb900"
       />
     </li>
     <li class="druglist">
       Crizotinib<Fa
         icon={faCircleChevronRight}
-        class="fa-arrow"
-        color="#fcb900"
+        {...arrowTheme}
+        secondaryColor="#fcb900"
       />
     </li>
     <li class="druglist">
       Alectinib<Fa
         icon={faCircleChevronRight}
-        class="fa-arrow"
-        color="#fcb900"
+        {...arrowTheme}
+        secondaryColor="#fcb900"
       />
     </li>
     <li class="druglist">
       Lorlatinib<Fa
         icon={faCircleChevronRight}
-        class="fa-arrow"
-        color="#fcb900"
+        {...arrowTheme}
+        secondaryColor="#fcb900"
       />
     </li>
     <li class="druglist">
       Pralsetinib<Fa
         icon={faCircleChevronRight}
-        class="fa-arrow"
-        color="#fcb900"
+        {...arrowTheme}
+        secondaryColor="#fcb900"
       />
     </li>
     <li class="druglist">
       Selpercatinib<Fa
         icon={faCircleChevronRight}
-        class="fa-arrow"
-        color="#fcb900"
+        {...arrowTheme}
+        secondaryColor="#fcb900"
       />
     </li>
   </ul>
@@ -115,8 +120,8 @@
         <td class="td-variant"
           >I1116L<Fa
             icon={faCircleChevronRight}
-            class="fa-arrow"
-            color="#5fdede"
+            {...arrowTheme}
+            secondaryColor="#5fdede"
           /></td
         >
         <td>ENST00000256078:8:c.35G>T <br />ENST00000256078:8:p.Gly12Cys</td>
@@ -129,8 +134,8 @@
             alt="drug icon"
           />MutationFEP<Fa
             icon={faCircleChevronRight}
-            class="fa-arrow"
-            color="#fcb900"
+            {...arrowTheme}
+            secondaryColor="#fcb900"
           /></td
         >
         <td class="cell-td"><div class="cell" /></td>
@@ -141,8 +146,8 @@
         <td class="td-variant"
           >I116T<Fa
             icon={faCircleChevronRight}
-            class="fa-arrow"
-            color="#5fdede"
+            {...arrowTheme}
+            secondaryColor="#5fdede"
           /></td
         >
         <td
@@ -161,8 +166,8 @@
         <td class="td-variant"
           >T117N<Fa
             icon={faCircleChevronRight}
-            class="fa-arrow"
-            color="#5fdede"
+            {...arrowTheme}
+            secondaryColor="#5fdede"
           /></td
         >
         <td
@@ -178,8 +183,8 @@
             alt="protein icon"
           />Other calculation<Fa
             icon={faCircleChevronRight}
-            class="fa-arrow"
-            color="#fcb900"
+            {...arrowTheme}
+            secondaryColor="#fcb900"
           /></td
         >
         <td><span class="cell" /><span class="cell" /></td>

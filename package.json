@@ -4,7 +4,8 @@
   "license": "MIT",
   "repository": "https://github.com/YukikoNoda/heatmap-table.git",
   "dependencies": {
-    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/fontawesome-pro": "^6.3.0",
+    "@fortawesome/pro-duotone-svg-icons": "^6.3.0",
     "svelte-fa": "^3.0.3",
     "togostanza": "github:togostanza/togostanza"
   },

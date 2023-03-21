@@ -3,6 +3,7 @@ main {
   padding: 1rem 2rem;
 }
 
+// Icon
 img {
   width: 17px;
   vertical-align: sub;
@@ -13,7 +14,6 @@ img {
     margin-left: 2px;
   }
 }
-
 .svelte-fa {
   padding-left: 5px;
   font-size: 90%;
@@ -71,21 +71,7 @@ img {
           padding: 2px 5px;
           background-color: #fcb900;
           color: #000;
-          .fa-span {
-            display: inline-block;
-            width: 4px;
-            height: 4px;
-            position: relative;
-            top: -3px;
-            left: -9px;
-            border-top: 1px solid #000;
-            border-right: 1px solid #000;
-            transform: rotate(45deg);
-          }
         }
-      }
-      .arrow {
-        background-color: #fcb900;
       }
     }
   }
@@ -129,15 +115,9 @@ img {
       td {
         padding: 5px 0;
         &.td-variant {
-          > .arrow {
-            background-color: #5fdede;
-          }
         }
         &.calculation {
           color: #fcb900;
-          > .arrow {
-            background-color: #fcb900;
-          }
         }
         &.cell-td {
           padding-top: 30px;
