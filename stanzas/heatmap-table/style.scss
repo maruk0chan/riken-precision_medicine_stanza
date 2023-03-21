@@ -2,33 +2,23 @@
 main {
   padding: 1rem 2rem;
 }
-.mutation-icon {
-  padding-left: 2px;
-  margin-right: 7px;
-}
-.calc-icon {
-  margin-right: 4px;
-}
-.arrow {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-left: 5px;
-  border-radius: 50%;
-  vertical-align: middle;
-  &::after {
-    content: "";
-    display: inline-block;
-    position: relative;
-    top: -7px;
-    left: 3px;
-    width: 5px;
-    height: 5px;
-    border-top: 1px solid #000;
-    border-right: 1px solid #000;
-    transform: rotate(45deg);
+
+img {
+  width: 17px;
+  vertical-align: sub;
+  margin-right: 5px;
+  &.drug-icon {
+    width: 14px;
+    margin-right: 7px;
+    margin-left: 2px;
   }
 }
+
+.svelte-fa {
+  padding-left: 5px;
+  font-size: 90%;
+}
+
 .heatmap-table {
   display: flex;
   ul {
@@ -61,7 +51,8 @@ main {
         }
       }
       > .calc-list {
-        margin-left: 5px;
+        position: relative;
+        margin-left: 3px;
         &:hover {
           background-color: #fcb900;
         }
@@ -80,6 +71,17 @@ main {
           padding: 2px 5px;
           background-color: #fcb900;
           color: #000;
+          .fa-span {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            position: relative;
+            top: -3px;
+            left: -9px;
+            border-top: 1px solid #000;
+            border-right: 1px solid #000;
+            transform: rotate(45deg);
+          }
         }
       }
       .arrow {
@@ -135,6 +137,22 @@ main {
           color: #fcb900;
           > .arrow {
             background-color: #fcb900;
+          }
+        }
+        &.cell-td {
+          padding-top: 30px;
+          // display: flex;
+          // flex-direction: column;
+          // justify-content: center;
+          > .cell {
+            // position: relative;
+            // top: 3px;
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            background-color: #f00;
+            margin-top: -30px;
+            vertical-align: bottom;
           }
         }
       }
