@@ -107,7 +107,6 @@ img {
             color: #d683d3;
             width: 200px;
           }
-
           &.th-calculation {
             color: #fcb900;
             width: 180px;
@@ -115,6 +114,7 @@ img {
           &.th-group {
             font-size: 12px;
           }
+
           padding-right: 35px;
           &.th-heatmap {
             position: relative;
@@ -149,7 +149,6 @@ img {
               cursor: pointer;
             }
           }
-
           &.cell-td {
             > .cell {
               position: relative;

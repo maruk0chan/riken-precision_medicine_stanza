@@ -1,11 +1,9 @@
 <script>
   import metadata from "./metadata.json";
   import { camelCase } from "lodash";
+  import ColorScale from "../../lib/ColorScale";
   import Fa from "svelte-fa";
-  import {
-    faCircleChevronRight,
-    faCircleDot,
-  } from "@fortawesome/pro-duotone-svg-icons";
+  import { faCircleChevronRight } from "@fortawesome/pro-duotone-svg-icons";
 
   const drugIcon = "../assets/drug.png";
   const proteinIcon = "../assets/protein.png";
@@ -14,6 +12,14 @@
     primaryColor: "#000",
     size: "90%",
   };
+  const setColor = ColorScale();
+
+  const heatmapValue1 = 90;
+  const heatmapValue2 = 70;
+  const heatmapValue3 = 50;
+  const heatmapValue4 = 40;
+  const heatmapValue5 = 30;
+  const heatmapValue6 = 10;
 
   const params = metadata["stanza:parameter"].map((param) => {
     return {
@@ -161,12 +167,48 @@
               /></span
             ></td
           >
-          <td class="cell-td"><div class="cell" /></td>
-          <td class="cell-td"><div class="cell" /></td>
-          <td class="cell-td"><div class="cell" /></td>
-          <td class="cell-td"><div class="cell" /></td>
-          <td class="cell-td"><div class="cell" /></td>
-          <td class="cell-td"><div class="cell" /></td>
+          <td class="cell-td"
+            ><div
+              class="cell"
+              value={heatmapValue1}
+              style="background-color:{setColor(heatmapValue1)}"
+            /></td
+          >
+          <td class="cell-td"
+            ><div
+              class="cell"
+              value={heatmapValue2}
+              style="background-color:{setColor(heatmapValue2)}"
+            /></td
+          >
+          <td class="cell-td"
+            ><div
+              class="cell"
+              value={heatmapValue3}
+              style="background-color:{setColor(heatmapValue3)}"
+            /></td
+          >
+          <td class="cell-td"
+            ><div
+              class="cell"
+              value={heatmapValue4}
+              style="background-color:{setColor(heatmapValue4)}"
+            /></td
+          >
+          <td class="cell-td"
+            ><div
+              class="cell"
+              value={heatmapValue5}
+              style="background-color:{setColor(heatmapValue5)}"
+            /></td
+          >
+          <td class="cell-td"
+            ><div
+              class="cell"
+              value={heatmapValue6}
+              style="background-color:{setColor(heatmapValue6)}"
+            /></td
+          >
         </tr>
         <tr>
           <td class="td-variant">
