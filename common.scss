@@ -11,8 +11,8 @@ th,
 td,
 label,
 input {
-  margin: 0;
   padding: 0;
+  margin: 0;
   vertical-align: baseline;
 }
 li {
@@ -33,8 +33,8 @@ table {
   --togostanza-fadeout-transition: opacity 0.2s ease-in;
 
   display: block;
-  background-color: var(--togostanza-theme-background_color);
   font-family: var(--togostanza-fonts-font_family);
-  color: var(--togostanza-fonts-font_color);
   font-size: calc(var(--togostanza-fonts-font_size_primary) * 1px);
+  color: var(--togostanza-fonts-font_color);
+  background-color: var(--togostanza-theme-background_color);
 }

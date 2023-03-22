@@ -1,7 +1,7 @@
 <script>
   import metadata from "./metadata.json";
   import { camelCase } from "lodash";
-  import ColorScale from "../../lib/ColorScale";
+  import getColor from "../../lib/ColorScale";
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/pro-duotone-svg-icons";
 
@@ -12,7 +12,6 @@
     primaryColor: "#000",
     size: "90%",
   };
-  const setColor = ColorScale();
 
   const heatmapValue1 = 90;
   const heatmapValue2 = 70;
@@ -171,42 +170,42 @@
             ><div
               class="cell"
               value={heatmapValue1}
-              style="background-color:{setColor(heatmapValue1)}"
+              style="background-color:{getColor(heatmapValue1)}"
             /></td
           >
           <td class="cell-td"
             ><div
               class="cell"
               value={heatmapValue2}
-              style="background-color:{setColor(heatmapValue2)}"
+              style="background-color:{getColor(heatmapValue2)}"
             /></td
           >
           <td class="cell-td"
             ><div
               class="cell"
               value={heatmapValue3}
-              style="background-color:{setColor(heatmapValue3)}"
+              style="background-color:{getColor(heatmapValue3)}"
             /></td
           >
           <td class="cell-td"
             ><div
               class="cell"
               value={heatmapValue4}
-              style="background-color:{setColor(heatmapValue4)}"
+              style="background-color:{getColor(heatmapValue4)}"
             /></td
           >
           <td class="cell-td"
             ><div
               class="cell"
               value={heatmapValue5}
-              style="background-color:{setColor(heatmapValue5)}"
+              style="background-color:{getColor(heatmapValue5)}"
             /></td
           >
           <td class="cell-td"
             ><div
               class="cell"
               value={heatmapValue6}
-              style="background-color:{setColor(heatmapValue6)}"
+              style="background-color:{getColor(heatmapValue6)}"
             /></td
           >
         </tr>

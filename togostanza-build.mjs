@@ -1,5 +1,5 @@
 import svelte from "rollup-plugin-svelte";
-// import sveltePreprocess from "svelte-preprocess";
+import sveltePreprocess from "svelte-preprocess";
 // import typescript from "@rollup/plugin-typescript";
 
 export default function config() {
@@ -12,6 +12,7 @@ export default function config() {
         // }),
         svelte({
           emitCss: false,
+          preprocess: sveltePreprocess(),
         }),
       ],
     },

@@ -3,13 +3,6 @@
   "version": "0.0.1",
   "license": "MIT",
   "repository": "https://github.com/YukikoNoda/heatmap-table.git",
-  "dependencies": {
-    "@fortawesome/fontawesome-pro": "^6.3.0",
-    "@fortawesome/pro-duotone-svg-icons": "^6.3.0",
-    "d3-scale": "^4.0.2",
-    "svelte-fa": "^3.0.3",
-    "togostanza": "github:togostanza/togostanza"
-  },
   "engines": {
     "node": ">=14"
   },
@@ -19,18 +12,21 @@
     "build": "npx togostanza b",
     "stylelint": "npx stylelint '**/*.scss' --fix"
   },
+  "dependencies": {
+    "@fortawesome/fontawesome-pro": "^6.3.0",
+    "@fortawesome/pro-duotone-svg-icons": "^6.3.0",
+    "d3-scale": "^4.0.2",
+    "svelte-fa": "^3.0.3",
+    "togostanza": "github:togostanza/togostanza"
+  },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
-    "autoprefixer": "^10.4.14",
     "eslint": "^8.36.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "lodash.camelcase": "^4.3.0",
-    "postcss": "^8.4.21",
-    "postcss-load-config": "^4.0.1",
     "postcss-scss": "^4.0.6",
-    "postcss-syntax": "^0.36.2",
     "prettier": "^2.8.4",
     "prettier-plugin-svelte": "^2.9.0",
     "rollup-plugin-svelte": "^7.1.4",
@@ -39,9 +35,7 @@
     "stylelint-config-recess-order": "^4.0.0",
     "stylelint-config-standard": "^31.0.0",
     "stylelint-config-standard-scss": "^7.0.1",
-    "stylelint-order": "^6.0.3",
     "svelte": "^3.57.0",
-    "svelte-language-server": "^0.15.8",
     "svelte-preprocess": "^5.0.2",
     "typescript": "^4.9.5"
   }
