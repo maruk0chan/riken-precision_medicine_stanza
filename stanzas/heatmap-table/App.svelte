@@ -2,37 +2,43 @@
   import metadata from "./metadata.json";
   import { camelCase } from "lodash";
   import getColor from "../../lib/ColorScale";
+  import toCamelCase from "../../lib/CamelCase";
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/pro-duotone-svg-icons";
   import {
     arrowTheme,
     columnLists,
     drugsLists,
-    tableLists,
     setIcon,
+    scores,
+    theads,
   } from "./data.js";
-
-  let displayDrugs = false;
+  import json from "./sample.json";
+  let displayDrugs = true;
 
   const params = metadata["stanza:parameter"].map((param) => {
     return {
       name: camelCase(param["stanza:key"]),
     };
   });
-  console.log(params);
+
+  let mutationLength = 0;
+  json.forEach((d) => (d.Type === "Mutation_FEP" ? mutationLength++ : ""));
+
+  const dataset = json.map((d) => toCamelCase(d));
 </script>
 
 <div class="heatmap-table">
   <!-- Column -->
   <ul class="column-list">
-    <li>Valiants list <span class="num">1234</span></li>
-    {#each columnLists as { label, num, calc }}
+    <li>Valiants list <span class="num">{json.length}</span></li>
+    {#each columnLists as { label, calc }}
       <li>
         <img
           class={setIcon(calc).className}
           src={setIcon(calc).src}
           alt={setIcon(calc).alt}
-        />{label}<span class="num">{num}</span>
+        />{label}<span class="num">{mutationLength}</span>
       </li>
     {/each}
   </ul>
@@ -56,97 +62,43 @@
     <table>
       <thead>
         <tr>
-          <th class="th-variant" rowspan="2">Variant</th>
-          <th class="th-hgvs" rowspan="2">HGVS</th>
-          <th class="th-disease th-group" colspan="2">Significance</th>
-          <th class="th-calculation" rowspan="2">Calculation</th>
-          <th class="th-heatmap" rowspan="2"><span>Indicator1</span></th>
-          <th class="th-heatmap" rowspan="2"><span>Indicator2</span></th>
-          <th class="th-heatmap" rowspan="2"><span>Indicator3</span></th>
-          <th class="th-heatmap" rowspan="2"><span>Indicator4</span></th>
-          <th class="th-heatmap" rowspan="2"><span>Indicator5</span></th>
-          <th class="th-heatmap" rowspan="2"><span>Indicator6</span></th>
-        </tr>
-        <tr>
-          <th class="th-disease">MGeND</th>
-          <th class="th-disease">ClinVar</th>
+          {#each theads as { className, label }}
+            <th class={className}>{label}</th>
+          {/each}
         </tr>
       </thead>
       <tbody>
-        {#each tableLists as { variant, hgvs, mgend, clinvar, calc, heatmapValue1, heatmapValue2, heatmapValue3, heatmapValue4, heatmapValue5, heatmapValue6 }, index}
+        {#each dataset as data, index}
           <tr>
-            <td class="td-variant">
+            <td class="td-uniport">
               <label>
                 <input
                   class="radio-button"
                   type="radio"
                   name="variantid"
-                  value={variant}
+                  value={data.uniprotAcc}
                   checked={index === 0}
                 />
-
-                {variant}<Fa
+                {data.uniprotAcc}</label
+              ></td
+            >
+            <td class="td-variant">
+              <span>
+                {data.variant}<Fa
                   icon={faCircleChevronRight}
                   {...arrowTheme}
                   secondaryColor="#5fdede"
-                /></label
+                /></span
               >
             </td>
-            <td class="td-hgvs">{hgvs}</td>
-            <td>{mgend}</td>
-            <td>{clinvar}</td>
-            <td class="td-calculation">
-              {#if calc}
-                <span
-                  ><img
-                    class={setIcon(calc).className}
-                    src={setIcon(calc).src}
-                    alt={setIcon(calc).alt}
-                  />{calc}
-                  <Fa
-                    icon={faCircleChevronRight}
-                    {...arrowTheme}
-                    secondaryColor="#fcb900"
-                  /></span
-                >
-              {/if}
-            </td>
-            <td class="cell-td"
-              ><div
-                class="cell"
-                style="background-color:{getColor(heatmapValue1)}"
-              /></td
-            >
-            <td class="cell-td"
-              ><div
-                class="cell"
-                style="background-color:{getColor(heatmapValue2)}"
-              /></td
-            >
-            <td class="cell-td"
-              ><div
-                class="cell"
-                style="background-color:{getColor(heatmapValue3)}"
-              /></td
-            >
-            <td class="cell-td"
-              ><div
-                class="cell"
-                style="background-color:{getColor(heatmapValue4)}"
-              /></td
-            >
-            <td class="cell-td"
-              ><div
-                class="cell"
-                style="background-color:{getColor(heatmapValue5)}"
-              /></td
-            >
-            <td class="cell-td"
-              ><div
-                class="cell"
-                style="background-color:{getColor(heatmapValue6)}"
-              /></td
-            >
+            {#each scores as key}
+              <td class="cell-td"
+                ><div
+                  class="cell"
+                  style="background-color:{getColor(data[key])}"
+                /></td
+              >
+            {/each}
           </tr>
         {/each}
       </tbody>

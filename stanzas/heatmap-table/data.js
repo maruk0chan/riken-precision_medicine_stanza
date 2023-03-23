@@ -6,33 +6,8 @@ export const arrowTheme = {
 
 export const columnLists = [
   {
-    calc: "Mutation FEP",
+    calc: "Mutation_FEP",
     label: "Mutation FEP",
-    num: 1234,
-  },
-  {
-    calc: "Other Calculation",
-    label: "Other Calculation 1",
-    num: 1234,
-  },
-  {
-    calc: "Other Calculation",
-    label: "Other Calculation 2",
-    num: 1234,
-  },
-  {
-    calc: "Other Calculation",
-    label: "Other Calculation 3",
-    num: 1234,
-  },
-  {
-    calc: "Other Calculation",
-    label: "Other Calculation 4",
-    num: 1234,
-  },
-  {
-    calc: "Other Calculation",
-    label: "Other Calculation 5",
     num: 1234,
   },
 ];
@@ -52,7 +27,7 @@ export const tableLists = [
     hgvs: "ENST00000256078:8:c.35G>T ENST00000256078:8:p.Gly12Cys",
     mgend: "Pathogenic",
     clinvar: "Pathogenic",
-    calc: "Mutation FEP",
+    calc: "Mutation_FEP",
     heatmapValue1: 90,
     heatmapValue2: 70,
     heatmapValue3: 50,
@@ -92,7 +67,7 @@ const drugIcon = "../assets/drug.png";
 const proteinIcon = "../assets/protein.png";
 export const setIcon = (calcName) => {
   switch (calcName) {
-    case "Mutation FEP":
+    case "Mutation_FEP":
       return {
         className: "drug-icon",
         src: drugIcon,
@@ -108,3 +83,35 @@ export const setIcon = (calcName) => {
       return;
   }
 };
+
+export const scores = [
+  "caddRawRankscore",
+  "fathmmMklCodingRankscore",
+  "lrtConvertedRankscore",
+  "feBind",
+  "mutationTasterConvertedRankscore",
+  "mutationAssessorRankscore",
+  "polyphen2HdivRankscore",
+  "polyphen2HvarRankscore",
+  "primateAiRankscore",
+  "proveanConvertedRankscore",
+  "revelRankscore",
+  "sift4GConvertedRankscore",
+];
+
+export const theads = [
+  { className: "th-gene", label: "UniPort ID" },
+  { className: "th-variant", label: "Variant" },
+  { className: "th-heatmap", label: "CADD" },
+  { className: "th-heatmap", label: "fathmm-MKL" },
+  { className: "th-heatmap", label: "LRT" },
+  { className: "th-heatmap", label: "FE" },
+  { className: "th-heatmap", label: "MutationTaster" },
+  { className: "th-heatmap", label: "MutationAssessor" },
+  { className: "th-heatmap", label: "Polyphen2_HDIV" },
+  { className: "th-heatmap", label: "Polyphen2_HVAR" },
+  { className: "th-heatmap", label: "PrimateAI" },
+  { className: "th-heatmap", label: "PROVEAN" },
+  { className: "th-heatmap", label: "REVEL" },
+  { className: "th-heatmap", label: "SIFT4G" },
+];

@@ -21,7 +21,7 @@ img {
 .radio-button {
   width: 14px;
   height: 14px;
-  margin-right: 3px;
+  margin-right: 8px;
   vertical-align: text-top;
   background-color: rgb(255 255 255 / 40%);
   border-radius: 50%;
@@ -45,7 +45,7 @@ img {
       border-radius: 2px;
       &:nth-of-type(1) {
         margin: 0;
-        clip-path: polygon(0% 0%, 92% 0%, 100% 50%, 92% 100%, 0% 100%);
+
         font-weight: bold;
       }
       &:hover,
@@ -66,6 +66,7 @@ img {
         &:hover,
         &.-active {
           &:nth-of-type(1) {
+            clip-path: polygon(0% 0%, 92% 0%, 100% 50%, 92% 100%, 0% 100%);
             background-color: #5fdede;
           }
           .num {
@@ -76,6 +77,15 @@ img {
     }
     &.drugs {
       background-color: rgb(0 0 0 / 40%);
+      > li {
+        &:hover,
+        &.-active {
+          &:nth-of-type(1) {
+            background-color: transparent;
+            color: #fff;
+          }
+        }
+      }
     }
   }
 
@@ -90,17 +100,20 @@ img {
       white-space: nowrap;
       table-layout: fixed;
       thead {
-        height: 35px;
+        height: 50px;
         border-top: 1px solid #fff;
         border-bottom: 1px solid #fff;
         th {
-          padding-right: 35px;
           text-align: left;
           vertical-align: bottom;
-          &.th-variant {
+          &.th-gene {
             width: 120px;
-            color: #5fdede;
+            color: #9ce53c;
             text-align: center;
+          }
+          &.th-variant {
+            width: 100px;
+            color: #5fdede;
           }
           &.th-hgvs {
             width: 250px;
@@ -118,9 +131,10 @@ img {
             font-size: 12px;
           }
           &.th-heatmap {
+            padding-right: 35px;
             position: relative;
             top: -4px;
-            left: -18px;
+            left: -10px;
             width: 0;
             font-size: 12px;
             rotate: -20deg;
@@ -133,15 +147,23 @@ img {
           &:not(:last-child) {
             border-bottom: 1px solid rgb(255 255 255 / 20%);
           }
+          // &:has([type="radio"]:checked) {
+          //   background-color: #fcb900;
+          // }
         }
         td {
           padding: 5px 0;
-          padding-right: 30px;
-          &.td-variant {
+
+          &.td-uniport {
             > label {
-              padding: 5px;
-              color: #5fdede;
+              padding: 8px;
+            }
+          }
+          &.td-variant {
+            color: #5fdede;
+            > span {
               cursor: pointer;
+              padding: 8px 8px 8px 0;
             }
           }
           &.td-hgvs {
@@ -156,10 +178,8 @@ img {
           }
           &.cell-td {
             > .cell {
-              position: relative;
               width: 17px;
               height: 17px;
-              margin: auto;
               background-color: #f00;
               border-radius: 50%;
             }
