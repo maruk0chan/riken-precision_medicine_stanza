@@ -5,14 +5,7 @@
   import toCamelCase from "../../lib/CamelCase";
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/pro-duotone-svg-icons";
-  import {
-    arrowTheme,
-    columnLists,
-    drugsLists,
-    setIcon,
-    scores,
-    theads,
-  } from "./data.js";
+  import { arrowTheme, setIcon, scores, theads } from "./data.js";
   import json from "./sample.json";
   let displayDrugs = true;
 
@@ -21,31 +14,43 @@
       name: camelCase(param["stanza:key"]),
     };
   });
-
-  let mutationLength = 0;
-  json.forEach((d) => (d.Type === "Mutation_FEP" ? mutationLength++ : ""));
-
   const dataset = json.map((d) => toCamelCase(d));
+  console.log(dataset);
+
+  const types = [];
+  dataset.forEach((d) => types.push(d.type));
+  const typesCount = {};
+  for (let i = 0; i < types.length; i++) {
+    const item = types[i];
+    typesCount[item] = typesCount[item] ? typesCount[item] + 1 : 1;
+  }
+  const typeLists = [...new Set(types)];
+
+  const drugs = [];
+  dataset.forEach((d) => drugs.push(d.compoundId));
+  const drugsList = [...new Set(drugs)];
 </script>
 
 <div class="heatmap-table">
   <!-- Column -->
   <ul class="column-list">
     <li>Valiants list <span class="num">{json.length}</span></li>
-    {#each columnLists as { label, calc }}
-      <li>
-        <img
-          class={setIcon(calc).className}
-          src={setIcon(calc).src}
-          alt={setIcon(calc).alt}
-        />{label}<span class="num">{mutationLength}</span>
-      </li>
+    {#each typeLists as type}
+      {#if type}
+        <li>
+          <img
+            class={setIcon(type).className}
+            src={setIcon(type).src}
+            alt={setIcon(type).alt}
+          />{type.replace("_", " ")}<span class="num">{typesCount[type]}</span>
+        </li>
+      {/if}
     {/each}
   </ul>
   {#if displayDrugs}
     <ul class="drugs">
       <li>Drugs</li>
-      {#each drugsLists as drugsList}
+      {#each drugsList as drugsList}
         <li>
           {drugsList}<Fa
             icon={faCircleChevronRight}
