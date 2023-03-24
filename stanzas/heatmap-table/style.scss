@@ -35,19 +35,20 @@ img {
 //Heatmap Table
 .heatmap-table {
   display: flex;
-  ul {
+  white-space: nowrap;
+  .column-list,
+  .drugs-list {
     padding: 10px;
-    li {
+
+    > h2 {
+      padding: 2px 5px;
+      font-size: 14px;
+    }
+    > ul > li {
       padding: 2px 5px;
       margin-left: 5px;
-      white-space: nowrap;
       cursor: pointer;
       border-radius: 2px;
-      &:nth-of-type(1) {
-        margin: 0;
-
-        font-weight: bold;
-      }
       &:hover,
       &.-active {
         color: #000;
@@ -56,48 +57,39 @@ img {
     }
     &.column-list {
       background-color: rgb(0 0 0 / 50%);
-      > li {
-        > .num {
-          padding: 0 5px;
-          margin-left: 4px;
-          background-color: rgb(255 255 255 / 20%);
-          border-radius: 2px;
-        }
-        &:hover,
-        &.-active {
-          &:nth-of-type(1) {
-            clip-path: polygon(0% 0%, 92% 0%, 100% 50%, 92% 100%, 0% 100%);
-            background-color: #5fdede;
-          }
-          .num {
-            background-color: rgb(0 0 0 / 20%);
-          }
+      > h2:hover,
+      h2.-active {
+        clip-path: polygon(0% 0%, 92% 0%, 100% 50%, 92% 100%, 0% 100%);
+        color: #000;
+        background-color: #5fdede;
+      }
+      .num {
+        padding: 0 5px;
+        margin-left: 4px;
+        background-color: rgb(255 255 255 / 20%);
+        border-radius: 2px;
+      }
+      h2:hover,
+      li:hover,
+      h2.-active,
+      li.-active {
+        .num {
+          background-color: rgb(0 0 0 / 20%);
         }
       }
     }
-    &.drugs {
+    &.drugs-list {
       background-color: rgb(0 0 0 / 40%);
-      > li {
-        &:hover,
-        &.-active {
-          &:nth-of-type(1) {
-            background-color: transparent;
-            color: #fff;
-          }
-        }
-      }
     }
   }
 
   // Table
   .table-container {
-    display: flex;
     padding: 20px;
     background-color: rgb(0 0 0 / 30%);
     table {
       width: 100%;
       padding: 10px;
-      white-space: nowrap;
       table-layout: fixed;
       thead {
         height: 50px;
@@ -131,11 +123,11 @@ img {
             font-size: 12px;
           }
           &.th-heatmap {
-            padding-right: 35px;
             position: relative;
             top: -4px;
             left: -10px;
             width: 0;
+            padding-right: 35px;
             font-size: 12px;
             rotate: -20deg;
           }
@@ -153,7 +145,6 @@ img {
         }
         td {
           padding: 5px 0;
-
           &.td-uniport {
             > label {
               padding: 8px;
@@ -162,8 +153,8 @@ img {
           &.td-variant {
             color: #5fdede;
             > span {
-              cursor: pointer;
               padding: 8px 8px 8px 0;
+              cursor: pointer;
             }
           }
           &.td-hgvs {
@@ -185,6 +176,14 @@ img {
             }
           }
         }
+      }
+    }
+
+    //Pagination
+    .pagination {
+      > ul {
+        display: flex;
+        justify-content: center;
       }
     }
   }

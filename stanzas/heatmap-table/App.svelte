@@ -1,65 +1,96 @@
 <script>
+  import { onMount } from "svelte";
   import metadata from "./metadata.json";
   import { camelCase } from "lodash";
   import getColor from "../../lib/ColorScale";
   import toCamelCase from "../../lib/CamelCase";
   import Fa from "svelte-fa";
-  import { faCircleChevronRight } from "@fortawesome/pro-duotone-svg-icons";
+  import {
+    faCircleChevronRight,
+    faAngleLeft,
+    faAngleRight,
+  } from "@fortawesome/pro-duotone-svg-icons";
   import { arrowTheme, setIcon, scores, theads } from "./data.js";
-  import json from "./sample.json";
-  let displayDrugs = true;
+
+  const DISPLAY_DRUGS_DEFAULT = true;
+  const SAMPLE_JSON_PATH = "../assets/sample.json";
 
   const params = metadata["stanza:parameter"].map((param) => {
     return {
       name: camelCase(param["stanza:key"]),
     };
   });
-  const dataset = json.map((d) => toCamelCase(d));
-  console.log(dataset);
 
-  const types = [];
-  dataset.forEach((d) => types.push(d.type));
-  const typesCount = {};
-  for (let i = 0; i < types.length; i++) {
-    const item = types[i];
-    typesCount[item] = typesCount[item] ? typesCount[item] + 1 : 1;
-  }
-  const typeLists = [...new Set(types)];
+  let displayDrugs = DISPLAY_DRUGS_DEFAULT;
+  let dataset = [];
+  let typesCount = {};
+  let typeLists = [];
+  let drugsList = [];
 
-  const drugs = [];
-  dataset.forEach((d) => drugs.push(d.compoundId));
-  const drugsList = [...new Set(drugs)];
+  const getTypeLists = (dataset) => {
+    const types = dataset.map((d) => d.type);
+    typesCount = types.reduce((acc, item) => {
+      acc[item] = (acc[item] || 0) + 1;
+      return acc;
+    }, {});
+    return [...new Set(types.filter(Boolean))];
+  };
+
+  const getDrugsList = (dataset) => [
+    ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
+  ];
+
+  onMount(async () => {
+    try {
+      const response = await fetch(SAMPLE_JSON_PATH);
+      const json = await response.json();
+      if (!response.ok) {
+        throw new Error(json);
+      }
+      dataset = json.map(toCamelCase);
+      typeLists = getTypeLists(dataset);
+      drugsList = getDrugsList(dataset);
+    } catch (error) {
+      console.error(error);
+    }
+  });
 </script>
 
 <div class="heatmap-table">
   <!-- Column -->
-  <ul class="column-list">
-    <li>Valiants list <span class="num">{json.length}</span></li>
-    {#each typeLists as type}
-      {#if type}
-        <li>
-          <img
-            class={setIcon(type).className}
-            src={setIcon(type).src}
-            alt={setIcon(type).alt}
-          />{type.replace("_", " ")}<span class="num">{typesCount[type]}</span>
-        </li>
-      {/if}
-    {/each}
-  </ul>
+  <div class="column-list">
+    <h2>Valiants list <span class="num">{dataset.length}</span></h2>
+    {#if typeLists.length > 0}
+      <ul class="column-ul">
+        {#each typeLists as type}
+          <li>
+            <img
+              class={setIcon(type).className}
+              src={setIcon(type).src}
+              alt={setIcon(type).alt}
+            />{type}<span class="num">{typesCount[type]}</span>
+          </li>
+        {/each}
+      </ul>
+    {/if}
+  </div>
   {#if displayDrugs}
-    <ul class="drugs">
-      <li>Drugs</li>
-      {#each drugsList as drugsList}
-        <li>
-          {drugsList}<Fa
-            icon={faCircleChevronRight}
-            {...arrowTheme}
-            secondaryColor="#fcb900"
-          />
-        </li>
-      {/each}
-    </ul>
+    <div class="drugs-list">
+      <h2>Drugs</h2>
+      {#if drugsList.length > 0}
+        <ul class="drugs-ul">
+          {#each drugsList as drugsList}
+            <li>
+              {drugsList}<Fa
+                icon={faCircleChevronRight}
+                {...arrowTheme}
+                secondaryColor="#fcb900"
+              />
+            </li>
+          {/each}
+        </ul>
+      {/if}
+    </div>
   {/if}
 
   <!-- Table -->
@@ -72,41 +103,58 @@
           {/each}
         </tr>
       </thead>
-      <tbody>
-        {#each dataset as data, index}
-          <tr>
-            <td class="td-uniport">
-              <label>
-                <input
-                  class="radio-button"
-                  type="radio"
-                  name="variantid"
-                  value={data.uniprotAcc}
-                  checked={index === 0}
-                />
-                {data.uniprotAcc}</label
-              ></td
-            >
-            <td class="td-variant">
-              <span>
-                {data.variant}<Fa
-                  icon={faCircleChevronRight}
-                  {...arrowTheme}
-                  secondaryColor="#5fdede"
-                /></span
+      {#if dataset.length > 0}
+        <tbody>
+          {#each dataset as data, index}
+            <tr>
+              <td class="td-uniport">
+                <label>
+                  <input
+                    class="radio-button"
+                    type="radio"
+                    name="variantid"
+                    value={data.uniprotAcc}
+                    checked={index === 0}
+                  />
+                  {data.uniprotAcc}</label
+                ></td
               >
-            </td>
-            {#each scores as key}
-              <td class="cell-td"
-                ><div
-                  class="cell"
-                  style="background-color:{getColor(data[key])}"
-                /></td
-              >
-            {/each}
-          </tr>
-        {/each}
-      </tbody>
+              <td class="td-variant">
+                <span>
+                  {data.variant}<Fa
+                    icon={faCircleChevronRight}
+                    {...arrowTheme}
+                    secondaryColor="#5fdede"
+                  /></span
+                >
+              </td>
+              {#each scores as key}
+                <td class="cell-td"
+                  ><div
+                    class="cell"
+                    style="background-color:{getColor(data[key])}"
+                  /></td
+                >
+              {/each}
+            </tr>
+          {/each}
+        </tbody>
+      {/if}
     </table>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <ul>
+        <li><span><Fa icon={faAngleLeft} /> Prev</span></li>
+        <li class="numb"><span>1</span></li>
+        <li class="numb"><span>2</span></li>
+        <li class="dots"><span>...</span></li>
+        <li class="numb"><span>4</span></li>
+        <li class="numb"><span>5</span></li>
+        <li class="dots"><span>...</span></li>
+        <li class="numb"><span>7</span></li>
+        <li><span>Next <Fa icon={faAngleRight} /></span></li>
+      </ul>
+    </div>
   </div>
 </div>
