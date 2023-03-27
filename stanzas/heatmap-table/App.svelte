@@ -141,20 +141,5 @@
         </tbody>
       {/if}
     </table>
-
-    <!-- Pagination -->
-    <div class="pagination">
-      <ul>
-        <li><span><Fa icon={faAngleLeft} /> Previous</span></li>
-        <li class="numb"><span>1</span></li>
-        <li class="numb"><span>2</span></li>
-        <li class="dots"><span>...</span></li>
-        <li class="numb"><span>4</span></li>
-        <li class="numb"><span>5</span></li>
-        <li class="dots"><span>...</span></li>
-        <li class="numb"><span>7</span></li>
-        <li><span>Next <Fa icon={faAngleRight} /></span></li>
-      </ul>
-    </div>
   </div>
 </div>
