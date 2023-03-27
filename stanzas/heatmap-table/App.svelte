@@ -145,7 +145,7 @@
     <!-- Pagination -->
     <div class="pagination">
       <ul>
-        <li><span><Fa icon={faAngleLeft} /> Prev</span></li>
+        <li><span><Fa icon={faAngleLeft} /> Previous</span></li>
         <li class="numb"><span>1</span></li>
         <li class="numb"><span>2</span></li>
         <li class="dots"><span>...</span></li>
