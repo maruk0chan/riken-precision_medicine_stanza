@@ -5,11 +5,7 @@
   import getColor from "../../lib/ColorScale";
   import toCamelCase from "../../lib/CamelCase";
   import Fa from "svelte-fa";
-  import {
-    faCircleChevronRight,
-    faAngleLeft,
-    faAngleRight,
-  } from "@fortawesome/pro-duotone-svg-icons";
+  import { faCircleChevronRight } from "@fortawesome/pro-duotone-svg-icons";
   import { arrowTheme, setIcon, scores, theads } from "./data.js";
 
   const DISPLAY_DRUGS_DEFAULT = true;
@@ -26,6 +22,7 @@
   let typesCount = {};
   let typeLists = [];
   let drugsList = [];
+  let selected;
 
   const getTypeLists = (dataset) => {
     const types = dataset.map((d) => d.type);
@@ -59,11 +56,16 @@
 <div class="heatmap-table">
   <!-- Column -->
   <div class="column-list">
-    <h2>Valiants list <span class="num">{dataset.length}</span></h2>
+    <h2
+      class:active={selected === "variants"}
+      :click={() => (selected = "variants")}
+    >
+      Variants list <span class="num">{dataset.length}</span>
+    </h2>
     {#if typeLists.length > 0}
       <ul class="column-ul">
         {#each typeLists as type}
-          <li>
+          <li class:active={selected === type} :click={() => (selected = type)}>
             <img
               class={setIcon(type).className}
               src={setIcon(type).src}
@@ -99,8 +101,15 @@
       <thead>
         <tr>
           {#each theads as { className, label }}
-            <th class={className}>{label}</th>
+            {#if className.includes("th-group")}
+              <th class={className}>{label}</th>
+            {:else}
+              <th class={className} rowspan="2">{label}</th>
+            {/if}
           {/each}
+        </tr>
+        <tr>
+          <th class="th-calc">SD</th>
         </tr>
       </thead>
       {#if dataset.length > 0}
@@ -128,6 +137,7 @@
                   /></span
                 >
               </td>
+              <td>{data.feBind}</td>
               {#each scores as key}
                 <td class="cell-td"
                   ><div

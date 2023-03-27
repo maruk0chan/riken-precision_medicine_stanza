@@ -15,8 +15,7 @@
       "stanza:key": "say-to",
       "stanza:type": "string",
       "stanza:example": "world",
-      "stanza:description": "who to say hello to",
-      "stanza:required": false
+      "stanza:description": "who to say hello to"
     }
   ],
   "stanza:menu-placement": "bottom-right",
