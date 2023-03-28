@@ -44609,8 +44609,10 @@ const arrowTheme = {
   size: "90%",
 };
 
-const drugIcon = "../assets/drug.png";
-const proteinIcon = "../assets/protein.png";
+const drugIcon =
+  "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/drug.png";
+const proteinIcon =
+  "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/protein.png";
 const setIcon = (calcName) => {
   switch (calcName) {
     case "Mutation_FEP":
