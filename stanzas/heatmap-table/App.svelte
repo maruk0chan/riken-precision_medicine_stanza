@@ -9,7 +9,8 @@
   import { arrowTheme, setIcon, scores, theads } from "./data.js";
 
   const DISPLAY_DRUGS_DEFAULT = true;
-  const SAMPLE_JSON_PATH = "../assets/sample.json";
+  const SAMPLE_JSON_PATH =
+    "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/sample.json";
 
   const params = metadata["stanza:parameter"].map((param) => {
     return {
