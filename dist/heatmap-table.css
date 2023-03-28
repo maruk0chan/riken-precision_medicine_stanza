@@ -83,7 +83,7 @@ img.drug-icon {
 }
 .heatmap-table .column-list > h2,
 .heatmap-table .drugs-list > h2 {
-  padding: 2px 5px;
+  padding: 2px 15px 2px 5px;
   font-size: 14px;
 }
 .heatmap-table .column-list > ul > li,
@@ -93,9 +93,9 @@ img.drug-icon {
   cursor: pointer;
   border-radius: 2px;
 }
-.heatmap-table .column-list > ul > li:hover, .heatmap-table .column-list > ul > li.-active,
+.heatmap-table .column-list > ul > li:hover, .heatmap-table .column-list > ul > li:active,
 .heatmap-table .drugs-list > ul > li:hover,
-.heatmap-table .drugs-list > ul > li.-active {
+.heatmap-table .drugs-list > ul > li:active {
   color: #000;
   background-color: #fcb900;
 }
@@ -104,12 +104,15 @@ img.drug-icon {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .heatmap-table .column-list.column-list > h2:hover,
-.heatmap-table .column-list.column-list h2.-active,
+.heatmap-table .column-list.column-list h2:active,
 .heatmap-table .drugs-list.column-list > h2:hover,
-.heatmap-table .drugs-list.column-list h2.-active {
+.heatmap-table .drugs-list.column-list h2:active {
+  width: fit-content;
   clip-path: polygon(0% 0%, 92% 0%, 100% 50%, 92% 100%, 0% 100%);
+  border-radius: 2px;
   color: #000;
   background-color: #5fdede;
+  cursor: pointer;
 }
 .heatmap-table .column-list.column-list .num,
 .heatmap-table .drugs-list.column-list .num {
@@ -120,12 +123,12 @@ img.drug-icon {
 }
 .heatmap-table .column-list.column-list h2:hover .num,
 .heatmap-table .column-list.column-list li:hover .num,
-.heatmap-table .column-list.column-list h2.-active .num,
-.heatmap-table .column-list.column-list li.-active .num,
+.heatmap-table .column-list.column-list h2:active .num,
+.heatmap-table .column-list.column-list li:active .num,
 .heatmap-table .drugs-list.column-list h2:hover .num,
 .heatmap-table .drugs-list.column-list li:hover .num,
-.heatmap-table .drugs-list.column-list h2.-active .num,
-.heatmap-table .drugs-list.column-list li.-active .num {
+.heatmap-table .drugs-list.column-list h2:active .num,
+.heatmap-table .drugs-list.column-list li:active .num {
   background-color: rgba(0, 0, 0, 0.2);
 }
 .heatmap-table .column-list.drugs-list,
@@ -149,6 +152,7 @@ img.drug-icon {
 .heatmap-table .table-container table thead th {
   text-align: left;
   vertical-align: bottom;
+  padding-bottom: 4px;
 }
 .heatmap-table .table-container table thead th.th-gene {
   width: 120px;
@@ -169,7 +173,7 @@ img.drug-icon {
 }
 .heatmap-table .table-container table thead th.th-heatmap {
   position: relative;
-  top: -4px;
+  top: -2px;
   left: -10px;
   width: 0;
   padding-right: 35px;

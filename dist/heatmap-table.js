@@ -42302,6 +42302,14 @@ function is_function(thing) {
 function safe_not_equal(a, b) {
     return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
 }
+let src_url_equal_anchor;
+function src_url_equal(element_src, url) {
+    if (!src_url_equal_anchor) {
+        src_url_equal_anchor = document.createElement('a');
+    }
+    src_url_equal_anchor.href = url;
+    return element_src === src_url_equal_anchor.href;
+}
 function is_empty(obj) {
     return Object.keys(obj).length === 0;
 }
@@ -42730,6 +42738,72 @@ class SvelteComponent {
         }
     }
 }
+
+var metadata$1 = {
+	"@context": {
+	stanza: "http://togostanza.org/resource/stanza#"
+},
+	"@id": "heatmap-table",
+	"stanza:label": "Heatmap table",
+	"stanza:definition": "For PrecisionMD-DB",
+	"stanza:license": "MIT",
+	"stanza:author": "PENQE",
+	"stanza:contributor": [
+	"Yukiko Noda"
+],
+	"stanza:created": "2023-03-16",
+	"stanza:updated": "2023-03-16",
+	"stanza:parameter": [
+	{
+		"stanza:key": "say-to",
+		"stanza:type": "string",
+		"stanza:example": "world",
+		"stanza:description": "who to say hello to"
+	}
+],
+	"stanza:menu-placement": "bottom-right",
+	"stanza:style": [
+	{
+		"stanza:key": "--togostanza-theme-background_color",
+		"stanza:type": "color",
+		"stanza:default": "#11435c",
+		"stanza:description": "Background color"
+	},
+	{
+		"stanza:key": "--togostanza-fonts-font_family",
+		"stanza:type": "text",
+		"stanza:default": "Helvetica Neue, Arial, sans-serif",
+		"stanza:description": "Font family"
+	},
+	{
+		"stanza:key": "--togostanza-fonts-font_color",
+		"stanza:type": "color",
+		"stanza:default": "#ffffff",
+		"stanza:description": "Text color"
+	},
+	{
+		"stanza:key": "--togostanza-fonts-font_size_primary",
+		"stanza:type": "number",
+		"stanza:default": 14,
+		"stanza:description": "Primary font size"
+	},
+	{
+		"stanza:key": "--togostanza-fonts-font_align",
+		"stanza:type": "single-choice",
+		"stanza:choice": [
+			"left",
+			"center",
+			"right"
+		],
+		"stanza:default": "center",
+		"stanza:description": "text align of greeting"
+	}
+],
+	"stanza:incomingEvent": [
+],
+	"stanza:outgoingEvent": [
+]
+};
 
 function ascending(a, b) {
   return a == null || b == null ? NaN : a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
@@ -44535,6 +44609,25 @@ const arrowTheme = {
   size: "90%",
 };
 
+const drugIcon = "../assets/drug.png";
+const proteinIcon = "../assets/protein.png";
+const setIcon = (calcName) => {
+  switch (calcName) {
+    case "Mutation_FEP":
+      return {
+        className: "drug-icon",
+        src: drugIcon,
+        alt: "drug icon",
+      };
+    default:
+      return {
+        className: "protein-icon",
+        src: proteinIcon,
+        alt: "protein icon",
+      };
+  }
+};
+
 const scores = [
   "caddRawRankscore",
   "fathmmMklCodingRankscore",
@@ -44572,35 +44665,394 @@ const { Boolean: Boolean_1 } = globals;
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[7] = list[i];
-	child_ctx[9] = i;
+	child_ctx[11] = list[i];
+	child_ctx[13] = i;
 	return child_ctx;
 }
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[10] = list[i];
+	child_ctx[14] = list[i];
 	return child_ctx;
 }
 
 function get_each_context_2(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[13] = list[i].className;
-	child_ctx[14] = list[i].label;
+	child_ctx[17] = list[i].className;
+	child_ctx[18] = list[i].label;
 	return child_ctx;
 }
 
-// (95:12) {:else}
+function get_each_context_3(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[4] = list[i];
+	return child_ctx;
+}
+
+function get_each_context_4(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[23] = list[i];
+	return child_ctx;
+}
+
+// (66:4) {#if typeLists.length > 0}
+function create_if_block_4(ctx) {
+	let ul;
+	let each_value_4 = /*typeLists*/ ctx[2];
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value_4.length; i += 1) {
+		each_blocks[i] = create_each_block_4(get_each_context_4(ctx, each_value_4, i));
+	}
+
+	return {
+		c() {
+			ul = element("ul");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			attr(ul, "class", "column-ul");
+		},
+		m(target, anchor) {
+			insert(target, ul, anchor);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				if (each_blocks[i]) {
+					each_blocks[i].m(ul, null);
+				}
+			}
+		},
+		p(ctx, dirty) {
+			if (dirty & /*selected, typeLists, typesCount, setIcon*/ 14) {
+				each_value_4 = /*typeLists*/ ctx[2];
+				let i;
+
+				for (i = 0; i < each_value_4.length; i += 1) {
+					const child_ctx = get_each_context_4(ctx, each_value_4, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(child_ctx, dirty);
+					} else {
+						each_blocks[i] = create_each_block_4(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(ul, null);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+
+				each_blocks.length = each_value_4.length;
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(ul);
+			destroy_each(each_blocks, detaching);
+		}
+	};
+}
+
+// (68:8) {#each typeLists as type}
+function create_each_block_4(ctx) {
+	let li;
+	let img;
+	let img_class_value;
+	let img_src_value;
+	let img_alt_value;
+	let t0_value = /*type*/ ctx[23] + "";
+	let t0;
+	let span;
+	let t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[23]] + "";
+	let t1;
+	let t2;
+	let li__click_value;
+
+	function func_1() {
+		return /*func_1*/ ctx[7](/*type*/ ctx[23]);
+	}
+
+	return {
+		c() {
+			li = element("li");
+			img = element("img");
+			t0 = text(t0_value);
+			span = element("span");
+			t1 = text(t1_value);
+			t2 = space();
+			attr(img, "class", img_class_value = setIcon(/*type*/ ctx[23]).className);
+			if (!src_url_equal(img.src, img_src_value = setIcon(/*type*/ ctx[23]).src)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = setIcon(/*type*/ ctx[23]).alt);
+			attr(span, "class", "num");
+			attr(li, ":click", li__click_value = func_1);
+			toggle_class(li, "active", /*selected*/ ctx[3] === /*type*/ ctx[23]);
+		},
+		m(target, anchor) {
+			insert(target, li, anchor);
+			append(li, img);
+			append(li, t0);
+			append(li, span);
+			append(span, t1);
+			append(li, t2);
+		},
+		p(new_ctx, dirty) {
+			ctx = new_ctx;
+
+			if (dirty & /*typeLists*/ 4 && img_class_value !== (img_class_value = setIcon(/*type*/ ctx[23]).className)) {
+				attr(img, "class", img_class_value);
+			}
+
+			if (dirty & /*typeLists*/ 4 && !src_url_equal(img.src, img_src_value = setIcon(/*type*/ ctx[23]).src)) {
+				attr(img, "src", img_src_value);
+			}
+
+			if (dirty & /*typeLists*/ 4 && img_alt_value !== (img_alt_value = setIcon(/*type*/ ctx[23]).alt)) {
+				attr(img, "alt", img_alt_value);
+			}
+
+			if (dirty & /*typeLists*/ 4 && t0_value !== (t0_value = /*type*/ ctx[23] + "")) set_data(t0, t0_value);
+			if (dirty & /*typesCount, typeLists*/ 6 && t1_value !== (t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[23]] + "")) set_data(t1, t1_value);
+
+			if (dirty & /*selected, typeLists*/ 12 && li__click_value !== (li__click_value = func_1)) {
+				attr(li, ":click", li__click_value);
+			}
+
+			if (dirty & /*selected, typeLists*/ 12) {
+				toggle_class(li, "active", /*selected*/ ctx[3] === /*type*/ ctx[23]);
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(li);
+		}
+	};
+}
+
+// (80:2) {#if displayDrugs}
+function create_if_block_2(ctx) {
+	let div;
+	let h2;
+	let t1;
+	let current;
+	let if_block = /*drugsList*/ ctx[4].length > 0 && create_if_block_3(ctx);
+
+	return {
+		c() {
+			div = element("div");
+			h2 = element("h2");
+			h2.textContent = "Drugs";
+			t1 = space();
+			if (if_block) if_block.c();
+			attr(div, "class", "drugs-list");
+		},
+		m(target, anchor) {
+			insert(target, div, anchor);
+			append(div, h2);
+			append(div, t1);
+			if (if_block) if_block.m(div, null);
+			current = true;
+		},
+		p(ctx, dirty) {
+			if (/*drugsList*/ ctx[4].length > 0) {
+				if (if_block) {
+					if_block.p(ctx, dirty);
+
+					if (dirty & /*drugsList*/ 16) {
+						transition_in(if_block, 1);
+					}
+				} else {
+					if_block = create_if_block_3(ctx);
+					if_block.c();
+					transition_in(if_block, 1);
+					if_block.m(div, null);
+				}
+			} else if (if_block) {
+				group_outros();
+
+				transition_out(if_block, 1, 1, () => {
+					if_block = null;
+				});
+
+				check_outros();
+			}
+		},
+		i(local) {
+			if (current) return;
+			transition_in(if_block);
+			current = true;
+		},
+		o(local) {
+			transition_out(if_block);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(div);
+			if (if_block) if_block.d();
+		}
+	};
+}
+
+// (83:6) {#if drugsList.length > 0}
+function create_if_block_3(ctx) {
+	let ul;
+	let current;
+	let each_value_3 = /*drugsList*/ ctx[4];
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value_3.length; i += 1) {
+		each_blocks[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
+	}
+
+	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+		each_blocks[i] = null;
+	});
+
+	return {
+		c() {
+			ul = element("ul");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			attr(ul, "class", "drugs-ul");
+		},
+		m(target, anchor) {
+			insert(target, ul, anchor);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				if (each_blocks[i]) {
+					each_blocks[i].m(ul, null);
+				}
+			}
+
+			current = true;
+		},
+		p(ctx, dirty) {
+			if (dirty & /*faCircleChevronRight, arrowTheme, drugsList*/ 16) {
+				each_value_3 = /*drugsList*/ ctx[4];
+				let i;
+
+				for (i = 0; i < each_value_3.length; i += 1) {
+					const child_ctx = get_each_context_3(ctx, each_value_3, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(child_ctx, dirty);
+						transition_in(each_blocks[i], 1);
+					} else {
+						each_blocks[i] = create_each_block_3(child_ctx);
+						each_blocks[i].c();
+						transition_in(each_blocks[i], 1);
+						each_blocks[i].m(ul, null);
+					}
+				}
+
+				group_outros();
+
+				for (i = each_value_3.length; i < each_blocks.length; i += 1) {
+					out(i);
+				}
+
+				check_outros();
+			}
+		},
+		i(local) {
+			if (current) return;
+
+			for (let i = 0; i < each_value_3.length; i += 1) {
+				transition_in(each_blocks[i]);
+			}
+
+			current = true;
+		},
+		o(local) {
+			each_blocks = each_blocks.filter(Boolean_1);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				transition_out(each_blocks[i]);
+			}
+
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(ul);
+			destroy_each(each_blocks, detaching);
+		}
+	};
+}
+
+// (85:10) {#each drugsList as drugsList}
+function create_each_block_3(ctx) {
+	let li;
+	let t0_value = /*drugsList*/ ctx[4] + "";
+	let t0;
+	let fa;
+	let t1;
+	let current;
+	const fa_spread_levels = [{ icon: faCircleChevronRight }, arrowTheme, { secondaryColor: "#fcb900" }];
+	let fa_props = {};
+
+	for (let i = 0; i < fa_spread_levels.length; i += 1) {
+		fa_props = assign(fa_props, fa_spread_levels[i]);
+	}
+
+	fa = new Fa({ props: fa_props });
+
+	return {
+		c() {
+			li = element("li");
+			t0 = text(t0_value);
+			create_component(fa.$$.fragment);
+			t1 = space();
+		},
+		m(target, anchor) {
+			insert(target, li, anchor);
+			append(li, t0);
+			mount_component(fa, li, null);
+			append(li, t1);
+			current = true;
+		},
+		p(ctx, dirty) {
+			if ((!current || dirty & /*drugsList*/ 16) && t0_value !== (t0_value = /*drugsList*/ ctx[4] + "")) set_data(t0, t0_value);
+
+			const fa_changes = (dirty & /*faCircleChevronRight, arrowTheme*/ 0)
+			? get_spread_update(fa_spread_levels, [
+					dirty & /*faCircleChevronRight*/ 0 && { icon: faCircleChevronRight },
+					dirty & /*arrowTheme*/ 0 && get_spread_object(arrowTheme),
+					fa_spread_levels[2]
+				])
+			: {};
+
+			fa.$set(fa_changes);
+		},
+		i(local) {
+			if (current) return;
+			transition_in(fa.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(fa.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(li);
+			destroy_component(fa);
+		}
+	};
+}
+
+// (107:12) {:else}
 function create_else_block(ctx) {
 	let th;
-	let t_value = /*label*/ ctx[14] + "";
+	let t_value = /*label*/ ctx[18] + "";
 	let t;
 
 	return {
 		c() {
 			th = element("th");
 			t = text(t_value);
-			attr(th, "class", /*className*/ ctx[13]);
+			attr(th, "class", /*className*/ ctx[17]);
 			attr(th, "rowspan", "2");
 		},
 		m(target, anchor) {
@@ -44614,17 +45066,17 @@ function create_else_block(ctx) {
 	};
 }
 
-// (93:12) {#if className.includes("th-group")}
+// (105:12) {#if className.includes("th-group")}
 function create_if_block_1(ctx) {
 	let th;
-	let t_value = /*label*/ ctx[14] + "";
+	let t_value = /*label*/ ctx[18] + "";
 	let t;
 
 	return {
 		c() {
 			th = element("th");
 			t = text(t_value);
-			attr(th, "class", /*className*/ ctx[13]);
+			attr(th, "class", /*className*/ ctx[17]);
 		},
 		m(target, anchor) {
 			insert(target, th, anchor);
@@ -44637,12 +45089,12 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (92:10) {#each theads as { className, label }}
+// (104:10) {#each theads as { className, label }}
 function create_each_block_2(ctx) {
 	let if_block_anchor;
 
 	function select_block_type(ctx, dirty) {
-		if (/*className*/ ctx[13].includes("th-group")) return create_if_block_1;
+		if (/*className*/ ctx[17].includes("th-group")) return create_if_block_1;
 		return create_else_block;
 	}
 
@@ -44668,7 +45120,7 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (104:6) {#if dataset.length > 0}
+// (116:6) {#if dataset.length > 0}
 function create_if_block(ctx) {
 	let tbody;
 	let current;
@@ -44755,7 +45207,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (130:14) {#each scores as key}
+// (142:14) {#each scores as key}
 function create_each_block_1(ctx) {
 	let td;
 	let div;
@@ -44765,7 +45217,7 @@ function create_each_block_1(ctx) {
 			td = element("td");
 			div = element("div");
 			attr(div, "class", "cell");
-			set_style(div, "background-color", getColor(/*data*/ ctx[7][/*key*/ ctx[10]]));
+			set_style(div, "background-color", getColor(/*data*/ ctx[11][/*key*/ ctx[14]]));
 			attr(td, "class", "cell-td");
 		},
 		m(target, anchor) {
@@ -44774,7 +45226,7 @@ function create_each_block_1(ctx) {
 		},
 		p(ctx, dirty) {
 			if (dirty & /*dataset*/ 1) {
-				set_style(div, "background-color", getColor(/*data*/ ctx[7][/*key*/ ctx[10]]));
+				set_style(div, "background-color", getColor(/*data*/ ctx[11][/*key*/ ctx[14]]));
 			}
 		},
 		d(detaching) {
@@ -44783,7 +45235,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (106:10) {#each dataset as data, index}
+// (118:10) {#each dataset as data, index}
 function create_each_block(ctx) {
 	let tr;
 	let td0;
@@ -44791,17 +45243,17 @@ function create_each_block(ctx) {
 	let input;
 	let input_value_value;
 	let t0;
-	let t1_value = /*data*/ ctx[7].uniprotAcc + "";
+	let t1_value = /*data*/ ctx[11].uniprotAcc + "";
 	let t1;
 	let t2;
 	let td1;
 	let span;
-	let t3_value = /*data*/ ctx[7].variant + "";
+	let t3_value = /*data*/ ctx[11].variant + "";
 	let t3;
 	let fa;
 	let t4;
 	let td2;
-	let t5_value = /*data*/ ctx[7].feBind + "";
+	let t5_value = /*data*/ ctx[11].feBind + "";
 	let t5;
 	let t6;
 	let t7;
@@ -44847,8 +45299,8 @@ function create_each_block(ctx) {
 			attr(input, "class", "radio-button");
 			attr(input, "type", "radio");
 			attr(input, "name", "variantid");
-			input.value = input_value_value = /*data*/ ctx[7].uniprotAcc;
-			input.checked = /*index*/ ctx[9] === 0;
+			input.value = input_value_value = /*data*/ ctx[11].uniprotAcc;
+			input.checked = /*index*/ ctx[13] === 0;
 			attr(td0, "class", "td-uniport");
 			attr(td1, "class", "td-variant");
 		},
@@ -44879,12 +45331,12 @@ function create_each_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (!current || dirty & /*dataset*/ 1 && input_value_value !== (input_value_value = /*data*/ ctx[7].uniprotAcc)) {
+			if (!current || dirty & /*dataset*/ 1 && input_value_value !== (input_value_value = /*data*/ ctx[11].uniprotAcc)) {
 				input.value = input_value_value;
 			}
 
-			if ((!current || dirty & /*dataset*/ 1) && t1_value !== (t1_value = /*data*/ ctx[7].uniprotAcc + "")) set_data(t1, t1_value);
-			if ((!current || dirty & /*dataset*/ 1) && t3_value !== (t3_value = /*data*/ ctx[7].variant + "")) set_data(t3, t3_value);
+			if ((!current || dirty & /*dataset*/ 1) && t1_value !== (t1_value = /*data*/ ctx[11].uniprotAcc + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*dataset*/ 1) && t3_value !== (t3_value = /*data*/ ctx[11].variant + "")) set_data(t3, t3_value);
 
 			const fa_changes = (dirty & /*faCircleChevronRight, arrowTheme*/ 0)
 			? get_spread_update(fa_spread_levels, [
@@ -44895,7 +45347,7 @@ function create_each_block(ctx) {
 			: {};
 
 			fa.$set(fa_changes);
-			if ((!current || dirty & /*dataset*/ 1) && t5_value !== (t5_value = /*data*/ ctx[7].feBind + "")) set_data(t5, t5_value);
+			if ((!current || dirty & /*dataset*/ 1) && t5_value !== (t5_value = /*data*/ ctx[11].feBind + "")) set_data(t5, t5_value);
 
 			if (dirty & /*getColor, dataset, scores*/ 1) {
 				each_value_1 = scores;
@@ -44938,17 +45390,27 @@ function create_each_block(ctx) {
 }
 
 function create_fragment(ctx) {
-	let div1;
-	let t0;
+	let div2;
 	let div0;
+	let h2;
+	let t0;
+	let span;
+	let t1_value = /*dataset*/ ctx[0].length + "";
+	let t1;
+	let h2__click_value;
+	let t2;
+	let t3;
+	let t4;
+	let div1;
 	let table;
 	let thead;
 	let tr0;
-	let t1;
+	let t5;
 	let tr1;
-	let t3;
+	let t7;
 	let current;
-	let if_block0 = false ;
+	let if_block0 = /*typeLists*/ ctx[2].length > 0 && create_if_block_4(ctx);
+	let if_block1 = /*displayDrugs*/ ctx[5] && create_if_block_2(ctx);
 	let each_value_2 = theads;
 	let each_blocks = [];
 
@@ -44956,13 +45418,22 @@ function create_fragment(ctx) {
 		each_blocks[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
 	}
 
-	let if_block1 = /*dataset*/ ctx[0].length > 0 && create_if_block(ctx);
+	let if_block2 = /*dataset*/ ctx[0].length > 0 && create_if_block(ctx);
 
 	return {
 		c() {
-			div1 = element("div");
-			t0 = space();
+			div2 = element("div");
 			div0 = element("div");
+			h2 = element("h2");
+			t0 = text("Variants list ");
+			span = element("span");
+			t1 = text(t1_value);
+			t2 = space();
+			if (if_block0) if_block0.c();
+			t3 = space();
+			if (if_block1) if_block1.c();
+			t4 = space();
+			div1 = element("div");
 			table = element("table");
 			thead = element("thead");
 			tr0 = element("tr");
@@ -44971,19 +45442,32 @@ function create_fragment(ctx) {
 				each_blocks[i].c();
 			}
 
-			t1 = space();
+			t5 = space();
 			tr1 = element("tr");
 			tr1.innerHTML = `<th class="th-calc">SD</th>`;
-			t3 = space();
-			if (if_block1) if_block1.c();
-			attr(div0, "class", "table-container");
-			attr(div1, "class", "heatmap-table");
+			t7 = space();
+			if (if_block2) if_block2.c();
+			attr(span, "class", "num");
+			attr(h2, ":click", h2__click_value = /*func*/ ctx[6]);
+			toggle_class(h2, "active", /*selected*/ ctx[3] === "variants");
+			attr(div0, "class", "column-list");
+			attr(div1, "class", "table-container");
+			attr(div2, "class", "heatmap-table");
 		},
 		m(target, anchor) {
-			insert(target, div1, anchor);
-			append(div1, t0);
-			append(div1, div0);
-			append(div0, table);
+			insert(target, div2, anchor);
+			append(div2, div0);
+			append(div0, h2);
+			append(h2, t0);
+			append(h2, span);
+			append(span, t1);
+			append(div0, t2);
+			if (if_block0) if_block0.m(div0, null);
+			append(div2, t3);
+			if (if_block1) if_block1.m(div2, null);
+			append(div2, t4);
+			append(div2, div1);
+			append(div1, table);
 			append(table, thead);
 			append(thead, tr0);
 
@@ -44993,13 +45477,37 @@ function create_fragment(ctx) {
 				}
 			}
 
-			append(thead, t1);
+			append(thead, t5);
 			append(thead, tr1);
-			append(table, t3);
-			if (if_block1) if_block1.m(table, null);
+			append(table, t7);
+			if (if_block2) if_block2.m(table, null);
 			current = true;
 		},
 		p(ctx, [dirty]) {
+			if ((!current || dirty & /*dataset*/ 1) && t1_value !== (t1_value = /*dataset*/ ctx[0].length + "")) set_data(t1, t1_value);
+
+			if (!current || dirty & /*selected*/ 8 && h2__click_value !== (h2__click_value = /*func*/ ctx[6])) {
+				attr(h2, ":click", h2__click_value);
+			}
+
+			if (!current || dirty & /*selected*/ 8) {
+				toggle_class(h2, "active", /*selected*/ ctx[3] === "variants");
+			}
+
+			if (/*typeLists*/ ctx[2].length > 0) {
+				if (if_block0) {
+					if_block0.p(ctx, dirty);
+				} else {
+					if_block0 = create_if_block_4(ctx);
+					if_block0.c();
+					if_block0.m(div0, null);
+				}
+			} else if (if_block0) {
+				if_block0.d(1);
+				if_block0 = null;
+			}
+
+			if (/*displayDrugs*/ ctx[5]) if_block1.p(ctx, dirty);
 
 			if (dirty & /*theads*/ 0) {
 				each_value_2 = theads;
@@ -45025,23 +45533,23 @@ function create_fragment(ctx) {
 			}
 
 			if (/*dataset*/ ctx[0].length > 0) {
-				if (if_block1) {
-					if_block1.p(ctx, dirty);
+				if (if_block2) {
+					if_block2.p(ctx, dirty);
 
 					if (dirty & /*dataset*/ 1) {
-						transition_in(if_block1, 1);
+						transition_in(if_block2, 1);
 					}
 				} else {
-					if_block1 = create_if_block(ctx);
-					if_block1.c();
-					transition_in(if_block1, 1);
-					if_block1.m(table, null);
+					if_block2 = create_if_block(ctx);
+					if_block2.c();
+					transition_in(if_block2, 1);
+					if_block2.m(table, null);
 				}
-			} else if (if_block1) {
+			} else if (if_block2) {
 				group_outros();
 
-				transition_out(if_block1, 1, 1, () => {
-					if_block1 = null;
+				transition_out(if_block2, 1, 1, () => {
+					if_block2 = null;
 				});
 
 				check_outros();
@@ -45049,32 +45557,39 @@ function create_fragment(ctx) {
 		},
 		i(local) {
 			if (current) return;
-			transition_in(if_block0);
 			transition_in(if_block1);
+			transition_in(if_block2);
 			current = true;
 		},
 		o(local) {
-			transition_out(if_block0);
 			transition_out(if_block1);
+			transition_out(if_block2);
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(div1);
-			destroy_each(each_blocks, detaching);
+			if (detaching) detach(div2);
+			if (if_block0) if_block0.d();
 			if (if_block1) if_block1.d();
+			destroy_each(each_blocks, detaching);
+			if (if_block2) if_block2.d();
 		}
 	};
 }
 
 const DISPLAY_DRUGS_DEFAULT = true;
-const SAMPLE_JSON_PATH = "../assets/sample.json";
+const SAMPLE_JSON_PATH = "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/sample.json";
 
 function instance($$self, $$props, $$invalidate) {
+	metadata$1["stanza:parameter"].map(param => {
+		return { name: lodashExports.camelCase(param["stanza:key"]) };
+	});
+
 	let displayDrugs = DISPLAY_DRUGS_DEFAULT;
 	let dataset = [];
 	let typesCount = {};
 	let typeLists = [];
 	let drugsList = [];
+	let selected;
 
 	const getTypeLists = dataset => {
 		const types = dataset.map(d => d.type);
@@ -45103,13 +45618,25 @@ function instance($$self, $$props, $$invalidate) {
 
 			$$invalidate(0, dataset = json.map(toCamelCase));
 			$$invalidate(2, typeLists = getTypeLists(dataset));
-			$$invalidate(3, drugsList = getDrugsList(dataset));
+			$$invalidate(4, drugsList = getDrugsList(dataset));
 		} catch(error) {
 			console.error(error);
 		}
 	});
 
-	return [dataset, typesCount, typeLists, drugsList, displayDrugs];
+	const func = () => $$invalidate(3, selected = "variants");
+	const func_1 = type => $$invalidate(3, selected = type);
+
+	return [
+		dataset,
+		typesCount,
+		typeLists,
+		selected,
+		drugsList,
+		displayDrugs,
+		func,
+		func_1
+	];
 }
 
 class App extends SvelteComponent {
