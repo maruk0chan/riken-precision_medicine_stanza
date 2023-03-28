@@ -71,9 +71,9 @@ img.drug-icon {
 }
 
 .heatmap-table {
+  display: flex;
   width: calc(var(--togostanza-canvas-width) * 1px);
   height: calc(var(--togostanza-canvas-height) * 1px);
-  display: flex;
   white-space: nowrap;
 }
 .heatmap-table .column-list,
@@ -94,9 +94,9 @@ img.drug-icon {
 .heatmap-table .column-list > ul > li:hover, .heatmap-table .column-list > ul > li:active,
 .heatmap-table .drugs-list > ul > li:hover,
 .heatmap-table .drugs-list > ul > li:active {
+  clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
   color: #000;
   background-color: #fcb900;
-  clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
 }
 .heatmap-table .column-list.column-list,
 .heatmap-table .drugs-list.column-list {
@@ -132,25 +132,26 @@ img.drug-icon {
 }
 .heatmap-table .column-list.drugs-list,
 .heatmap-table .drugs-list.drugs-list {
-  background-color: rgba(0, 0, 0, 0.4);
   min-width: 120px;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .heatmap-table .table-container {
-  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
   height: 100%;
   overflow-y: scroll;
-  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .heatmap-table .table-container table {
   width: 300px;
+  table-layout: fixed;
   border-spacing: 0;
 }
 .heatmap-table .table-container table thead {
+  position: sticky;
+  top: 0;
   height: 50px;
   background-color: #102e41;
   border-top: 1px solid #fff;
-  position: sticky;
-  top: 0;
 }
 .heatmap-table .table-container table thead th {
   padding-bottom: 4px;
@@ -175,13 +176,13 @@ img.drug-icon {
 }
 .heatmap-table .table-container table thead th.th-calc.th-group {
   font-size: 85%;
-  border-top: 1px solid #fff;
   vertical-align: bottom;
+  border-top: 1px solid #fff;
   border-bottom: none;
 }
 .heatmap-table .table-container table thead th.th-heatmap {
-  max-width: 40px;
   width: 0;
+  max-width: 40px;
   padding-right: 35px;
 }
 .heatmap-table .table-container table thead th.th-heatmap p {
