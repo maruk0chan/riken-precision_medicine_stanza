@@ -35,6 +35,8 @@ img {
 //Heatmap Table
 .heatmap-table {
   display: flex;
+  width: calc(var(--togostanza-canvas-width) * 1px);
+  height: calc(var(--togostanza-canvas-height) * 1px);
   white-space: nowrap;
   .column-list,
   .drugs-list {
@@ -45,21 +47,21 @@ img {
     }
     > ul > li {
       padding: 2px 5px;
-      margin-left: 5px;
       cursor: pointer;
       border-radius: 2px;
       &:hover,
       &:active {
+        clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
         color: #000;
         background-color: #fcb900;
       }
     }
     &.column-list {
+      min-width: 180px;
       background-color: rgb(0 0 0 / 50%);
       > h2:hover,
       h2:active {
-        width: fit-content;
-        clip-path: polygon(0% 0%, 92% 0%, 100% 50%, 92% 100%, 0% 100%);
+        clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
         color: #000;
         cursor: pointer;
         background-color: #5fdede;
@@ -81,26 +83,44 @@ img {
       }
     }
     &.drugs-list {
+      min-width: 120px;
       background-color: rgb(0 0 0 / 40%);
     }
   }
 
   // Table
   .table-container {
-    padding: 20px;
+    z-index: 1;
+    height: 100%;
+    // overflow-x: auto;
+    overflow-y: scroll;
     background-color: rgb(0 0 0 / 30%);
+    // .th-background {
+    //   position: sticky;
+    //   height: 20px;
+    //   background-color: #102e41;
+    //   top: -20px;
+    //   left: 0;
+    //   z-index: 1;
+    //   width: 100%;
+    // }
     table {
-      width: 100%;
-      padding: 10px;
+      width: 300px;
+      // padding: 0 10px 10px;
       table-layout: fixed;
+      border-spacing: 0;
       thead {
+        position: sticky;
+        top: 0;
         height: 50px;
+        background-color: #102e41;
         border-top: 1px solid #fff;
-        border-bottom: 1px solid #fff;
         th {
           padding-bottom: 4px;
           text-align: left;
           vertical-align: bottom;
+          border-top: 1px solid #fff;
+          border-bottom: 1px solid #fff;
           &.th-gene {
             width: 120px;
             padding-left: 18px;
@@ -113,25 +133,30 @@ img {
           &.th-calc {
             width: 100px;
             color: #fcb900;
+            border-top: none;
             &.th-group {
               font-size: 85%;
               vertical-align: bottom;
+              border-top: 1px solid #fff;
+              border-bottom: none;
             }
           }
           &.th-heatmap {
-            position: relative;
-            top: 6px;
-            left: -10px;
             width: 0;
+            max-width: 40px;
             padding-right: 35px;
-            font-size: 12px;
-            transform-origin: top left;
-            rotate: -20deg;
+            p {
+              position: relative;
+              top: 6px;
+              left: -10px;
+              font-size: 12px;
+              transform-origin: top left;
+              rotate: -20deg;
+            }
           }
         }
       }
       tbody {
-        overflow: scroll;
         border-bottom: 1px solid #fff;
         tr {
           &:not(:last-child) {

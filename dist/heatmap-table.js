@@ -42764,6 +42764,18 @@ var metadata$1 = {
 	"stanza:menu-placement": "bottom-right",
 	"stanza:style": [
 	{
+		"stanza:key": "--togostanza-canvas-width",
+		"stanza:type": "number",
+		"stanza:default": 800,
+		"stanza:description": "Canvas width"
+	},
+	{
+		"stanza:key": "--togostanza-canvas-height",
+		"stanza:type": "number",
+		"stanza:default": 300,
+		"stanza:description": "Canvas height"
+	},
+	{
 		"stanza:key": "--togostanza-theme-background_color",
 		"stanza:type": "color",
 		"stanza:default": "#11435c",
@@ -44697,7 +44709,7 @@ function get_each_context_4(ctx, list, i) {
 	return child_ctx;
 }
 
-// (66:4) {#if typeLists.length > 0}
+// (67:4) {#if typeLists.length > 0}
 function create_if_block_4(ctx) {
 	let ul;
 	let each_value_4 = /*typeLists*/ ctx[2];
@@ -44757,7 +44769,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (68:8) {#each typeLists as type}
+// (69:8) {#each typeLists as type}
 function create_each_block_4(ctx) {
 	let li;
 	let img;
@@ -44831,7 +44843,7 @@ function create_each_block_4(ctx) {
 	};
 }
 
-// (80:2) {#if displayDrugs}
+// (81:2) {#if displayDrugs}
 function create_if_block_2(ctx) {
 	let div;
 	let h2;
@@ -44895,7 +44907,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (83:6) {#if drugsList.length > 0}
+// (84:6) {#if drugsList.length > 0}
 function create_if_block_3(ctx) {
 	let ul;
 	let current;
@@ -44984,7 +44996,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (85:10) {#each drugsList as drugsList}
+// (86:10) {#each drugsList as drugsList}
 function create_each_block_3(ctx) {
 	let li;
 	let t0_value = /*drugsList*/ ctx[4] + "";
@@ -45044,22 +45056,25 @@ function create_each_block_3(ctx) {
 	};
 }
 
-// (107:12) {:else}
+// (108:12) {:else}
 function create_else_block(ctx) {
 	let th;
+	let p;
 	let t_value = /*label*/ ctx[18] + "";
 	let t;
 
 	return {
 		c() {
 			th = element("th");
+			p = element("p");
 			t = text(t_value);
 			attr(th, "class", /*className*/ ctx[17]);
 			attr(th, "rowspan", "2");
 		},
 		m(target, anchor) {
 			insert(target, th, anchor);
-			append(th, t);
+			append(th, p);
+			append(p, t);
 		},
 		p: noop,
 		d(detaching) {
@@ -45068,21 +45083,24 @@ function create_else_block(ctx) {
 	};
 }
 
-// (105:12) {#if className.includes("th-group")}
+// (106:12) {#if className.includes("th-group")}
 function create_if_block_1(ctx) {
 	let th;
+	let p;
 	let t_value = /*label*/ ctx[18] + "";
 	let t;
 
 	return {
 		c() {
 			th = element("th");
+			p = element("p");
 			t = text(t_value);
 			attr(th, "class", /*className*/ ctx[17]);
 		},
 		m(target, anchor) {
 			insert(target, th, anchor);
-			append(th, t);
+			append(th, p);
+			append(p, t);
 		},
 		p: noop,
 		d(detaching) {
@@ -45091,7 +45109,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (104:10) {#each theads as { className, label }}
+// (105:10) {#each theads as { className, label }}
 function create_each_block_2(ctx) {
 	let if_block_anchor;
 
@@ -45122,7 +45140,7 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (116:6) {#if dataset.length > 0}
+// (117:6) {#if dataset.length > 0}
 function create_if_block(ctx) {
 	let tbody;
 	let current;
@@ -45209,7 +45227,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (142:14) {#each scores as key}
+// (143:14) {#each scores as key}
 function create_each_block_1(ctx) {
 	let td;
 	let div;
@@ -45237,7 +45255,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (118:10) {#each dataset as data, index}
+// (119:10) {#each dataset as data, index}
 function create_each_block(ctx) {
 	let tr;
 	let td0;
@@ -45446,7 +45464,7 @@ function create_fragment(ctx) {
 
 			t5 = space();
 			tr1 = element("tr");
-			tr1.innerHTML = `<th class="th-calc">SD</th>`;
+			tr1.innerHTML = `<th class="th-calc"><p>SD</p></th>`;
 			t7 = space();
 			if (if_block2) if_block2.c();
 			attr(span, "class", "num");
@@ -45579,7 +45597,7 @@ function create_fragment(ctx) {
 }
 
 const DISPLAY_DRUGS_DEFAULT = true;
-const SAMPLE_JSON_PATH = "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/sample.json";
+const SAMPLE_JSON_PATH = "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/feature/heatmap-table/assets/sample.json";
 
 function instance($$self, $$props, $$invalidate) {
 	metadata$1["stanza:parameter"].map(param => {
@@ -45694,6 +45712,18 @@ var metadata = {
 ],
 	"stanza:menu-placement": "bottom-right",
 	"stanza:style": [
+	{
+		"stanza:key": "--togostanza-canvas-width",
+		"stanza:type": "number",
+		"stanza:default": 800,
+		"stanza:description": "Canvas width"
+	},
+	{
+		"stanza:key": "--togostanza-canvas-height",
+		"stanza:type": "number",
+		"stanza:default": 300,
+		"stanza:description": "Canvas height"
+	},
 	{
 		"stanza:key": "--togostanza-theme-background_color",
 		"stanza:type": "color",

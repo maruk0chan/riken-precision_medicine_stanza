@@ -10,7 +10,8 @@
 
   const DISPLAY_DRUGS_DEFAULT = true;
   const SAMPLE_JSON_PATH =
-    "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/sample.json";
+    "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/feature/heatmap-table/assets/sample.json";
+  // "../assets/sample.json";
 
   const params = metadata["stanza:parameter"].map((param) => {
     return {
@@ -103,14 +104,14 @@
         <tr>
           {#each theads as { className, label }}
             {#if className.includes("th-group")}
-              <th class={className}>{label}</th>
+              <th class={className}><p>{label}</p></th>
             {:else}
-              <th class={className} rowspan="2">{label}</th>
+              <th class={className} rowspan="2"><p>{label}</p></th>
             {/if}
           {/each}
         </tr>
         <tr>
-          <th class="th-calc">SD</th>
+          <th class="th-calc"><p>SD</p></th>
         </tr>
       </thead>
       {#if dataset.length > 0}
