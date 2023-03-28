@@ -39,7 +39,6 @@ img {
   .column-list,
   .drugs-list {
     padding: 10px;
-
     > h2 {
       padding: 2px 15px 2px 5px;
       font-size: 14px;
@@ -61,10 +60,10 @@ img {
       h2:active {
         width: fit-content;
         clip-path: polygon(0% 0%, 92% 0%, 100% 50%, 92% 100%, 0% 100%);
-        border-radius: 2px;
         color: #000;
-        background-color: #5fdede;
         cursor: pointer;
+        background-color: #5fdede;
+        border-radius: 2px;
       }
       .num {
         padding: 0 5px;
@@ -99,20 +98,20 @@ img {
         border-top: 1px solid #fff;
         border-bottom: 1px solid #fff;
         th {
+          padding-bottom: 4px;
           text-align: left;
           vertical-align: bottom;
-          padding-bottom: 4px;
           &.th-gene {
             width: 120px;
+            padding-left: 18px;
             color: #9ce53c;
-            text-align: center;
           }
           &.th-variant {
             width: 100px;
             color: #5fdede;
           }
           &.th-calc {
-            width: 110px;
+            width: 100px;
             color: #fcb900;
             &.th-group {
               font-size: 85%;
@@ -121,16 +120,18 @@ img {
           }
           &.th-heatmap {
             position: relative;
-            top: -2px;
+            top: 6px;
             left: -10px;
             width: 0;
             padding-right: 35px;
             font-size: 12px;
+            transform-origin: top left;
             rotate: -20deg;
           }
         }
       }
       tbody {
+        overflow: scroll;
         border-bottom: 1px solid #fff;
         tr {
           &:not(:last-child) {
