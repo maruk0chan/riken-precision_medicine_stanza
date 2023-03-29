@@ -92,9 +92,9 @@ img.drug-icon {
   cursor: pointer;
   border-radius: 2px;
 }
-.heatmap-table .column-list > ul > li:hover, .heatmap-table .column-list > ul > li:active,
+.heatmap-table .column-list > ul > li:hover, .heatmap-table .column-list > ul > li.selected,
 .heatmap-table .drugs-list > ul > li:hover,
-.heatmap-table .drugs-list > ul > li:active {
+.heatmap-table .drugs-list > ul > li.selected {
   clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
   color: #000;
   background-color: #fcb900;
@@ -105,15 +105,18 @@ img.drug-icon {
   min-width: 190px;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.heatmap-table .column-list.column-list > h2:hover,
-.heatmap-table .column-list.column-list h2:active,
+.heatmap-table .column-list.column-list > h2:hover, .heatmap-table .column-list.column-list > h2.selected,
 .heatmap-table .drugs-list.column-list > h2:hover,
-.heatmap-table .drugs-list.column-list h2:active {
+.heatmap-table .drugs-list.column-list > h2.selected {
   clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
   color: #000;
   cursor: pointer;
   background-color: #5fdede;
   border-radius: 2px;
+}
+.heatmap-table .column-list.column-list > h2:active,
+.heatmap-table .drugs-list.column-list > h2:active {
+  background-color: #2dbcbc;
 }
 .heatmap-table .column-list.column-list .num,
 .heatmap-table .drugs-list.column-list .num {
@@ -124,12 +127,12 @@ img.drug-icon {
 }
 .heatmap-table .column-list.column-list h2:hover .num,
 .heatmap-table .column-list.column-list li:hover .num,
-.heatmap-table .column-list.column-list h2:active .num,
-.heatmap-table .column-list.column-list li:active .num,
+.heatmap-table .column-list.column-list h2.selected .num,
+.heatmap-table .column-list.column-list li.selected .num,
 .heatmap-table .drugs-list.column-list h2:hover .num,
 .heatmap-table .drugs-list.column-list li:hover .num,
-.heatmap-table .drugs-list.column-list h2:active .num,
-.heatmap-table .drugs-list.column-list li:active .num {
+.heatmap-table .drugs-list.column-list h2.selected .num,
+.heatmap-table .drugs-list.column-list li.selected .num {
   background-color: rgba(0, 0, 0, 0.2);
 }
 .heatmap-table .column-list.drugs-list,

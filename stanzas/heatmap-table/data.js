@@ -1,6 +1,6 @@
 export const arrowTheme = {
   secondaryOpacity: 1,
-  primaryColor: "#000",
+  primaryColor: "transparent",
   size: "90%",
 };
 

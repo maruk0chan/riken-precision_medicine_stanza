@@ -13,18 +13,16 @@
     "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/feature/heatmap-table/assets/sample.json";
   // "../assets/sample.json";
 
-  const params = metadata["stanza:parameter"].map((param) => {
-    return {
-      name: camelCase(param["stanza:key"]),
-    };
+  const params = metadata["stanza:parameter"].flatMap((param) => {
+    return [[camelCase(param["stanza:key"]), param["stanza:example"]]];
   });
+  const mapParams = new Map(params);
 
   let displayDrugs = DISPLAY_DRUGS_DEFAULT;
   let dataset = [];
   let typesCount = {};
   let typeLists = [];
   let drugsList = [];
-  let selected;
 
   const getTypeLists = (dataset) => {
     const types = dataset.map((d) => d.type);
@@ -41,7 +39,7 @@
 
   onMount(async () => {
     try {
-      const response = await fetch(SAMPLE_JSON_PATH);
+      const response = await fetch(mapParams.get("dataUrl"));
       const json = await response.json();
       if (!response.ok) {
         throw new Error(json);
@@ -53,21 +51,22 @@
       console.error(error);
     }
   });
+
+  function handleClick(event) {
+    event.target.classList.toggle("selected");
+  }
 </script>
 
 <div class="heatmap-table">
   <!-- Column -->
   <div class="column-list">
-    <h2
-      class:active={selected === "variants"}
-      :click={() => (selected = "variants")}
-    >
+    <h2 on:click={handleClick} on:keydown={handleClick}>
       Variants list <span class="num">{dataset.length}</span>
     </h2>
     {#if typeLists.length > 0}
       <ul class="column-ul">
         {#each typeLists as type}
-          <li class:active={selected === type} :click={() => (selected = type)}>
+          <li on:click={handleClick} on:keydown={handleClick}>
             <img
               class={setIcon(type).className}
               src={setIcon(type).src}
@@ -84,7 +83,7 @@
       {#if drugsList.length > 0}
         <ul class="drugs-ul">
           {#each drugsList as drugsList}
-            <li>
+            <li on:click={handleClick} on:keydown={handleClick}>
               {drugsList}<Fa
                 icon={faCircleChevronRight}
                 {...arrowTheme}

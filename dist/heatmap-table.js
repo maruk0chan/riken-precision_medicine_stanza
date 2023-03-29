@@ -42367,6 +42367,10 @@ function space() {
 function empty() {
     return text('');
 }
+function listen(node, event, handler, options) {
+    node.addEventListener(event, handler, options);
+    return () => node.removeEventListener(event, handler, options);
+}
 function attr(node, attribute, value) {
     if (value == null)
         node.removeAttribute(attribute);
@@ -42755,10 +42759,15 @@ var metadata$1 = {
 	"stanza:updated": "2023-03-16",
 	"stanza:parameter": [
 	{
-		"stanza:key": "say-to",
-		"stanza:type": "string",
-		"stanza:example": "world",
-		"stanza:description": "who to say hello to"
+		"stanza:key": "data-url",
+		"stanza:example": "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/feature/heatmap-table/assets/sample.json",
+		"stanza:description": "Data source URL",
+		"stanza:required": true
+	},
+	{
+		"stanza:key": "data-gene",
+		"stanza:example": "",
+		"stanza:description": "Gene ID"
 	}
 ],
 	"stanza:menu-placement": "bottom-right",
@@ -44611,7 +44620,7 @@ var faCircleChevronRight = {
 
 const arrowTheme = {
   secondaryOpacity: 1,
-  primaryColor: "#000",
+  primaryColor: "transparent",
   size: "90%",
 };
 
@@ -44673,37 +44682,37 @@ const { Boolean: Boolean_1 } = globals;
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[11] = list[i];
-	child_ctx[13] = i;
+	child_ctx[9] = list[i];
+	child_ctx[11] = i;
 	return child_ctx;
 }
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[14] = list[i];
+	child_ctx[12] = list[i];
 	return child_ctx;
 }
 
 function get_each_context_2(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[17] = list[i].className;
-	child_ctx[18] = list[i].label;
+	child_ctx[15] = list[i].className;
+	child_ctx[16] = list[i].label;
 	return child_ctx;
 }
 
 function get_each_context_3(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[4] = list[i];
+	child_ctx[3] = list[i];
 	return child_ctx;
 }
 
 function get_each_context_4(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[23] = list[i];
+	child_ctx[21] = list[i];
 	return child_ctx;
 }
 
-// (67:4) {#if typeLists.length > 0}
+// (66:4) {#if typeLists.length > 0}
 function create_if_block_4(ctx) {
 	let ul;
 	let each_value_4 = /*typeLists*/ ctx[2];
@@ -44733,7 +44742,7 @@ function create_if_block_4(ctx) {
 			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*selected, typeLists, typesCount, setIcon*/ 14) {
+			if (dirty & /*handleClick, typesCount, typeLists, setIcon*/ 6) {
 				each_value_4 = /*typeLists*/ ctx[2];
 				let i;
 
@@ -44763,24 +44772,21 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (69:8) {#each typeLists as type}
+// (68:8) {#each typeLists as type}
 function create_each_block_4(ctx) {
 	let li;
 	let img;
 	let img_class_value;
 	let img_src_value;
 	let img_alt_value;
-	let t0_value = /*type*/ ctx[23] + "";
+	let t0_value = /*type*/ ctx[21] + "";
 	let t0;
 	let span;
-	let t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[23]] + "";
+	let t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[21]] + "";
 	let t1;
 	let t2;
-	let li__click_value;
-
-	function func_1() {
-		return /*func_1*/ ctx[7](/*type*/ ctx[23]);
-	}
+	let mounted;
+	let dispose;
 
 	return {
 		c() {
@@ -44790,12 +44796,10 @@ function create_each_block_4(ctx) {
 			span = element("span");
 			t1 = text(t1_value);
 			t2 = space();
-			attr(img, "class", img_class_value = setIcon(/*type*/ ctx[23]).className);
-			if (!src_url_equal(img.src, img_src_value = setIcon(/*type*/ ctx[23]).src)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = setIcon(/*type*/ ctx[23]).alt);
+			attr(img, "class", img_class_value = setIcon(/*type*/ ctx[21]).className);
+			if (!src_url_equal(img.src, img_src_value = setIcon(/*type*/ ctx[21]).src)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = setIcon(/*type*/ ctx[21]).alt);
 			attr(span, "class", "num");
-			attr(li, ":click", li__click_value = func_1);
-			toggle_class(li, "active", /*selected*/ ctx[3] === /*type*/ ctx[23]);
 		},
 		m(target, anchor) {
 			insert(target, li, anchor);
@@ -44804,46 +44808,43 @@ function create_each_block_4(ctx) {
 			append(li, span);
 			append(span, t1);
 			append(li, t2);
-		},
-		p(new_ctx, dirty) {
-			ctx = new_ctx;
 
-			if (dirty & /*typeLists*/ 4 && img_class_value !== (img_class_value = setIcon(/*type*/ ctx[23]).className)) {
+			if (!mounted) {
+				dispose = [listen(li, "click", handleClick), listen(li, "keydown", handleClick)];
+				mounted = true;
+			}
+		},
+		p(ctx, dirty) {
+			if (dirty & /*typeLists*/ 4 && img_class_value !== (img_class_value = setIcon(/*type*/ ctx[21]).className)) {
 				attr(img, "class", img_class_value);
 			}
 
-			if (dirty & /*typeLists*/ 4 && !src_url_equal(img.src, img_src_value = setIcon(/*type*/ ctx[23]).src)) {
+			if (dirty & /*typeLists*/ 4 && !src_url_equal(img.src, img_src_value = setIcon(/*type*/ ctx[21]).src)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (dirty & /*typeLists*/ 4 && img_alt_value !== (img_alt_value = setIcon(/*type*/ ctx[23]).alt)) {
+			if (dirty & /*typeLists*/ 4 && img_alt_value !== (img_alt_value = setIcon(/*type*/ ctx[21]).alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 
-			if (dirty & /*typeLists*/ 4 && t0_value !== (t0_value = /*type*/ ctx[23] + "")) set_data(t0, t0_value);
-			if (dirty & /*typesCount, typeLists*/ 6 && t1_value !== (t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[23]] + "")) set_data(t1, t1_value);
-
-			if (dirty & /*selected, typeLists*/ 12 && li__click_value !== (li__click_value = func_1)) {
-				attr(li, ":click", li__click_value);
-			}
-
-			if (dirty & /*selected, typeLists*/ 12) {
-				toggle_class(li, "active", /*selected*/ ctx[3] === /*type*/ ctx[23]);
-			}
+			if (dirty & /*typeLists*/ 4 && t0_value !== (t0_value = /*type*/ ctx[21] + "")) set_data(t0, t0_value);
+			if (dirty & /*typesCount, typeLists*/ 6 && t1_value !== (t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[21]] + "")) set_data(t1, t1_value);
 		},
 		d(detaching) {
 			if (detaching) detach(li);
+			mounted = false;
+			run_all(dispose);
 		}
 	};
 }
 
-// (81:2) {#if displayDrugs}
+// (80:2) {#if displayDrugs}
 function create_if_block_2(ctx) {
 	let div;
 	let h2;
 	let t1;
 	let current;
-	let if_block = /*drugsList*/ ctx[4].length > 0 && create_if_block_3(ctx);
+	let if_block = /*drugsList*/ ctx[3].length > 0 && create_if_block_3(ctx);
 
 	return {
 		c() {
@@ -44862,11 +44863,11 @@ function create_if_block_2(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*drugsList*/ ctx[4].length > 0) {
+			if (/*drugsList*/ ctx[3].length > 0) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty & /*drugsList*/ 16) {
+					if (dirty & /*drugsList*/ 8) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -44901,11 +44902,11 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (84:6) {#if drugsList.length > 0}
+// (83:6) {#if drugsList.length > 0}
 function create_if_block_3(ctx) {
 	let ul;
 	let current;
-	let each_value_3 = /*drugsList*/ ctx[4];
+	let each_value_3 = /*drugsList*/ ctx[3];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value_3.length; i += 1) {
@@ -44938,8 +44939,8 @@ function create_if_block_3(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*faCircleChevronRight, arrowTheme, drugsList*/ 16) {
-				each_value_3 = /*drugsList*/ ctx[4];
+			if (dirty & /*handleClick, faCircleChevronRight, arrowTheme, drugsList*/ 8) {
+				each_value_3 = /*drugsList*/ ctx[3];
 				let i;
 
 				for (i = 0; i < each_value_3.length; i += 1) {
@@ -44990,14 +44991,16 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (86:10) {#each drugsList as drugsList}
+// (85:10) {#each drugsList as drugsList}
 function create_each_block_3(ctx) {
 	let li;
-	let t0_value = /*drugsList*/ ctx[4] + "";
+	let t0_value = /*drugsList*/ ctx[3] + "";
 	let t0;
 	let fa;
 	let t1;
 	let current;
+	let mounted;
+	let dispose;
 	const fa_spread_levels = [{ icon: faCircleChevronRight }, arrowTheme, { secondaryColor: "#fcb900" }];
 	let fa_props = {};
 
@@ -45020,9 +45023,14 @@ function create_each_block_3(ctx) {
 			mount_component(fa, li, null);
 			append(li, t1);
 			current = true;
+
+			if (!mounted) {
+				dispose = [listen(li, "click", handleClick), listen(li, "keydown", handleClick)];
+				mounted = true;
+			}
 		},
 		p(ctx, dirty) {
-			if ((!current || dirty & /*drugsList*/ 16) && t0_value !== (t0_value = /*drugsList*/ ctx[4] + "")) set_data(t0, t0_value);
+			if ((!current || dirty & /*drugsList*/ 8) && t0_value !== (t0_value = /*drugsList*/ ctx[3] + "")) set_data(t0, t0_value);
 
 			const fa_changes = (dirty & /*faCircleChevronRight, arrowTheme*/ 0)
 			? get_spread_update(fa_spread_levels, [
@@ -45046,15 +45054,17 @@ function create_each_block_3(ctx) {
 		d(detaching) {
 			if (detaching) detach(li);
 			destroy_component(fa);
+			mounted = false;
+			run_all(dispose);
 		}
 	};
 }
 
-// (109:14) {:else}
+// (108:14) {:else}
 function create_else_block(ctx) {
 	let th;
 	let p;
-	let t_value = /*label*/ ctx[18] + "";
+	let t_value = /*label*/ ctx[16] + "";
 	let t;
 
 	return {
@@ -45062,7 +45072,7 @@ function create_else_block(ctx) {
 			th = element("th");
 			p = element("p");
 			t = text(t_value);
-			attr(th, "class", /*className*/ ctx[17]);
+			attr(th, "class", /*className*/ ctx[15]);
 			attr(th, "rowspan", "2");
 		},
 		m(target, anchor) {
@@ -45077,11 +45087,11 @@ function create_else_block(ctx) {
 	};
 }
 
-// (107:14) {#if className.includes("th-group")}
+// (106:14) {#if className.includes("th-group")}
 function create_if_block_1(ctx) {
 	let th;
 	let p;
-	let t_value = /*label*/ ctx[18] + "";
+	let t_value = /*label*/ ctx[16] + "";
 	let t;
 
 	return {
@@ -45089,7 +45099,7 @@ function create_if_block_1(ctx) {
 			th = element("th");
 			p = element("p");
 			t = text(t_value);
-			attr(th, "class", /*className*/ ctx[17]);
+			attr(th, "class", /*className*/ ctx[15]);
 		},
 		m(target, anchor) {
 			insert(target, th, anchor);
@@ -45103,12 +45113,12 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (106:12) {#each theads as { className, label }}
+// (105:12) {#each theads as { className, label }}
 function create_each_block_2(ctx) {
 	let if_block_anchor;
 
 	function select_block_type(ctx, dirty) {
-		if (/*className*/ ctx[17].includes("th-group")) return create_if_block_1;
+		if (/*className*/ ctx[15].includes("th-group")) return create_if_block_1;
 		return create_else_block;
 	}
 
@@ -45134,7 +45144,7 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (118:8) {#if dataset.length > 0}
+// (117:8) {#if dataset.length > 0}
 function create_if_block(ctx) {
 	let tbody;
 	let current;
@@ -45221,7 +45231,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (144:16) {#each scores as key}
+// (143:16) {#each scores as key}
 function create_each_block_1(ctx) {
 	let td;
 	let div;
@@ -45231,7 +45241,7 @@ function create_each_block_1(ctx) {
 			td = element("td");
 			div = element("div");
 			attr(div, "class", "cell");
-			set_style(div, "background-color", getColor(/*data*/ ctx[11][/*key*/ ctx[14]]));
+			set_style(div, "background-color", getColor(/*data*/ ctx[9][/*key*/ ctx[12]]));
 			attr(td, "class", "cell-td");
 		},
 		m(target, anchor) {
@@ -45240,7 +45250,7 @@ function create_each_block_1(ctx) {
 		},
 		p(ctx, dirty) {
 			if (dirty & /*dataset*/ 1) {
-				set_style(div, "background-color", getColor(/*data*/ ctx[11][/*key*/ ctx[14]]));
+				set_style(div, "background-color", getColor(/*data*/ ctx[9][/*key*/ ctx[12]]));
 			}
 		},
 		d(detaching) {
@@ -45249,7 +45259,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (120:12) {#each dataset as data, index}
+// (119:12) {#each dataset as data, index}
 function create_each_block(ctx) {
 	let tr;
 	let td0;
@@ -45257,17 +45267,17 @@ function create_each_block(ctx) {
 	let input;
 	let input_value_value;
 	let t0;
-	let t1_value = /*data*/ ctx[11].uniprotAcc + "";
+	let t1_value = /*data*/ ctx[9].uniprotAcc + "";
 	let t1;
 	let t2;
 	let td1;
 	let span;
-	let t3_value = /*data*/ ctx[11].variant + "";
+	let t3_value = /*data*/ ctx[9].variant + "";
 	let t3;
 	let fa;
 	let t4;
 	let td2;
-	let t5_value = /*data*/ ctx[11].feBind + "";
+	let t5_value = /*data*/ ctx[9].feBind + "";
 	let t5;
 	let t6;
 	let t7;
@@ -45313,8 +45323,8 @@ function create_each_block(ctx) {
 			attr(input, "class", "radio-button");
 			attr(input, "type", "radio");
 			attr(input, "name", "variantid");
-			input.value = input_value_value = /*data*/ ctx[11].uniprotAcc;
-			input.checked = /*index*/ ctx[13] === 0;
+			input.value = input_value_value = /*data*/ ctx[9].uniprotAcc;
+			input.checked = /*index*/ ctx[11] === 0;
 			attr(td0, "class", "td-uniport");
 			attr(td1, "class", "td-variant");
 		},
@@ -45345,12 +45355,12 @@ function create_each_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (!current || dirty & /*dataset*/ 1 && input_value_value !== (input_value_value = /*data*/ ctx[11].uniprotAcc)) {
+			if (!current || dirty & /*dataset*/ 1 && input_value_value !== (input_value_value = /*data*/ ctx[9].uniprotAcc)) {
 				input.value = input_value_value;
 			}
 
-			if ((!current || dirty & /*dataset*/ 1) && t1_value !== (t1_value = /*data*/ ctx[11].uniprotAcc + "")) set_data(t1, t1_value);
-			if ((!current || dirty & /*dataset*/ 1) && t3_value !== (t3_value = /*data*/ ctx[11].variant + "")) set_data(t3, t3_value);
+			if ((!current || dirty & /*dataset*/ 1) && t1_value !== (t1_value = /*data*/ ctx[9].uniprotAcc + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*dataset*/ 1) && t3_value !== (t3_value = /*data*/ ctx[9].variant + "")) set_data(t3, t3_value);
 
 			const fa_changes = (dirty & /*faCircleChevronRight, arrowTheme*/ 0)
 			? get_spread_update(fa_spread_levels, [
@@ -45361,7 +45371,7 @@ function create_each_block(ctx) {
 			: {};
 
 			fa.$set(fa_changes);
-			if ((!current || dirty & /*dataset*/ 1) && t5_value !== (t5_value = /*data*/ ctx[11].feBind + "")) set_data(t5, t5_value);
+			if ((!current || dirty & /*dataset*/ 1) && t5_value !== (t5_value = /*data*/ ctx[9].feBind + "")) set_data(t5, t5_value);
 
 			if (dirty & /*getColor, dataset, scores*/ 1) {
 				each_value_1 = scores;
@@ -45411,7 +45421,6 @@ function create_fragment(ctx) {
 	let span;
 	let t1_value = /*dataset*/ ctx[0].length + "";
 	let t1;
-	let h2__click_value;
 	let t2;
 	let t3;
 	let t4;
@@ -45424,8 +45433,10 @@ function create_fragment(ctx) {
 	let tr1;
 	let t7;
 	let current;
+	let mounted;
+	let dispose;
 	let if_block0 = /*typeLists*/ ctx[2].length > 0 && create_if_block_4(ctx);
-	let if_block1 = /*displayDrugs*/ ctx[5] && create_if_block_2(ctx);
+	let if_block1 = /*displayDrugs*/ ctx[4] && create_if_block_2(ctx);
 	let each_value_2 = theads;
 	let each_blocks = [];
 
@@ -45464,8 +45475,6 @@ function create_fragment(ctx) {
 			t7 = space();
 			if (if_block2) if_block2.c();
 			attr(span, "class", "num");
-			attr(h2, ":click", h2__click_value = /*func*/ ctx[6]);
-			toggle_class(h2, "active", /*selected*/ ctx[3] === "variants");
 			attr(div0, "class", "column-list");
 			attr(div1, "class", "table-wrapper");
 			attr(div2, "class", "table-container");
@@ -45500,17 +45509,14 @@ function create_fragment(ctx) {
 			append(table, t7);
 			if (if_block2) if_block2.m(table, null);
 			current = true;
+
+			if (!mounted) {
+				dispose = [listen(h2, "click", handleClick), listen(h2, "keydown", handleClick)];
+				mounted = true;
+			}
 		},
 		p(ctx, [dirty]) {
 			if ((!current || dirty & /*dataset*/ 1) && t1_value !== (t1_value = /*dataset*/ ctx[0].length + "")) set_data(t1, t1_value);
-
-			if (!current || dirty & /*selected*/ 8 && h2__click_value !== (h2__click_value = /*func*/ ctx[6])) {
-				attr(h2, ":click", h2__click_value);
-			}
-
-			if (!current || dirty & /*selected*/ 8) {
-				toggle_class(h2, "active", /*selected*/ ctx[3] === "variants");
-			}
 
 			if (/*typeLists*/ ctx[2].length > 0) {
 				if (if_block0) {
@@ -45525,7 +45531,7 @@ function create_fragment(ctx) {
 				if_block0 = null;
 			}
 
-			if (/*displayDrugs*/ ctx[5]) if_block1.p(ctx, dirty);
+			if (/*displayDrugs*/ ctx[4]) if_block1.p(ctx, dirty);
 
 			if (dirty & /*theads*/ 0) {
 				each_value_2 = theads;
@@ -45590,24 +45596,29 @@ function create_fragment(ctx) {
 			if (if_block1) if_block1.d();
 			destroy_each(each_blocks, detaching);
 			if (if_block2) if_block2.d();
+			mounted = false;
+			run_all(dispose);
 		}
 	};
 }
 
 const DISPLAY_DRUGS_DEFAULT = true;
-const SAMPLE_JSON_PATH = "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/feature/heatmap-table/assets/sample.json";
+
+function handleClick(event) {
+	event.target.classList.toggle("selected");
+}
 
 function instance($$self, $$props, $$invalidate) {
-	metadata$1["stanza:parameter"].map(param => {
-		return { name: lodashExports.camelCase(param["stanza:key"]) };
+	const params = metadata$1["stanza:parameter"].flatMap(param => {
+		return [[lodashExports.camelCase(param["stanza:key"]), param["stanza:example"]]];
 	});
 
+	const mapParams = new Map(params);
 	let displayDrugs = DISPLAY_DRUGS_DEFAULT;
 	let dataset = [];
 	let typesCount = {};
 	let typeLists = [];
 	let drugsList = [];
-	let selected;
 
 	const getTypeLists = dataset => {
 		const types = dataset.map(d => d.type);
@@ -45627,7 +45638,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	onMount(async () => {
 		try {
-			const response = await fetch(SAMPLE_JSON_PATH);
+			const response = await fetch(mapParams.get("dataUrl"));
 			const json = await response.json();
 
 			if (!response.ok) {
@@ -45636,25 +45647,13 @@ function instance($$self, $$props, $$invalidate) {
 
 			$$invalidate(0, dataset = json.map(toCamelCase));
 			$$invalidate(2, typeLists = getTypeLists(dataset));
-			$$invalidate(4, drugsList = getDrugsList(dataset));
+			$$invalidate(3, drugsList = getDrugsList(dataset));
 		} catch(error) {
 			console.error(error);
 		}
 	});
 
-	const func = () => $$invalidate(3, selected = "variants");
-	const func_1 = type => $$invalidate(3, selected = type);
-
-	return [
-		dataset,
-		typesCount,
-		typeLists,
-		selected,
-		drugsList,
-		displayDrugs,
-		func,
-		func_1
-	];
+	return [dataset, typesCount, typeLists, drugsList, displayDrugs];
 }
 
 class App extends SvelteComponent {
@@ -45702,10 +45701,15 @@ var metadata = {
 	"stanza:updated": "2023-03-16",
 	"stanza:parameter": [
 	{
-		"stanza:key": "say-to",
-		"stanza:type": "string",
-		"stanza:example": "world",
-		"stanza:description": "who to say hello to"
+		"stanza:key": "data-url",
+		"stanza:example": "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/feature/heatmap-table/assets/sample.json",
+		"stanza:description": "Data source URL",
+		"stanza:required": true
+	},
+	{
+		"stanza:key": "data-gene",
+		"stanza:example": "",
+		"stanza:description": "Gene ID"
 	}
 ],
 	"stanza:menu-placement": "bottom-right",

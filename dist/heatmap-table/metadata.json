@@ -14,10 +14,15 @@
   "stanza:updated": "2023-03-16",
   "stanza:parameter": [
     {
-      "stanza:key": "say-to",
-      "stanza:type": "string",
-      "stanza:example": "world",
-      "stanza:description": "who to say hello to"
+      "stanza:key": "data-url",
+      "stanza:example": "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/feature/heatmap-table/assets/sample.json",
+      "stanza:description": "Data source URL",
+      "stanza:required": true
+    },
+    {
+      "stanza:key": "data-gene",
+      "stanza:example": "",
+      "stanza:description": "Gene ID"
     }
   ],
   "stanza:menu-placement": "bottom-right",
