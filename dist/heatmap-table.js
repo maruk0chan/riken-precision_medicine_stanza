@@ -42764,12 +42764,6 @@ var metadata$1 = {
 	"stanza:menu-placement": "bottom-right",
 	"stanza:style": [
 	{
-		"stanza:key": "--togostanza-canvas-width",
-		"stanza:type": "number",
-		"stanza:default": 800,
-		"stanza:description": "Canvas width"
-	},
-	{
 		"stanza:key": "--togostanza-canvas-height",
 		"stanza:type": "number",
 		"stanza:default": 300,
@@ -45056,7 +45050,7 @@ function create_each_block_3(ctx) {
 	};
 }
 
-// (108:12) {:else}
+// (109:14) {:else}
 function create_else_block(ctx) {
 	let th;
 	let p;
@@ -45083,7 +45077,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (106:12) {#if className.includes("th-group")}
+// (107:14) {#if className.includes("th-group")}
 function create_if_block_1(ctx) {
 	let th;
 	let p;
@@ -45109,7 +45103,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (105:10) {#each theads as { className, label }}
+// (106:12) {#each theads as { className, label }}
 function create_each_block_2(ctx) {
 	let if_block_anchor;
 
@@ -45140,7 +45134,7 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (117:6) {#if dataset.length > 0}
+// (118:8) {#if dataset.length > 0}
 function create_if_block(ctx) {
 	let tbody;
 	let current;
@@ -45227,7 +45221,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (143:14) {#each scores as key}
+// (144:16) {#each scores as key}
 function create_each_block_1(ctx) {
 	let td;
 	let div;
@@ -45255,7 +45249,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (119:10) {#each dataset as data, index}
+// (120:12) {#each dataset as data, index}
 function create_each_block(ctx) {
 	let tr;
 	let td0;
@@ -45410,7 +45404,7 @@ function create_each_block(ctx) {
 }
 
 function create_fragment(ctx) {
-	let div2;
+	let div3;
 	let div0;
 	let h2;
 	let t0;
@@ -45421,6 +45415,7 @@ function create_fragment(ctx) {
 	let t2;
 	let t3;
 	let t4;
+	let div2;
 	let div1;
 	let table;
 	let thead;
@@ -45442,7 +45437,7 @@ function create_fragment(ctx) {
 
 	return {
 		c() {
-			div2 = element("div");
+			div3 = element("div");
 			div0 = element("div");
 			h2 = element("h2");
 			t0 = text("Variants list ");
@@ -45453,6 +45448,7 @@ function create_fragment(ctx) {
 			t3 = space();
 			if (if_block1) if_block1.c();
 			t4 = space();
+			div2 = element("div");
 			div1 = element("div");
 			table = element("table");
 			thead = element("thead");
@@ -45471,21 +45467,23 @@ function create_fragment(ctx) {
 			attr(h2, ":click", h2__click_value = /*func*/ ctx[6]);
 			toggle_class(h2, "active", /*selected*/ ctx[3] === "variants");
 			attr(div0, "class", "column-list");
-			attr(div1, "class", "table-container");
-			attr(div2, "class", "heatmap-table");
+			attr(div1, "class", "table-wrapper");
+			attr(div2, "class", "table-container");
+			attr(div3, "class", "heatmap-table");
 		},
 		m(target, anchor) {
-			insert(target, div2, anchor);
-			append(div2, div0);
+			insert(target, div3, anchor);
+			append(div3, div0);
 			append(div0, h2);
 			append(h2, t0);
 			append(h2, span);
 			append(span, t1);
 			append(div0, t2);
 			if (if_block0) if_block0.m(div0, null);
-			append(div2, t3);
-			if (if_block1) if_block1.m(div2, null);
-			append(div2, t4);
+			append(div3, t3);
+			if (if_block1) if_block1.m(div3, null);
+			append(div3, t4);
+			append(div3, div2);
 			append(div2, div1);
 			append(div1, table);
 			append(table, thead);
@@ -45587,7 +45585,7 @@ function create_fragment(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(div2);
+			if (detaching) detach(div3);
 			if (if_block0) if_block0.d();
 			if (if_block1) if_block1.d();
 			destroy_each(each_blocks, detaching);
@@ -45712,12 +45710,6 @@ var metadata = {
 ],
 	"stanza:menu-placement": "bottom-right",
 	"stanza:style": [
-	{
-		"stanza:key": "--togostanza-canvas-width",
-		"stanza:type": "number",
-		"stanza:default": 800,
-		"stanza:description": "Canvas width"
-	},
 	{
 		"stanza:key": "--togostanza-canvas-height",
 		"stanza:type": "number",

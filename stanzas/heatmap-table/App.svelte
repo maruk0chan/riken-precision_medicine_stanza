@@ -99,59 +99,61 @@
 
   <!-- Table -->
   <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          {#each theads as { className, label }}
-            {#if className.includes("th-group")}
-              <th class={className}><p>{label}</p></th>
-            {:else}
-              <th class={className} rowspan="2"><p>{label}</p></th>
-            {/if}
-          {/each}
-        </tr>
-        <tr>
-          <th class="th-calc"><p>SD</p></th>
-        </tr>
-      </thead>
-      {#if dataset.length > 0}
-        <tbody>
-          {#each dataset as data, index}
-            <tr>
-              <td class="td-uniport">
-                <label>
-                  <input
-                    class="radio-button"
-                    type="radio"
-                    name="variantid"
-                    value={data.uniprotAcc}
-                    checked={index === 0}
-                  />
-                  {data.uniprotAcc}</label
-                ></td
-              >
-              <td class="td-variant">
-                <span>
-                  {data.variant}<Fa
-                    icon={faCircleChevronRight}
-                    {...arrowTheme}
-                    secondaryColor="#5fdede"
-                  /></span
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            {#each theads as { className, label }}
+              {#if className.includes("th-group")}
+                <th class={className}><p>{label}</p></th>
+              {:else}
+                <th class={className} rowspan="2"><p>{label}</p></th>
+              {/if}
+            {/each}
+          </tr>
+          <tr>
+            <th class="th-calc"><p>SD</p></th>
+          </tr>
+        </thead>
+        {#if dataset.length > 0}
+          <tbody>
+            {#each dataset as data, index}
+              <tr>
+                <td class="td-uniport">
+                  <label>
+                    <input
+                      class="radio-button"
+                      type="radio"
+                      name="variantid"
+                      value={data.uniprotAcc}
+                      checked={index === 0}
+                    />
+                    {data.uniprotAcc}</label
+                  ></td
                 >
-              </td>
-              <td>{data.feBind}</td>
-              {#each scores as key}
-                <td class="cell-td"
-                  ><div
-                    class="cell"
-                    style="background-color:{getColor(data[key])}"
-                  /></td
-                >
-              {/each}
-            </tr>
-          {/each}
-        </tbody>
-      {/if}
-    </table>
+                <td class="td-variant">
+                  <span>
+                    {data.variant}<Fa
+                      icon={faCircleChevronRight}
+                      {...arrowTheme}
+                      secondaryColor="#5fdede"
+                    /></span
+                  >
+                </td>
+                <td>{data.feBind}</td>
+                {#each scores as key}
+                  <td class="cell-td"
+                    ><div
+                      class="cell"
+                      style="background-color:{getColor(data[key])}"
+                    /></td
+                  >
+                {/each}
+              </tr>
+            {/each}
+          </tbody>
+        {/if}
+      </table>
+    </div>
   </div>
 </div>
