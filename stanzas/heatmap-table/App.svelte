@@ -13,10 +13,10 @@
 
   let displayDrugs = DISPLAY_DRUGS_DEFAULT;
   let dataset = [];
-  let datasetMap = [];
   let typesCount = {};
   let typeLists = [];
   let drugsList = [];
+  let datasetMap = [];
 
   const getTypeLists = (dataset) => {
     const types = dataset.map((d) => d.type);
@@ -31,7 +31,7 @@
     ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
   ];
 
-  const fetchData = async () => {
+  (async () => {
     try {
       const response = await fetch(params);
       const json = await response.json();
@@ -39,44 +39,38 @@
         throw new Error(json);
       }
       dataset = json.map(toCamelCase);
-      datasetMap = new Map([["variants", dataset]]);
       typeLists = getTypeLists(dataset);
       drugsList = getDrugsList(dataset);
-      await console.log("map", datasetMap);
+      datasetMap = new Map([["variants", dataset]]);
+      typeLists.forEach((type) => {
+        const filteredData = dataset.filter((d) => d.type === type);
+        datasetMap.set(type, filteredData);
+      });
     } catch (error) {
       console.error(error);
       dataset = [];
       typesCount = {};
       typeLists = [];
       drugsList = [];
+      datasetMap = [];
     }
-  };
+  })();
 
-  const getDatasetMap = async () => {
-    await fetchData();
-    return typeLists.reduce((acc, type) => {
-      const filteredData = dataset.filter((d) => d.type === type);
-      return acc.set(type, filteredData);
-    }, datasetMap);
-  };
+  let selectedItemList = null;
+  let selectedListName = "variants";
 
-  getDatasetMap().then((mapTest) => {
-    console.log(mapTest);
-    // console.log(mapTest.get("Mutation_FEP"));
-  });
-
-  let selectedItem = null;
   function listHandleClick(event) {
     const clickedItem = event.target.closest("li, h2");
     if (clickedItem) {
-      if (clickedItem !== selectedItem) {
-        if (selectedItem) {
-          selectedItem.classList.remove("selected");
+      if (clickedItem !== selectedItemList) {
+        if (selectedItemList) {
+          selectedItemList.classList.remove("selected");
         }
-        selectedItem = clickedItem;
-        selectedItem.classList.add("selected");
+        selectedItemList = clickedItem;
+        selectedItemList.classList.add("selected");
+        selectedListName = clickedItem.getAttribute("data-type");
       } else {
-        selectedItem = null;
+        selectedItemList = null;
         clickedItem.classList.remove("selected");
       }
     }
@@ -86,7 +80,6 @@
   function tableHandleClick(event) {
     const clickedItem = event.target.closest("tr");
     const radioButton = clickedItem.querySelector('input[type="radio"]');
-
     if (clickedItem) {
       clickedItem.parentElement.firstChild.classList.remove("selected");
       if (clickedItem !== tableSelectedItem) {
@@ -111,13 +104,21 @@
 <div class="heatmap-table">
   <!-- Column -->
   <div class="column-list">
-    <h2 on:click={listHandleClick} on:keydown={listHandleClick}>
+    <h2
+      data-type={"variants"}
+      on:click={listHandleClick}
+      on:keydown={listHandleClick}
+    >
       Variants<span class="num">{dataset.length}</span>
     </h2>
     {#if typeLists.length > 0}
       <ul class="column-ul">
         {#each typeLists as type}
-          <li on:click={listHandleClick} on:keydown={listHandleClick}>
+          <li
+            data-type={type}
+            on:click={listHandleClick}
+            on:keydown={listHandleClick}
+          >
             <img
               class={setIcon(type).className}
               src={setIcon(type).src}
@@ -134,7 +135,7 @@
       {#if drugsList.length > 0}
         <ul class="drugs-ul">
           {#each drugsList as drugsList}
-            <li on:click={listHandleClick} on:keydown={listHandleClick}>
+            <li>
               {drugsList}<Fa
                 icon={faCircleChevronRight}
                 {...arrowTheme}
@@ -167,45 +168,41 @@
         </thead>
         {#if dataset.length > 0}
           <tbody>
-            <!-- {#each dataset as data, index} -->
-            {#await getDatasetMap() then filterData}
-              {#each filterData.get("variants") as data, index}
-                <tr
-                  class={index === 0 ? "selected" : ""}
-                  on:click={tableHandleClick}
-                >
-                  <td class="td-uniport">
-                    <input
-                      class="radio-button"
-                      type="radio"
-                      name="variantid"
-                      value={data.uniprotAcc}
-                      checked={index === 0}
-                    />
-                    {data.uniprotAcc}
-                  </td>
-                  <td class="td-variant">
-                    <span>
-                      {data.variant}<Fa
-                        icon={faCircleChevronRight}
-                        {...arrowTheme}
-                        secondaryColor="#5fdede"
-                      /></span
-                    >
-                  </td>
-                  <td>{data.feBind}</td>
-                  {#each scores as key}
-                    <td class="cell-td"
-                      ><div
-                        class="cell"
-                        style="background-color:{getColor(data[key])}"
-                      /></td
-                    >
-                  {/each}
-                </tr>
-                <!-- {/each} -->
-              {/each}
-            {/await}
+            {#each datasetMap.get(selectedListName) as data, index}
+              <tr
+                class={index === 0 ? "selected" : ""}
+                on:click={tableHandleClick}
+              >
+                <td class="td-uniport">
+                  <input
+                    class="radio-button"
+                    type="radio"
+                    name="variantid"
+                    value={data.uniprotAcc}
+                    checked={index === 0}
+                  />
+                  {data.uniprotAcc}
+                </td>
+                <td class="td-variant">
+                  <span>
+                    {data.variant}<Fa
+                      icon={faCircleChevronRight}
+                      {...arrowTheme}
+                      secondaryColor="#5fdede"
+                    /></span
+                  >
+                </td>
+                <td>{data.feBind}</td>
+                {#each scores as key}
+                  <td class="cell-td"
+                    ><div
+                      class="cell"
+                      style="background-color:{getColor(data[key])}"
+                    /></td
+                  >
+                {/each}
+              </tr>
+            {/each}
           </tbody>
         {/if}
       </table>

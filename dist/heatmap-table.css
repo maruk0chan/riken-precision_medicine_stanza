@@ -99,6 +99,14 @@ img.drug-icon {
   color: #000;
   background-color: #fcb900;
 }
+.heatmap-table .column-list > ul > li:active,
+.heatmap-table .drugs-list > ul > li:active {
+  background-color: #bc9b40;
+}
+.heatmap-table .column-list > ul > li:active .svelte-fa,
+.heatmap-table .drugs-list > ul > li:active .svelte-fa {
+  display: none;
+}
 .heatmap-table .column-list.column-list,
 .heatmap-table .drugs-list.column-list {
   width: 15%;

@@ -44614,7 +44614,7 @@ function get_each_context_2(ctx, list, i) {
 
 function get_each_context_3(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[3] = list[i];
+	child_ctx[5] = list[i];
 	return child_ctx;
 }
 
@@ -44624,7 +44624,7 @@ function get_each_context_4(ctx, list, i) {
 	return child_ctx;
 }
 
-// (111:4) {#if typeLists.length > 0}
+// (114:4) {#if typeLists.length > 0}
 function create_if_block_4(ctx) {
 	let ul;
 	let each_value_4 = /*typeLists*/ ctx[2];
@@ -44654,7 +44654,7 @@ function create_if_block_4(ctx) {
 			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*listHandleClick, typesCount, typeLists, setIcon*/ 38) {
+			if (dirty & /*typeLists, listHandleClick, typesCount, setIcon*/ 134) {
 				each_value_4 = /*typeLists*/ ctx[2];
 				let i;
 
@@ -44684,7 +44684,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (113:8) {#each typeLists as type}
+// (116:8) {#each typeLists as type}
 function create_each_block_4(ctx) {
 	let li;
 	let img;
@@ -44697,6 +44697,7 @@ function create_each_block_4(ctx) {
 	let t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[26]] + "";
 	let t1;
 	let t2;
+	let li_data_type_value;
 	let mounted;
 	let dispose;
 
@@ -44712,6 +44713,7 @@ function create_each_block_4(ctx) {
 			if (!src_url_equal(img.src, img_src_value = setIcon(/*type*/ ctx[26]).src)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = setIcon(/*type*/ ctx[26]).alt);
 			attr(span, "class", "num");
+			attr(li, "data-type", li_data_type_value = /*type*/ ctx[26]);
 		},
 		m(target, anchor) {
 			insert(target, li, anchor);
@@ -44723,8 +44725,8 @@ function create_each_block_4(ctx) {
 
 			if (!mounted) {
 				dispose = [
-					listen(li, "click", /*listHandleClick*/ ctx[5]),
-					listen(li, "keydown", /*listHandleClick*/ ctx[5])
+					listen(li, "click", /*listHandleClick*/ ctx[7]),
+					listen(li, "keydown", /*listHandleClick*/ ctx[7])
 				];
 
 				mounted = true;
@@ -44745,6 +44747,10 @@ function create_each_block_4(ctx) {
 
 			if (dirty & /*typeLists*/ 4 && t0_value !== (t0_value = /*type*/ ctx[26] + "")) set_data(t0, t0_value);
 			if (dirty & /*typesCount, typeLists*/ 6 && t1_value !== (t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[26]] + "")) set_data(t1, t1_value);
+
+			if (dirty & /*typeLists*/ 4 && li_data_type_value !== (li_data_type_value = /*type*/ ctx[26])) {
+				attr(li, "data-type", li_data_type_value);
+			}
 		},
 		d(detaching) {
 			if (detaching) detach(li);
@@ -44754,13 +44760,13 @@ function create_each_block_4(ctx) {
 	};
 }
 
-// (125:2) {#if displayDrugs}
+// (132:2) {#if displayDrugs}
 function create_if_block_2(ctx) {
 	let div;
 	let h2;
 	let t1;
 	let current;
-	let if_block = /*drugsList*/ ctx[3].length > 0 && create_if_block_3(ctx);
+	let if_block = /*drugsList*/ ctx[5].length > 0 && create_if_block_3(ctx);
 
 	return {
 		c() {
@@ -44779,11 +44785,11 @@ function create_if_block_2(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*drugsList*/ ctx[3].length > 0) {
+			if (/*drugsList*/ ctx[5].length > 0) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty & /*drugsList*/ 8) {
+					if (dirty & /*drugsList*/ 32) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -44818,11 +44824,11 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (128:6) {#if drugsList.length > 0}
+// (135:6) {#if drugsList.length > 0}
 function create_if_block_3(ctx) {
 	let ul;
 	let current;
-	let each_value_3 = /*drugsList*/ ctx[3];
+	let each_value_3 = /*drugsList*/ ctx[5];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value_3.length; i += 1) {
@@ -44855,8 +44861,8 @@ function create_if_block_3(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*listHandleClick, faCircleChevronRight, arrowTheme, drugsList*/ 40) {
-				each_value_3 = /*drugsList*/ ctx[3];
+			if (dirty & /*faCircleChevronRight, arrowTheme, drugsList*/ 32) {
+				each_value_3 = /*drugsList*/ ctx[5];
 				let i;
 
 				for (i = 0; i < each_value_3.length; i += 1) {
@@ -44907,16 +44913,14 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (130:10) {#each drugsList as drugsList}
+// (137:10) {#each drugsList as drugsList}
 function create_each_block_3(ctx) {
 	let li;
-	let t0_value = /*drugsList*/ ctx[3] + "";
+	let t0_value = /*drugsList*/ ctx[5] + "";
 	let t0;
 	let fa;
 	let t1;
 	let current;
-	let mounted;
-	let dispose;
 	const fa_spread_levels = [{ icon: faCircleChevronRight }, arrowTheme, { secondaryColor: "#fcb900" }];
 	let fa_props = {};
 
@@ -44939,18 +44943,9 @@ function create_each_block_3(ctx) {
 			mount_component(fa, li, null);
 			append(li, t1);
 			current = true;
-
-			if (!mounted) {
-				dispose = [
-					listen(li, "click", /*listHandleClick*/ ctx[5]),
-					listen(li, "keydown", /*listHandleClick*/ ctx[5])
-				];
-
-				mounted = true;
-			}
 		},
 		p(ctx, dirty) {
-			if ((!current || dirty & /*drugsList*/ 8) && t0_value !== (t0_value = /*drugsList*/ ctx[3] + "")) set_data(t0, t0_value);
+			if ((!current || dirty & /*drugsList*/ 32) && t0_value !== (t0_value = /*drugsList*/ ctx[5] + "")) set_data(t0, t0_value);
 
 			const fa_changes = (dirty & /*faCircleChevronRight, arrowTheme*/ 0)
 			? get_spread_update(fa_spread_levels, [
@@ -44974,13 +44969,11 @@ function create_each_block_3(ctx) {
 		d(detaching) {
 			if (detaching) detach(li);
 			destroy_component(fa);
-			mounted = false;
-			run_all(dispose);
 		}
 	};
 }
 
-// (153:14) {:else}
+// (160:14) {:else}
 function create_else_block(ctx) {
 	let th;
 	let p;
@@ -45007,7 +45000,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (151:14) {#if className.includes("th-group")}
+// (158:14) {#if className.includes("th-group")}
 function create_if_block_1(ctx) {
 	let th;
 	let p;
@@ -45033,7 +45026,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (150:12) {#each theads as { className, label }}
+// (157:12) {#each theads as { className, label }}
 function create_each_block_2(ctx) {
 	let if_block_anchor;
 
@@ -45064,11 +45057,11 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (162:8) {#if dataset.length > 0}
+// (169:8) {#if dataset.length > 0}
 function create_if_block(ctx) {
 	let tbody;
 	let current;
-	let each_value = /*dataset*/ ctx[0];
+	let each_value = /*datasetMap*/ ctx[3].get(/*selectedListName*/ ctx[4]);
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -45099,8 +45092,8 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*tableHandleClick, scores, getColor, dataset, faCircleChevronRight, arrowTheme*/ 65) {
-				each_value = /*dataset*/ ctx[0];
+			if (dirty & /*tableHandleClick, scores, getColor, datasetMap, selectedListName, faCircleChevronRight, arrowTheme*/ 280) {
+				each_value = /*datasetMap*/ ctx[3].get(/*selectedListName*/ ctx[4]);
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -45151,7 +45144,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (189:16) {#each scores as key}
+// (196:16) {#each scores as key}
 function create_each_block_1(ctx) {
 	let td;
 	let div;
@@ -45169,7 +45162,7 @@ function create_each_block_1(ctx) {
 			append(td, div);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*dataset*/ 1) {
+			if (dirty & /*datasetMap, selectedListName*/ 24) {
 				set_style(div, "background-color", getColor(/*data*/ ctx[14][/*key*/ ctx[17]]));
 			}
 		},
@@ -45179,7 +45172,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (164:12) {#each dataset as data, index}
+// (171:12) {#each datasetMap.get(selectedListName) as data, index}
 function create_each_block(ctx) {
 	let tr;
 	let td0;
@@ -45275,17 +45268,17 @@ function create_each_block(ctx) {
 			current = true;
 
 			if (!mounted) {
-				dispose = listen(tr, "click", /*tableHandleClick*/ ctx[6]);
+				dispose = listen(tr, "click", /*tableHandleClick*/ ctx[8]);
 				mounted = true;
 			}
 		},
 		p(ctx, dirty) {
-			if (!current || dirty & /*dataset*/ 1 && input_value_value !== (input_value_value = /*data*/ ctx[14].uniprotAcc)) {
+			if (!current || dirty & /*datasetMap, selectedListName*/ 24 && input_value_value !== (input_value_value = /*data*/ ctx[14].uniprotAcc)) {
 				input.value = input_value_value;
 			}
 
-			if ((!current || dirty & /*dataset*/ 1) && t1_value !== (t1_value = /*data*/ ctx[14].uniprotAcc + "")) set_data(t1, t1_value);
-			if ((!current || dirty & /*dataset*/ 1) && t3_value !== (t3_value = /*data*/ ctx[14].variant + "")) set_data(t3, t3_value);
+			if ((!current || dirty & /*datasetMap, selectedListName*/ 24) && t1_value !== (t1_value = /*data*/ ctx[14].uniprotAcc + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*datasetMap, selectedListName*/ 24) && t3_value !== (t3_value = /*data*/ ctx[14].variant + "")) set_data(t3, t3_value);
 
 			const fa_changes = (dirty & /*faCircleChevronRight, arrowTheme*/ 0)
 			? get_spread_update(fa_spread_levels, [
@@ -45296,9 +45289,9 @@ function create_each_block(ctx) {
 			: {};
 
 			fa.$set(fa_changes);
-			if ((!current || dirty & /*dataset*/ 1) && t5_value !== (t5_value = /*data*/ ctx[14].feBind + "")) set_data(t5, t5_value);
+			if ((!current || dirty & /*datasetMap, selectedListName*/ 24) && t5_value !== (t5_value = /*data*/ ctx[14].feBind + "")) set_data(t5, t5_value);
 
-			if (dirty & /*getColor, dataset, scores*/ 1) {
+			if (dirty & /*getColor, datasetMap, selectedListName, scores*/ 24) {
 				each_value_1 = scores;
 				let i;
 
@@ -45363,7 +45356,7 @@ function create_fragment(ctx) {
 	let mounted;
 	let dispose;
 	let if_block0 = /*typeLists*/ ctx[2].length > 0 && create_if_block_4(ctx);
-	let if_block1 = /*displayDrugs*/ ctx[4] && create_if_block_2(ctx);
+	let if_block1 = /*displayDrugs*/ ctx[6] && create_if_block_2(ctx);
 	let each_value_2 = theads;
 	let each_blocks = [];
 
@@ -45402,6 +45395,7 @@ function create_fragment(ctx) {
 			t7 = space();
 			if (if_block2) if_block2.c();
 			attr(span, "class", "num");
+			attr(h2, "data-type", "variants");
 			attr(div0, "class", "column-list");
 			attr(div1, "class", "table-wrapper");
 			attr(div2, "class", "table-container");
@@ -45439,8 +45433,8 @@ function create_fragment(ctx) {
 
 			if (!mounted) {
 				dispose = [
-					listen(h2, "click", /*listHandleClick*/ ctx[5]),
-					listen(h2, "keydown", /*listHandleClick*/ ctx[5])
+					listen(h2, "click", /*listHandleClick*/ ctx[7]),
+					listen(h2, "keydown", /*listHandleClick*/ ctx[7])
 				];
 
 				mounted = true;
@@ -45462,7 +45456,7 @@ function create_fragment(ctx) {
 				if_block0 = null;
 			}
 
-			if (/*displayDrugs*/ ctx[4]) if_block1.p(ctx, dirty);
+			if (/*displayDrugs*/ ctx[6]) if_block1.p(ctx, dirty);
 
 			if (dirty & /*theads*/ 0) {
 				each_value_2 = theads;
@@ -45545,6 +45539,7 @@ function instance($$self, $$props, $$invalidate) {
 	let typesCount = {};
 	let typeLists = [];
 	let drugsList = [];
+	let datasetMap = [];
 
 	const getTypeLists = dataset => {
 		const types = dataset.map(d => d.type);
@@ -45562,7 +45557,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	const getDrugsList = dataset => [...new Set(dataset.map(d => d.compoundId).filter(Boolean))];
 
-	const fetchData = async () => {
+	(async () => {
 		try {
 			const response = await fetch(params);
 			const json = await response.json();
@@ -45573,39 +45568,40 @@ function instance($$self, $$props, $$invalidate) {
 
 			$$invalidate(0, dataset = json.map(toCamelCase));
 			$$invalidate(2, typeLists = getTypeLists(dataset));
-			$$invalidate(3, drugsList = getDrugsList(dataset));
+			$$invalidate(5, drugsList = getDrugsList(dataset));
+			$$invalidate(3, datasetMap = new Map([["variants", dataset]]));
+
+			typeLists.forEach(type => {
+				const filteredData = dataset.filter(d => d.type === type);
+				datasetMap.set(type, filteredData);
+			});
 		} catch(error) {
 			console.error(error);
 			$$invalidate(0, dataset = []);
 			$$invalidate(1, typesCount = {});
 			$$invalidate(2, typeLists = []);
-			$$invalidate(3, drugsList = []);
+			$$invalidate(5, drugsList = []);
+			$$invalidate(3, datasetMap = []);
 		}
-	};
+	})();
 
-	const sortData = async () => {
-		await fetchData();
-		console.log(dataset);
-		console.log(typesCount);
-		console.log();
-	};
-
-	sortData();
-	let selectedItem = null;
+	let selectedItemList = null;
+	let selectedListName = "variants";
 
 	function listHandleClick(event) {
 		const clickedItem = event.target.closest("li, h2");
 
 		if (clickedItem) {
-			if (clickedItem !== selectedItem) {
-				if (selectedItem) {
-					selectedItem.classList.remove("selected");
+			if (clickedItem !== selectedItemList) {
+				if (selectedItemList) {
+					selectedItemList.classList.remove("selected");
 				}
 
-				selectedItem = clickedItem;
-				selectedItem.classList.add("selected");
+				selectedItemList = clickedItem;
+				selectedItemList.classList.add("selected");
+				$$invalidate(4, selectedListName = clickedItem.getAttribute("data-type"));
 			} else {
-				selectedItem = null;
+				selectedItemList = null;
 				clickedItem.classList.remove("selected");
 			}
 		}
@@ -45638,13 +45634,15 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$props => {
-		if ('params' in $$props) $$invalidate(7, params = $$props.params);
+		if ('params' in $$props) $$invalidate(9, params = $$props.params);
 	};
 
 	return [
 		dataset,
 		typesCount,
 		typeLists,
+		datasetMap,
+		selectedListName,
 		drugsList,
 		displayDrugs,
 		listHandleClick,
@@ -45656,7 +45654,7 @@ function instance($$self, $$props, $$invalidate) {
 class App extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { params: 7 });
+		init(this, options, instance, create_fragment, safe_not_equal, { params: 9 });
 	}
 }
 
