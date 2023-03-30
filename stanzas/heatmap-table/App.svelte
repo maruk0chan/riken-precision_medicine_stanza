@@ -1,22 +1,15 @@
 <script>
-  import { onMount } from "svelte";
-  import metadata from "./metadata.json";
-  import { camelCase } from "lodash";
   import getColor from "../../lib/ColorScale";
   import toCamelCase from "../../lib/CamelCase";
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/pro-duotone-svg-icons";
   import { arrowTheme, setIcon, scores, theads } from "./data.js";
+  export let params;
 
   const DISPLAY_DRUGS_DEFAULT = true;
   const SAMPLE_JSON_PATH =
     "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/feature/heatmap-table/assets/sample.json";
   // "../assets/sample.json";
-
-  const params = metadata["stanza:parameter"].flatMap((param) => {
-    return [[camelCase(param["stanza:key"]), param["stanza:example"]]];
-  });
-  const mapParams = new Map(params);
 
   let displayDrugs = DISPLAY_DRUGS_DEFAULT;
   let dataset = [];
@@ -37,9 +30,9 @@
     ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
   ];
 
-  onMount(async () => {
+  (async () => {
     try {
-      const response = await fetch(mapParams.get("dataUrl"));
+      const response = await fetch(params);
       const json = await response.json();
       if (!response.ok) {
         throw new Error(json);
@@ -49,8 +42,12 @@
       drugsList = getDrugsList(dataset);
     } catch (error) {
       console.error(error);
+      dataset = [];
+      typesCount = {};
+      typeLists = [];
+      drugsList = [];
     }
-  });
+  })();
 
   function handleClick(event) {
     event.target.classList.toggle("selected");
