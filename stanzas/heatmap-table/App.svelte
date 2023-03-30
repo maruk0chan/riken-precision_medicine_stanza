@@ -13,6 +13,7 @@
 
   let displayDrugs = DISPLAY_DRUGS_DEFAULT;
   let dataset = [];
+  let datasetMap = [];
   let typesCount = {};
   let typeLists = [];
   let drugsList = [];
@@ -38,8 +39,10 @@
         throw new Error(json);
       }
       dataset = json.map(toCamelCase);
+      datasetMap = new Map([["variants", dataset]]);
       typeLists = getTypeLists(dataset);
       drugsList = getDrugsList(dataset);
+      await console.log("map", datasetMap);
     } catch (error) {
       console.error(error);
       dataset = [];
@@ -49,16 +52,20 @@
     }
   };
 
-  const sortData = async () => {
+  const getDatasetMap = async () => {
     await fetchData();
-    console.log(dataset);
-    console.log(typesCount);
-    console.log();
+    return typeLists.reduce((acc, type) => {
+      const filteredData = dataset.filter((d) => d.type === type);
+      return acc.set(type, filteredData);
+    }, datasetMap);
   };
-  sortData();
+
+  getDatasetMap().then((mapTest) => {
+    console.log(mapTest);
+    // console.log(mapTest.get("Mutation_FEP"));
+  });
 
   let selectedItem = null;
-
   function listHandleClick(event) {
     const clickedItem = event.target.closest("li, h2");
     if (clickedItem) {
@@ -76,7 +83,6 @@
   }
 
   let tableSelectedItem = null;
-
   function tableHandleClick(event) {
     const clickedItem = event.target.closest("tr");
     const radioButton = clickedItem.querySelector('input[type="radio"]');
@@ -161,41 +167,45 @@
         </thead>
         {#if dataset.length > 0}
           <tbody>
-            {#each dataset as data, index}
-              <tr
-                class={index === 0 ? "selected" : ""}
-                on:click={tableHandleClick}
-              >
-                <td class="td-uniport">
-                  <input
-                    class="radio-button"
-                    type="radio"
-                    name="variantid"
-                    value={data.uniprotAcc}
-                    checked={index === 0}
-                  />
-                  {data.uniprotAcc}
-                </td>
-                <td class="td-variant">
-                  <span>
-                    {data.variant}<Fa
-                      icon={faCircleChevronRight}
-                      {...arrowTheme}
-                      secondaryColor="#5fdede"
-                    /></span
-                  >
-                </td>
-                <td>{data.feBind}</td>
-                {#each scores as key}
-                  <td class="cell-td"
-                    ><div
-                      class="cell"
-                      style="background-color:{getColor(data[key])}"
-                    /></td
-                  >
-                {/each}
-              </tr>
-            {/each}
+            <!-- {#each dataset as data, index} -->
+            {#await getDatasetMap() then filterData}
+              {#each filterData.get("variants") as data, index}
+                <tr
+                  class={index === 0 ? "selected" : ""}
+                  on:click={tableHandleClick}
+                >
+                  <td class="td-uniport">
+                    <input
+                      class="radio-button"
+                      type="radio"
+                      name="variantid"
+                      value={data.uniprotAcc}
+                      checked={index === 0}
+                    />
+                    {data.uniprotAcc}
+                  </td>
+                  <td class="td-variant">
+                    <span>
+                      {data.variant}<Fa
+                        icon={faCircleChevronRight}
+                        {...arrowTheme}
+                        secondaryColor="#5fdede"
+                      /></span
+                    >
+                  </td>
+                  <td>{data.feBind}</td>
+                  {#each scores as key}
+                    <td class="cell-td"
+                      ><div
+                        class="cell"
+                        style="background-color:{getColor(data[key])}"
+                      /></td
+                    >
+                  {/each}
+                </tr>
+                <!-- {/each} -->
+              {/each}
+            {/await}
           </tbody>
         {/if}
       </table>

@@ -56,6 +56,12 @@ img {
         color: #000;
         background-color: #fcb900;
       }
+      &:active {
+        background-color: #bc9b40;
+        .svelte-fa {
+          display: none;
+        }
+      }
     }
     &.column-list {
       width: 15%;
