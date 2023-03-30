@@ -360,7 +360,7 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1251T",
@@ -378,7 +378,7 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1274T",
@@ -396,7 +396,7 @@
     "SIFT4G_converted_rankscore": 0.76473
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1274T",
@@ -414,7 +414,7 @@
     "SIFT4G_converted_rankscore": 0.76473
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1274T",
@@ -432,7 +432,7 @@
     "SIFT4G_converted_rankscore": 0.76473
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1168V",
@@ -450,7 +450,7 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1168V",
@@ -468,7 +468,7 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1168V",
@@ -486,7 +486,7 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1200V",
@@ -504,7 +504,7 @@
     "SIFT4G_converted_rankscore": 0.66756
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1200V",
@@ -522,7 +522,7 @@
     "SIFT4G_converted_rankscore": 0.66756
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1200V",

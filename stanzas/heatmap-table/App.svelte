@@ -30,7 +30,7 @@
     ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
   ];
 
-  (async () => {
+  const fetchData = async () => {
     try {
       const response = await fetch(params);
       const json = await response.json();
@@ -47,10 +47,31 @@
       typeLists = [];
       drugsList = [];
     }
-  })();
+  };
+
+  const sortData = async () => {
+    await fetchData();
+    console.log(dataset);
+    console.log(typeLists);
+  };
+  sortData();
+
+  let selectedItem = null;
 
   function handleClick(event) {
-    event.target.classList.toggle("selected");
+    const clickedItem = event.target.closest("li, h2");
+    if (clickedItem) {
+      if (clickedItem !== selectedItem) {
+        if (selectedItem) {
+          selectedItem.classList.remove("selected");
+        }
+        selectedItem = clickedItem;
+        selectedItem.classList.add("selected");
+      } else {
+        selectedItem = null;
+        clickedItem.classList.remove("selected");
+      }
+    }
   }
 </script>
 
