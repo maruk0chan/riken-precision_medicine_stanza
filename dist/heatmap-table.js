@@ -44624,7 +44624,7 @@ function get_each_context_4(ctx, list, i) {
 	return child_ctx;
 }
 
-// (110:4) {#if typeLists.length > 0}
+// (111:4) {#if typeLists.length > 0}
 function create_if_block_4(ctx) {
 	let ul;
 	let each_value_4 = /*typeLists*/ ctx[2];
@@ -44684,7 +44684,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (112:8) {#each typeLists as type}
+// (113:8) {#each typeLists as type}
 function create_each_block_4(ctx) {
 	let li;
 	let img;
@@ -44754,7 +44754,7 @@ function create_each_block_4(ctx) {
 	};
 }
 
-// (124:2) {#if displayDrugs}
+// (125:2) {#if displayDrugs}
 function create_if_block_2(ctx) {
 	let div;
 	let h2;
@@ -44818,7 +44818,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (127:6) {#if drugsList.length > 0}
+// (128:6) {#if drugsList.length > 0}
 function create_if_block_3(ctx) {
 	let ul;
 	let current;
@@ -44907,7 +44907,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (129:10) {#each drugsList as drugsList}
+// (130:10) {#each drugsList as drugsList}
 function create_each_block_3(ctx) {
 	let li;
 	let t0_value = /*drugsList*/ ctx[3] + "";
@@ -44980,7 +44980,7 @@ function create_each_block_3(ctx) {
 	};
 }
 
-// (152:14) {:else}
+// (153:14) {:else}
 function create_else_block(ctx) {
 	let th;
 	let p;
@@ -45007,7 +45007,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (150:14) {#if className.includes("th-group")}
+// (151:14) {#if className.includes("th-group")}
 function create_if_block_1(ctx) {
 	let th;
 	let p;
@@ -45033,7 +45033,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (149:12) {#each theads as { className, label }}
+// (150:12) {#each theads as { className, label }}
 function create_each_block_2(ctx) {
 	let if_block_anchor;
 
@@ -45064,7 +45064,7 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (161:8) {#if dataset.length > 0}
+// (162:8) {#if dataset.length > 0}
 function create_if_block(ctx) {
 	let tbody;
 	let current;
@@ -45151,7 +45151,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (187:16) {#each scores as key}
+// (189:16) {#each scores as key}
 function create_each_block_1(ctx) {
 	let td;
 	let div;
@@ -45179,7 +45179,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (163:12) {#each dataset as data, index}
+// (164:12) {#each dataset as data, index}
 function create_each_block(ctx) {
 	let tr;
 	let td0;
@@ -45244,6 +45244,7 @@ function create_each_block(ctx) {
 			attr(input, "type", "radio");
 			attr(input, "name", "variantid");
 			input.value = input_value_value = /*data*/ ctx[14].uniprotAcc;
+			input.checked = /*index*/ ctx[16] === 0;
 			attr(td0, "class", "td-uniport");
 			attr(td1, "class", "td-variant");
 			attr(tr, "class", /*index*/ ctx[16] === 0 ? "selected" : "");
@@ -45615,7 +45616,6 @@ function instance($$self, $$props, $$invalidate) {
 	function tableHandleClick(event) {
 		const clickedItem = event.target.closest("tr");
 		const radioButton = clickedItem.querySelector('input[type="radio"]');
-		console.log(radioButton);
 
 		if (clickedItem) {
 			clickedItem.parentElement.firstChild.classList.remove("selected");
@@ -45623,16 +45623,16 @@ function instance($$self, $$props, $$invalidate) {
 			if (clickedItem !== tableSelectedItem) {
 				if (tableSelectedItem) {
 					tableSelectedItem.classList.remove("selected");
-					radioButton.removeAttribute("checked");
+					tableSelectedItem.querySelector('input[type="radio"]').checked = false;
 				}
 
 				tableSelectedItem = clickedItem;
 				tableSelectedItem.classList.add("selected");
-				radioButton.setAttribute("checked", "checked");
+				radioButton.checked = true;
 			} else {
 				tableSelectedItem = null;
 				clickedItem.classList.remove("selected");
-				radioButton.removeAttribute("checked");
+				radioButton.checked = false;
 			}
 		}
 	}

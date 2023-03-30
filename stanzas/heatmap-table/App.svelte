@@ -76,26 +76,27 @@
   }
 
   let tableSelectedItem = null;
+
   function tableHandleClick(event) {
     const clickedItem = event.target.closest("tr");
     const radioButton = clickedItem.querySelector('input[type="radio"]');
-    console.log(radioButton);
 
     if (clickedItem) {
       clickedItem.parentElement.firstChild.classList.remove("selected");
-
       if (clickedItem !== tableSelectedItem) {
         if (tableSelectedItem) {
           tableSelectedItem.classList.remove("selected");
-          radioButton.removeAttribute("checked");
+          tableSelectedItem.querySelector(
+            'input[type="radio"]'
+          ).checked = false;
         }
         tableSelectedItem = clickedItem;
         tableSelectedItem.classList.add("selected");
-        radioButton.setAttribute("checked", "checked");
+        radioButton.checked = true;
       } else {
         tableSelectedItem = null;
         clickedItem.classList.remove("selected");
-        radioButton.removeAttribute("checked");
+        radioButton.checked = false;
       }
     }
   }
@@ -171,6 +172,7 @@
                     type="radio"
                     name="variantid"
                     value={data.uniprotAcc}
+                    checked={index === 0}
                   />
                   {data.uniprotAcc}
                 </td>
