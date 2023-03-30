@@ -44542,6 +44542,12 @@ const setIcon = (calcName) => {
         src: drugIcon,
         alt: "drug icon",
       };
+    case "Mutation_FE":
+      return {
+        className: "drug-icon",
+        src: drugIcon,
+        alt: "drug icon",
+      };
     default:
       return {
         className: "protein-icon",
@@ -44588,21 +44594,21 @@ const { Boolean: Boolean_1 } = globals;
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[12] = list[i];
-	child_ctx[14] = i;
+	child_ctx[14] = list[i];
+	child_ctx[16] = i;
 	return child_ctx;
 }
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[15] = list[i];
+	child_ctx[17] = list[i];
 	return child_ctx;
 }
 
 function get_each_context_2(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[18] = list[i].className;
-	child_ctx[19] = list[i].label;
+	child_ctx[20] = list[i].className;
+	child_ctx[21] = list[i].label;
 	return child_ctx;
 }
 
@@ -44614,11 +44620,11 @@ function get_each_context_3(ctx, list, i) {
 
 function get_each_context_4(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[24] = list[i];
+	child_ctx[26] = list[i];
 	return child_ctx;
 }
 
-// (84:4) {#if typeLists.length > 0}
+// (110:4) {#if typeLists.length > 0}
 function create_if_block_4(ctx) {
 	let ul;
 	let each_value_4 = /*typeLists*/ ctx[2];
@@ -44648,7 +44654,7 @@ function create_if_block_4(ctx) {
 			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*handleClick, typesCount, typeLists, setIcon*/ 38) {
+			if (dirty & /*listHandleClick, typesCount, typeLists, setIcon*/ 38) {
 				each_value_4 = /*typeLists*/ ctx[2];
 				let i;
 
@@ -44678,17 +44684,17 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (86:8) {#each typeLists as type}
+// (112:8) {#each typeLists as type}
 function create_each_block_4(ctx) {
 	let li;
 	let img;
 	let img_class_value;
 	let img_src_value;
 	let img_alt_value;
-	let t0_value = /*type*/ ctx[24] + "";
+	let t0_value = /*type*/ ctx[26] + "";
 	let t0;
 	let span;
-	let t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[24]] + "";
+	let t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[26]] + "";
 	let t1;
 	let t2;
 	let mounted;
@@ -44702,9 +44708,9 @@ function create_each_block_4(ctx) {
 			span = element("span");
 			t1 = text(t1_value);
 			t2 = space();
-			attr(img, "class", img_class_value = setIcon(/*type*/ ctx[24]).className);
-			if (!src_url_equal(img.src, img_src_value = setIcon(/*type*/ ctx[24]).src)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = setIcon(/*type*/ ctx[24]).alt);
+			attr(img, "class", img_class_value = setIcon(/*type*/ ctx[26]).className);
+			if (!src_url_equal(img.src, img_src_value = setIcon(/*type*/ ctx[26]).src)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = setIcon(/*type*/ ctx[26]).alt);
 			attr(span, "class", "num");
 		},
 		m(target, anchor) {
@@ -44717,28 +44723,28 @@ function create_each_block_4(ctx) {
 
 			if (!mounted) {
 				dispose = [
-					listen(li, "click", /*handleClick*/ ctx[5]),
-					listen(li, "keydown", /*handleClick*/ ctx[5])
+					listen(li, "click", /*listHandleClick*/ ctx[5]),
+					listen(li, "keydown", /*listHandleClick*/ ctx[5])
 				];
 
 				mounted = true;
 			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*typeLists*/ 4 && img_class_value !== (img_class_value = setIcon(/*type*/ ctx[24]).className)) {
+			if (dirty & /*typeLists*/ 4 && img_class_value !== (img_class_value = setIcon(/*type*/ ctx[26]).className)) {
 				attr(img, "class", img_class_value);
 			}
 
-			if (dirty & /*typeLists*/ 4 && !src_url_equal(img.src, img_src_value = setIcon(/*type*/ ctx[24]).src)) {
+			if (dirty & /*typeLists*/ 4 && !src_url_equal(img.src, img_src_value = setIcon(/*type*/ ctx[26]).src)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (dirty & /*typeLists*/ 4 && img_alt_value !== (img_alt_value = setIcon(/*type*/ ctx[24]).alt)) {
+			if (dirty & /*typeLists*/ 4 && img_alt_value !== (img_alt_value = setIcon(/*type*/ ctx[26]).alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 
-			if (dirty & /*typeLists*/ 4 && t0_value !== (t0_value = /*type*/ ctx[24] + "")) set_data(t0, t0_value);
-			if (dirty & /*typesCount, typeLists*/ 6 && t1_value !== (t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[24]] + "")) set_data(t1, t1_value);
+			if (dirty & /*typeLists*/ 4 && t0_value !== (t0_value = /*type*/ ctx[26] + "")) set_data(t0, t0_value);
+			if (dirty & /*typesCount, typeLists*/ 6 && t1_value !== (t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[26]] + "")) set_data(t1, t1_value);
 		},
 		d(detaching) {
 			if (detaching) detach(li);
@@ -44748,7 +44754,7 @@ function create_each_block_4(ctx) {
 	};
 }
 
-// (98:2) {#if displayDrugs}
+// (124:2) {#if displayDrugs}
 function create_if_block_2(ctx) {
 	let div;
 	let h2;
@@ -44812,7 +44818,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (101:6) {#if drugsList.length > 0}
+// (127:6) {#if drugsList.length > 0}
 function create_if_block_3(ctx) {
 	let ul;
 	let current;
@@ -44849,7 +44855,7 @@ function create_if_block_3(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*handleClick, faCircleChevronRight, arrowTheme, drugsList*/ 40) {
+			if (dirty & /*listHandleClick, faCircleChevronRight, arrowTheme, drugsList*/ 40) {
 				each_value_3 = /*drugsList*/ ctx[3];
 				let i;
 
@@ -44901,7 +44907,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (103:10) {#each drugsList as drugsList}
+// (129:10) {#each drugsList as drugsList}
 function create_each_block_3(ctx) {
 	let li;
 	let t0_value = /*drugsList*/ ctx[3] + "";
@@ -44936,8 +44942,8 @@ function create_each_block_3(ctx) {
 
 			if (!mounted) {
 				dispose = [
-					listen(li, "click", /*handleClick*/ ctx[5]),
-					listen(li, "keydown", /*handleClick*/ ctx[5])
+					listen(li, "click", /*listHandleClick*/ ctx[5]),
+					listen(li, "keydown", /*listHandleClick*/ ctx[5])
 				];
 
 				mounted = true;
@@ -44974,11 +44980,11 @@ function create_each_block_3(ctx) {
 	};
 }
 
-// (126:14) {:else}
+// (152:14) {:else}
 function create_else_block(ctx) {
 	let th;
 	let p;
-	let t_value = /*label*/ ctx[19] + "";
+	let t_value = /*label*/ ctx[21] + "";
 	let t;
 
 	return {
@@ -44986,7 +44992,7 @@ function create_else_block(ctx) {
 			th = element("th");
 			p = element("p");
 			t = text(t_value);
-			attr(th, "class", /*className*/ ctx[18]);
+			attr(th, "class", /*className*/ ctx[20]);
 			attr(th, "rowspan", "2");
 		},
 		m(target, anchor) {
@@ -45001,11 +45007,11 @@ function create_else_block(ctx) {
 	};
 }
 
-// (124:14) {#if className.includes("th-group")}
+// (150:14) {#if className.includes("th-group")}
 function create_if_block_1(ctx) {
 	let th;
 	let p;
-	let t_value = /*label*/ ctx[19] + "";
+	let t_value = /*label*/ ctx[21] + "";
 	let t;
 
 	return {
@@ -45013,7 +45019,7 @@ function create_if_block_1(ctx) {
 			th = element("th");
 			p = element("p");
 			t = text(t_value);
-			attr(th, "class", /*className*/ ctx[18]);
+			attr(th, "class", /*className*/ ctx[20]);
 		},
 		m(target, anchor) {
 			insert(target, th, anchor);
@@ -45027,12 +45033,12 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (123:12) {#each theads as { className, label }}
+// (149:12) {#each theads as { className, label }}
 function create_each_block_2(ctx) {
 	let if_block_anchor;
 
 	function select_block_type(ctx, dirty) {
-		if (/*className*/ ctx[18].includes("th-group")) return create_if_block_1;
+		if (/*className*/ ctx[20].includes("th-group")) return create_if_block_1;
 		return create_else_block;
 	}
 
@@ -45058,7 +45064,7 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (135:8) {#if dataset.length > 0}
+// (161:8) {#if dataset.length > 0}
 function create_if_block(ctx) {
 	let tbody;
 	let current;
@@ -45093,7 +45099,7 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*scores, getColor, dataset, faCircleChevronRight, arrowTheme*/ 1) {
+			if (dirty & /*tableHandleClick, scores, getColor, dataset, faCircleChevronRight, arrowTheme*/ 65) {
 				each_value = /*dataset*/ ctx[0];
 				let i;
 
@@ -45145,7 +45151,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (161:16) {#each scores as key}
+// (187:16) {#each scores as key}
 function create_each_block_1(ctx) {
 	let td;
 	let div;
@@ -45155,7 +45161,7 @@ function create_each_block_1(ctx) {
 			td = element("td");
 			div = element("div");
 			attr(div, "class", "cell");
-			set_style(div, "background-color", getColor(/*data*/ ctx[12][/*key*/ ctx[15]]));
+			set_style(div, "background-color", getColor(/*data*/ ctx[14][/*key*/ ctx[17]]));
 			attr(td, "class", "cell-td");
 		},
 		m(target, anchor) {
@@ -45164,7 +45170,7 @@ function create_each_block_1(ctx) {
 		},
 		p(ctx, dirty) {
 			if (dirty & /*dataset*/ 1) {
-				set_style(div, "background-color", getColor(/*data*/ ctx[12][/*key*/ ctx[15]]));
+				set_style(div, "background-color", getColor(/*data*/ ctx[14][/*key*/ ctx[17]]));
 			}
 		},
 		d(detaching) {
@@ -45173,29 +45179,30 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (137:12) {#each dataset as data, index}
+// (163:12) {#each dataset as data, index}
 function create_each_block(ctx) {
 	let tr;
 	let td0;
-	let label;
 	let input;
 	let input_value_value;
 	let t0;
-	let t1_value = /*data*/ ctx[12].uniprotAcc + "";
+	let t1_value = /*data*/ ctx[14].uniprotAcc + "";
 	let t1;
 	let t2;
 	let td1;
 	let span;
-	let t3_value = /*data*/ ctx[12].variant + "";
+	let t3_value = /*data*/ ctx[14].variant + "";
 	let t3;
 	let fa;
 	let t4;
 	let td2;
-	let t5_value = /*data*/ ctx[12].feBind + "";
+	let t5_value = /*data*/ ctx[14].feBind + "";
 	let t5;
 	let t6;
 	let t7;
 	let current;
+	let mounted;
+	let dispose;
 	const fa_spread_levels = [{ icon: faCircleChevronRight }, arrowTheme, { secondaryColor: "#5fdede" }];
 	let fa_props = {};
 
@@ -45215,7 +45222,6 @@ function create_each_block(ctx) {
 		c() {
 			tr = element("tr");
 			td0 = element("td");
-			label = element("label");
 			input = element("input");
 			t0 = space();
 			t1 = text(t1_value);
@@ -45237,18 +45243,17 @@ function create_each_block(ctx) {
 			attr(input, "class", "radio-button");
 			attr(input, "type", "radio");
 			attr(input, "name", "variantid");
-			input.value = input_value_value = /*data*/ ctx[12].uniprotAcc;
-			input.checked = /*index*/ ctx[14] === 0;
+			input.value = input_value_value = /*data*/ ctx[14].uniprotAcc;
 			attr(td0, "class", "td-uniport");
 			attr(td1, "class", "td-variant");
+			attr(tr, "class", /*index*/ ctx[16] === 0 ? "selected" : "");
 		},
 		m(target, anchor) {
 			insert(target, tr, anchor);
 			append(tr, td0);
-			append(td0, label);
-			append(label, input);
-			append(label, t0);
-			append(label, t1);
+			append(td0, input);
+			append(td0, t0);
+			append(td0, t1);
 			append(tr, t2);
 			append(tr, td1);
 			append(td1, span);
@@ -45267,14 +45272,19 @@ function create_each_block(ctx) {
 
 			append(tr, t7);
 			current = true;
+
+			if (!mounted) {
+				dispose = listen(tr, "click", /*tableHandleClick*/ ctx[6]);
+				mounted = true;
+			}
 		},
 		p(ctx, dirty) {
-			if (!current || dirty & /*dataset*/ 1 && input_value_value !== (input_value_value = /*data*/ ctx[12].uniprotAcc)) {
+			if (!current || dirty & /*dataset*/ 1 && input_value_value !== (input_value_value = /*data*/ ctx[14].uniprotAcc)) {
 				input.value = input_value_value;
 			}
 
-			if ((!current || dirty & /*dataset*/ 1) && t1_value !== (t1_value = /*data*/ ctx[12].uniprotAcc + "")) set_data(t1, t1_value);
-			if ((!current || dirty & /*dataset*/ 1) && t3_value !== (t3_value = /*data*/ ctx[12].variant + "")) set_data(t3, t3_value);
+			if ((!current || dirty & /*dataset*/ 1) && t1_value !== (t1_value = /*data*/ ctx[14].uniprotAcc + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*dataset*/ 1) && t3_value !== (t3_value = /*data*/ ctx[14].variant + "")) set_data(t3, t3_value);
 
 			const fa_changes = (dirty & /*faCircleChevronRight, arrowTheme*/ 0)
 			? get_spread_update(fa_spread_levels, [
@@ -45285,7 +45295,7 @@ function create_each_block(ctx) {
 			: {};
 
 			fa.$set(fa_changes);
-			if ((!current || dirty & /*dataset*/ 1) && t5_value !== (t5_value = /*data*/ ctx[12].feBind + "")) set_data(t5, t5_value);
+			if ((!current || dirty & /*dataset*/ 1) && t5_value !== (t5_value = /*data*/ ctx[14].feBind + "")) set_data(t5, t5_value);
 
 			if (dirty & /*getColor, dataset, scores*/ 1) {
 				each_value_1 = scores;
@@ -45323,6 +45333,8 @@ function create_each_block(ctx) {
 			if (detaching) detach(tr);
 			destroy_component(fa);
 			destroy_each(each_blocks, detaching);
+			mounted = false;
+			dispose();
 		}
 	};
 }
@@ -45365,7 +45377,7 @@ function create_fragment(ctx) {
 			div3 = element("div");
 			div0 = element("div");
 			h2 = element("h2");
-			t0 = text("Variants list ");
+			t0 = text("Variants");
 			span = element("span");
 			t1 = text(t1_value);
 			t2 = space();
@@ -45426,8 +45438,8 @@ function create_fragment(ctx) {
 
 			if (!mounted) {
 				dispose = [
-					listen(h2, "click", /*handleClick*/ ctx[5]),
-					listen(h2, "keydown", /*handleClick*/ ctx[5])
+					listen(h2, "click", /*listHandleClick*/ ctx[5]),
+					listen(h2, "keydown", /*listHandleClick*/ ctx[5])
 				];
 
 				mounted = true;
@@ -45573,13 +45585,14 @@ function instance($$self, $$props, $$invalidate) {
 	const sortData = async () => {
 		await fetchData();
 		console.log(dataset);
-		console.log(typeLists);
+		console.log(typesCount);
+		console.log();
 	};
 
 	sortData();
 	let selectedItem = null;
 
-	function handleClick(event) {
+	function listHandleClick(event) {
 		const clickedItem = event.target.closest("li, h2");
 
 		if (clickedItem) {
@@ -45597,17 +45610,53 @@ function instance($$self, $$props, $$invalidate) {
 		}
 	}
 
+	let tableSelectedItem = null;
+
+	function tableHandleClick(event) {
+		const clickedItem = event.target.closest("tr");
+		const radioButton = clickedItem.querySelector('input[type="radio"]');
+		console.log(radioButton);
+
+		if (clickedItem) {
+			clickedItem.parentElement.firstChild.classList.remove("selected");
+
+			if (clickedItem !== tableSelectedItem) {
+				if (tableSelectedItem) {
+					tableSelectedItem.classList.remove("selected");
+					radioButton.removeAttribute("checked");
+				}
+
+				tableSelectedItem = clickedItem;
+				tableSelectedItem.classList.add("selected");
+				radioButton.setAttribute("checked", "checked");
+			} else {
+				tableSelectedItem = null;
+				clickedItem.classList.remove("selected");
+				radioButton.removeAttribute("checked");
+			}
+		}
+	}
+
 	$$self.$$set = $$props => {
-		if ('params' in $$props) $$invalidate(6, params = $$props.params);
+		if ('params' in $$props) $$invalidate(7, params = $$props.params);
 	};
 
-	return [dataset, typesCount, typeLists, drugsList, displayDrugs, handleClick, params];
+	return [
+		dataset,
+		typesCount,
+		typeLists,
+		drugsList,
+		displayDrugs,
+		listHandleClick,
+		tableHandleClick,
+		params
+	];
 }
 
 class App extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { params: 6 });
+		init(this, options, instance, create_fragment, safe_not_equal, { params: 7 });
 	}
 }
 

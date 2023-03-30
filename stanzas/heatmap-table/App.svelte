@@ -52,13 +52,14 @@
   const sortData = async () => {
     await fetchData();
     console.log(dataset);
-    console.log(typeLists);
+    console.log(typesCount);
+    console.log();
   };
   sortData();
 
   let selectedItem = null;
 
-  function handleClick(event) {
+  function listHandleClick(event) {
     const clickedItem = event.target.closest("li, h2");
     if (clickedItem) {
       if (clickedItem !== selectedItem) {
@@ -73,18 +74,43 @@
       }
     }
   }
+
+  let tableSelectedItem = null;
+  function tableHandleClick(event) {
+    const clickedItem = event.target.closest("tr");
+    const radioButton = clickedItem.querySelector('input[type="radio"]');
+    console.log(radioButton);
+
+    if (clickedItem) {
+      clickedItem.parentElement.firstChild.classList.remove("selected");
+
+      if (clickedItem !== tableSelectedItem) {
+        if (tableSelectedItem) {
+          tableSelectedItem.classList.remove("selected");
+          radioButton.removeAttribute("checked");
+        }
+        tableSelectedItem = clickedItem;
+        tableSelectedItem.classList.add("selected");
+        radioButton.setAttribute("checked", "checked");
+      } else {
+        tableSelectedItem = null;
+        clickedItem.classList.remove("selected");
+        radioButton.removeAttribute("checked");
+      }
+    }
+  }
 </script>
 
 <div class="heatmap-table">
   <!-- Column -->
   <div class="column-list">
-    <h2 on:click={handleClick} on:keydown={handleClick}>
-      Variants list <span class="num">{dataset.length}</span>
+    <h2 on:click={listHandleClick} on:keydown={listHandleClick}>
+      Variants<span class="num">{dataset.length}</span>
     </h2>
     {#if typeLists.length > 0}
       <ul class="column-ul">
         {#each typeLists as type}
-          <li on:click={handleClick} on:keydown={handleClick}>
+          <li on:click={listHandleClick} on:keydown={listHandleClick}>
             <img
               class={setIcon(type).className}
               src={setIcon(type).src}
@@ -101,7 +127,7 @@
       {#if drugsList.length > 0}
         <ul class="drugs-ul">
           {#each drugsList as drugsList}
-            <li on:click={handleClick} on:keydown={handleClick}>
+            <li on:click={listHandleClick} on:keydown={listHandleClick}>
               {drugsList}<Fa
                 icon={faCircleChevronRight}
                 {...arrowTheme}
@@ -135,19 +161,19 @@
         {#if dataset.length > 0}
           <tbody>
             {#each dataset as data, index}
-              <tr>
+              <tr
+                class={index === 0 ? "selected" : ""}
+                on:click={tableHandleClick}
+              >
                 <td class="td-uniport">
-                  <label>
-                    <input
-                      class="radio-button"
-                      type="radio"
-                      name="variantid"
-                      value={data.uniprotAcc}
-                      checked={index === 0}
-                    />
-                    {data.uniprotAcc}</label
-                  ></td
-                >
+                  <input
+                    class="radio-button"
+                    type="radio"
+                    name="variantid"
+                    value={data.uniprotAcc}
+                  />
+                  {data.uniprotAcc}
+                </td>
                 <td class="td-variant">
                   <span>
                     {data.variant}<Fa

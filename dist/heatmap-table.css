@@ -204,21 +204,24 @@ img.drug-icon {
   transform-origin: top left;
   rotate: -20deg;
 }
-.heatmap-table .table-container .table-wrapper table tbody td {
+.heatmap-table .table-container .table-wrapper table tbody tr.selected {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.heatmap-table .table-container .table-wrapper table tbody tr td {
   padding: 5px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
-.heatmap-table .table-container .table-wrapper table tbody td.td-uniport > label {
+.heatmap-table .table-container .table-wrapper table tbody tr td.td-uniport {
   padding: 8px;
 }
-.heatmap-table .table-container .table-wrapper table tbody td.td-variant {
+.heatmap-table .table-container .table-wrapper table tbody tr td.td-variant {
   color: #5fdede;
 }
-.heatmap-table .table-container .table-wrapper table tbody td.td-variant > span {
+.heatmap-table .table-container .table-wrapper table tbody tr td.td-variant > span {
   padding: 8px 8px 8px 0;
   cursor: pointer;
 }
-.heatmap-table .table-container .table-wrapper table tbody td.cell-td > .cell {
+.heatmap-table .table-container .table-wrapper table tbody tr td.cell-td > .cell {
   width: 17px;
   height: 17px;
   background-color: #f00;

@@ -16,6 +16,12 @@ export const setIcon = (calcName) => {
         src: drugIcon,
         alt: "drug icon",
       };
+    case "Mutation_FE":
+      return {
+        className: "drug-icon",
+        src: drugIcon,
+        alt: "drug icon",
+      };
     default:
       return {
         className: "protein-icon",

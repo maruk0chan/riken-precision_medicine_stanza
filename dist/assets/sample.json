@@ -20,7 +20,7 @@
   {
     "Type": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib",
+    "Compound_ID": "Alectinib2",
     "variant": "A1251D",
     "CADD_raw_rankscore": 0.91297,
     "fathmm-MKL_coding_rankscore": 0.86437,
@@ -270,7 +270,7 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "Mutation_FE",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1234T",
@@ -288,9 +288,9 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "Mutation_FE",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib",
+    "Compound_ID": "Alectinib2",
     "variant": "A1234T",
     "CADD_raw_rankscore": 0.85358,
     "fathmm-MKL_coding_rankscore": 0.83987,
@@ -306,7 +306,7 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "Mutation_FE",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1234T",
@@ -324,7 +324,7 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "Mutation_FE",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1251T",
@@ -342,7 +342,7 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "Type": "Mutation_FEP",
+    "Type": "Mutation_FE",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "A1251T",
