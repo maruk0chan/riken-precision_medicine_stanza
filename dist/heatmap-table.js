@@ -44534,22 +44534,23 @@ const drugIcon =
   "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/drug.png";
 const proteinIcon =
   "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/protein.png";
-const setIcon = (calcName) => {
-  switch (calcName) {
-    case "Mutation_FEP":
+const calculationType = (dataType) => {
+  switch (dataType) {
+    case "variants":
       return {
-        className: "drug-icon",
-        src: drugIcon,
-        alt: "drug icon",
+        calcName: "variants",
       };
+    case "Mutation_FEP":
     case "Mutation_FE":
       return {
+        calcName: "mutation",
         className: "drug-icon",
         src: drugIcon,
         alt: "drug icon",
       };
     default:
       return {
+        calcName: "protein",
         className: "protein-icon",
         src: proteinIcon,
         alt: "protein icon",
@@ -44594,33 +44595,33 @@ const { Boolean: Boolean_1 } = globals;
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[14] = list[i];
-	child_ctx[16] = i;
+	child_ctx[15] = list[i];
+	child_ctx[17] = i;
 	return child_ctx;
 }
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[17] = list[i];
+	child_ctx[18] = list[i];
 	return child_ctx;
 }
 
 function get_each_context_2(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[20] = list[i].className;
-	child_ctx[21] = list[i].label;
+	child_ctx[21] = list[i].className;
+	child_ctx[22] = list[i].label;
 	return child_ctx;
 }
 
 function get_each_context_3(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[5] = list[i];
+	child_ctx[6] = list[i];
 	return child_ctx;
 }
 
 function get_each_context_4(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[26] = list[i];
+	child_ctx[27] = list[i];
 	return child_ctx;
 }
 
@@ -44654,7 +44655,7 @@ function create_if_block_4(ctx) {
 			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*typeLists, listHandleClick, typesCount, setIcon*/ 134) {
+			if (dirty & /*typeLists, listHandleClick, typesCount, calculationType*/ 134) {
 				each_value_4 = /*typeLists*/ ctx[2];
 				let i;
 
@@ -44691,10 +44692,10 @@ function create_each_block_4(ctx) {
 	let img_class_value;
 	let img_src_value;
 	let img_alt_value;
-	let t0_value = /*type*/ ctx[26] + "";
+	let t0_value = /*type*/ ctx[27] + "";
 	let t0;
 	let span;
-	let t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[26]] + "";
+	let t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[27]] + "";
 	let t1;
 	let t2;
 	let li_data_type_value;
@@ -44709,11 +44710,11 @@ function create_each_block_4(ctx) {
 			span = element("span");
 			t1 = text(t1_value);
 			t2 = space();
-			attr(img, "class", img_class_value = setIcon(/*type*/ ctx[26]).className);
-			if (!src_url_equal(img.src, img_src_value = setIcon(/*type*/ ctx[26]).src)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = setIcon(/*type*/ ctx[26]).alt);
+			attr(img, "class", img_class_value = calculationType(/*type*/ ctx[27]).className);
+			if (!src_url_equal(img.src, img_src_value = calculationType(/*type*/ ctx[27]).src)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = calculationType(/*type*/ ctx[27]).alt);
 			attr(span, "class", "num");
-			attr(li, "data-type", li_data_type_value = /*type*/ ctx[26]);
+			attr(li, "data-type", li_data_type_value = /*type*/ ctx[27]);
 		},
 		m(target, anchor) {
 			insert(target, li, anchor);
@@ -44733,22 +44734,22 @@ function create_each_block_4(ctx) {
 			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*typeLists*/ 4 && img_class_value !== (img_class_value = setIcon(/*type*/ ctx[26]).className)) {
+			if (dirty & /*typeLists*/ 4 && img_class_value !== (img_class_value = calculationType(/*type*/ ctx[27]).className)) {
 				attr(img, "class", img_class_value);
 			}
 
-			if (dirty & /*typeLists*/ 4 && !src_url_equal(img.src, img_src_value = setIcon(/*type*/ ctx[26]).src)) {
+			if (dirty & /*typeLists*/ 4 && !src_url_equal(img.src, img_src_value = calculationType(/*type*/ ctx[27]).src)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (dirty & /*typeLists*/ 4 && img_alt_value !== (img_alt_value = setIcon(/*type*/ ctx[26]).alt)) {
+			if (dirty & /*typeLists*/ 4 && img_alt_value !== (img_alt_value = calculationType(/*type*/ ctx[27]).alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 
-			if (dirty & /*typeLists*/ 4 && t0_value !== (t0_value = /*type*/ ctx[26] + "")) set_data(t0, t0_value);
-			if (dirty & /*typesCount, typeLists*/ 6 && t1_value !== (t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[26]] + "")) set_data(t1, t1_value);
+			if (dirty & /*typeLists*/ 4 && t0_value !== (t0_value = /*type*/ ctx[27] + "")) set_data(t0, t0_value);
+			if (dirty & /*typesCount, typeLists*/ 6 && t1_value !== (t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[27]] + "")) set_data(t1, t1_value);
 
-			if (dirty & /*typeLists*/ 4 && li_data_type_value !== (li_data_type_value = /*type*/ ctx[26])) {
+			if (dirty & /*typeLists*/ 4 && li_data_type_value !== (li_data_type_value = /*type*/ ctx[27])) {
 				attr(li, "data-type", li_data_type_value);
 			}
 		},
@@ -44766,7 +44767,7 @@ function create_if_block_2(ctx) {
 	let h2;
 	let t1;
 	let current;
-	let if_block = /*drugsList*/ ctx[5].length > 0 && create_if_block_3(ctx);
+	let if_block = /*drugsList*/ ctx[6].length > 0 && create_if_block_3(ctx);
 
 	return {
 		c() {
@@ -44785,11 +44786,11 @@ function create_if_block_2(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*drugsList*/ ctx[5].length > 0) {
+			if (/*drugsList*/ ctx[6].length > 0) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty & /*drugsList*/ 32) {
+					if (dirty & /*drugsList*/ 64) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -44828,7 +44829,7 @@ function create_if_block_2(ctx) {
 function create_if_block_3(ctx) {
 	let ul;
 	let current;
-	let each_value_3 = /*drugsList*/ ctx[5];
+	let each_value_3 = /*drugsList*/ ctx[6];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value_3.length; i += 1) {
@@ -44861,8 +44862,8 @@ function create_if_block_3(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*faCircleChevronRight, arrowTheme, drugsList*/ 32) {
-				each_value_3 = /*drugsList*/ ctx[5];
+			if (dirty & /*faCircleChevronRight, arrowTheme, drugsList*/ 64) {
+				each_value_3 = /*drugsList*/ ctx[6];
 				let i;
 
 				for (i = 0; i < each_value_3.length; i += 1) {
@@ -44916,7 +44917,7 @@ function create_if_block_3(ctx) {
 // (137:10) {#each drugsList as drugsList}
 function create_each_block_3(ctx) {
 	let li;
-	let t0_value = /*drugsList*/ ctx[5] + "";
+	let t0_value = /*drugsList*/ ctx[6] + "";
 	let t0;
 	let fa;
 	let t1;
@@ -44945,7 +44946,7 @@ function create_each_block_3(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if ((!current || dirty & /*drugsList*/ 32) && t0_value !== (t0_value = /*drugsList*/ ctx[5] + "")) set_data(t0, t0_value);
+			if ((!current || dirty & /*drugsList*/ 64) && t0_value !== (t0_value = /*drugsList*/ ctx[6] + "")) set_data(t0, t0_value);
 
 			const fa_changes = (dirty & /*faCircleChevronRight, arrowTheme*/ 0)
 			? get_spread_update(fa_spread_levels, [
@@ -44977,7 +44978,7 @@ function create_each_block_3(ctx) {
 function create_else_block(ctx) {
 	let th;
 	let p;
-	let t_value = /*label*/ ctx[21] + "";
+	let t_value = /*label*/ ctx[22] + "";
 	let t;
 
 	return {
@@ -44985,7 +44986,7 @@ function create_else_block(ctx) {
 			th = element("th");
 			p = element("p");
 			t = text(t_value);
-			attr(th, "class", /*className*/ ctx[20]);
+			attr(th, "class", /*className*/ ctx[21]);
 			attr(th, "rowspan", "2");
 		},
 		m(target, anchor) {
@@ -45004,7 +45005,7 @@ function create_else_block(ctx) {
 function create_if_block_1(ctx) {
 	let th;
 	let p;
-	let t_value = /*label*/ ctx[21] + "";
+	let t_value = /*label*/ ctx[22] + "";
 	let t;
 
 	return {
@@ -45012,7 +45013,7 @@ function create_if_block_1(ctx) {
 			th = element("th");
 			p = element("p");
 			t = text(t_value);
-			attr(th, "class", /*className*/ ctx[20]);
+			attr(th, "class", /*className*/ ctx[21]);
 		},
 		m(target, anchor) {
 			insert(target, th, anchor);
@@ -45031,7 +45032,7 @@ function create_each_block_2(ctx) {
 	let if_block_anchor;
 
 	function select_block_type(ctx, dirty) {
-		if (/*className*/ ctx[20].includes("th-group")) return create_if_block_1;
+		if (/*className*/ ctx[21].includes("th-group")) return create_if_block_1;
 		return create_else_block;
 	}
 
@@ -45061,7 +45062,7 @@ function create_each_block_2(ctx) {
 function create_if_block(ctx) {
 	let tbody;
 	let current;
-	let each_value = /*datasetMap*/ ctx[3].get(/*selectedListName*/ ctx[4]);
+	let each_value = /*datasetMap*/ ctx[3].get(/*selectedListName*/ ctx[5]);
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -45092,8 +45093,8 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*tableHandleClick, scores, getColor, datasetMap, selectedListName, faCircleChevronRight, arrowTheme*/ 280) {
-				each_value = /*datasetMap*/ ctx[3].get(/*selectedListName*/ ctx[4]);
+			if (dirty & /*tableHandleClick, scores, getColor, datasetMap, selectedListName, faCircleChevronRight, arrowTheme*/ 296) {
+				each_value = /*datasetMap*/ ctx[3].get(/*selectedListName*/ ctx[5]);
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -45154,7 +45155,7 @@ function create_each_block_1(ctx) {
 			td = element("td");
 			div = element("div");
 			attr(div, "class", "cell");
-			set_style(div, "background-color", getColor(/*data*/ ctx[14][/*key*/ ctx[17]]));
+			set_style(div, "background-color", getColor(/*data*/ ctx[15][/*key*/ ctx[18]]));
 			attr(td, "class", "cell-td");
 		},
 		m(target, anchor) {
@@ -45162,8 +45163,8 @@ function create_each_block_1(ctx) {
 			append(td, div);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*datasetMap, selectedListName*/ 24) {
-				set_style(div, "background-color", getColor(/*data*/ ctx[14][/*key*/ ctx[17]]));
+			if (dirty & /*datasetMap, selectedListName*/ 40) {
+				set_style(div, "background-color", getColor(/*data*/ ctx[15][/*key*/ ctx[18]]));
 			}
 		},
 		d(detaching) {
@@ -45179,17 +45180,17 @@ function create_each_block(ctx) {
 	let input;
 	let input_value_value;
 	let t0;
-	let t1_value = /*data*/ ctx[14].uniprotAcc + "";
+	let t1_value = /*data*/ ctx[15].uniprotAcc + "";
 	let t1;
 	let t2;
 	let td1;
 	let span;
-	let t3_value = /*data*/ ctx[14].variant + "";
+	let t3_value = /*data*/ ctx[15].variant + "";
 	let t3;
 	let fa;
 	let t4;
 	let td2;
-	let t5_value = /*data*/ ctx[14].feBind + "";
+	let t5_value = /*data*/ ctx[15].feBind + "";
 	let t5;
 	let t6;
 	let t7;
@@ -45236,11 +45237,11 @@ function create_each_block(ctx) {
 			attr(input, "class", "radio-button");
 			attr(input, "type", "radio");
 			attr(input, "name", "variantid");
-			input.value = input_value_value = /*data*/ ctx[14].uniprotAcc;
-			input.checked = /*index*/ ctx[16] === 0;
+			input.value = input_value_value = /*data*/ ctx[15].uniprotAcc;
+			input.checked = /*index*/ ctx[17] === 0;
 			attr(td0, "class", "td-uniport");
 			attr(td1, "class", "td-variant");
-			attr(tr, "class", /*index*/ ctx[16] === 0 ? "selected" : "");
+			attr(tr, "class", /*index*/ ctx[17] === 0 ? "selected" : "");
 		},
 		m(target, anchor) {
 			insert(target, tr, anchor);
@@ -45273,12 +45274,12 @@ function create_each_block(ctx) {
 			}
 		},
 		p(ctx, dirty) {
-			if (!current || dirty & /*datasetMap, selectedListName*/ 24 && input_value_value !== (input_value_value = /*data*/ ctx[14].uniprotAcc)) {
+			if (!current || dirty & /*datasetMap, selectedListName*/ 40 && input_value_value !== (input_value_value = /*data*/ ctx[15].uniprotAcc)) {
 				input.value = input_value_value;
 			}
 
-			if ((!current || dirty & /*datasetMap, selectedListName*/ 24) && t1_value !== (t1_value = /*data*/ ctx[14].uniprotAcc + "")) set_data(t1, t1_value);
-			if ((!current || dirty & /*datasetMap, selectedListName*/ 24) && t3_value !== (t3_value = /*data*/ ctx[14].variant + "")) set_data(t3, t3_value);
+			if ((!current || dirty & /*datasetMap, selectedListName*/ 40) && t1_value !== (t1_value = /*data*/ ctx[15].uniprotAcc + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*datasetMap, selectedListName*/ 40) && t3_value !== (t3_value = /*data*/ ctx[15].variant + "")) set_data(t3, t3_value);
 
 			const fa_changes = (dirty & /*faCircleChevronRight, arrowTheme*/ 0)
 			? get_spread_update(fa_spread_levels, [
@@ -45289,9 +45290,9 @@ function create_each_block(ctx) {
 			: {};
 
 			fa.$set(fa_changes);
-			if ((!current || dirty & /*datasetMap, selectedListName*/ 24) && t5_value !== (t5_value = /*data*/ ctx[14].feBind + "")) set_data(t5, t5_value);
+			if ((!current || dirty & /*datasetMap, selectedListName*/ 40) && t5_value !== (t5_value = /*data*/ ctx[15].feBind + "")) set_data(t5, t5_value);
 
-			if (dirty & /*getColor, datasetMap, selectedListName, scores*/ 24) {
+			if (dirty & /*getColor, datasetMap, selectedListName, scores*/ 40) {
 				each_value_1 = scores;
 				let i;
 
@@ -45356,7 +45357,7 @@ function create_fragment(ctx) {
 	let mounted;
 	let dispose;
 	let if_block0 = /*typeLists*/ ctx[2].length > 0 && create_if_block_4(ctx);
-	let if_block1 = /*displayDrugs*/ ctx[6] && create_if_block_2(ctx);
+	let if_block1 = /*displayDrugs*/ ctx[4] && create_if_block_2(ctx);
 	let each_value_2 = theads;
 	let each_blocks = [];
 
@@ -45395,6 +45396,7 @@ function create_fragment(ctx) {
 			t7 = space();
 			if (if_block2) if_block2.c();
 			attr(span, "class", "num");
+			attr(h2, "class", "selected");
 			attr(h2, "data-type", "variants");
 			attr(div0, "class", "column-list");
 			attr(div1, "class", "table-wrapper");
@@ -45456,7 +45458,28 @@ function create_fragment(ctx) {
 				if_block0 = null;
 			}
 
-			if (/*displayDrugs*/ ctx[6]) if_block1.p(ctx, dirty);
+			if (/*displayDrugs*/ ctx[4]) {
+				if (if_block1) {
+					if_block1.p(ctx, dirty);
+
+					if (dirty & /*displayDrugs*/ 16) {
+						transition_in(if_block1, 1);
+					}
+				} else {
+					if_block1 = create_if_block_2(ctx);
+					if_block1.c();
+					transition_in(if_block1, 1);
+					if_block1.m(div3, t4);
+				}
+			} else if (if_block1) {
+				group_outros();
+
+				transition_out(if_block1, 1, 1, () => {
+					if_block1 = null;
+				});
+
+				check_outros();
+			}
 
 			if (dirty & /*theads*/ 0) {
 				each_value_2 = theads;
@@ -45527,15 +45550,12 @@ function create_fragment(ctx) {
 	};
 }
 
-const DISPLAY_DRUGS_DEFAULT = true;
-
 function instance($$self, $$props, $$invalidate) {
-	let { params } = $$props;
+	let { params, root } = $$props;
 
 	// "../assets/sample.json";
-	let displayDrugs = DISPLAY_DRUGS_DEFAULT;
-
 	let dataset = [];
+
 	let typesCount = {};
 	let typeLists = [];
 	let drugsList = [];
@@ -45568,7 +45588,7 @@ function instance($$self, $$props, $$invalidate) {
 
 			$$invalidate(0, dataset = json.map(toCamelCase));
 			$$invalidate(2, typeLists = getTypeLists(dataset));
-			$$invalidate(5, drugsList = getDrugsList(dataset));
+			$$invalidate(6, drugsList = getDrugsList(dataset));
 			$$invalidate(3, datasetMap = new Map([["variants", dataset]]));
 
 			typeLists.forEach(type => {
@@ -45580,30 +45600,31 @@ function instance($$self, $$props, $$invalidate) {
 			$$invalidate(0, dataset = []);
 			$$invalidate(1, typesCount = {});
 			$$invalidate(2, typeLists = []);
-			$$invalidate(5, drugsList = []);
+			$$invalidate(6, drugsList = []);
 			$$invalidate(3, datasetMap = []);
 		}
 	})();
 
+	let displayDrugs = false;
 	let selectedItemList = null;
 	let selectedListName = "variants";
 
 	function listHandleClick(event) {
 		const clickedItem = event.target.closest("li, h2");
+		root.querySelector(".column-list > h2").classList.remove("selected");
 
-		if (clickedItem) {
-			if (clickedItem !== selectedItemList) {
-				if (selectedItemList) {
-					selectedItemList.classList.remove("selected");
-				}
-
-				selectedItemList = clickedItem;
-				selectedItemList.classList.add("selected");
-				$$invalidate(4, selectedListName = clickedItem.getAttribute("data-type"));
-			} else {
-				selectedItemList = null;
-				clickedItem.classList.remove("selected");
+		if (clickedItem !== selectedItemList) {
+			if (selectedItemList) {
+				selectedItemList.classList.remove("selected");
 			}
+
+			selectedItemList = clickedItem;
+			selectedItemList.classList.add("selected");
+			$$invalidate(5, selectedListName = clickedItem.dataset.type);
+
+			$$invalidate(4, displayDrugs = calculationType(selectedListName).calcName === "mutation"
+			? true
+			: false);
 		}
 	}
 
@@ -45635,6 +45656,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ('params' in $$props) $$invalidate(9, params = $$props.params);
+		if ('root' in $$props) $$invalidate(10, root = $$props.root);
 	};
 
 	return [
@@ -45642,19 +45664,20 @@ function instance($$self, $$props, $$invalidate) {
 		typesCount,
 		typeLists,
 		datasetMap,
+		displayDrugs,
 		selectedListName,
 		drugsList,
-		displayDrugs,
 		listHandleClick,
 		tableHandleClick,
-		params
+		params,
+		root
 	];
 }
 
 class App extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { params: 9 });
+		init(this, options, instance, create_fragment, safe_not_equal, { params: 9, root: 10 });
 	}
 }
 
@@ -45667,7 +45690,10 @@ class HeatmapTable extends Stanza {
     }
     this.app = new App({
       target: this.root.querySelector("main"),
-      props: { params: toCamelCase(this.params)["dataUrl"] },
+      props: {
+        params: toCamelCase(this.params)["dataUrl"],
+        root: this.root.querySelector("main"),
+      },
     });
   }
 }

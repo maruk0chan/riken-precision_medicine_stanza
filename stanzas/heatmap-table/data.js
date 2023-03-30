@@ -8,22 +8,23 @@ const drugIcon =
   "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/drug.png";
 const proteinIcon =
   "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/protein.png";
-export const setIcon = (calcName) => {
-  switch (calcName) {
-    case "Mutation_FEP":
+export const calculationType = (dataType) => {
+  switch (dataType) {
+    case "variants":
       return {
-        className: "drug-icon",
-        src: drugIcon,
-        alt: "drug icon",
+        calcName: "variants",
       };
+    case "Mutation_FEP":
     case "Mutation_FE":
       return {
+        calcName: "mutation",
         className: "drug-icon",
         src: drugIcon,
         alt: "drug icon",
       };
     default:
       return {
+        calcName: "protein",
         className: "protein-icon",
         src: proteinIcon,
         alt: "protein icon",

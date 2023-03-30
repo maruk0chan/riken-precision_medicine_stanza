@@ -3,15 +3,13 @@
   import toCamelCase from "../../lib/CamelCase";
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/pro-duotone-svg-icons";
-  import { arrowTheme, setIcon, scores, theads } from "./data.js";
-  export let params;
+  import { arrowTheme, calculationType, scores, theads } from "./data.js";
+  export let params, root;
 
-  const DISPLAY_DRUGS_DEFAULT = true;
   const SAMPLE_JSON_PATH =
     "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/feature/heatmap-table/assets/sample.json";
   // "../assets/sample.json";
 
-  let displayDrugs = DISPLAY_DRUGS_DEFAULT;
   let dataset = [];
   let typesCount = {};
   let typeLists = [];
@@ -56,23 +54,24 @@
     }
   })();
 
+  let displayDrugs = false;
   let selectedItemList = null;
   let selectedListName = "variants";
 
   function listHandleClick(event) {
     const clickedItem = event.target.closest("li, h2");
-    if (clickedItem) {
-      if (clickedItem !== selectedItemList) {
-        if (selectedItemList) {
-          selectedItemList.classList.remove("selected");
-        }
-        selectedItemList = clickedItem;
-        selectedItemList.classList.add("selected");
-        selectedListName = clickedItem.getAttribute("data-type");
-      } else {
-        selectedItemList = null;
-        clickedItem.classList.remove("selected");
+    root.querySelector(".column-list > h2").classList.remove("selected");
+    if (clickedItem !== selectedItemList) {
+      if (selectedItemList) {
+        selectedItemList.classList.remove("selected");
       }
+      selectedItemList = clickedItem;
+      selectedItemList.classList.add("selected");
+      selectedListName = clickedItem.dataset.type;
+      displayDrugs =
+        calculationType(selectedListName).calcName === "mutation"
+          ? true
+          : false;
     }
   }
 
@@ -105,6 +104,7 @@
   <!-- Column -->
   <div class="column-list">
     <h2
+      class="selected"
       data-type={"variants"}
       on:click={listHandleClick}
       on:keydown={listHandleClick}
@@ -120,9 +120,9 @@
             on:keydown={listHandleClick}
           >
             <img
-              class={setIcon(type).className}
-              src={setIcon(type).src}
-              alt={setIcon(type).alt}
+              class={calculationType(type).className}
+              src={calculationType(type).src}
+              alt={calculationType(type).alt}
             />{type}<span class="num">{typesCount[type]}</span>
           </li>
         {/each}
