@@ -13,7 +13,7 @@
   let dataset = [];
   let typesCount = {};
   let typeLists = [];
-  let drugsList = [];
+  let drugList = [];
   let datasetMap = [];
 
   const getTypeLists = (dataset) => {
@@ -25,11 +25,11 @@
     return [...new Set(types.filter(Boolean))];
   };
 
-  const getDrugsList = (dataset) => [
+  const getdrugList = (dataset) => [
     ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
   ];
 
-  (async () => {
+  const fetchData = (async () => {
     try {
       const response = await fetch(params);
       const json = await response.json();
@@ -38,21 +38,29 @@
       }
       dataset = json.map(toCamelCase);
       typeLists = getTypeLists(dataset);
-      drugsList = getDrugsList(dataset);
       datasetMap = new Map([["variants", dataset]]);
       typeLists.forEach((type) => {
         const filteredData = dataset.filter((d) => d.type === type);
         datasetMap.set(type, filteredData);
       });
+      drugList = getdrugList(dataset);
     } catch (error) {
       console.error(error);
       dataset = [];
       typesCount = {};
       typeLists = [];
-      drugsList = [];
+      drugList = [];
       datasetMap = [];
     }
   })();
+
+  // let druglist = [];
+  const getDrugList = async () => {
+    await fetchData;
+    console.log(dataset);
+    console.log(drugList);
+  };
+  getDrugList();
 
   let displayDrugs = false;
   let selectedListItem = null;
@@ -145,9 +153,9 @@
   {#if displayDrugs}
     <div class="drugs-list">
       <h2>Drugs</h2>
-      {#if drugsList.length > 0}
+      {#if drugList.length > 0}
         <ul class="drugs-ul">
-          {#each drugsList as drugName, index}
+          {#each drugList as drugName, index}
             <li
               class={index === 0 ? "selected" : ""}
               on:click={drugsHandleClick}

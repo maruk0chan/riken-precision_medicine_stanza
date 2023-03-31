@@ -44595,37 +44595,38 @@ const { Boolean: Boolean_1 } = globals;
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[15] = list[i];
-	child_ctx[17] = i;
+	child_ctx[19] = list[i];
+	child_ctx[21] = i;
 	return child_ctx;
 }
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[18] = list[i];
+	child_ctx[22] = list[i];
 	return child_ctx;
 }
 
 function get_each_context_2(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[21] = list[i].className;
-	child_ctx[22] = list[i].label;
+	child_ctx[25] = list[i].className;
+	child_ctx[26] = list[i].label;
 	return child_ctx;
 }
 
 function get_each_context_3(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[6] = list[i];
+	child_ctx[29] = list[i];
+	child_ctx[21] = i;
 	return child_ctx;
 }
 
 function get_each_context_4(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[27] = list[i];
+	child_ctx[31] = list[i];
 	return child_ctx;
 }
 
-// (114:4) {#if typeLists.length > 0}
+// (135:4) {#if typeLists.length > 0}
 function create_if_block_4(ctx) {
 	let ul;
 	let each_value_4 = /*typeLists*/ ctx[2];
@@ -44655,7 +44656,7 @@ function create_if_block_4(ctx) {
 			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*typeLists, listHandleClick, typesCount, calculationType*/ 134) {
+			if (dirty[0] & /*typeLists, listHandleClick, typesCount*/ 134) {
 				each_value_4 = /*typeLists*/ ctx[2];
 				let i;
 
@@ -44685,17 +44686,17 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (116:8) {#each typeLists as type}
+// (137:8) {#each typeLists as type}
 function create_each_block_4(ctx) {
 	let li;
 	let img;
 	let img_class_value;
 	let img_src_value;
 	let img_alt_value;
-	let t0_value = /*type*/ ctx[27] + "";
+	let t0_value = /*type*/ ctx[31] + "";
 	let t0;
 	let span;
-	let t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[27]] + "";
+	let t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[31]] + "";
 	let t1;
 	let t2;
 	let li_data_type_value;
@@ -44710,11 +44711,11 @@ function create_each_block_4(ctx) {
 			span = element("span");
 			t1 = text(t1_value);
 			t2 = space();
-			attr(img, "class", img_class_value = calculationType(/*type*/ ctx[27]).className);
-			if (!src_url_equal(img.src, img_src_value = calculationType(/*type*/ ctx[27]).src)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = calculationType(/*type*/ ctx[27]).alt);
+			attr(img, "class", img_class_value = calculationType(/*type*/ ctx[31]).className);
+			if (!src_url_equal(img.src, img_src_value = calculationType(/*type*/ ctx[31]).src)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = calculationType(/*type*/ ctx[31]).alt);
 			attr(span, "class", "num");
-			attr(li, "data-type", li_data_type_value = /*type*/ ctx[27]);
+			attr(li, "data-type", li_data_type_value = /*type*/ ctx[31]);
 		},
 		m(target, anchor) {
 			insert(target, li, anchor);
@@ -44734,22 +44735,22 @@ function create_each_block_4(ctx) {
 			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*typeLists*/ 4 && img_class_value !== (img_class_value = calculationType(/*type*/ ctx[27]).className)) {
+			if (dirty[0] & /*typeLists*/ 4 && img_class_value !== (img_class_value = calculationType(/*type*/ ctx[31]).className)) {
 				attr(img, "class", img_class_value);
 			}
 
-			if (dirty & /*typeLists*/ 4 && !src_url_equal(img.src, img_src_value = calculationType(/*type*/ ctx[27]).src)) {
+			if (dirty[0] & /*typeLists*/ 4 && !src_url_equal(img.src, img_src_value = calculationType(/*type*/ ctx[31]).src)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (dirty & /*typeLists*/ 4 && img_alt_value !== (img_alt_value = calculationType(/*type*/ ctx[27]).alt)) {
+			if (dirty[0] & /*typeLists*/ 4 && img_alt_value !== (img_alt_value = calculationType(/*type*/ ctx[31]).alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 
-			if (dirty & /*typeLists*/ 4 && t0_value !== (t0_value = /*type*/ ctx[27] + "")) set_data(t0, t0_value);
-			if (dirty & /*typesCount, typeLists*/ 6 && t1_value !== (t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[27]] + "")) set_data(t1, t1_value);
+			if (dirty[0] & /*typeLists*/ 4 && t0_value !== (t0_value = /*type*/ ctx[31] + "")) set_data(t0, t0_value);
+			if (dirty[0] & /*typesCount, typeLists*/ 6 && t1_value !== (t1_value = /*typesCount*/ ctx[1][/*type*/ ctx[31]] + "")) set_data(t1, t1_value);
 
-			if (dirty & /*typeLists*/ 4 && li_data_type_value !== (li_data_type_value = /*type*/ ctx[27])) {
+			if (dirty[0] & /*typeLists*/ 4 && li_data_type_value !== (li_data_type_value = /*type*/ ctx[31])) {
 				attr(li, "data-type", li_data_type_value);
 			}
 		},
@@ -44761,13 +44762,13 @@ function create_each_block_4(ctx) {
 	};
 }
 
-// (132:2) {#if displayDrugs}
+// (153:2) {#if displayDrugs}
 function create_if_block_2(ctx) {
 	let div;
 	let h2;
 	let t1;
 	let current;
-	let if_block = /*drugsList*/ ctx[6].length > 0 && create_if_block_3(ctx);
+	let if_block = /*drugList*/ ctx[3].length > 0 && create_if_block_3(ctx);
 
 	return {
 		c() {
@@ -44786,11 +44787,11 @@ function create_if_block_2(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*drugsList*/ ctx[6].length > 0) {
+			if (/*drugList*/ ctx[3].length > 0) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty & /*drugsList*/ 64) {
+					if (dirty[0] & /*drugList*/ 8) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -44825,11 +44826,11 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (135:6) {#if drugsList.length > 0}
+// (156:6) {#if drugList.length > 0}
 function create_if_block_3(ctx) {
 	let ul;
 	let current;
-	let each_value_3 = /*drugsList*/ ctx[6];
+	let each_value_3 = /*drugList*/ ctx[3];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value_3.length; i += 1) {
@@ -44862,8 +44863,8 @@ function create_if_block_3(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*faCircleChevronRight, arrowTheme, drugsList*/ 64) {
-				each_value_3 = /*drugsList*/ ctx[6];
+			if (dirty[0] & /*drugsHandleClick, drugList*/ 264) {
+				each_value_3 = /*drugList*/ ctx[3];
 				let i;
 
 				for (i = 0; i < each_value_3.length; i += 1) {
@@ -44914,14 +44915,16 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (137:10) {#each drugsList as drugsList}
+// (158:10) {#each drugList as drugName, index}
 function create_each_block_3(ctx) {
 	let li;
-	let t0_value = /*drugsList*/ ctx[6] + "";
+	let t0_value = /*drugName*/ ctx[29] + "";
 	let t0;
 	let fa;
 	let t1;
 	let current;
+	let mounted;
+	let dispose;
 	const fa_spread_levels = [{ icon: faCircleChevronRight }, arrowTheme, { secondaryColor: "#fcb900" }];
 	let fa_props = {};
 
@@ -44937,6 +44940,7 @@ function create_each_block_3(ctx) {
 			t0 = text(t0_value);
 			create_component(fa.$$.fragment);
 			t1 = space();
+			attr(li, "class", /*index*/ ctx[21] === 0 ? "selected" : "");
 		},
 		m(target, anchor) {
 			insert(target, li, anchor);
@@ -44944,9 +44948,18 @@ function create_each_block_3(ctx) {
 			mount_component(fa, li, null);
 			append(li, t1);
 			current = true;
+
+			if (!mounted) {
+				dispose = [
+					listen(li, "click", /*drugsHandleClick*/ ctx[8]),
+					listen(li, "keydown", /*drugsHandleClick*/ ctx[8])
+				];
+
+				mounted = true;
+			}
 		},
 		p(ctx, dirty) {
-			if ((!current || dirty & /*drugsList*/ 64) && t0_value !== (t0_value = /*drugsList*/ ctx[6] + "")) set_data(t0, t0_value);
+			if ((!current || dirty[0] & /*drugList*/ 8) && t0_value !== (t0_value = /*drugName*/ ctx[29] + "")) set_data(t0, t0_value);
 
 			const fa_changes = (dirty & /*faCircleChevronRight, arrowTheme*/ 0)
 			? get_spread_update(fa_spread_levels, [
@@ -44970,15 +44983,17 @@ function create_each_block_3(ctx) {
 		d(detaching) {
 			if (detaching) detach(li);
 			destroy_component(fa);
+			mounted = false;
+			run_all(dispose);
 		}
 	};
 }
 
-// (160:14) {:else}
+// (185:14) {:else}
 function create_else_block(ctx) {
 	let th;
 	let p;
-	let t_value = /*label*/ ctx[22] + "";
+	let t_value = /*label*/ ctx[26] + "";
 	let t;
 
 	return {
@@ -44986,7 +45001,7 @@ function create_else_block(ctx) {
 			th = element("th");
 			p = element("p");
 			t = text(t_value);
-			attr(th, "class", /*className*/ ctx[21]);
+			attr(th, "class", /*className*/ ctx[25]);
 			attr(th, "rowspan", "2");
 		},
 		m(target, anchor) {
@@ -45001,11 +45016,11 @@ function create_else_block(ctx) {
 	};
 }
 
-// (158:14) {#if className.includes("th-group")}
+// (183:14) {#if className.includes("th-group")}
 function create_if_block_1(ctx) {
 	let th;
 	let p;
-	let t_value = /*label*/ ctx[22] + "";
+	let t_value = /*label*/ ctx[26] + "";
 	let t;
 
 	return {
@@ -45013,7 +45028,7 @@ function create_if_block_1(ctx) {
 			th = element("th");
 			p = element("p");
 			t = text(t_value);
-			attr(th, "class", /*className*/ ctx[21]);
+			attr(th, "class", /*className*/ ctx[25]);
 		},
 		m(target, anchor) {
 			insert(target, th, anchor);
@@ -45027,12 +45042,12 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (157:12) {#each theads as { className, label }}
+// (182:12) {#each theads as { className, label }}
 function create_each_block_2(ctx) {
 	let if_block_anchor;
 
 	function select_block_type(ctx, dirty) {
-		if (/*className*/ ctx[21].includes("th-group")) return create_if_block_1;
+		if (/*className*/ ctx[25].includes("th-group")) return create_if_block_1;
 		return create_else_block;
 	}
 
@@ -45058,11 +45073,11 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (169:8) {#if dataset.length > 0}
+// (194:8) {#if dataset.length > 0}
 function create_if_block(ctx) {
 	let tbody;
 	let current;
-	let each_value = /*datasetMap*/ ctx[3].get(/*selectedListName*/ ctx[5]);
+	let each_value = /*datasetMap*/ ctx[4].get(/*selectedListName*/ ctx[6]);
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -45093,8 +45108,8 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*tableHandleClick, scores, getColor, datasetMap, selectedListName, faCircleChevronRight, arrowTheme*/ 296) {
-				each_value = /*datasetMap*/ ctx[3].get(/*selectedListName*/ ctx[5]);
+			if (dirty[0] & /*tableHandleClick, datasetMap, selectedListName*/ 592) {
+				each_value = /*datasetMap*/ ctx[4].get(/*selectedListName*/ ctx[6]);
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -45145,7 +45160,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (196:16) {#each scores as key}
+// (221:16) {#each scores as key}
 function create_each_block_1(ctx) {
 	let td;
 	let div;
@@ -45155,7 +45170,7 @@ function create_each_block_1(ctx) {
 			td = element("td");
 			div = element("div");
 			attr(div, "class", "cell");
-			set_style(div, "background-color", getColor(/*data*/ ctx[15][/*key*/ ctx[18]]));
+			set_style(div, "background-color", getColor(/*data*/ ctx[19][/*key*/ ctx[22]]));
 			attr(td, "class", "cell-td");
 		},
 		m(target, anchor) {
@@ -45163,8 +45178,8 @@ function create_each_block_1(ctx) {
 			append(td, div);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*datasetMap, selectedListName*/ 40) {
-				set_style(div, "background-color", getColor(/*data*/ ctx[15][/*key*/ ctx[18]]));
+			if (dirty[0] & /*datasetMap, selectedListName*/ 80) {
+				set_style(div, "background-color", getColor(/*data*/ ctx[19][/*key*/ ctx[22]]));
 			}
 		},
 		d(detaching) {
@@ -45173,24 +45188,24 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (171:12) {#each datasetMap.get(selectedListName) as data, index}
+// (196:12) {#each datasetMap.get(selectedListName) as data, index}
 function create_each_block(ctx) {
 	let tr;
 	let td0;
 	let input;
 	let input_value_value;
 	let t0;
-	let t1_value = /*data*/ ctx[15].uniprotAcc + "";
+	let t1_value = /*data*/ ctx[19].uniprotAcc + "";
 	let t1;
 	let t2;
 	let td1;
 	let span;
-	let t3_value = /*data*/ ctx[15].variant + "";
+	let t3_value = /*data*/ ctx[19].variant + "";
 	let t3;
 	let fa;
 	let t4;
 	let td2;
-	let t5_value = /*data*/ ctx[15].feBind + "";
+	let t5_value = /*data*/ ctx[19].feBind + "";
 	let t5;
 	let t6;
 	let t7;
@@ -45237,11 +45252,11 @@ function create_each_block(ctx) {
 			attr(input, "class", "radio-button");
 			attr(input, "type", "radio");
 			attr(input, "name", "variantid");
-			input.value = input_value_value = /*data*/ ctx[15].uniprotAcc;
-			input.checked = /*index*/ ctx[17] === 0;
+			input.value = input_value_value = /*data*/ ctx[19].uniprotAcc;
+			input.checked = /*index*/ ctx[21] === 0;
 			attr(td0, "class", "td-uniport");
 			attr(td1, "class", "td-variant");
-			attr(tr, "class", /*index*/ ctx[17] === 0 ? "selected" : "");
+			attr(tr, "class", /*index*/ ctx[21] === 0 ? "selected" : "");
 		},
 		m(target, anchor) {
 			insert(target, tr, anchor);
@@ -45269,17 +45284,17 @@ function create_each_block(ctx) {
 			current = true;
 
 			if (!mounted) {
-				dispose = listen(tr, "click", /*tableHandleClick*/ ctx[8]);
+				dispose = listen(tr, "click", /*tableHandleClick*/ ctx[9]);
 				mounted = true;
 			}
 		},
 		p(ctx, dirty) {
-			if (!current || dirty & /*datasetMap, selectedListName*/ 40 && input_value_value !== (input_value_value = /*data*/ ctx[15].uniprotAcc)) {
+			if (!current || dirty[0] & /*datasetMap, selectedListName*/ 80 && input_value_value !== (input_value_value = /*data*/ ctx[19].uniprotAcc)) {
 				input.value = input_value_value;
 			}
 
-			if ((!current || dirty & /*datasetMap, selectedListName*/ 40) && t1_value !== (t1_value = /*data*/ ctx[15].uniprotAcc + "")) set_data(t1, t1_value);
-			if ((!current || dirty & /*datasetMap, selectedListName*/ 40) && t3_value !== (t3_value = /*data*/ ctx[15].variant + "")) set_data(t3, t3_value);
+			if ((!current || dirty[0] & /*datasetMap, selectedListName*/ 80) && t1_value !== (t1_value = /*data*/ ctx[19].uniprotAcc + "")) set_data(t1, t1_value);
+			if ((!current || dirty[0] & /*datasetMap, selectedListName*/ 80) && t3_value !== (t3_value = /*data*/ ctx[19].variant + "")) set_data(t3, t3_value);
 
 			const fa_changes = (dirty & /*faCircleChevronRight, arrowTheme*/ 0)
 			? get_spread_update(fa_spread_levels, [
@@ -45290,9 +45305,9 @@ function create_each_block(ctx) {
 			: {};
 
 			fa.$set(fa_changes);
-			if ((!current || dirty & /*datasetMap, selectedListName*/ 40) && t5_value !== (t5_value = /*data*/ ctx[15].feBind + "")) set_data(t5, t5_value);
+			if ((!current || dirty[0] & /*datasetMap, selectedListName*/ 80) && t5_value !== (t5_value = /*data*/ ctx[19].feBind + "")) set_data(t5, t5_value);
 
-			if (dirty & /*getColor, datasetMap, selectedListName, scores*/ 40) {
+			if (dirty[0] & /*datasetMap, selectedListName*/ 80) {
 				each_value_1 = scores;
 				let i;
 
@@ -45357,7 +45372,7 @@ function create_fragment(ctx) {
 	let mounted;
 	let dispose;
 	let if_block0 = /*typeLists*/ ctx[2].length > 0 && create_if_block_4(ctx);
-	let if_block1 = /*displayDrugs*/ ctx[4] && create_if_block_2(ctx);
+	let if_block1 = /*displayDrugs*/ ctx[5] && create_if_block_2(ctx);
 	let each_value_2 = theads;
 	let each_blocks = [];
 
@@ -45442,8 +45457,8 @@ function create_fragment(ctx) {
 				mounted = true;
 			}
 		},
-		p(ctx, [dirty]) {
-			if ((!current || dirty & /*dataset*/ 1) && t1_value !== (t1_value = /*dataset*/ ctx[0].length + "")) set_data(t1, t1_value);
+		p(ctx, dirty) {
+			if ((!current || dirty[0] & /*dataset*/ 1) && t1_value !== (t1_value = /*dataset*/ ctx[0].length + "")) set_data(t1, t1_value);
 
 			if (/*typeLists*/ ctx[2].length > 0) {
 				if (if_block0) {
@@ -45458,11 +45473,11 @@ function create_fragment(ctx) {
 				if_block0 = null;
 			}
 
-			if (/*displayDrugs*/ ctx[4]) {
+			if (/*displayDrugs*/ ctx[5]) {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 
-					if (dirty & /*displayDrugs*/ 16) {
+					if (dirty[0] & /*displayDrugs*/ 32) {
 						transition_in(if_block1, 1);
 					}
 				} else {
@@ -45508,7 +45523,7 @@ function create_fragment(ctx) {
 				if (if_block2) {
 					if_block2.p(ctx, dirty);
 
-					if (dirty & /*dataset*/ 1) {
+					if (dirty[0] & /*dataset*/ 1) {
 						transition_in(if_block2, 1);
 					}
 				} else {
@@ -45558,7 +45573,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	let typesCount = {};
 	let typeLists = [];
-	let drugsList = [];
+	let drugList = [];
 	let datasetMap = [];
 
 	const getTypeLists = dataset => {
@@ -45575,9 +45590,9 @@ function instance($$self, $$props, $$invalidate) {
 		return [...new Set(types.filter(Boolean))];
 	};
 
-	const getDrugsList = dataset => [...new Set(dataset.map(d => d.compoundId).filter(Boolean))];
+	const getdrugList = dataset => [...new Set(dataset.map(d => d.compoundId).filter(Boolean))];
 
-	(async () => {
+	const fetchData = (async () => {
 		try {
 			const response = await fetch(params);
 			const json = await response.json();
@@ -45588,86 +45603,112 @@ function instance($$self, $$props, $$invalidate) {
 
 			$$invalidate(0, dataset = json.map(toCamelCase));
 			$$invalidate(2, typeLists = getTypeLists(dataset));
-			$$invalidate(6, drugsList = getDrugsList(dataset));
-			$$invalidate(3, datasetMap = new Map([["variants", dataset]]));
+			$$invalidate(4, datasetMap = new Map([["variants", dataset]]));
 
 			typeLists.forEach(type => {
 				const filteredData = dataset.filter(d => d.type === type);
 				datasetMap.set(type, filteredData);
 			});
+
+			$$invalidate(3, drugList = getdrugList(dataset));
 		} catch(error) {
 			console.error(error);
 			$$invalidate(0, dataset = []);
 			$$invalidate(1, typesCount = {});
 			$$invalidate(2, typeLists = []);
-			$$invalidate(6, drugsList = []);
-			$$invalidate(3, datasetMap = []);
+			$$invalidate(3, drugList = []);
+			$$invalidate(4, datasetMap = []);
 		}
 	})();
 
+	// let druglist = [];
+	const getDrugList = async () => {
+		await fetchData;
+		console.log(dataset);
+		console.log(drugList);
+	};
+
+	getDrugList();
 	let displayDrugs = false;
-	let selectedItemList = null;
+	let selectedListItem = null;
 	let selectedListName = "variants";
 
-	function listHandleClick(event) {
+	const listHandleClick = event => {
 		const clickedItem = event.target.closest("li, h2");
 		root.querySelector(".column-list > h2").classList.remove("selected");
 
-		if (clickedItem !== selectedItemList) {
-			if (selectedItemList) {
-				selectedItemList.classList.remove("selected");
+		if (clickedItem !== selectedListItem) {
+			if (selectedListItem) {
+				selectedListItem.classList.remove("selected");
 			}
 
-			selectedItemList = clickedItem;
-			selectedItemList.classList.add("selected");
-			$$invalidate(5, selectedListName = clickedItem.dataset.type);
+			selectedListItem = clickedItem;
+			selectedListItem.classList.add("selected");
+			$$invalidate(6, selectedListName = clickedItem.dataset.type);
 
-			$$invalidate(4, displayDrugs = calculationType(selectedListName).calcName === "mutation"
+			$$invalidate(5, displayDrugs = calculationType(selectedListName).calcName === "mutation"
 			? true
 			: false);
 		}
-	}
+	};
+
+	let selectedDrug = null;
+
+	const drugsHandleClick = event => {
+		const clickedItem = event.target.closest("li");
+		root.querySelector(".drugs-list > ul").firstChild.classList.remove("selected");
+
+		if (clickedItem !== selectedDrug) {
+			if (selectedDrug) {
+				selectedDrug.classList.remove("selected");
+			}
+
+			selectedDrug = clickedItem;
+			selectedDrug.classList.add("selected");
+		} else {
+			selectedDrug = null;
+			clickedItem.classList.remove("selected");
+		}
+	};
 
 	let tableSelectedItem = null;
 
-	function tableHandleClick(event) {
+	const tableHandleClick = event => {
 		const clickedItem = event.target.closest("tr");
 		const radioButton = clickedItem.querySelector('input[type="radio"]');
+		clickedItem.parentElement.firstChild.classList.remove("selected");
 
-		if (clickedItem) {
-			clickedItem.parentElement.firstChild.classList.remove("selected");
-
-			if (clickedItem !== tableSelectedItem) {
-				if (tableSelectedItem) {
-					tableSelectedItem.classList.remove("selected");
-					tableSelectedItem.querySelector('input[type="radio"]').checked = false;
-				}
-
-				tableSelectedItem = clickedItem;
-				tableSelectedItem.classList.add("selected");
-				radioButton.checked = true;
-			} else {
-				tableSelectedItem = null;
-				clickedItem.classList.remove("selected");
-				radioButton.checked = false;
+		if (clickedItem !== tableSelectedItem) {
+			if (tableSelectedItem) {
+				tableSelectedItem.classList.remove("selected");
+				tableSelectedItem.querySelector('input[type="radio"]').checked = false;
 			}
+
+			tableSelectedItem = clickedItem;
+			tableSelectedItem.classList.add("selected");
+			radioButton.checked = true;
+		} else {
+			tableSelectedItem = null;
+			clickedItem.classList.remove("selected");
+			radioButton.checked = false;
 		}
-	}
+	};
 
 	$$self.$$set = $$props => {
-		if ('params' in $$props) $$invalidate(9, params = $$props.params);
-		if ('root' in $$props) $$invalidate(10, root = $$props.root);
+		if ('params' in $$props) $$invalidate(10, params = $$props.params);
+		if ('root' in $$props) $$invalidate(11, root = $$props.root);
 	};
 
 	return [
 		dataset,
 		typesCount,
 		typeLists,
+		drugList,
 		datasetMap,
 		displayDrugs,
 		selectedListName,
-		drugsList,
 		listHandleClick,
+		drugsHandleClick,
 		tableHandleClick,
 		params,
 		root
@@ -45677,7 +45718,7 @@ function instance($$self, $$props, $$invalidate) {
 class App extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { params: 9, root: 10 });
+		init(this, options, instance, create_fragment, safe_not_equal, { params: 10, root: 11 }, null, [-1, -1]);
 	}
 }
 

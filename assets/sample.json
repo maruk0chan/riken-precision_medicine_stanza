@@ -38,7 +38,7 @@
   {
     "Type": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib",
+    "Compound_ID": "Alectinib3",
     "variant": "A1251D",
     "CADD_raw_rankscore": 0.91297,
     "fathmm-MKL_coding_rankscore": 0.86437,
@@ -56,7 +56,7 @@
   {
     "Type": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib",
+    "Compound_ID": "Alectinib4",
     "variant": "A1377D",
     "CADD_raw_rankscore": 0.65115,
     "fathmm-MKL_coding_rankscore": 0.62084,
