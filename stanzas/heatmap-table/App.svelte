@@ -55,49 +55,62 @@
   })();
 
   let displayDrugs = false;
-  let selectedItemList = null;
+  let selectedListItem = null;
   let selectedListName = "variants";
-
-  function listHandleClick(event) {
+  const listHandleClick = (event) => {
     const clickedItem = event.target.closest("li, h2");
     root.querySelector(".column-list > h2").classList.remove("selected");
-    if (clickedItem !== selectedItemList) {
-      if (selectedItemList) {
-        selectedItemList.classList.remove("selected");
+    if (clickedItem !== selectedListItem) {
+      if (selectedListItem) {
+        selectedListItem.classList.remove("selected");
       }
-      selectedItemList = clickedItem;
-      selectedItemList.classList.add("selected");
+      selectedListItem = clickedItem;
+      selectedListItem.classList.add("selected");
       selectedListName = clickedItem.dataset.type;
       displayDrugs =
         calculationType(selectedListName).calcName === "mutation"
           ? true
           : false;
     }
-  }
+  };
+
+  let selectedDrug = null;
+  const drugsHandleClick = (event) => {
+    const clickedItem = event.target.closest("li");
+    root
+      .querySelector(".drugs-list > ul")
+      .firstChild.classList.remove("selected");
+    if (clickedItem !== selectedDrug) {
+      if (selectedDrug) {
+        selectedDrug.classList.remove("selected");
+      }
+      selectedDrug = clickedItem;
+      selectedDrug.classList.add("selected");
+    } else {
+      selectedDrug = null;
+      clickedItem.classList.remove("selected");
+    }
+  };
 
   let tableSelectedItem = null;
-  function tableHandleClick(event) {
+  const tableHandleClick = (event) => {
     const clickedItem = event.target.closest("tr");
     const radioButton = clickedItem.querySelector('input[type="radio"]');
-    if (clickedItem) {
-      clickedItem.parentElement.firstChild.classList.remove("selected");
-      if (clickedItem !== tableSelectedItem) {
-        if (tableSelectedItem) {
-          tableSelectedItem.classList.remove("selected");
-          tableSelectedItem.querySelector(
-            'input[type="radio"]'
-          ).checked = false;
-        }
-        tableSelectedItem = clickedItem;
-        tableSelectedItem.classList.add("selected");
-        radioButton.checked = true;
-      } else {
-        tableSelectedItem = null;
-        clickedItem.classList.remove("selected");
-        radioButton.checked = false;
+    clickedItem.parentElement.firstChild.classList.remove("selected");
+    if (clickedItem !== tableSelectedItem) {
+      if (tableSelectedItem) {
+        tableSelectedItem.classList.remove("selected");
+        tableSelectedItem.querySelector('input[type="radio"]').checked = false;
       }
+      tableSelectedItem = clickedItem;
+      tableSelectedItem.classList.add("selected");
+      radioButton.checked = true;
+    } else {
+      tableSelectedItem = null;
+      clickedItem.classList.remove("selected");
+      radioButton.checked = false;
     }
-  }
+  };
 </script>
 
 <div class="heatmap-table">
@@ -134,9 +147,13 @@
       <h2>Drugs</h2>
       {#if drugsList.length > 0}
         <ul class="drugs-ul">
-          {#each drugsList as drugsList}
-            <li>
-              {drugsList}<Fa
+          {#each drugsList as drugName, index}
+            <li
+              class={index === 0 ? "selected" : ""}
+              on:click={drugsHandleClick}
+              on:keydown={drugsHandleClick}
+            >
+              {drugName}<Fa
                 icon={faCircleChevronRight}
                 {...arrowTheme}
                 secondaryColor="#fcb900"
