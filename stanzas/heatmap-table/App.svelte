@@ -15,6 +15,10 @@
   let typeLists = [];
   let drugList = [];
   let datasetMap = [];
+  let drugListMap = new Map();
+  let selectDrugList = [];
+  let selectedListName = "variants";
+  let currentTabeList = [];
 
   const getTypeLists = (dataset) => {
     const types = dataset.map((d) => d.type);
@@ -29,7 +33,7 @@
     ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
   ];
 
-  const fetchData = (async () => {
+  (async () => {
     try {
       const response = await fetch(params);
       const json = await response.json();
@@ -37,36 +41,30 @@
         throw new Error(json);
       }
       dataset = json.map(toCamelCase);
+      currentTabeList = dataset;
       typeLists = getTypeLists(dataset);
       datasetMap = new Map([["variants", dataset]]);
+
       typeLists.forEach((type) => {
         const filteredData = dataset.filter((d) => d.type === type);
         datasetMap.set(type, filteredData);
+
+        if (calculationType(type).calcName === "mutation") {
+          drugListMap.set(type, getdrugList(datasetMap.get(type)));
+        }
       });
       drugList = getdrugList(dataset);
     } catch (error) {
       console.error(error);
-      dataset = [];
-      typesCount = {};
-      typeLists = [];
-      drugList = [];
-      datasetMap = [];
     }
   })();
 
-  // let druglist = [];
-  const getDrugList = async () => {
-    await fetchData;
-    console.log(dataset);
-    console.log(drugList);
-  };
-  getDrugList();
-
   let displayDrugs = false;
   let selectedListItem = null;
-  let selectedListName = "variants";
   const listHandleClick = (event) => {
     const clickedItem = event.target.closest("li, h2");
+    const dataType = clickedItem.dataset.type;
+    selectDrugList = drugListMap.get(dataType);
     root.querySelector(".column-list > h2").classList.remove("selected");
     if (clickedItem !== selectedListItem) {
       if (selectedListItem) {
@@ -75,6 +73,7 @@
       selectedListItem = clickedItem;
       selectedListItem.classList.add("selected");
       selectedListName = clickedItem.dataset.type;
+      currentTabeList = datasetMap.get(selectedListName);
       displayDrugs =
         calculationType(selectedListName).calcName === "mutation"
           ? true
@@ -155,7 +154,7 @@
       <h2>Drugs</h2>
       {#if drugList.length > 0}
         <ul class="drugs-ul">
-          {#each drugList as drugName, index}
+          {#each selectDrugList as drugName, index}
             <li
               class={index === 0 ? "selected" : ""}
               on:click={drugsHandleClick}
@@ -193,7 +192,7 @@
         </thead>
         {#if dataset.length > 0}
           <tbody>
-            {#each datasetMap.get(selectedListName) as data, index}
+            {#each currentTabeList as data, index}
               <tr
                 class={index === 0 ? "selected" : ""}
                 on:click={tableHandleClick}
