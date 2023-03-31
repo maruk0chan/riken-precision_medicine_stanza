@@ -4,6 +4,7 @@ body,
 h2,
 div,
 span,
+p,
 ul,
 li,
 table,
@@ -17,9 +18,6 @@ input {
 }
 li {
   list-style: none;
-}
-table {
-  border-collapse: collapse;
 }
 *,
 *::before,

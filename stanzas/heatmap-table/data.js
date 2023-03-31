@@ -1,21 +1,30 @@
 export const arrowTheme = {
   secondaryOpacity: 1,
-  primaryColor: "#000",
+  primaryColor: "transparent",
   size: "90%",
 };
 
-const drugIcon = "../assets/drug.png";
-const proteinIcon = "../assets/protein.png";
-export const setIcon = (calcName) => {
-  switch (calcName) {
-    case "Mutation_FEP":
+const drugIcon =
+  "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/drug.png";
+const proteinIcon =
+  "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/protein.png";
+export const calculationType = (dataType) => {
+  switch (dataType) {
+    case "variants":
       return {
+        calcName: "variants",
+      };
+    case "Mutation_FEP":
+    case "Mutation_FE":
+      return {
+        calcName: "mutation",
         className: "drug-icon",
         src: drugIcon,
         alt: "drug icon",
       };
     default:
       return {
+        calcName: "protein",
         className: "protein-icon",
         src: proteinIcon,
         alt: "protein icon",

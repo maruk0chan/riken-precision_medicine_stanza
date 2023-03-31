@@ -1,0 +1,237 @@
+html,
+body,
+h2,
+div,
+span,
+p,
+ul,
+li,
+table,
+tr,
+th,
+td,
+label,
+input {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:host {
+  --togostanza-fadeout-opacity: 0.2;
+  --togostanza-fadeout-transition: opacity 0.2s ease-in;
+  display: block;
+  font-family: var(--togostanza-fonts-font_family);
+  font-size: calc(var(--togostanza-fonts-font_size_primary) * 1px);
+  color: var(--togostanza-fonts-font_color);
+  background-color: var(--togostanza-theme-background_color);
+}
+
+main {
+  padding: 1rem 2rem;
+}
+
+img {
+  width: 17px;
+  margin-right: 5px;
+  vertical-align: sub;
+}
+img.drug-icon {
+  width: 14px;
+  margin-right: 7px;
+  margin-left: 2px;
+}
+
+.svelte-fa {
+  padding-left: 5px;
+  vertical-align: text-bottom;
+}
+
+.radio-button {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  vertical-align: text-top;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  appearance: none;
+}
+.radio-button:checked {
+  background-color: #fff;
+  border: 4px solid #29abe2;
+}
+
+.heatmap-table {
+  display: flex;
+  height: calc(var(--togostanza-canvas-height) * 1px);
+  white-space: nowrap;
+}
+.heatmap-table .column-list,
+.heatmap-table .drugs-list {
+  padding: 10px;
+}
+.heatmap-table .column-list > h2,
+.heatmap-table .drugs-list > h2 {
+  padding: 2px 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+.heatmap-table .column-list > ul > li,
+.heatmap-table .drugs-list > ul > li {
+  padding: 2px 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.heatmap-table .column-list > ul > li:hover, .heatmap-table .column-list > ul > li.selected,
+.heatmap-table .drugs-list > ul > li:hover,
+.heatmap-table .drugs-list > ul > li.selected {
+  clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+  color: #000;
+  background-color: #fcb900;
+}
+.heatmap-table .column-list > ul > li:active,
+.heatmap-table .drugs-list > ul > li:active {
+  background-color: #bc9b40;
+}
+.heatmap-table .column-list > ul > li:active .svelte-fa,
+.heatmap-table .drugs-list > ul > li:active .svelte-fa {
+  display: none;
+}
+.heatmap-table .column-list.column-list,
+.heatmap-table .drugs-list.column-list {
+  width: 15%;
+  min-width: 190px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.heatmap-table .column-list.column-list > h2:hover, .heatmap-table .column-list.column-list > h2.selected,
+.heatmap-table .drugs-list.column-list > h2:hover,
+.heatmap-table .drugs-list.column-list > h2.selected {
+  clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+  color: #000;
+  cursor: pointer;
+  background-color: #5fdede;
+  border-radius: 2px;
+}
+.heatmap-table .column-list.column-list > h2:active,
+.heatmap-table .drugs-list.column-list > h2:active {
+  background-color: #2dbcbc;
+}
+.heatmap-table .column-list.column-list .num,
+.heatmap-table .drugs-list.column-list .num {
+  padding: 0 5px;
+  margin-left: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+.heatmap-table .column-list.column-list h2:hover .num,
+.heatmap-table .column-list.column-list li:hover .num,
+.heatmap-table .column-list.column-list h2.selected .num,
+.heatmap-table .column-list.column-list li.selected .num,
+.heatmap-table .drugs-list.column-list h2:hover .num,
+.heatmap-table .drugs-list.column-list li:hover .num,
+.heatmap-table .drugs-list.column-list h2.selected .num,
+.heatmap-table .drugs-list.column-list li.selected .num {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.heatmap-table .column-list.drugs-list,
+.heatmap-table .drugs-list.drugs-list {
+  width: 10%;
+  min-width: 120px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.heatmap-table .table-container {
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.heatmap-table .table-container .table-wrapper {
+  height: calc(100% - 28px);
+  margin: 15px;
+  overflow-y: scroll;
+}
+.heatmap-table .table-container .table-wrapper table {
+  border-spacing: 0;
+  border-bottom: 1px solid #fff;
+}
+.heatmap-table .table-container .table-wrapper table thead {
+  position: sticky;
+  top: 0;
+  height: 50px;
+  background-color: #102e41;
+  border-top: 1px solid #fff;
+}
+.heatmap-table .table-container .table-wrapper table thead th {
+  padding-bottom: 4px;
+  text-align: left;
+  vertical-align: bottom;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-gene {
+  width: 20%;
+  min-width: 120px;
+  padding-left: 18px;
+  color: #9ce53c;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-variant {
+  width: 20%;
+  min-width: 105px;
+  color: #5fdede;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-calc {
+  width: 20%;
+  min-width: 110px;
+  color: #fcb900;
+  border-top: none;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-calc.th-group {
+  font-size: 85%;
+  vertical-align: bottom;
+  border-top: 1px solid #fff;
+  border-bottom: none;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-heatmap {
+  width: 1%;
+  max-width: 35px;
+  padding-right: 35px;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-heatmap p {
+  position: relative;
+  top: 6px;
+  left: -10px;
+  font-size: 12px;
+  transform-origin: top left;
+  rotate: -20deg;
+}
+.heatmap-table .table-container .table-wrapper table tbody tr.selected {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.heatmap-table .table-container .table-wrapper table tbody tr td {
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.heatmap-table .table-container .table-wrapper table tbody tr td.td-uniport {
+  padding: 8px;
+}
+.heatmap-table .table-container .table-wrapper table tbody tr td.td-variant {
+  color: #5fdede;
+}
+.heatmap-table .table-container .table-wrapper table tbody tr td.td-variant > span {
+  padding: 8px 8px 8px 0;
+  cursor: pointer;
+}
+.heatmap-table .table-container .table-wrapper table tbody tr td.cell-td > .cell {
+  width: 17px;
+  height: 17px;
+  background-color: #f00;
+  border-radius: 50%;
+}

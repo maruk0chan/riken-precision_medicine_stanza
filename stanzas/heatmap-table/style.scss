@@ -35,36 +35,50 @@ img {
 //Heatmap Table
 .heatmap-table {
   display: flex;
+  height: calc(var(--togostanza-canvas-height) * 1px);
   white-space: nowrap;
   .column-list,
   .drugs-list {
     padding: 10px;
-
     > h2 {
-      padding: 2px 15px 2px 5px;
+      padding: 2px 5px;
+      margin-bottom: 5px;
       font-size: 14px;
     }
     > ul > li {
       padding: 2px 5px;
-      margin-left: 5px;
+      margin-bottom: 5px;
       cursor: pointer;
       border-radius: 2px;
       &:hover,
-      &:active {
+      &.selected {
+        clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
         color: #000;
         background-color: #fcb900;
       }
+      &:active {
+        background-color: #bc9b40;
+        .svelte-fa {
+          display: none;
+        }
+      }
     }
     &.column-list {
+      width: 15%;
+      min-width: 190px;
       background-color: rgb(0 0 0 / 50%);
-      > h2:hover,
-      h2:active {
-        width: fit-content;
-        clip-path: polygon(0% 0%, 92% 0%, 100% 50%, 92% 100%, 0% 100%);
-        border-radius: 2px;
-        color: #000;
-        background-color: #5fdede;
-        cursor: pointer;
+      > h2 {
+        &:hover,
+        &.selected {
+          clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+          color: #000;
+          cursor: pointer;
+          background-color: #5fdede;
+          border-radius: 2px;
+        }
+        &:active {
+          background-color: #2dbcbc;
+        }
       }
       .num {
         padding: 0 5px;
@@ -74,89 +88,107 @@ img {
       }
       h2:hover,
       li:hover,
-      h2:active,
-      li:active {
+      h2.selected,
+      li.selected {
         .num {
           background-color: rgb(0 0 0 / 20%);
         }
       }
     }
     &.drugs-list {
+      width: 10%;
+      min-width: 120px;
       background-color: rgb(0 0 0 / 40%);
     }
   }
 
   // Table
   .table-container {
-    padding: 20px;
+    flex: 1;
     background-color: rgb(0 0 0 / 30%);
-    table {
-      width: 100%;
-      padding: 10px;
-      table-layout: fixed;
-      thead {
-        height: 50px;
-        border-top: 1px solid #fff;
+    .table-wrapper {
+      height: calc(100% - 28px);
+      margin: 15px;
+      overflow-y: scroll;
+      table {
+        border-spacing: 0;
         border-bottom: 1px solid #fff;
-        th {
-          text-align: left;
-          vertical-align: bottom;
-          padding-bottom: 4px;
-          &.th-gene {
-            width: 120px;
-            color: #9ce53c;
-            text-align: center;
-          }
-          &.th-variant {
-            width: 100px;
-            color: #5fdede;
-          }
-          &.th-calc {
-            width: 110px;
-            color: #fcb900;
-            &.th-group {
-              font-size: 85%;
-              vertical-align: bottom;
+        thead {
+          position: sticky;
+          top: 0;
+          height: 50px;
+          background-color: #102e41;
+          border-top: 1px solid #fff;
+          th {
+            padding-bottom: 4px;
+            text-align: left;
+            vertical-align: bottom;
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            &.th-gene {
+              width: 20%;
+              min-width: 120px;
+              padding-left: 18px;
+              color: #9ce53c;
             }
-          }
-          &.th-heatmap {
-            position: relative;
-            top: -2px;
-            left: -10px;
-            width: 0;
-            padding-right: 35px;
-            font-size: 12px;
-            rotate: -20deg;
+            &.th-variant {
+              width: 20%;
+              min-width: 105px;
+              color: #5fdede;
+            }
+            &.th-calc {
+              width: 20%;
+              min-width: 110px;
+              color: #fcb900;
+              border-top: none;
+              &.th-group {
+                font-size: 85%;
+                vertical-align: bottom;
+                border-top: 1px solid #fff;
+                border-bottom: none;
+              }
+            }
+            &.th-heatmap {
+              width: 1%;
+              max-width: 35px;
+              padding-right: 35px;
+              p {
+                position: relative;
+                top: 6px;
+                left: -10px;
+                font-size: 12px;
+                transform-origin: top left;
+                rotate: -20deg;
+              }
+            }
           }
         }
-      }
-      tbody {
-        border-bottom: 1px solid #fff;
-        tr {
-          &:not(:last-child) {
-            border-bottom: 1px solid rgb(255 255 255 / 20%);
-          }
-        }
-        td {
-          padding: 5px 0;
-          &.td-uniport {
-            > label {
-              padding: 8px;
+        tbody {
+          tr {
+            &.selected {
+              background-color: rgb(255 255 255 / 10%);
             }
-          }
-          &.td-variant {
-            color: #5fdede;
-            > span {
-              padding: 8px 8px 8px 0;
-              cursor: pointer;
-            }
-          }
-          &.cell-td {
-            > .cell {
-              width: 17px;
-              height: 17px;
-              background-color: #f00;
-              border-radius: 50%;
+            td {
+              padding: 5px 0;
+              border-bottom: 1px solid rgb(255 255 255 / 20%);
+              &.td-uniport {
+                padding: 8px;
+              }
+              &.td-variant {
+                color: #5fdede;
+                > span {
+                  padding: 8px 8px 8px 0;
+                  cursor: pointer;
+                }
+              }
+              &.cell-td {
+                > .cell {
+                  width: 17px;
+                  height: 17px;
+                  background-color: #f00;
+                  border-radius: 50%;
+                }
+              }
             }
           }
         }

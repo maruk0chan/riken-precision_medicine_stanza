@@ -6,15 +6,15 @@ export default class HeatmapTable extends Stanza {
   app = null;
 
   async render() {
-    if (!this.app) {
-      this.app = new App({
-        target: this.root.querySelector("main"),
-        props: toCamelCase(this.params),
-      });
+    if (this.app) {
+      this.root.querySelector("main > .heatmap-table").remove();
     }
-  }
-
-  handleAttributeChange() {
-    this.app?.$set(toCamelCase(this.params));
+    this.app = new App({
+      target: this.root.querySelector("main"),
+      props: {
+        params: toCamelCase(this.params)["dataUrl"],
+        root: this.root.querySelector("main"),
+      },
+    });
   }
 }
