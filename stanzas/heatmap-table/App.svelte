@@ -61,24 +61,48 @@
   })();
 
   let displayDrugs = false;
-  let selectedListItem = null;
+  let selectedListEl = null;
+  let isChangeSelectedListEl = true;
   const listHandleClick = (event) => {
     const clickedItem = event.target.closest("li, h2");
     currentDataType = clickedItem.dataset.type;
     selectDrugList = drugListMap.get(currentDataType);
-    root.querySelector(".column-list > h2").classList.remove("selected");
-    if (clickedItem !== selectedListItem) {
-      if (selectedListItem) {
-        selectedListItem.classList.remove("selected");
+    const h2El = root.querySelector(".column-list > h2");
+    h2El.classList.remove("selected");
+    if (clickedItem !== selectedListEl) {
+      if (selectedListEl) {
+        selectedListEl.classList.remove("selected");
+        isChangeSelectedListEl = true;
+      } else if (!selectedListEl && clickedItem === h2El) {
+        isChangeSelectedListEl = false;
       }
-      selectedListItem = clickedItem;
-      selectedListItem.classList.add("selected");
+      selectedListEl = clickedItem;
+      selectedListEl.classList.add("selected");
       selectedListName = clickedItem.dataset.type;
       currentTabeList = datasetMap.get(selectedListName);
       displayDrugs =
         calculationType(selectedListName).calcName === "mutation"
           ? true
           : false;
+    } else {
+      isChangeSelectedListEl = false;
+    }
+
+    if (isChangeSelectedListEl) {
+      if (root.querySelector("tbody")) {
+        const trs = root.querySelectorAll("tbody > tr");
+        trs.forEach((tr) => {
+          const radio = tr.querySelector('input[type="radio"]');
+          if (radio.checked) {
+            radio.checked = false;
+          }
+        });
+        root.querySelector("tbody > tr.selected").classList.remove("selected");
+        root.querySelector("tbody").firstChild.classList.add("selected");
+        root
+          .querySelector("tbody")
+          .firstChild.querySelector('input[type="radio"]').checked = true;
+      }
     }
   };
 
