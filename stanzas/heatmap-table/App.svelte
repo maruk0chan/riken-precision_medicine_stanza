@@ -19,6 +19,7 @@
   let selectDrugList = [];
   let selectedListName = "variants";
   let currentTabeList = [];
+  let currentDataType = null;
 
   const getTypeLists = (dataset) => {
     const types = dataset.map((d) => d.type);
@@ -63,8 +64,8 @@
   let selectedListItem = null;
   const listHandleClick = (event) => {
     const clickedItem = event.target.closest("li, h2");
-    const dataType = clickedItem.dataset.type;
-    selectDrugList = drugListMap.get(dataType);
+    currentDataType = clickedItem.dataset.type;
+    selectDrugList = drugListMap.get(currentDataType);
     root.querySelector(".column-list > h2").classList.remove("selected");
     if (clickedItem !== selectedListItem) {
       if (selectedListItem) {
@@ -82,20 +83,30 @@
   };
 
   let selectedDrug = null;
+  let currentMutationTabeList = [];
   const drugsHandleClick = (event) => {
     const clickedItem = event.target.closest("li");
-    root
-      .querySelector(".drugs-list > ul")
-      .firstChild.classList.remove("selected");
+    const currentDrugDataset = datasetMap.get(currentDataType);
+    currentMutationTabeList = [];
+
     if (clickedItem !== selectedDrug) {
       if (selectedDrug) {
         selectedDrug.classList.remove("selected");
+        currentMutationTabeList = [];
       }
       selectedDrug = clickedItem;
       selectedDrug.classList.add("selected");
+
+      currentDrugDataset.forEach((data) => {
+        if (data.compoundId === clickedItem.dataset.compound) {
+          currentMutationTabeList.push(data);
+        }
+      });
+      currentTabeList = currentMutationTabeList;
     } else {
       selectedDrug = null;
       clickedItem.classList.remove("selected");
+      currentTabeList = currentDrugDataset;
     }
   };
 
@@ -156,7 +167,7 @@
         <ul class="drugs-ul">
           {#each selectDrugList as drugName, index}
             <li
-              class={index === 0 ? "selected" : ""}
+              data-compound={drugName}
               on:click={drugsHandleClick}
               on:keydown={drugsHandleClick}
             >
