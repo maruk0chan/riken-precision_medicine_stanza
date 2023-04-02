@@ -95,7 +95,7 @@ img.drug-icon {
 .heatmap-table .column-list > ul > li:hover, .heatmap-table .column-list > ul > li.selected,
 .heatmap-table .drugs-list > ul > li:hover,
 .heatmap-table .drugs-list > ul > li.selected {
-  clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, calc(100% - 10px) 0%, 100% 50%, calc(100% - 10px) 100%, 0% 100%);
   color: #000;
   background-color: #fcb900;
 }
@@ -116,7 +116,7 @@ img.drug-icon {
 .heatmap-table .column-list.column-list > h2:hover, .heatmap-table .column-list.column-list > h2.selected,
 .heatmap-table .drugs-list.column-list > h2:hover,
 .heatmap-table .drugs-list.column-list > h2.selected {
-  clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, calc(100% - 10px) 0%, 100% 50%, calc(100% - 10px) 100%, 0% 100%);
   color: #000;
   cursor: pointer;
   background-color: #5fdede;

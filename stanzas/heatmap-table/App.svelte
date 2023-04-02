@@ -15,6 +15,11 @@
   let typeLists = [];
   let drugList = [];
   let datasetMap = [];
+  let drugListMap = new Map();
+  let selectDrugList = [];
+  let selectedListName = "variants";
+  let currentTabeList = [];
+  let currentDataType = null;
 
   const getTypeLists = (dataset) => {
     const types = dataset.map((d) => d.type);
@@ -29,7 +34,7 @@
     ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
   ];
 
-  const fetchData = (async () => {
+  (async () => {
     try {
       const response = await fetch(params);
       const json = await response.json();
@@ -37,67 +42,102 @@
         throw new Error(json);
       }
       dataset = json.map(toCamelCase);
+      currentTabeList = dataset;
       typeLists = getTypeLists(dataset);
       datasetMap = new Map([["variants", dataset]]);
+
       typeLists.forEach((type) => {
         const filteredData = dataset.filter((d) => d.type === type);
         datasetMap.set(type, filteredData);
+
+        if (calculationType(type).calcName === "mutation") {
+          drugListMap.set(type, getdrugList(datasetMap.get(type)));
+        }
       });
       drugList = getdrugList(dataset);
     } catch (error) {
       console.error(error);
-      dataset = [];
-      typesCount = {};
-      typeLists = [];
-      drugList = [];
-      datasetMap = [];
     }
   })();
 
-  // let druglist = [];
-  const getDrugList = async () => {
-    await fetchData;
-    console.log(dataset);
-    console.log(drugList);
+  const initTableSelected = () => {
+    if (root.querySelector("tbody")) {
+      const trs = root.querySelectorAll("tbody > tr");
+      trs.forEach((tr) => {
+        const radio = tr.querySelector('input[type="radio"]');
+        if (radio.checked) {
+          radio.checked = false;
+        }
+      });
+      root.querySelector("tbody > tr.selected").classList.remove("selected");
+      root.querySelector("tbody").firstChild.classList.add("selected");
+      root
+        .querySelector("tbody")
+        .firstChild.querySelector('input[type="radio"]').checked = true;
+    }
   };
-  getDrugList();
 
   let displayDrugs = false;
-  let selectedListItem = null;
-  let selectedListName = "variants";
+  let selectedListEl = null;
+  let isChangeSelectedListEl = true;
   const listHandleClick = (event) => {
     const clickedItem = event.target.closest("li, h2");
-    root.querySelector(".column-list > h2").classList.remove("selected");
-    if (clickedItem !== selectedListItem) {
-      if (selectedListItem) {
-        selectedListItem.classList.remove("selected");
+    currentDataType = clickedItem.dataset.type;
+    selectDrugList = drugListMap.get(currentDataType);
+    const h2El = root.querySelector(".column-list > h2");
+    h2El.classList.remove("selected");
+    if (clickedItem !== selectedListEl) {
+      if (selectedListEl) {
+        selectedListEl.classList.remove("selected");
+        isChangeSelectedListEl = true;
+      } else if (!selectedListEl && clickedItem === h2El) {
+        isChangeSelectedListEl = false;
       }
-      selectedListItem = clickedItem;
-      selectedListItem.classList.add("selected");
+      selectedListEl = clickedItem;
+      selectedListEl.classList.add("selected");
       selectedListName = clickedItem.dataset.type;
+      currentTabeList = datasetMap.get(selectedListName);
       displayDrugs =
         calculationType(selectedListName).calcName === "mutation"
           ? true
           : false;
+    } else {
+      isChangeSelectedListEl = false;
+    }
+
+    if (isChangeSelectedListEl) {
+      initTableSelected();
     }
   };
 
   let selectedDrug = null;
+  let currentMutationTabeList = [];
   const drugsHandleClick = (event) => {
     const clickedItem = event.target.closest("li");
-    root
-      .querySelector(".drugs-list > ul")
-      .firstChild.classList.remove("selected");
+    const currentDrugDataset = datasetMap.get(currentDataType);
+    currentMutationTabeList = [];
+
     if (clickedItem !== selectedDrug) {
       if (selectedDrug) {
         selectedDrug.classList.remove("selected");
+        currentMutationTabeList = [];
       }
       selectedDrug = clickedItem;
       selectedDrug.classList.add("selected");
+
+      currentDrugDataset.forEach((data) => {
+        if (data.compoundId === clickedItem.dataset.compound) {
+          currentMutationTabeList.push(data);
+        }
+      });
+      currentTabeList = currentMutationTabeList;
     } else {
       selectedDrug = null;
       clickedItem.classList.remove("selected");
+      currentTabeList = currentDrugDataset;
     }
+
+    initTableSelected();
   };
 
   let tableSelectedItem = null;
@@ -155,9 +195,9 @@
       <h2>Drugs</h2>
       {#if drugList.length > 0}
         <ul class="drugs-ul">
-          {#each drugList as drugName, index}
+          {#each selectDrugList as drugName, index}
             <li
-              class={index === 0 ? "selected" : ""}
+              data-compound={drugName}
               on:click={drugsHandleClick}
               on:keydown={drugsHandleClick}
             >
@@ -193,7 +233,7 @@
         </thead>
         {#if dataset.length > 0}
           <tbody>
-            {#each datasetMap.get(selectedListName) as data, index}
+            {#each currentTabeList as data, index}
               <tr
                 class={index === 0 ? "selected" : ""}
                 on:click={tableHandleClick}
