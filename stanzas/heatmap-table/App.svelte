@@ -60,6 +60,23 @@
     }
   })();
 
+  const initTableSelected = () => {
+    if (root.querySelector("tbody")) {
+      const trs = root.querySelectorAll("tbody > tr");
+      trs.forEach((tr) => {
+        const radio = tr.querySelector('input[type="radio"]');
+        if (radio.checked) {
+          radio.checked = false;
+        }
+      });
+      root.querySelector("tbody > tr.selected").classList.remove("selected");
+      root.querySelector("tbody").firstChild.classList.add("selected");
+      root
+        .querySelector("tbody")
+        .firstChild.querySelector('input[type="radio"]').checked = true;
+    }
+  };
+
   let displayDrugs = false;
   let selectedListEl = null;
   let isChangeSelectedListEl = true;
@@ -89,20 +106,7 @@
     }
 
     if (isChangeSelectedListEl) {
-      if (root.querySelector("tbody")) {
-        const trs = root.querySelectorAll("tbody > tr");
-        trs.forEach((tr) => {
-          const radio = tr.querySelector('input[type="radio"]');
-          if (radio.checked) {
-            radio.checked = false;
-          }
-        });
-        root.querySelector("tbody > tr.selected").classList.remove("selected");
-        root.querySelector("tbody").firstChild.classList.add("selected");
-        root
-          .querySelector("tbody")
-          .firstChild.querySelector('input[type="radio"]').checked = true;
-      }
+      initTableSelected();
     }
   };
 
@@ -132,6 +136,8 @@
       clickedItem.classList.remove("selected");
       currentTabeList = currentDrugDataset;
     }
+
+    initTableSelected();
   };
 
   let tableSelectedItem = null;
