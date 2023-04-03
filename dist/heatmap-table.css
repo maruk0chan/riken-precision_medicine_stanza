@@ -154,7 +154,7 @@ img.drug-icon {
   background-color: rgba(0, 0, 0, 0.3);
 }
 .heatmap-table .table-container .table-wrapper {
-  height: calc(100% - 28px);
+  height: calc(100% - 60px);
   margin: 15px;
   overflow-y: scroll;
 }
@@ -234,4 +234,18 @@ img.drug-icon {
   height: 17px;
   background-color: #f00;
   border-radius: 50%;
+}
+.heatmap-table .table-container .legends {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 15px;
+  font-size: 12px;
+}
+.heatmap-table .table-container .legends .legends-bar {
+  width: 100px;
+  height: 7px;
+  background: linear-gradient(to right, lawngreen, yellow, red);
+  border-radius: 10px;
 }

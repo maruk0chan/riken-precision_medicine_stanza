@@ -272,5 +272,10 @@
         {/if}
       </table>
     </div>
+    <div class="legends">
+      <p>benign</p>
+      <div class="legends-bar" />
+      <p>pathogenic</p>
+    </div>
   </div>
 </div>

@@ -45355,7 +45355,7 @@ function create_each_block(ctx) {
 }
 
 function create_fragment(ctx) {
-	let div3;
+	let div5;
 	let div0;
 	let h2;
 	let t0;
@@ -45365,7 +45365,7 @@ function create_fragment(ctx) {
 	let t2;
 	let t3;
 	let t4;
-	let div2;
+	let div4;
 	let div1;
 	let table;
 	let thead;
@@ -45373,6 +45373,8 @@ function create_fragment(ctx) {
 	let t5;
 	let tr1;
 	let t7;
+	let t8;
+	let div3;
 	let current;
 	let mounted;
 	let dispose;
@@ -45389,7 +45391,7 @@ function create_fragment(ctx) {
 
 	return {
 		c() {
-			div3 = element("div");
+			div5 = element("div");
 			div0 = element("div");
 			h2 = element("h2");
 			t0 = text("Variants");
@@ -45400,7 +45402,7 @@ function create_fragment(ctx) {
 			t3 = space();
 			if (if_block1) if_block1.c();
 			t4 = space();
-			div2 = element("div");
+			div4 = element("div");
 			div1 = element("div");
 			table = element("table");
 			thead = element("thead");
@@ -45415,28 +45417,36 @@ function create_fragment(ctx) {
 			tr1.innerHTML = `<th class="th-calc"><p>SD</p></th>`;
 			t7 = space();
 			if (if_block2) if_block2.c();
+			t8 = space();
+			div3 = element("div");
+
+			div3.innerHTML = `<p>benign</p> 
+      <div class="legends-bar"></div> 
+      <p>pathogenic</p>`;
+
 			attr(span, "class", "num");
 			attr(h2, "class", "selected");
 			attr(h2, "data-type", "variants");
 			attr(div0, "class", "column-list");
 			attr(div1, "class", "table-wrapper");
-			attr(div2, "class", "table-container");
-			attr(div3, "class", "heatmap-table");
+			attr(div3, "class", "legends");
+			attr(div4, "class", "table-container");
+			attr(div5, "class", "heatmap-table");
 		},
 		m(target, anchor) {
-			insert(target, div3, anchor);
-			append(div3, div0);
+			insert(target, div5, anchor);
+			append(div5, div0);
 			append(div0, h2);
 			append(h2, t0);
 			append(h2, span);
 			append(span, t1);
 			append(div0, t2);
 			if (if_block0) if_block0.m(div0, null);
-			append(div3, t3);
-			if (if_block1) if_block1.m(div3, null);
-			append(div3, t4);
-			append(div3, div2);
-			append(div2, div1);
+			append(div5, t3);
+			if (if_block1) if_block1.m(div5, null);
+			append(div5, t4);
+			append(div5, div4);
+			append(div4, div1);
 			append(div1, table);
 			append(table, thead);
 			append(thead, tr0);
@@ -45451,6 +45461,8 @@ function create_fragment(ctx) {
 			append(thead, tr1);
 			append(table, t7);
 			if (if_block2) if_block2.m(table, null);
+			append(div4, t8);
+			append(div4, div3);
 			current = true;
 
 			if (!mounted) {
@@ -45489,7 +45501,7 @@ function create_fragment(ctx) {
 					if_block1 = create_if_block_2(ctx);
 					if_block1.c();
 					transition_in(if_block1, 1);
-					if_block1.m(div3, t4);
+					if_block1.m(div5, t4);
 				}
 			} else if (if_block1) {
 				group_outros();
@@ -45559,7 +45571,7 @@ function create_fragment(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(div3);
+			if (detaching) detach(div5);
 			if (if_block0) if_block0.d();
 			if (if_block1) if_block1.d();
 			destroy_each(each_blocks, detaching);
@@ -45823,7 +45835,7 @@ var metadata = {
 	{
 		"stanza:key": "--togostanza-canvas-height",
 		"stanza:type": "number",
-		"stanza:default": 300,
+		"stanza:default": 350,
 		"stanza:description": "Canvas height"
 	},
 	{
