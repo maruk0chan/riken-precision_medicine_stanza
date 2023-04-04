@@ -28,10 +28,9 @@ jobs:
       - run: npx togostanza build
       
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-pages-artifact@v1
         with:
-          name: dist
-          path: $HOME
+          path: ./dist
 
   deploy:
     needs: build
