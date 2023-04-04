@@ -26,9 +26,11 @@ jobs:
 
       - run: npm ci
       - run: npx togostanza build
+      
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
+          name: dist
           path: ./dist
 
   deploy:
