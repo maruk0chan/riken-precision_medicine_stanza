@@ -2,14 +2,8 @@ name: Publish GitHub Pages
 
 on:
   push:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - closed
-
-concurrency: preview-${{ github.ref }}
+    branches:
+      - main
 
 jobs:
   build:
@@ -25,18 +19,12 @@ jobs:
         with:
           node-version: "18"
           cache: npm
-          
-      - name: Install dependencies
-        run: |
-          npm config set '//npm.fontawesome.com/:_authToken' "${{ secrets.ICON_TOKEN }}"
 
       - name: Install dependencies
-        run: |
-          npm config set '//npm.fontawesome.com/:_authToken' "${{ secrets.ICON_TOKEN }}"
-
+        run: npm config set '//npm.fontawesome.com/:_authToken' "${{ secrets.ICON_TOKEN }}"
       - run: npm ci
       - run: npx togostanza build
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
@@ -55,8 +43,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-        
-      - name: Deploy preview
-        uses: rossjrw/pr-preview-action@v1
-        with:
-          source-dir: ./build/
