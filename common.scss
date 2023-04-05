@@ -30,6 +30,10 @@ li {
 :host {
   --togostanza-fadeout-opacity: 0.2;
   --togostanza-fadeout-transition: opacity 0.2s ease-in;
+  --black_40: rgb(0 0 0 / 40%);
+  --white_20: rgb(255 255 255 / 20%);
+  --variant-color: rgb(95, 222, 222);
+  --variant-color_30: rgba(95, 222, 222, 0.3);
 
   display: block;
   font-family: var(--togostanza-fonts-font_family);

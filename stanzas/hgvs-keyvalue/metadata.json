@@ -2,8 +2,8 @@
   "@context": {
     "stanza": "http://togostanza.org/resource/stanza#"
   },
-  "@id": "genome-keyvalue",
-  "stanza:label": "Genome Key-Value",
+  "@id": "hgvs-keyvalue",
+  "stanza:label": "HGVS Key-Value",
   "stanza:definition": "For PrecisionMD-DB",
   "stanza:license": "MIT",
   "stanza:author": "PENQE",
