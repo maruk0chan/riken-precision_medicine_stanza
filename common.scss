@@ -25,6 +25,9 @@ li {
 *::after {
   box-sizing: border-box;
 }
+.svelte-fa {
+  padding-left: 5px;
+}
 
 // Host CSS
 :host {
@@ -32,8 +35,8 @@ li {
   --togostanza-fadeout-transition: opacity 0.2s ease-in;
   --black_40: rgb(0 0 0 / 40%);
   --white_20: rgb(255 255 255 / 20%);
-  --variant-color: rgb(95, 222, 222);
-  --variant-color_30: rgba(95, 222, 222, 0.3);
+  --variant-color: rgb(95 222 222);
+  --variant-color_30: rgb(95 222 222 / 30%);
 
   display: block;
   font-family: var(--togostanza-fonts-font_family);

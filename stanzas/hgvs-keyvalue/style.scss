@@ -1,17 +1,17 @@
 @use "@/common.scss";
-
 main {
   padding: 1rem 2rem;
 }
 .hgvs-keyvalue {
   width: 100%;
   padding: 15px;
+  overflow: auto;
   background-color: var(--black_40);
   border-radius: 3px;
-  overflow: auto;
   h3.title {
     margin-bottom: 10px;
     color: var(--variant-color);
+    white-space: nowrap;
   }
   table {
     width: 100%;
@@ -20,29 +20,15 @@ main {
     border-top: 1px solid #fff;
     border-bottom: 1px solid #fff;
     th {
-      background-color: var(--variant-color_30);
-
       font-weight: 500;
+      background-color: var(--variant-color_30);
     }
-    thead {
-      th {
-        border-bottom: 1px solid #fff;
-        text-align: left;
-        padding-left: 10px;
-        &:first-child {
-          padding-left: 130px;
-        }
-      }
-    }
-
     tbody {
       th {
         width: 120px;
         min-width: 120px;
-
         padding-right: 10px;
         text-align: right;
-        background-color: var(--variant-color_30);
         border-bottom: 1px solid var(--white_20);
       }
       td {
@@ -50,7 +36,17 @@ main {
         text-align: left;
         border-bottom: 1px solid var(--white_20);
         &:nth-of-type(1) {
-          width: 120px;
+          min-width: 80px;
+        }
+      }
+    }
+    thead {
+      padding-left: 10px;
+      text-align: left;
+      border-bottom: 1px solid #fff;
+      th {
+        &:first-child {
+          padding-left: 130px;
         }
       }
     }
