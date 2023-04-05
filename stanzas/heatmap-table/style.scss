@@ -40,7 +40,7 @@ img {
   .column-list,
   .drugs-list {
     padding: 10px;
-    > h2 {
+    > h3 {
       padding: 2px 5px;
       margin-bottom: 5px;
       font-size: 14px;
@@ -73,7 +73,7 @@ img {
       width: 15%;
       min-width: 190px;
       background-color: rgb(0 0 0 / 50%);
-      > h2 {
+      > h3 {
         &:hover,
         &.selected {
           clip-path: polygon(
@@ -98,9 +98,9 @@ img {
         background-color: rgb(255 255 255 / 20%);
         border-radius: 2px;
       }
-      h2:hover,
+      h3:hover,
       li:hover,
-      h2.selected,
+      h3.selected,
       li.selected {
         .num {
           background-color: rgb(0 0 0 / 20%);

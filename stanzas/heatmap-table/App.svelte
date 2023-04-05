@@ -81,16 +81,16 @@
   let selectedListEl = null;
   let isChangeSelectedListEl = true;
   const listHandleClick = (event) => {
-    const clickedItem = event.target.closest("li, h2");
+    const clickedItem = event.target.closest("li, h3");
     currentDataType = clickedItem.dataset.type;
     selectDrugList = drugListMap.get(currentDataType);
-    const h2El = root.querySelector(".column-list > h2");
-    h2El.classList.remove("selected");
+    const h3El = root.querySelector(".column-list > h3");
+    h3El.classList.remove("selected");
     if (clickedItem !== selectedListEl) {
       if (selectedListEl) {
         selectedListEl.classList.remove("selected");
         isChangeSelectedListEl = true;
-      } else if (!selectedListEl && clickedItem === h2El) {
+      } else if (!selectedListEl && clickedItem === h3El) {
         isChangeSelectedListEl = false;
       }
       selectedListEl = clickedItem;
@@ -164,14 +164,14 @@
 <div class="heatmap-table">
   <!-- Column -->
   <div class="column-list">
-    <h2
+    <h3
       class="selected"
       data-type={"variants"}
       on:click={listHandleClick}
       on:keydown={listHandleClick}
     >
       Variants<span class="num">{dataset.length}</span>
-    </h2>
+    </h3>
     {#if typeLists.length > 0}
       <ul class="column-ul">
         {#each typeLists as type}
@@ -192,7 +192,7 @@
   </div>
   {#if displayDrugs}
     <div class="drugs-list">
-      <h2>Drugs</h2>
+      <h3>Drugs</h3>
       {#if drugList.length > 0}
         <ul class="drugs-ul">
           {#each selectDrugList as drugName, index}
