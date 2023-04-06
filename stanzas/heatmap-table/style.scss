@@ -204,15 +204,16 @@ img {
                   }
                 }
               }
+              &.td-variant:active,
+              &.td-calc:active {
+                opacity: 0.7;
+              }
               &.cell-td {
                 > .cell {
                   width: 17px;
                   height: 17px;
                   border-radius: 50%;
                 }
-              }
-              &:active {
-                opacity: 0.7;
               }
             }
           }
