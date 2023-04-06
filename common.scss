@@ -38,6 +38,7 @@ li {
   font-size: 12px;
   .legend-bar {
     width: 100px;
+    min-width: 30px;
     height: 7px;
     background: linear-gradient(to right, lawngreen, yellow, red);
     border-radius: 10px;
