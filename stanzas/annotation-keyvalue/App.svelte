@@ -1,0 +1,92 @@
+<script>
+  import getColor from "../../lib/ColorScale";
+  import {
+    annotationTh,
+    annotationList,
+    oncoKbTh,
+    oncoKbList,
+    oncoKbLevelList,
+    predictionScoreTh,
+    predictionScore,
+  } from "./data.js";
+</script>
+
+<div class="annotation-keyvalue">
+  <h3 class="h3 title">Annotation</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        {#each annotationTh as th, index}
+          <th colspan={index === 0 ? "2" : "0"}>{th}</th>
+        {/each}
+      </tr>
+    </thead>
+    <tbody>
+      {#each annotationList as { th, significance, diseaseName, numberOfVariants }, index}
+        <tr>
+          <th>{th}</th>
+          <td>{significance}</td>
+          <td>{diseaseName}</td>
+          <td>{numberOfVariants}</td>
+        </tr>
+      {/each}
+    </tbody>
+  </table>
+
+  <h4 class="h4 title">OncoKB</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        {#each oncoKbTh as th}
+          <th>{th}</th>
+        {/each}
+      </tr>
+    </thead>
+    <tbody>
+      {#each oncoKbList as { oncogenic, mutationEffect }}
+        <tr>
+          <td>{oncogenic}</td>
+          <td>{mutationEffect}</td>
+        </tr>
+      {/each}
+    </tbody>
+  </table>
+
+  <h4 class="h4 title">Annotation</h4>
+  <table class="table">
+    <tbody>
+      {#each oncoKbLevelList as { key, value }}
+        <tr>
+          <th>{key}</th>
+          <td>{value}</td>
+        </tr>
+      {/each}
+    </tbody>
+  </table>
+
+  <h4 class="h4 title">Prediction Score</h4>
+  <table class="heatmap">
+    <thead>
+      <tr>
+        {#each predictionScoreTh as th}
+          <th class="th-heatmap"><p>{th}</p></th>
+        {/each}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {#each predictionScore as score}
+          <td class="cell-td">
+            <div class="cell" style="background-color:{getColor(score)}" />
+          </td>
+        {/each}
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="legend">
+    <p>benign</p>
+    <div class="legend-bar" />
+    <p>pathogenic</p>
+  </div>
+</div>
