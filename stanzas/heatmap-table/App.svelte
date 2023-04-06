@@ -3,10 +3,15 @@
   import toCamelCase from "../../lib/CamelCase";
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
-  import { calculationType, scores, theads } from "./data.js";
+  import {
+    calculationType,
+    scores,
+    variantsTheads,
+    drugTheads,
+  } from "./data.js";
   export let dataUrl, root;
 
-  const SAMPLE_JSON_PATH = "../assets/sample.json";
+  // const SAMPLE_JSON_PATH = "../assets/sample.json";
 
   let dataset = [];
   let calculationsCount = {};
@@ -18,6 +23,16 @@
   let selectedListName = "variants";
   let currentTabeList = [];
   let currentDataType = null;
+  let theads = drugTheads;
+  $: switch (calculationType(selectedListName).calcName) {
+    case "variants":
+    case "protein":
+      theads = variantsTheads;
+      break;
+    case "mutation":
+      theads = drugTheads;
+      break;
+  }
 
   const getCalculationsLists = (dataset) => {
     const calculations = dataset.map((d) => d.calculation);
@@ -34,8 +49,8 @@
 
   (async () => {
     try {
-      // const response = await fetch(dataUrl);
-      const response = await fetch(SAMPLE_JSON_PATH);
+      const response = await fetch(dataUrl);
+      // const response = await fetch(SAMPLE_JSON_PATH);
       const json = await response.json();
       if (!response.ok) {
         throw new Error(json);
@@ -198,7 +213,7 @@
               {drugName}<Fa
                 icon={faCircleChevronRight}
                 size="90%"
-                color="#fcb900"
+                color="var(--calc-color)"
               />
             </li>
           {/each}
@@ -214,17 +229,21 @@
         <thead>
           <tr>
             {#each theads as { className, label }}
-              {#if className.includes("th-group")}
+              {#if calculationType(selectedListName).calcName === "mutation" && className.includes("th-group")}
                 <th class={className} colspan="2"><p>{label}</p></th>
-              {:else}
+              {:else if calculationType(selectedListName).calcName === "mutation"}
                 <th class={className} rowspan="2"><p>{label}</p></th>
+              {:else}
+                <th class={className}><p>{label}</p></th>
               {/if}
             {/each}
           </tr>
-          <tr>
-            <th class="th-calc"><p>MEAN</p></th>
-            <th class="th-calc"><p>SD</p></th>
-          </tr>
+          {#if calculationType(selectedListName).calcName === "mutation"}
+            <tr>
+              <th class="th-calc" data-calc="mutation"><p>MEAN</p></th>
+              <th class="th-calc" data-calc="mutation"><p>SD</p></th>
+            </tr>
+          {/if}
         </thead>
         {#if dataset.length > 0}
           <tbody>
@@ -248,12 +267,31 @@
                     {data.variant}<Fa
                       icon={faCircleChevronRight}
                       size="90%"
-                      color="#5fdede"
+                      color="var(--variant-color)"
                     /></span
                   >
                 </td>
-                <td>{data.feBindMean}</td>
-                <td>{data.feBindStd}</td>
+                {#if calculationType(selectedListName).calcName === "variants"}
+                  <td class="td-calc"
+                    ><span
+                      ><img
+                        class={calculationType(data.calculation).className}
+                        src={calculationType(data.calculation).src}
+                        alt={calculationType(data.calculation).alt}
+                      />
+                      {calculationType(data.calculation).calcName}<Fa
+                        icon={faCircleChevronRight}
+                        size="90%"
+                        color="var(--calc-color)"
+                      /></span
+                    ></td
+                  >
+                {:else if calculationType(selectedListName).calcName === "mutation"}
+                  <td>{data.feBindMean}</td>
+                  <td>{data.feBindStd}</td>
+                {:else}
+                  <td>{calculationType(data.calculation).calcName}</td>
+                {/if}
                 {#each scores as key}
                   <td class="cell-td"
                     ><div

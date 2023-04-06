@@ -47,7 +47,24 @@ export const scores = [
   "sift4GConvertedRankscore",
 ];
 
-export const theads = [
+export const variantsTheads = [
+  { className: "th-gene", label: "UniPort ID" },
+  { className: "th-variant", label: "Variant" },
+  { className: "th-calc", label: "Calculation" },
+  { className: "th-heatmap", label: "CADD" },
+  { className: "th-heatmap", label: "fathmm-MKL" },
+  { className: "th-heatmap", label: "LRT" },
+  { className: "th-heatmap", label: "MutationTaster" },
+  { className: "th-heatmap", label: "MutationAssessor" },
+  { className: "th-heatmap", label: "Polyphen2_HDIV" },
+  { className: "th-heatmap", label: "Polyphen2_HVAR" },
+  { className: "th-heatmap", label: "PrimateAI" },
+  { className: "th-heatmap", label: "PROVEAN" },
+  { className: "th-heatmap", label: "REVEL" },
+  { className: "th-heatmap", label: "SIFT4G" },
+];
+
+export const drugTheads = [
   { className: "th-gene", label: "UniPort ID" },
   { className: "th-variant", label: "Variant" },
   { className: "th-calc th-group", label: "ΔΔG(kcal/mol)" },
