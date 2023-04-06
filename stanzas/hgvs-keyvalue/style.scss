@@ -41,11 +41,11 @@ main {
       }
     }
     thead {
-      padding-left: 10px;
       text-align: left;
       th {
+        padding-left: 10px;
         border-bottom: 1px solid #fff;
-        &:first-child {
+        &[colspan="2"] {
           padding-left: 130px;
         }
       }

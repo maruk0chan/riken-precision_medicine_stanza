@@ -69,9 +69,9 @@ main {
         white-space: nowrap;
         border-bottom: 1px solid #fff;
         p {
-          width: 0;
           position: relative;
           top: 6px;
+          width: 0;
           font-size: 12px;
           transform-origin: top left;
           rotate: -20deg;
@@ -79,7 +79,7 @@ main {
       }
       .cell-td {
         width: 10px;
-        padding: 5px 5px;
+        padding: 5px;
         > .cell {
           position: relative;
           width: 17px;
