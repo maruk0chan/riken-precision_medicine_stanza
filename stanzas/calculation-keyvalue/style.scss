@@ -1,0 +1,78 @@
+@use "@/common.scss";
+main {
+  padding: 1rem 2rem;
+}
+.calculation-keyvalue {
+  width: 100%;
+  overflow: auto;
+  .title {
+    color: var(--calc-color);
+    white-space: nowrap;
+    &.h3 {
+      padding: 15px;
+      margin-bottom: 3px;
+      background-color: var(--black_40);
+      border-radius: 5px 5px 0 0;
+    }
+    &.h4 {
+      font-size: 24px;
+      font-weight: normal;
+      cursor: pointer;
+      img {
+        vertical-align: text-top;
+      }
+      &:active {
+        opacity: 0.7;
+      }
+    }
+  }
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 3px;
+    background-color: var(--black_40);
+    &:last-child {
+      border-radius: 0 0 5px 5px;
+    }
+    .left {
+      min-width: 380px;
+      table {
+        width: 100%;
+        line-height: 2;
+        text-align: left;
+        border-spacing: 0;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        thead {
+          th {
+            padding-left: 10px;
+            font-weight: 500;
+            color: var(--calc-color);
+            white-space: nowrap;
+            border-bottom: 1px solid #fff;
+          }
+        }
+        tbody {
+          td {
+            padding-left: 10px;
+            border-bottom: 1px solid var(--white_20);
+          }
+        }
+      }
+    }
+    .right {
+      width: calc(100% - 400px);
+      min-width: 300px;
+      margin-top: 10px;
+      .scatter-plot {
+        height: 170px;
+        line-height: 170px;
+        color: #000;
+        text-align: center;
+        background-color: rgb(255 255 255 / 80%);
+      }
+    }
+  }
+}
