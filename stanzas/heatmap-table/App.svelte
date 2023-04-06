@@ -4,15 +4,13 @@
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
   import { calculationType, scores, theads } from "./data.js";
-  export let params, root;
+  export let dataUrl, root;
 
-  const SAMPLE_JSON_PATH =
-    "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/feature/heatmap-table/assets/sample.json";
-  // "../assets/sample.json";
+  const SAMPLE_JSON_PATH = "../assets/sample.json";
 
   let dataset = [];
-  let typesCount = {};
-  let typeLists = [];
+  let calculationsCount = {};
+  let calculationsLists = [];
   let drugList = [];
   let datasetMap = [];
   let drugListMap = new Map();
@@ -21,13 +19,13 @@
   let currentTabeList = [];
   let currentDataType = null;
 
-  const getTypeLists = (dataset) => {
-    const types = dataset.map((d) => d.type);
-    typesCount = types.reduce((acc, item) => {
+  const getCalculationsLists = (dataset) => {
+    const calculations = dataset.map((d) => d.calculation);
+    calculationsCount = calculations.reduce((acc, item) => {
       acc[item] = (acc[item] || 0) + 1;
       return acc;
     }, {});
-    return [...new Set(types.filter(Boolean))];
+    return [...new Set(calculations.filter(Boolean))];
   };
 
   const getdrugList = (dataset) => [
@@ -36,22 +34,23 @@
 
   (async () => {
     try {
-      const response = await fetch(params);
+      // const response = await fetch(dataUrl);
+      const response = await fetch(SAMPLE_JSON_PATH);
       const json = await response.json();
       if (!response.ok) {
         throw new Error(json);
       }
       dataset = json.map(toCamelCase);
       currentTabeList = dataset;
-      typeLists = getTypeLists(dataset);
+      calculationsLists = getCalculationsLists(dataset);
       datasetMap = new Map([["variants", dataset]]);
 
-      typeLists.forEach((type) => {
-        const filteredData = dataset.filter((d) => d.type === type);
-        datasetMap.set(type, filteredData);
+      calculationsLists.forEach((calc) => {
+        const filteredData = dataset.filter((d) => d.calculation === calc);
+        datasetMap.set(calc, filteredData);
 
-        if (calculationType(type).calcName === "mutation") {
-          drugListMap.set(type, getdrugList(datasetMap.get(type)));
+        if (calculationType(calc).calcName === "mutation") {
+          drugListMap.set(calc, getdrugList(datasetMap.get(calc)));
         }
       });
       drugList = getdrugList(dataset);
@@ -77,12 +76,11 @@
     }
   };
 
-  let displayDrugs = false;
   let selectedListEl = null;
   let isChangeSelectedListEl = true;
   const listHandleClick = (event) => {
     const clickedItem = event.target.closest("li, h3");
-    currentDataType = clickedItem.dataset.type;
+    currentDataType = clickedItem.dataset.calc;
     selectDrugList = drugListMap.get(currentDataType);
     const h3El = root.querySelector(".column-list > h3");
     h3El.classList.remove("selected");
@@ -95,12 +93,8 @@
       }
       selectedListEl = clickedItem;
       selectedListEl.classList.add("selected");
-      selectedListName = clickedItem.dataset.type;
+      selectedListName = clickedItem.dataset.calc;
       currentTabeList = datasetMap.get(selectedListName);
-      displayDrugs =
-        calculationType(selectedListName).calcName === "mutation"
-          ? true
-          : false;
     } else {
       isChangeSelectedListEl = false;
     }
@@ -166,36 +160,36 @@
   <div class="column-list">
     <h3
       class="selected"
-      data-type={"variants"}
+      data-calc={"variants"}
       on:click={listHandleClick}
       on:keydown={listHandleClick}
     >
       Variants<span class="num">{dataset.length}</span>
     </h3>
-    {#if typeLists.length > 0}
+    {#if calculationsLists.length > 0}
       <ul class="column-ul">
-        {#each typeLists as type}
+        {#each calculationsLists as calc}
           <li
-            data-type={type}
+            data-calc={calc}
             on:click={listHandleClick}
             on:keydown={listHandleClick}
           >
             <img
-              class={calculationType(type).className}
-              src={calculationType(type).src}
-              alt={calculationType(type).alt}
-            />{type}<span class="num">{typesCount[type]}</span>
+              class={calculationType(calc).className}
+              src={calculationType(calc).src}
+              alt={calculationType(calc).alt}
+            />{calc}<span class="num">{calculationsCount[calc]}</span>
           </li>
         {/each}
       </ul>
     {/if}
   </div>
-  {#if displayDrugs}
+  {#if calculationType(selectedListName).calcName === "mutation"}
     <div class="drugs-list">
       <h3>Drugs</h3>
       {#if drugList.length > 0}
         <ul class="drugs-ul">
-          {#each selectDrugList as drugName, index}
+          {#each selectDrugList as drugName}
             <li
               data-compound={drugName}
               on:click={drugsHandleClick}
@@ -221,13 +215,14 @@
           <tr>
             {#each theads as { className, label }}
               {#if className.includes("th-group")}
-                <th class={className}><p>{label}</p></th>
+                <th class={className} colspan="2"><p>{label}</p></th>
               {:else}
                 <th class={className} rowspan="2"><p>{label}</p></th>
               {/if}
             {/each}
           </tr>
           <tr>
+            <th class="th-calc"><p>MEAN</p></th>
             <th class="th-calc"><p>SD</p></th>
           </tr>
         </thead>
@@ -257,7 +252,8 @@
                     /></span
                   >
                 </td>
-                <td>{data.feBind}</td>
+                <td>{data.feBindMean}</td>
+                <td>{data.feBindStd}</td>
                 {#each scores as key}
                   <td class="cell-td"
                     ><div
