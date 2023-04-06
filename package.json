@@ -2,7 +2,7 @@
   "name": "precision-medicine-stanza",
   "version": "0.0.1",
   "license": "MIT",
-  "repository": "https://github.com/YukikoNoda/heatmap-table.git",
+  "repository": "https://github.com/PENQEinc/riken-precision_medicine_stanza",
   "engines": {
     "node": ">=14"
   },
