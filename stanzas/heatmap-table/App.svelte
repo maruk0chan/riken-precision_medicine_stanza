@@ -2,8 +2,8 @@
   import getColor from "../../lib/ColorScale";
   import toCamelCase from "../../lib/CamelCase";
   import Fa from "svelte-fa";
-  import { faCircleChevronRight } from "@fortawesome/pro-duotone-svg-icons";
-  import { arrowTheme, calculationType, scores, theads } from "./data.js";
+  import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
+  import { calculationType, scores, theads } from "./data.js";
   export let params, root;
 
   const SAMPLE_JSON_PATH =
@@ -203,8 +203,8 @@
             >
               {drugName}<Fa
                 icon={faCircleChevronRight}
-                {...arrowTheme}
-                secondaryColor="#fcb900"
+                size="90%"
+                color="#fcb900"
               />
             </li>
           {/each}
@@ -252,8 +252,8 @@
                   <span>
                     {data.variant}<Fa
                       icon={faCircleChevronRight}
-                      {...arrowTheme}
-                      secondaryColor="#5fdede"
+                      size="90%"
+                      color="#5fdede"
                     /></span
                   >
                 </td>
@@ -272,9 +272,9 @@
         {/if}
       </table>
     </div>
-    <div class="legends">
+    <div class="legend">
       <p>benign</p>
-      <div class="legends-bar" />
+      <div class="legend-bar" />
       <p>pathogenic</p>
     </div>
   </div>

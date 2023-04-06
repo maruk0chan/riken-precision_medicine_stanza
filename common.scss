@@ -33,14 +33,19 @@ li {
 :host {
   --togostanza-fadeout-opacity: 0.2;
   --togostanza-fadeout-transition: opacity 0.2s ease-in;
-  --black_40: rgb(0 0 0 / 40%);
-  --white_20: rgb(255 255 255 / 20%);
-  --variant-color: rgb(95 222 222);
-  --variant-color_30: rgb(95 222 222 / 30%);
 
   display: block;
   font-family: var(--togostanza-fonts-font_family);
   font-size: calc(var(--togostanza-fonts-font_size_primary) * 1px);
   color: var(--togostanza-fonts-font_color);
   background-color: var(--togostanza-theme-background_color);
+
+  //Variables
+  --black_40: rgb(0 0 0 / 40%);
+  --white_20: rgb(255 255 255 / 20%);
+  --gene-color: rgb(156 229 60);
+  --variant-color: rgb(95 222 222);
+  --variant-color_30: rgb(95 222 222 / 30%);
+  --calc-color: rgb(252 185 0);
+  --calc-color_30: rgb(252 185 0/ 30%);
 }
