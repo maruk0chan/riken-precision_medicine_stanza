@@ -5,9 +5,9 @@ export const arrowTheme = {
 };
 
 const drugIcon =
-  "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/drug.png";
+  "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
 const proteinIcon =
-  "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/main/assets/protein.png";
+  "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
 export const calculationType = (dataType) => {
   switch (dataType) {
     case "variants":
