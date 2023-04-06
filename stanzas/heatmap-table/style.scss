@@ -202,17 +202,10 @@ img {
       }
     }
     .legend {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      justify-content: flex-end;
       margin-right: 15px;
-      font-size: 12px;
       .legend-bar {
         width: 100px;
         height: 7px;
-        background: linear-gradient(to right, lawngreen, yellow, red);
-        border-radius: 10px;
       }
     }
   }
