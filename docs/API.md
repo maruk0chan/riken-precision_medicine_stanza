@@ -95,6 +95,7 @@ response
 }
 ```
 
+--- 
 ### Gene variants
 
 request
