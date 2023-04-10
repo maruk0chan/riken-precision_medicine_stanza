@@ -1,13 +1,13 @@
 <script>
   const genomeList = [
+    { key: "Symbol", value: "EGFR" },
     { key: "Assembly", value: "GRCh37" },
-    { key: "Chromosome", value: "7" },
-    { key: "Position", value: "55249071" },
+    { key: "Position", value: "7:55249071" },
   ];
 </script>
 
 <div class="genome-keyvalue">
-  <h3 class="title">Variant Genome Information</h3>
+  <h3 class="title">Variant Gene Information</h3>
   <table>
     {#each genomeList as { key, value }}
       <tr>
