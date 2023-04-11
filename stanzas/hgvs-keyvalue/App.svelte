@@ -15,11 +15,11 @@
 </script>
 
 <div class="hgvs-keyvalue">
-  <h3 class="title">Variant HGVS Information</h3>
+  <h3 class="title">HGVS Information</h3>
   <table>
     <thead>
       <tr>
-        <th colspan="2">Genome</th>
+        <th colspan="2">Gene</th>
         <th>Transcript</th>
       </tr>
     </thead>

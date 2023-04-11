@@ -2,7 +2,7 @@ import Stanza from "togostanza/stanza";
 import toCamelCase from "../../lib/CamelCase";
 import App from "./App.svelte";
 
-export default class GenomeKeyvalue extends Stanza {
+export default class GeneKeyvalue extends Stanza {
   app = null;
 
   async render() {
