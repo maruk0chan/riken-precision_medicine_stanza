@@ -9,6 +9,13 @@
     predictionScoreTh,
     predictionScore,
   } from "./data.js";
+  export let root;
+
+  const rootStyles = getComputedStyle(root);
+  const firstColor = rootStyles.getPropertyValue("--first-color");
+  const secondColor = rootStyles.getPropertyValue("--second-color");
+  const thirdColor = rootStyles.getPropertyValue("--third-color");
+  const colorRanges = [firstColor, secondColor, thirdColor];
 </script>
 
 <div class="annotation-keyvalue">
@@ -22,7 +29,7 @@
       </tr>
     </thead>
     <tbody>
-      {#each annotationList as { th, significance, diseaseName, numberOfVariants }, index}
+      {#each annotationList as { th, significance, diseaseName, numberOfVariants }}
         <tr>
           <th>{th}</th>
           <td>{significance}</td>
@@ -77,7 +84,10 @@
       <tr>
         {#each predictionScore as score}
           <td class="cell-td">
-            <div class="cell" style="background-color:{getColor(score)}" />
+            <div
+              class="cell"
+              style="background-color:{getColor(score, colorRanges)}"
+            />
           </td>
         {/each}
       </tr>

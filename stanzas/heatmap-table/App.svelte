@@ -13,6 +13,13 @@
 
   // const SAMPLE_JSON_PATH = "../assets/sample.json";
 
+  // Color
+  const rootStyles = getComputedStyle(root);
+  const firstColor = rootStyles.getPropertyValue("--first-color");
+  const secondColor = rootStyles.getPropertyValue("--second-color");
+  const thirdColor = rootStyles.getPropertyValue("--third-color");
+  const colorRanges = [firstColor, secondColor, thirdColor];
+
   let dataset = [];
   let calculationsCount = {};
   let calculationsLists = [];
@@ -151,11 +158,16 @@
 
   let tableSelectedItem = null;
   const tableHandleClick = (event) => {
+    const variantLink = event.target.closest(".td-variant > span");
+    const calculationList = event.target.closest(".td-calc > span");
+    if (variantLink || calculationList) return;
+
     const clickedItem = event.target.closest("tr");
     const radioButton = clickedItem.querySelector('input[type="radio"]');
     clickedItem.parentElement.firstChild.classList.remove("selected");
     if (clickedItem !== tableSelectedItem) {
       if (tableSelectedItem) {
+        console.log("selectChanged");
         tableSelectedItem.classList.remove("selected");
         tableSelectedItem.querySelector('input[type="radio"]').checked = false;
       }
@@ -296,7 +308,10 @@
                   <td class="cell-td"
                     ><div
                       class="cell"
-                      style="background-color:{getColor(data[key])}"
+                      style="background-color:{getColor(
+                        data[key],
+                        colorRanges
+                      )}"
                     /></td
                   >
                 {/each}

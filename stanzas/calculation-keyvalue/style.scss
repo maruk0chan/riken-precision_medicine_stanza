@@ -49,8 +49,8 @@ main {
           th {
             padding-left: 10px;
             font-weight: 500;
-            color: var(--calc-color);
             white-space: nowrap;
+            background-color: var(--calc-color_30);
             border-bottom: 1px solid #fff;
           }
         }
@@ -58,6 +58,17 @@ main {
           td {
             padding-left: 10px;
             border-bottom: 1px solid var(--white_20);
+            &:nth-of-type(1) {
+              padding-left: 5px;
+              > span {
+                padding: 5px;
+                color: var(--calc-color);
+                cursor: pointer;
+                &:active {
+                  opacity: 0.7;
+                }
+              }
+            }
           }
         }
       }

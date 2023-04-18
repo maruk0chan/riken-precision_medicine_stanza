@@ -39,7 +39,12 @@ li {
     width: 100px;
     min-width: 30px;
     height: 7px;
-    background: linear-gradient(to right, lawngreen, yellow, red);
+    background: linear-gradient(
+      to right,
+      var(--first-color),
+      var(--second-color),
+      var(--third-color)
+    );
     border-radius: 10px;
   }
 }
@@ -66,4 +71,7 @@ li {
   --disease-color_30: rgb(214 131 211 /30%);
   --calc-color: rgb(252 185 0);
   --calc-color_30: rgb(252 185 0/ 30%);
+  --first-color: #04ca41;
+  --second-color: #e5d890;
+  --third-color: #f00;
 }

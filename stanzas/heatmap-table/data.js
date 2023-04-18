@@ -48,7 +48,7 @@ export const scores = [
 ];
 
 export const variantsTheads = [
-  { className: "th-gene", label: "UniPort ID" },
+  { className: "th-gene", label: "UniPort acc" },
   { className: "th-variant", label: "Variant" },
   { className: "th-calc", label: "Calculation" },
   { className: "th-heatmap", label: "CADD" },
@@ -65,7 +65,7 @@ export const variantsTheads = [
 ];
 
 export const drugTheads = [
-  { className: "th-gene", label: "UniPort ID" },
+  { className: "th-gene", label: "UniPort acc" },
   { className: "th-variant", label: "Variant" },
   { className: "th-calc th-group", label: "ΔΔG(kcal/mol)" },
   { className: "th-heatmap", label: "CADD" },

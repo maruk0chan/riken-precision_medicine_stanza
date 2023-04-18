@@ -30,7 +30,6 @@
         <h4 class="h4 title">
           <img {src} {alt} />
           {title}
-          <Fa icon={faCircleChevronRight} size="70%" color="#fcb900" />
         </h4>
         <table class="table">
           <thead>
@@ -43,7 +42,16 @@
           <tbody>
             {#each mutationList as { drug, ave, sd }}
               <tr>
-                <td>{drug}</td>
+                <td
+                  ><span
+                    >{drug}
+                    <Fa
+                      icon={faCircleChevronRight}
+                      size="70%"
+                      color="#fcb900"
+                    /></span
+                  ></td
+                >
                 <td>{ave}</td>
                 <td>{sd}</td>
               </tr>

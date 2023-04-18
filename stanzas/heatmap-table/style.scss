@@ -188,14 +188,14 @@ img {
               &.td-variant {
                 color: var(--variant-color);
                 > span {
-                  padding: 8px 8px 8px 0;
+                  padding: 5px 5px 5px 2px;
                   cursor: pointer;
                 }
               }
               &.td-calc {
                 color: var(--calc-color);
                 > span {
-                  padding: 8px 8px 8px 0;
+                  padding: 5px 5px 5px 2px;
                   cursor: pointer;
                   img {
                     width: 12px;
@@ -204,8 +204,8 @@ img {
                   }
                 }
               }
-              &.td-variant:active,
-              &.td-calc:active {
+              &.td-variant > span:active,
+              &.td-calc > span:active {
                 opacity: 0.7;
               }
               &.cell-td {
