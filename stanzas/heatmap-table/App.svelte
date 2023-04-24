@@ -90,7 +90,9 @@
           radio.checked = false;
         }
       });
-      root.querySelector("tbody > tr.selected").classList.remove("selected");
+      if (root.querySelector("tbody > tr.selected")) {
+        root.querySelector("tbody > tr.selected").classList.remove("selected");
+      }
       root.querySelector("tbody").firstChild.classList.add("selected");
       root
         .querySelector("tbody")
