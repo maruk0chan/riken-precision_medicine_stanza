@@ -109,13 +109,13 @@ img {
 
   // Table
   .table-container {
-    overflow: scroll;
+    overflow: auto;
     flex: 1;
     background-color: rgb(0 0 0 / 30%);
     .table-wrapper {
       height: calc(100% - 60px);
       margin: 15px;
-      overflow-y: scroll;
+      overflow: auto;
       table {
         border-spacing: 0;
         border-bottom: 1px solid #fff;
