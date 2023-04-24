@@ -103,16 +103,18 @@
   let selectedListEl = null;
   let isChangeSelectedListEl = true;
   const listHandleClick = (event) => {
-    const clickedItem = event.target.closest("li, h3");
+    const clickedItem = event.target.closest("li");
     currentDataType = clickedItem.dataset.calc;
     selectDrugList = drugListMap.get(currentDataType);
-    const h3El = root.querySelector(".column-list > h3");
-    h3El.classList.remove("selected");
+    const variantsEl = root.querySelector(
+      ".column-list > ul > li:first-of-type"
+    );
+    variantsEl.classList.remove("selected");
     if (clickedItem !== selectedListEl) {
       if (selectedListEl) {
         selectedListEl.classList.remove("selected");
         isChangeSelectedListEl = true;
-      } else if (!selectedListEl && clickedItem === h3El) {
+      } else if (!selectedListEl && clickedItem === variantsEl) {
         isChangeSelectedListEl = false;
       }
       selectedListEl = clickedItem;
@@ -169,7 +171,6 @@
     clickedItem.parentElement.firstChild.classList.remove("selected");
     if (clickedItem !== tableSelectedItem) {
       if (tableSelectedItem) {
-        console.log("selectChanged");
         tableSelectedItem.classList.remove("selected");
         tableSelectedItem.querySelector('input[type="radio"]').checked = false;
       }
@@ -187,16 +188,16 @@
 <div class="heatmap-table">
   <!-- Column -->
   <div class="column-list">
-    <h3
-      class="selected"
-      data-calc={"variants"}
-      on:click={listHandleClick}
-      on:keydown={listHandleClick}
-    >
-      Variants<span class="num">{dataset.length}</span>
-    </h3>
     {#if calculationsLists.length > 0}
       <ul class="column-ul">
+        <li
+          class="selected"
+          data-calc={"variants"}
+          on:click={listHandleClick}
+          on:keydown={listHandleClick}
+        >
+          Variants<span class="num">{dataset.length}</span>
+        </li>
         {#each calculationsLists as calc}
           <li
             data-calc={calc}
