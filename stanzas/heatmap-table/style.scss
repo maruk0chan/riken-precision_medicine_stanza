@@ -112,6 +112,7 @@ img {
 
   // Table
   .table-container {
+    overflow: scroll;
     flex: 1;
     background-color: rgb(0 0 0 / 30%);
     .table-wrapper {
