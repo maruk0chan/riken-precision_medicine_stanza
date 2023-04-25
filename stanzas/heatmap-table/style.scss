@@ -43,6 +43,9 @@ img {
       margin-bottom: 5px;
       cursor: pointer;
       border-radius: 2px;
+      &:focus {
+        outline: none;
+      }
       &:hover,
       &.selected {
         clip-path: polygon(
