@@ -9,9 +9,10 @@
     variantsTheads,
     drugTheads,
   } from "./data.js";
-  export let dataUrl, root;
+  export let dataUrl, dataGene, root;
 
   // const SAMPLE_JSON_PATH = "../assets/sample.json";
+  console.log(dataGene);
 
   // Color
   const rootStyles = getComputedStyle(root);
