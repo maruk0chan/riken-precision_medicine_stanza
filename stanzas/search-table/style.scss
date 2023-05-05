@@ -1,9 +1,7 @@
 @use "@/common.scss";
 
 .search-table {
-  padding: 15px;
   overflow: auto;
-  background-color: var(--black_20);
   border-radius: 3px;
   .search-field {
     display: flex;
