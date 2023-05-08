@@ -6,10 +6,26 @@
     { key: "Assembly", value: "GRCh37" },
     { key: "Position", value: "7:55249071" },
   ];
+  let response;
+  let gene;
+  let symbol;
+  let assembly;
+  let position;
+
+  const handleFetchRequestDone = () => {
+    console.log("fetchRequestDone");
+    response = window.$fetchedData;
+    gene = response.gene[0];
+    symbol = gene.symbol;
+    assembly = gene.assembly;
+    position = gene.chromosome;
+  };
+  window.addEventListener("fetchRequestDone", handleFetchRequestDone);
 </script>
 
 <div class="gene-keyvalue">
   <h3 class="title">Gene Information</h3>
+  {symbol}{assembly}{position}
   <table>
     {#each geneList as { key, value }, index}
       <tr>
