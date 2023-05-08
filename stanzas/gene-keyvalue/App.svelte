@@ -7,7 +7,6 @@
     { key: "Chromosome", value: "" },
     { key: "Position", value: "" },
   ];
-  let response;
   let gene = {
     assembly: "",
     chromosome: "",
@@ -17,7 +16,7 @@
   const handleFetchRequestDone = () => {
     console.log("fetchRequestDone");
 
-    response = window.$fetchedData;
+    const response = window.$fetchedData;
     gene = response.gene[0];
   };
   window.addEventListener("fetchRequestDone", handleFetchRequestDone);

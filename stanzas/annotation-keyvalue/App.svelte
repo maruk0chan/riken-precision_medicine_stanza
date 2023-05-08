@@ -16,6 +16,15 @@
   const secondColor = rootStyles.getPropertyValue("--second-color");
   const thirdColor = rootStyles.getPropertyValue("--third-color");
   const colorRanges = [firstColor, secondColor, thirdColor];
+
+  let annotation;
+  const handleFetchRequestDone = () => {
+    console.log("fetchRequestDone");
+
+    const response = window.$fetchedData;
+    annotation = response.annotation;
+  };
+  window.addEventListener("fetchRequestDone", handleFetchRequestDone);
 </script>
 
 <div class="annotation-keyvalue">

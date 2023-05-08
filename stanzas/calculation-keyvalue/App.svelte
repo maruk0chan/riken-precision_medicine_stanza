@@ -19,6 +19,15 @@
     { drug: "Cetuximab", ave: "xxx", sd: "xxx" },
     { drug: "Dasatinib", ave: "xxx", sd: "xxx" },
   ];
+
+  let calculatedResults;
+  const handleFetchRequestDone = () => {
+    console.log("fetchRequestDone");
+
+    const response = window.$fetchedData;
+    calculatedResults = response.calculated_results;
+  };
+  window.addEventListener("fetchRequestDone", handleFetchRequestDone);
 </script>
 
 <div class="calculation-keyvalue">

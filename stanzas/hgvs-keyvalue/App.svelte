@@ -12,6 +12,15 @@
       transcript: "ENST000000275493.6:c.2369C.T",
     },
   ];
+
+  let hgvs;
+  const handleFetchRequestDone = () => {
+    console.log("fetchRequestDone");
+
+    const response = window.$fetchedData;
+    hgvs = response.hgvs;
+  };
+  window.addEventListener("fetchRequestDone", handleFetchRequestDone);
 </script>
 
 <div class="hgvs-keyvalue">
