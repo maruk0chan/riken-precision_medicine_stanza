@@ -27,6 +27,9 @@
 
   console.log("window", window);
   console.log("window.myGlobalVariable", window.myGlobalVariable);
+  window.addEventListener("hogehoge", (event) => {
+    console.log("event.detail", event.detail);
+  });
   // $: console.log("inputValue", inputValue);
   // $: console.log("searchValue", searchValue);
 </script>
