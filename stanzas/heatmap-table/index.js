@@ -13,6 +13,7 @@ export default class HeatmapTable extends Stanza {
       target: this.root.querySelector("main"),
       props: {
         dataUrl: toCamelCase(this.params)["dataUrl"],
+        dataGene: toCamelCase(this.params)["dataGene"],
         root: this.root.querySelector("main"),
       },
     });
