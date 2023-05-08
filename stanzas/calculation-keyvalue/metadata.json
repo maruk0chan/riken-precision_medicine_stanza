@@ -23,7 +23,7 @@
       "stanza:description": "Gene ID"
     }
   ],
-  "stanza:menu-placement": "bottom-right",
+  "stanza:menu-placement": "none",
   "stanza:style": [
     {
       "stanza:key": "--togostanza-canvas-height",
