@@ -2,8 +2,8 @@
   "@context": {
     "stanza": "http://togostanza.org/resource/stanza#"
   },
-  "@id": "search-table",
-  "stanza:label": "Search table",
+  "@id": "search-gene",
+  "stanza:label": "Search Gene",
   "stanza:definition": "For PrecisionMD-DB",
   "stanza:license": "MIT",
   "stanza:author": "PENQE",
@@ -12,15 +12,14 @@
   "stanza:updated": "2023-04-21",
   "stanza:parameter": [
     {
-      "stanza:key": "data-url",
-      "stanza:example": "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/sample.json",
-      "stanza:description": "Data source URL",
-      "stanza:required": true
+      "stanza:key": "stanza-assembly",
+      "stanza:example": "hg38",
+      "stanza:description": "Assembly"
     },
     {
-      "stanza:key": "data-gene",
-      "stanza:example": "",
-      "stanza:description": "Gene ID"
+      "stanza:key": "stanza-genename",
+      "stanza:example": "ALK",
+      "stanza:description": "Genename"
     }
   ],
   "stanza:menu-placement": "none",
