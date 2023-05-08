@@ -2,30 +2,31 @@
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
   const geneList = [
-    { key: "Symbol", value: "EGFR" },
-    { key: "Assembly", value: "GRCh37" },
-    { key: "Position", value: "7:55249071" },
+    { key: "Symbol", value: "" },
+    { key: "Assembly", value: "" },
+    { key: "Chromosome", value: "" },
+    { key: "Position", value: "" },
   ];
   let response;
-  let gene;
-  let symbol;
-  let assembly;
-  let position;
+  let gene = {
+    assembly: "",
+    chromosome: "",
+    position: "",
+  };
 
   const handleFetchRequestDone = () => {
     console.log("fetchRequestDone");
     response = window.$fetchedData;
     gene = response.gene[0];
-    symbol = gene.symbol;
-    assembly = gene.assembly;
-    position = gene.chromosome;
   };
   window.addEventListener("fetchRequestDone", handleFetchRequestDone);
 </script>
 
 <div class="gene-keyvalue">
   <h3 class="title">Gene Information</h3>
-  {symbol}{assembly}{position}
+  {gene.assembly}
+  {gene.chromosome}
+  {gene.position}
   <table>
     {#each geneList as { key, value }, index}
       <tr>
