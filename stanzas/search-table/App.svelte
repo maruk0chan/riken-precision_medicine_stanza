@@ -25,7 +25,8 @@
     }
   }
 
-  console.log(window);
+  console.log("window", window);
+  console.log("window.myGlobalVariable", window.myGlobalVariable);
   // $: console.log("inputValue", inputValue);
   // $: console.log("searchValue", searchValue);
 </script>
