@@ -17,7 +17,43 @@
   const thirdColor = rootStyles.getPropertyValue("--third-color");
   const colorRanges = [firstColor, secondColor, thirdColor];
 
-  let annotation;
+  let annotation = {
+    default: [
+      {
+        diseases: ["Neuroblastoma 3"],
+        index: "clinvar",
+        number_of_variants: 0,
+        significance: ["Uncertain significance"],
+      },
+      {
+        diseases: [""],
+        index: "mgennd",
+        number_of_variants: 0,
+        significance: [""],
+      },
+    ],
+    oncokb: [
+      {
+        mutation_effect: "",
+        oncogenic: "",
+      },
+    ],
+    prediction_score: [
+      {
+        CADD: 0.80477,
+        LRT: 0.47681,
+        MutationAssessor: 0.25572,
+        MutationTaster: 0.81001,
+        PROVEAN: 0.74051,
+        Polyphen2_HDIV: 0.90584,
+        Polyphen2_HVAR: 0.8317,
+        PrimateAI: 0.74897,
+        REVEL: 0.93266,
+        SIFT4G: 0.92824,
+        "fathmm-MKL": 0.89172,
+      },
+    ],
+  };
   const handleFetchRequestDone = () => {
     console.log("fetchRequestDone");
 
@@ -29,6 +65,9 @@
 
 <div class="annotation-keyvalue">
   <h3 class="h3 title">Annotation</h3>
+  {#if !!annotation}
+    {annotation.default[0].diseases}
+  {/if}
   <table class="table">
     <thead>
       <tr>
