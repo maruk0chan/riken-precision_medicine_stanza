@@ -13,7 +13,23 @@
     },
   ];
 
-  let hgvs;
+  let hgvs = [
+    {
+      genome: "ALK",
+      index: "clinvar",
+      transcript: ["NC_000002.12:g.29222591C>T"],
+    },
+    {
+      genome: "ALK",
+      index: "ensembl",
+      transcript: ["ENST00000389048:c.3376G>A"],
+    },
+    {
+      genome: "",
+      index: "genbank",
+      transcript: [""],
+    },
+  ];
   const handleFetchRequestDone = () => {
     console.log("fetchRequestDone");
 
@@ -25,6 +41,9 @@
 
 <div class="hgvs-keyvalue">
   <h3 class="title">HGVS Information</h3>
+  {#if !!hgvs}
+    {hgvs[0].genome}
+  {/if}
   <table>
     <thead>
       <tr>
