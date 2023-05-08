@@ -43,6 +43,9 @@ img {
       margin-bottom: 5px;
       cursor: pointer;
       border-radius: 2px;
+      &:focus {
+        outline: none;
+      }
       &:hover,
       &.selected {
         clip-path: polygon(
@@ -66,7 +69,7 @@ img {
       width: 15%;
       min-width: 190px;
       background-color: rgb(0 0 0 / 50%);
-      > h3 {
+      > ul > li:first-child {
         &:hover,
         &.selected {
           clip-path: polygon(

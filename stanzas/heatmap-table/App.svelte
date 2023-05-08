@@ -30,7 +30,6 @@
   let selectDrugList = [];
   let selectedListName = "variants";
   let currentTabeList = [];
-  let currentDataType = null;
   let theads = drugTheads;
   $: switch (calculationType(selectedListName).calcName) {
     case "variants":
@@ -102,38 +101,71 @@
   };
 
   let selectedListEl = null;
-  let isChangeSelectedListEl = true;
   const listHandleClick = (event) => {
-    const clickedItem = event.target.closest("li, h3");
-    currentDataType = clickedItem.dataset.calc;
-    selectDrugList = drugListMap.get(currentDataType);
-    const h3El = root.querySelector(".column-list > h3");
-    h3El.classList.remove("selected");
+    const clickedItem = event.target.closest("li");
+    selectedListName = clickedItem.dataset.calc;
+    selectDrugList = drugListMap.get(selectedListName);
+    currentTabeList = datasetMap.get(selectedListName);
     if (clickedItem !== selectedListEl) {
-      if (selectedListEl) {
-        selectedListEl.classList.remove("selected");
-        isChangeSelectedListEl = true;
-      } else if (!selectedListEl && clickedItem === h3El) {
-        isChangeSelectedListEl = false;
-      }
+      const ul = clickedItem.parentElement;
+      const listItems = ul.querySelectorAll("li");
+      listItems.forEach((li) => {
+        if (li.classList.contains("selected")) {
+          li.classList.remove("selected");
+        }
+      });
       selectedListEl = clickedItem;
       selectedListEl.classList.add("selected");
-      selectedListName = clickedItem.dataset.calc;
-      currentTabeList = datasetMap.get(selectedListName);
-    } else {
-      isChangeSelectedListEl = false;
-    }
-
-    if (isChangeSelectedListEl) {
       initTableSelected();
     }
+  };
+
+  const listHandleKeyDown = (event) => {
+    event.preventDefault();
+    const ul = event.target.closest("li").parentElement;
+    const listItems = ul.querySelectorAll("li");
+    let selectedIndex = null;
+    listItems.forEach((li, index) => {
+      if (li.classList.contains("selected")) {
+        selectedIndex = index;
+      }
+    });
+
+    switch (event.key) {
+      case "ArrowUp":
+        if (selectedIndex > 0) {
+          listItems[selectedIndex].classList.remove("selected");
+          listItems[selectedIndex - 1].classList.add("selected");
+          selectedListEl = listItems[selectedIndex - 1];
+        } else {
+          listItems[0].classList.remove("selected");
+          listItems[listItems.length - 1].classList.add("selected");
+          selectedListEl = listItems[listItems.length - 1];
+        }
+        break;
+
+      case "ArrowDown":
+        if (selectedIndex < listItems.length - 1) {
+          listItems[selectedIndex].classList.remove("selected");
+          listItems[selectedIndex + 1].classList.add("selected");
+          selectedListEl = listItems[selectedIndex + 1];
+        } else {
+          listItems[listItems.length - 1].classList.remove("selected");
+          listItems[0].classList.add("selected");
+          selectedListEl = listItems[0];
+        }
+        break;
+    }
+    selectedListName = selectedListEl.dataset.calc;
+    currentTabeList = datasetMap.get(selectedListName);
+    selectDrugList = drugListMap.get(selectedListName);
   };
 
   let selectedDrug = null;
   let currentMutationTabeList = [];
   const drugsHandleClick = (event) => {
     const clickedItem = event.target.closest("li");
-    const currentDrugDataset = datasetMap.get(currentDataType);
+    const currentDrugDataset = datasetMap.get(selectedListName);
     currentMutationTabeList = [];
 
     if (clickedItem !== selectedDrug) {
@@ -170,7 +202,6 @@
     clickedItem.parentElement.firstChild.classList.remove("selected");
     if (clickedItem !== tableSelectedItem) {
       if (tableSelectedItem) {
-        console.log("selectChanged");
         tableSelectedItem.classList.remove("selected");
         tableSelectedItem.querySelector('input[type="radio"]').checked = false;
       }
@@ -188,21 +219,23 @@
 <div class="heatmap-table">
   <!-- Column -->
   <div class="column-list">
-    <h3
-      class="selected"
-      data-calc={"variants"}
-      on:click={listHandleClick}
-      on:keydown={listHandleClick}
-    >
-      Variants<span class="num">{dataset.length}</span>
-    </h3>
     {#if calculationsLists.length > 0}
       <ul class="column-ul">
+        <li
+          class="selected"
+          data-calc={"variants"}
+          on:click={listHandleClick}
+          on:keydown={listHandleKeyDown}
+          tabindex="-1"
+        >
+          Variants<span class="num">{dataset.length}</span>
+        </li>
         {#each calculationsLists as calc}
           <li
             data-calc={calc}
             on:click={listHandleClick}
-            on:keydown={listHandleClick}
+            on:keydown={listHandleKeyDown}
+            tabindex="-1"
           >
             <img
               class={calculationType(calc).className}
