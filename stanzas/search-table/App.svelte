@@ -25,6 +25,7 @@
     }
   }
 
+  console.log(window);
   // $: console.log("inputValue", inputValue);
   // $: console.log("searchValue", searchValue);
 </script>
