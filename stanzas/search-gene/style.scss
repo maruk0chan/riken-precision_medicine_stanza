@@ -1,1 +1,91 @@
 @use "@/common.scss";
+
+// main {
+//   overflow: none !important;
+// }
+
+.search-gene {
+  overflow: auto;
+  border-radius: 3px;
+  // height: calc(var(--togostanza-canvas-height) * 1px);
+  .search-field {
+    position: sticky;
+    display: flex;
+    top: 0;
+    // top: 3px;
+    // margin: 3px;
+    background-color: #11435c;
+    gap: 5px;
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      color: #fff;
+      background-color: var(--black_40);
+      border: none;
+      border-radius: 30px 0 0 30px;
+      &:focus-visible {
+        outline: 2px solid var(--white_20);
+      }
+    }
+    button {
+      width: 40px;
+      height: 35px;
+      padding-right: 5px;
+      cursor: pointer;
+      background-color: var(--black_40);
+      border: none;
+      border-radius: 0 30px 30px 0;
+      &:active {
+        background-color: var(--white_20);
+      }
+      &:focus-visible {
+        // outline: 2px solid var(--white_20);
+        outline: none;
+      }
+      .svelte-fa {
+        padding-left: 0;
+      }
+    }
+  }
+  table {
+    width: 100%;
+    line-height: 2;
+    border-spacing: 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    tr {
+      th {
+        width: 120px;
+        padding-left: 10px;
+        font-weight: 500;
+        text-align: left;
+        border-bottom: 1px solid #fff;
+      }
+      td {
+        padding-left: 10px;
+        text-align: left;
+        border-bottom: 1px solid var(--white_20);
+        &:nth-of-type(1) {
+          padding-left: 5px;
+        }
+        > a {
+          padding: 5px;
+          color: var(--gene-color);
+          &:active {
+            opacity: 0.7;
+          }
+        }
+        img {
+          vertical-align: middle;
+          padding-right: 10px;
+        }
+      }
+    }
+    thead {
+      position: sticky;
+      top: 50px;
+      background-color: #11435c;
+    }
+  }
+}

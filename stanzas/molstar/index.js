@@ -12,8 +12,7 @@ export default class Molstar extends Stanza {
     this.app = new App({
       target: this.root.querySelector("main"),
       props: {
-        assembly: toCamelCase(this.params)["stanzaAssembly"],
-        defaultVariant: toCamelCase(this.params)["stanzaVariant"],
+        molstar: toCamelCase(this.params)["stanzaMolstar"],
         root: this.root.querySelector("main"),
       },
     });

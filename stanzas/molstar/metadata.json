@@ -12,14 +12,9 @@
   "stanza:updated": "2023-04-21",
   "stanza:parameter": [
     {
-      "stanza:key": "stanza-assembly",
-      "stanza:example": "hg38",
-      "stanza:description": "Assembly"
-    },
-    {
-      "stanza:key": "stanza-variant",
-      "stanza:example": "ALK+A1126T",
-      "stanza:description": "Variant"
+      "stanza:key": "stanza-molstar",
+      "stanza:example": "3aox",
+      "stanza:description": "Molstar"
     }
   ],
   "stanza:menu-placement": "none",
