@@ -19,11 +19,48 @@
     { drug: "Cetuximab", ave: "xxx", sd: "xxx" },
     { drug: "Dasatinib", ave: "xxx", sd: "xxx" },
   ];
+
+  let calculatedResults = [
+    {
+      calculation_type: "Mutation_FEP",
+      figure: [
+        {
+          Compound_ID: "Alectinib",
+          FE_Bind: -0.177,
+        },
+        {
+          Compound_ID: "Alectinib",
+          FE_Bind: 0.154,
+        },
+        {
+          Compound_ID: "Alectinib",
+          FE_Bind: -0.101,
+        },
+      ],
+      values: [
+        {
+          calculation: "Mutation_FEP",
+          drug: "Alectinib",
+          mean: -0.0413,
+          sd: 0.1734,
+        },
+      ],
+    },
+  ];
+  const handleFetchRequestDone = () => {
+    console.log("fetchRequestDone");
+
+    const response = window.$fetchedData;
+    calculatedResults = response.calculated_results;
+  };
+  window.addEventListener("fetchRequestDone", handleFetchRequestDone);
 </script>
 
 <div class="calculation-keyvalue">
   <h3 class="h3 title">Caliculation results</h3>
-
+  {#if !!calculatedResults}
+    {calculatedResults[0].calculation_type}
+  {/if}
   {#each calcList as { title, src, alt }}
     <div class="wrapper">
       <div class="left">

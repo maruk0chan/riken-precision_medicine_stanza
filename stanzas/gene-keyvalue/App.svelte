@@ -1,26 +1,34 @@
 <script>
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
-  let searchParams = new URLSearchParams(window.location.search);
-  const geneList = [];
-  let response;
-  let symbol = searchParams.get("genename");
+  const geneList = [
+    { key: "Symbol", value: "" },
+    { key: "Assembly", value: "" },
+    { key: "Chromosome", value: "" },
+    { key: "Position", value: "" },
+  ];
+  let gene = [
+    {
+      assembly: "hg38",
+      chromosome: "chr2",
+      position: 29222591,
+    },
+  ];
+
   const handleFetchRequestDone = () => {
     console.log("fetchRequestDone");
 
-    response = window.$fetchedData;
-    const gene = response.gene[0];
-    gene.symbol = symbol;
-
-    for (const [key, value] of Object.entries(gene)) {
-      geneList.push({ key, value });
-    }
+    const response = window.$fetchedData;
+    gene = response.gene[0];
   };
   window.addEventListener("fetchRequestDone", handleFetchRequestDone);
 </script>
 
 <div class="gene-keyvalue">
   <h3 class="title">Gene Information</h3>
+  {#if !!gene}
+    {gene[0].assembly}
+  {/if}
   <table>
     {#each geneList as { key, value }, index}
       <tr>
