@@ -42,7 +42,6 @@
       search(searchGene);
     }
   }
-  console.log(window.location.origin);
   // $: console.log("inputValue", inputValue);
   // $: console.log("searchGene", searchGene);
 </script>
