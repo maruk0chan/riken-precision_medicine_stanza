@@ -4,7 +4,7 @@
     faCircleChevronRight,
     faMagnifyingGlass,
   } from "@fortawesome/free-solid-svg-icons";
-  export let assembly, defaultGene;
+  export let assembly, defaultPosition;
 
   const drugIcon =
     "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
@@ -12,10 +12,10 @@
     "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
 
   let dataset = {};
-  async function search(geneName) {
+  async function search(position) {
     try {
       const response = await fetch(
-        `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/search?assembly=${assembly}&genename=${geneName}&limit=30`
+        `https://precisionmd-db.med.kyoto-u.ac.jp/api/positions/search?assembly=${assembly}&position=${position}`
       );
       const json = await response.json();
       if (!response.ok) {
@@ -27,27 +27,27 @@
     }
   }
 
-  let inputValue = defaultGene;
-  let searchGene = defaultGene;
-  search(defaultGene);
+  let inputValue = defaultPosition;
+  let searchPosition = defaultPosition;
+  search(defaultPosition);
   function searchInput(event) {
     if (event.key === "Enter" && inputValue !== "") {
-      searchGene = inputValue;
-      search(searchGene);
+      searchPosition = inputValue;
+      search(searchPosition);
     }
   }
   function searchButton() {
     if (inputValue !== "") {
-      searchGene = inputValue;
-      search(searchGene);
+      searchPosition = inputValue;
+      search(searchPosition);
     }
   }
 
   // $: console.log("inputValue", inputValue);
-  // $: console.log("searchGene", searchGene);
+  // $: console.log("searchPosition", searchPosition);
 </script>
 
-<div class="search-gene">
+<div class="search-position">
   <div class="search-field">
     <input
       placeholder="EFGR"
@@ -62,24 +62,30 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Uniprot acc</th>
+        <th>HGVS</th>
+        <th>GenBank</th>
+        <th>MGeND Significance</th>
+        <th>ClinVar Significance</th>
         <th>Calculated</th>
       </tr>
     </thead>
     <tbody>
-      {#each dataset as { genename, uniprot_acc, calculation_type }}
+      {#each dataset as { variant_id, Ensembl_transcriptid, GenBank, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type }}
         <tr>
           <td
             ><a
-              href={`https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/details?uniprot_acc=${uniprot_acc}&assembly=${assembly}&genename=${genename}`}
-              >{genename}<Fa
+              href={`https://precisionmd-db.med.kyoto-u.ac.jp/api/variants/details?alt=T&assembly=hg38&chr=chr2&end=29222591&ref=C&start=29222591&variant=A1126T`}
+              >{variant_id}<Fa
                 icon={faCircleChevronRight}
                 size="90%"
-                color="var(--gene-color)"
+                color="var(--variant-color)"
               />
             </a></td
           >
-          <td>{uniprot_acc}</td>
+          <td>{Ensembl_transcriptid}</td>
+          <td>{GenBank}</td>
+          <td>{MGeND_ClinicalSignificance}</td>
+          <td>{ClinVar_ClinicalSignificance}</td>
           <td
             >{#if calculation_type === "Mutation_FEP"}
               <img src={drugIcon} alt="drug" />

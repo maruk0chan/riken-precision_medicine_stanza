@@ -1,0 +1,3292 @@
+{
+  "data": [
+    {
+      "ClinVar_ClinicalSignificance": ["Likely pathogenic"],
+      "ClinVar_DiseaseName": ["Non-small cell lung cancer"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": null,
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626",
+      "variant": "A771delinsAYVMA"
+    },
+    {
+      "ClinVar_ClinicalSignificance": ["Likely pathogenic"],
+      "ClinVar_DiseaseName": ["Non-small cell lung cancer"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": null,
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626",
+      "variant": "M774fs"
+    },
+    {
+      "ClinVar_ClinicalSignificance": ["Pathogenic"],
+      "ClinVar_DiseaseName": ["Colorectal cancer"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": null,
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626",
+      "variant": "R536fs"
+    },
+    {
+      "ClinVar_ClinicalSignificance": ["Pathogenic"],
+      "ClinVar_DiseaseName": ["Non-small cell lung cancer"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": null,
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626",
+      "variant": "V777delinsVGSP"
+    },
+    {
+      "ClinVar_ClinicalSignificance": ["Likely pathogenic"],
+      "ClinVar_DiseaseName": ["Non-small cell lung cancer"],
+      "MGeND_ClinicalSignificance": ["Pathogenic"],
+      "MGeND_DiseaseName": ["NSCLC"],
+      "assembly": "hg38",
+      "clinvar_hgvs": null,
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626",
+      "variant": "V777delinsVGSP"
+    },
+    {
+      "ClinVar_ClinicalSignificance": ["Likely pathogenic"],
+      "ClinVar_DiseaseName": ["Non-small cell lung cancer"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": null,
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626",
+      "variant": "Y772delinsYVMAS"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [],
+      "MGeND_ClinicalSignificance": ["not provided"],
+      "MGeND_DiseaseName": ["non-small cell lung cancer"],
+      "assembly": "hg38",
+      "clinvar_hgvs": null,
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626",
+      "variant": "577_577del"
+    },
+    {
+      "ClinVar_ClinicalSignificance": ["Likely pathogenic"],
+      "ClinVar_DiseaseName": [
+        "Adenocarcinoma of stomach",
+        "Breast neoplasm",
+        "Carcinoma of esophagus",
+        "Neoplasm of uterine cervix",
+        "Transitional cell carcinoma of the bladder"
+      ],
+      "MGeND_ClinicalSignificance": ["not provided"],
+      "MGeND_DiseaseName": [
+        "Biliary cancer",
+        "ill-defined sites within the digestive system"
+      ],
+      "assembly": "hg38",
+      "clinvar_hgvs": null,
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626",
+      "variant": "D769N"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [],
+      "MGeND_ClinicalSignificance": ["not provided"],
+      "MGeND_DiseaseName": ["Non-small cell lung cancer"],
+      "assembly": "hg38",
+      "clinvar_hgvs": null,
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626",
+      "variant": "M774delinsMGIRD"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29225494C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "A1047T"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222525C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "A1148T"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220752G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "A1200V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214063C>G",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "A1222P"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214026G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "A1234V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "Neuroblastoma Susceptibility"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29207270G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "A1280V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220752G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "A132V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214063C>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "A154P"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214026G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "A166V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "Neuroblastoma Susceptibility"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29207270G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "A212V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222525C>T",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "A46T"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29225494C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "A670T"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222525C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "A771T"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222525C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "A80T"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220752G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "A823V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214063C>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "A845P"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214026G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "A857V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "Neuroblastoma Susceptibility"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29207270G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "A903V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209858C>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "C1255F"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209858C>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "C187F"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209858C>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "C878F"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "Squamous cell lung carcinoma",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193500G>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "D1152E"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222372C>G",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "D1163H"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209877C>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "D1249Y"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "Squamous cell lung carcinoma",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193500G>C",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "D1529E"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209877C>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "D181Y"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "Squamous cell lung carcinoma",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193500G>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "D461E"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222372C>G",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "D61H"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222372C>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "D786H"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209877C>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "D872Y"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222372C>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "D95H"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193887T>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "E1023D"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193832C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "E1042K"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223371C>G",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "E1110D"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222378C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "E1161K"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220723C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "E1210K"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197596T>C",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "E1340G"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193887T>G",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "E1400D"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193832C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "E1419K"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220723C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "E142K"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197596T>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "E272G"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193887T>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "E332D"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193832C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "E351K"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223371C>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "E42D"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222378C>T",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "E59K"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223371C>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "E733D"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222378C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "E784K"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223371C>G",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "E8D"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220723C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "E833K"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222378C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "E93K"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197596T>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "E963G"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197646A>C",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "F1323L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197646A>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "F255L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197646A>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "F946L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193606C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "G1117E"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222605C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "G1121D"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222558C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "G1137R"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193606C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "G1494E"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222605C>T",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "G19D"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29919999C>G",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "G221R"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222558C>T",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "G35R"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193606C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "G426E"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Adenocarcinoma of stomach",
+        "Neoplasm",
+        "Stomach cancer"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000017.11:g.39724744G>A",
+      "genename": "ERBB2",
+      "uniprot_acc": "B4DTR1",
+      "variant": "G500S"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222605C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "G53D"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29227670C>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "G563C"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222558C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "G69R"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222605C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "G744D"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Adenocarcinoma of stomach",
+        "Neoplasm",
+        "Stomach cancer"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000017.11:g.39724744G>A",
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626-5",
+      "variant": "G746S"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222558C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "G760R"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Adenocarcinoma of stomach",
+        "Neoplasm",
+        "Stomach cancer"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000017.11:g.39724744G>A",
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626-4",
+      "variant": "G761S"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Adenocarcinoma of stomach",
+        "Neoplasm",
+        "Stomach cancer"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000017.11:g.39724744G>A",
+      "genename": "ERBB2",
+      "uniprot_acc": "J3QLU9",
+      "variant": "G776S"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Adenocarcinoma of stomach",
+        "Neoplasm",
+        "Stomach cancer"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000017.11:g.39724744G>A",
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626",
+      "variant": "G776S"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29227670C>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "G940C"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29213997G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "H1244Y"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29213997G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "H176Y"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29213997G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "H867Y"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "Squamous cell lung carcinoma",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193706T>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "I1084V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223388T>C",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "I1105V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223355T>G",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "I1116L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220803A>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "I115T"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220803A>G",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "I1183T"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214028A>C",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "I1233M"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209872A>C",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "I1250M"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209793T>C",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "I1277V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223355T>G",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "I14L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "Squamous cell lung carcinoma",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193706T>C",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "I1461V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214028A>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "I165M"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209872A>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "I182M"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209793T>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "I209V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223388T>C",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "I3V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223388T>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "I37V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "Squamous cell lung carcinoma",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193706T>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "I393V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223355T>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "I48L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223388T>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "I728V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223355T>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "I739L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220803A>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "I806T"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214028A>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "I856M"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209872A>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "I873M"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209793T>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "I900V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "Squamous cell lung carcinoma",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193615T>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "K1114R"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "Squamous cell lung carcinoma",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193615T>C",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "K1491R"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Cowden syndrome 6", "Familial cancer of breast"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000014.9:g.104772427T>C",
+      "genename": "AKT1",
+      "uniprot_acc": "P31749",
+      "variant": "K400E"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "Squamous cell lung carcinoma",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193615T>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "K423R"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29196796A>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "L1003V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220741G>C",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "L1204V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193262G>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "L1232V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220741G>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "L136V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29196796A>C",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "L1380V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193262G>C",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "L1609V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29196796A>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "L312V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193262G>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "L541V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220741G>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "L827V"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220756T>G",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "M1199L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29207221C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "M1296I"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220756T>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "M131L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29207221C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "M228I"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220756T>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "M822L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29207221C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "M919I"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197556G>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "N1353K"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197556G>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "N285K"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197556G>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "N976K"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223366G>A",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "P10L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223366G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "P1112L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220707G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "P1215L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220707G>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "P1215Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197551G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "P1355L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220707G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "P147L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220707G>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "P147Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29920191G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "P157S"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197551G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "P287L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29920532G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "P43L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223366G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "P44L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223366G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "P735L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220707G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "P838L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220707G>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "P838Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197551G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "P978L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222566T>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "Q1134L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Familial cancer of breast"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000014.9:g.104773961T>G",
+      "genename": "AKT1",
+      "uniprot_acc": "P31749",
+      "variant": "Q218P"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222566T>A",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "Q32L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222566T>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "Q66L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222566T>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "Q757L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223363C>T",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "R11Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223363C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1113Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223343G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1120W"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220810G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R113C"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220810G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1181C"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220777G>C",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1192G"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220776C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1192Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220777G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1192W"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220726G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1209X"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220716C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1212H"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220711G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1214C"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220710C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1214H"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214035C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1231Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214036G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1231W"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220777G>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R124G"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220776C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R124Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220777G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R124W"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29213984C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1248Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29213985G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1248X"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209799G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1275X"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197575C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1347Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29196855C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "R1360Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220726G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R141X"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220716C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R144H"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220711G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R146C"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220710C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R146H"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214035C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R163Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214036G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R163W"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223343G>A",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "R18W"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29213984C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R180Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29213985G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R180X"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209799G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R207X"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197575C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R279Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29196855C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R292Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223363C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R45Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Cowden syndrome 6", "Familial cancer of breast"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000014.9:g.104770390C>T",
+      "genename": "AKT1",
+      "uniprot_acc": "P31749",
+      "variant": "R465H"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223343G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "R52W"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223363C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R736Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223343G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R743W"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220810G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R804C"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220777G>C",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R815G"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220776C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R815Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220777G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R815W"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220726G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R832X"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220716C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R835H"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220711G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R837C"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220710C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R837H"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214035C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R854Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214036G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R854W"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29213984C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R871Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29213985G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R871X"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29209799G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R898X"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197575C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R970Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29196855C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "R983Q"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Familial cancer of breast"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000017.11:g.39726990G>A",
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626-5",
+      "variant": "S1019N"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Familial cancer of breast"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000017.11:g.39726990G>A",
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626-4",
+      "variant": "S1034N"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Familial cancer of breast"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000017.11:g.39726990G>A",
+      "genename": "ERBB2",
+      "uniprot_acc": "J3QLU9",
+      "variant": "S1049N"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Familial cancer of breast"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000017.11:g.39726990G>A",
+      "genename": "ERBB2",
+      "uniprot_acc": "P04626",
+      "variant": "S1049N"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220794C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "S118N"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220794C>T",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "S1186N"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Familial cancer of breast"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000017.11:g.39726990G>A",
+      "genename": "ERBB2",
+      "uniprot_acc": "B4DTR1",
+      "variant": "S773N"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29220794C>T",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "S809N"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29226954G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "T1012M"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222407G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "T1151M"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197587G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "T1343I"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29275197G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "T271I"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197587G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "T275I"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29275101G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "T303I"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222407G>A",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "T49M"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29226954G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "T635M"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29275197G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "T648I"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29275101G>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "T680I"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222407G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "T774M"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29222407G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "T83M"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197587G>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "T966I"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223370C>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "V1111L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193465A>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "V1164A"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214042C>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "V1229L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197603C>A",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "V1338F"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193465A>G",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "V1541A"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214042C>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "V161L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197603C>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "V270F"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223370C>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "V43L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": ["Hereditary cancer-predisposing syndrome"],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29193465A>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "V473A"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29320870A>G",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "V476A"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223370C>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "V734L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29214042C>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "V852L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29223370C>A",
+      "genename": "ALK",
+      "uniprot_acc": "H7BZ33",
+      "variant": "V9L"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197603C>A",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "V961F"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3",
+        "not provided",
+        "not specified"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29320870A>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "V99A"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197657A>G",
+      "genename": "ALK",
+      "uniprot_acc": "Q9UM73",
+      "variant": "W1320R"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197657A>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A0K2YUJ3",
+      "variant": "W252R"
+    },
+    {
+      "ClinVar_ClinicalSignificance": [],
+      "ClinVar_DiseaseName": [
+        "Hereditary cancer-predisposing syndrome",
+        "Neuroblastoma 3"
+      ],
+      "MGeND_ClinicalSignificance": [],
+      "MGeND_DiseaseName": [],
+      "assembly": "hg38",
+      "clinvar_hgvs": "NC_000002.12:g.29197657A>G",
+      "genename": "ALK",
+      "uniprot_acc": "A0A087WZL3",
+      "variant": "W943R"
+    }
+  ],
+  "size": 243
+}
