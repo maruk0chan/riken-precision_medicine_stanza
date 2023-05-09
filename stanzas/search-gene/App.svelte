@@ -15,7 +15,7 @@
   async function search(geneName) {
     try {
       const response = await fetch(
-        `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/search?assembly=${assembly}&genename=${geneName}&limit=40`
+        `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/search?assembly=${assembly}&genename=${geneName}&limit=30`
       );
       const json = await response.json();
       if (!response.ok) {

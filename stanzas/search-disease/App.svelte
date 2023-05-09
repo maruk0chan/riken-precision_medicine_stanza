@@ -4,7 +4,7 @@
     faCircleChevronRight,
     faMagnifyingGlass,
   } from "@fortawesome/free-solid-svg-icons";
-  export let assembly, defaultPosition;
+  export let assembly, defaultDisease;
 
   const drugIcon =
     "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
@@ -12,10 +12,12 @@
     "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
 
   let dataset = {};
-  async function search(position) {
+  const sampleJson = "../assets/diseaseSearch.json";
+  async function search(disease) {
     try {
       const response = await fetch(
-        `https://precisionmd-db.med.kyoto-u.ac.jp/api/positions/search?assembly=${assembly}&position=${position}`
+        // `https://precisionmd-db.med.kyoto-u.ac.jp/api/positions/search?assembly=${assembly}&position=${disease}`
+        sampleJson
       );
       const json = await response.json();
       if (!response.ok) {
@@ -27,27 +29,27 @@
     }
   }
 
-  let inputValue = defaultPosition;
-  let searchPosition = defaultPosition;
-  search(defaultPosition);
+  let inputValue = defaultDisease;
+  let searchDisease = defaultDisease;
+  search(defaultDisease);
   function searchInput(event) {
     if (event.key === "Enter" && inputValue !== "") {
-      searchPosition = inputValue;
-      search(searchPosition);
+      searchDisease = inputValue;
+      search(searchDisease);
     }
   }
   function searchButton() {
     if (inputValue !== "") {
-      searchPosition = inputValue;
-      search(searchPosition);
+      searchDisease = inputValue;
+      search(searchDisease);
     }
   }
 
   // $: console.log("inputValue", inputValue);
-  // $: console.log("searchPosition", searchPosition);
+  // $: console.log("searchDisease", searchDisease);
 </script>
 
-<div class="search-position">
+<div class="search-disease">
   <div class="search-field">
     <input
       placeholder="EFGR"
@@ -62,7 +64,7 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>HGVS</th>
+        <th>Ensembl_transcriptid</th>
         <th>GenBank</th>
         <th>MGeND Significance</th>
         <th>ClinVar Significance</th>
@@ -70,15 +72,15 @@
       </tr>
     </thead>
     <tbody>
-      {#each dataset as { variant_id, Ensembl_transcriptid, GenBank, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type }}
+      {#each dataset as { variant, Ensembl_transcriptid, GenBank, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type }}
         <tr>
           <td
             ><a
               href={`https://precisionmd-db.med.kyoto-u.ac.jp/api/variants/details?alt=T&assembly=hg38&chr=chr2&end=29222591&ref=C&start=29222591&variant=A1126T`}
-              >{variant_id}<Fa
+              >{variant}<Fa
                 icon={faCircleChevronRight}
                 size="90%"
-                color="var(--variant-color)"
+                color="var(--disease-color)"
               />
             </a></td
           >
