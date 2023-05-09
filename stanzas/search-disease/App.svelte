@@ -12,12 +12,12 @@
     "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
 
   let dataset = {};
-  const sampleJson = "../assets/diseaseSearch.json";
+  // const sampleJson = "../assets/diseaseSearch.json";
   async function search(disease) {
     try {
       const response = await fetch(
-        // `https://precisionmd-db.med.kyoto-u.ac.jp/api/positions/search?assembly=${assembly}&position=${disease}`
-        sampleJson
+        `https://precisionmd-db.med.kyoto-u.ac.jp/api/positions/search?assembly=${assembly}&disease=${disease}`
+        // sampleJson
       );
       const json = await response.json();
       if (!response.ok) {
