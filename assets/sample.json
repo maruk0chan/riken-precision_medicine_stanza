@@ -285,7 +285,7 @@
     "SIFT4G_converted_rankscore": 0.83351
   },
   {
-    "calculation": "Protein",
+    "calculation": "Protein(dummy)",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "C1354F",
@@ -304,7 +304,7 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "calculation": "Protein",
+    "calculation": "Protein(dummy)",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "C1354R",
@@ -323,7 +323,7 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "calculation": "Protein",
+    "calculation": "Protein(dummy)",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "C1156Y",
@@ -342,7 +342,7 @@
     "SIFT4G_converted_rankscore": 0.83351
   },
   {
-    "calculation": "Protein",
+    "calculation": "Protein(dummy)",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "C1259Y",
@@ -361,7 +361,7 @@
     "SIFT4G_converted_rankscore": 0.43531
   },
   {
-    "calculation": "Protein",
+    "calculation": "Protein(dummy)",
     "Uniprot_acc": "Q9UM73",
     "Compound_ID": "Alectinib",
     "variant": "D1270E",
