@@ -70,7 +70,7 @@
         <tr>
           <td
             ><a
-              href={`${window.location.origin}/genes/details?uniprot_acc=${uniprot_acc}&assembly=${assembly}&genename=${genename}`}
+              href={`${window.location.origin}/dev/genes/details?uniprot_acc=${uniprot_acc}&assembly=${assembly}&genename=${genename}`}
               >{genename}<Fa
                 icon={faCircleChevronRight}
                 size="90%"
