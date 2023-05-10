@@ -1,5 +1,7 @@
 <script>
+  import { PluginContext } from "molstar/lib/mol-plugin/context";
   export let molstar;
+  console.log(PluginContext);
 </script>
 
 <svelte:head>
@@ -16,6 +18,13 @@
     src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"
     charset="utf-8"
   ></script>
+
+  <!-- CSS -->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://www.ebi.ac.uk/pdbe/pdb-component-library/css/pdbe-molstar-3.1.0.css"
+  />
 
   <script
     type="text/javascript"
