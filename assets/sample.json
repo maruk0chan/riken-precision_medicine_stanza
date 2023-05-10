@@ -1,8 +1,8 @@
 [
   {
-    "calculation": "Mutation_FEP1",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib1",
+    "Compound_ID": "Alectinib",
     "variant": "A1251D",
     "FE_Bind_mean": 0.0633,
     "FE_Bind_std": 0.8135,
@@ -19,9 +19,9 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "calculation": "Mutation_FEP1",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib1",
+    "Compound_ID": "Alectinib",
     "variant": "A1377D",
     "FE_Bind_mean": 0.2767,
     "FE_Bind_std": 0.3988,
@@ -38,9 +38,9 @@
     "SIFT4G_converted_rankscore": 0.63918
   },
   {
-    "calculation": "Mutation_FEP1",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib1",
+    "Compound_ID": "Alectinib",
     "variant": "A1251S",
     "FE_Bind_mean": 0.109,
     "FE_Bind_std": 0.1366,
@@ -57,9 +57,9 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "calculation": "Mutation_FEP1",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib2",
+    "Compound_ID": "Alectinib",
     "variant": "A1126T",
     "FE_Bind_mean": -0.0413,
     "FE_Bind_std": 0.1734,
@@ -76,9 +76,9 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "calculation": "Mutation_FEP1",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib2",
+    "Compound_ID": "Alectinib",
     "variant": "A1148T",
     "FE_Bind_mean": 2.2497,
     "FE_Bind_std": 0.5905,
@@ -95,9 +95,9 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "calculation": "Mutation_FEP1",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib3",
+    "Compound_ID": "Alectinib",
     "variant": "A1234T",
     "FE_Bind_mean": 0.0677,
     "FE_Bind_std": 0.246,
@@ -114,9 +114,9 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "calculation": "Mutation_FEP1",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib3",
+    "Compound_ID": "Alectinib",
     "variant": "A1251T",
     "FE_Bind_mean": -0.106,
     "FE_Bind_std": 0.4621,
@@ -133,9 +133,9 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "calculation": "Mutation_FEP1",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib4",
+    "Compound_ID": "Alectinib",
     "variant": "A1274T",
     "FE_Bind_mean": 0.8143,
     "FE_Bind_std": 0.4072,
@@ -152,9 +152,9 @@
     "SIFT4G_converted_rankscore": 0.76473
   },
   {
-    "calculation": "Mutation_FEP1",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib4",
+    "Compound_ID": "Alectinib",
     "variant": "A1168V",
     "FE_Bind_mean": 0.4717,
     "FE_Bind_std": 0.0188,
@@ -171,9 +171,9 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "calculation": "Mutation_FEP1",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib4",
+    "Compound_ID": "Alectinib",
     "variant": "A1200V",
     "FE_Bind_mean": -0.5437,
     "FE_Bind_std": 0.2651,
@@ -190,9 +190,9 @@
     "SIFT4G_converted_rankscore": 0.66756
   },
   {
-    "calculation": "Mutation_FEP2",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib A",
+    "Compound_ID": "Alectinib",
     "variant": "A1234V",
     "FE_Bind_mean": 0.1293,
     "FE_Bind_std": 0.3178,
@@ -209,9 +209,9 @@
     "SIFT4G_converted_rankscore": 0.92824
   },
   {
-    "calculation": "Mutation_FEP2",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib A",
+    "Compound_ID": "Alectinib",
     "variant": "A1252V",
     "FE_Bind_mean": -0.2173,
     "FE_Bind_std": 0.0627,
@@ -228,9 +228,9 @@
     "SIFT4G_converted_rankscore": 0.83351
   },
   {
-    "calculation": "Mutation_FEP2",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib B",
+    "Compound_ID": "Alectinib",
     "variant": "A1280V",
     "FE_Bind_mean": -0.2837,
     "FE_Bind_std": 0.1403,
@@ -247,9 +247,9 @@
     "SIFT4G_converted_rankscore": 0.7415
   },
   {
-    "calculation": "Mutation_FEP2",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib B",
+    "Compound_ID": "Alectinib",
     "variant": "A1289V",
     "FE_Bind_mean": -0.1027,
     "FE_Bind_std": 0.3485,
@@ -266,9 +266,9 @@
     "SIFT4G_converted_rankscore": 0.83351
   },
   {
-    "calculation": "Mutation_FEP2",
+    "calculation": "Mutation_FEP",
     "Uniprot_acc": "Q9UM73",
-    "Compound_ID": "Alectinib C",
+    "Compound_ID": "Alectinib",
     "variant": "C1255F",
     "FE_Bind_mean": -0.282,
     "FE_Bind_std": 0.6118,

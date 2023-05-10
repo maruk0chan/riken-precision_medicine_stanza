@@ -12,7 +12,7 @@
   export let dataUrl, dataGene, root;
 
   // const SAMPLE_JSON_PATH = "../assets/sample.json";
-  console.log(dataGene);
+  // console.log(dataGene);
 
   // Color
   const rootStyles = getComputedStyle(root);

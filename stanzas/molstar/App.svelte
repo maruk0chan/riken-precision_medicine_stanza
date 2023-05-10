@@ -1,6 +1,5 @@
 <script>
   export let molstar;
-  console.log(molstar);
 </script>
 
 <svelte:head>
