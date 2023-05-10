@@ -9,7 +9,7 @@
     variantsTheads,
     drugTheads,
   } from "./data.js";
-  export let dataUrl, dataGene, root;
+  export let dataUrl, root;
 
   // const SAMPLE_JSON_PATH = "../assets/sample.json";
   // console.log(dataGene);
