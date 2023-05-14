@@ -17,19 +17,19 @@
   const thirdColor = rootStyles.getPropertyValue("--third-color");
   const colorRanges = [firstColor, secondColor, thirdColor];
 
-  let annotation = {
+  $: annotation = {
     default: [
       {
-        diseases: ["Neuroblastoma 3"],
-        index: "clinvar",
+        diseases: [],
+        index: "",
         number_of_variants: 0,
-        significance: ["Uncertain significance"],
+        significance: [],
       },
       {
-        diseases: [""],
-        index: "mgennd",
+        diseases: [],
+        index: "",
         number_of_variants: 0,
-        significance: [""],
+        significance: [],
       },
     ],
     oncokb: [
@@ -40,33 +40,74 @@
     ],
     prediction_score: [
       {
-        CADD: 0.80477,
-        LRT: 0.47681,
-        MutationAssessor: 0.25572,
-        MutationTaster: 0.81001,
-        PROVEAN: 0.74051,
-        Polyphen2_HDIV: 0.90584,
-        Polyphen2_HVAR: 0.8317,
-        PrimateAI: 0.74897,
-        REVEL: 0.93266,
-        SIFT4G: 0.92824,
-        "fathmm-MKL": 0.89172,
+        CADD: 0,
+        LRT: 0,
+        MutationAssessor: 0,
+        MutationTaster: 0,
+        PROVEAN: 0,
+        Polyphen2_HDIV: 0,
+        Polyphen2_HVAR: 0,
+        PrimateAI: 0,
+        REVEL: 0,
+        SIFT4G: 0,
+        "fathmm-MKL": 0,
       },
     ],
   };
-  const handleFetchRequestDone = () => {
-    console.log("fetchRequestDone");
+  // TODO: use this after api is not okay
+  // simulate api response
+  setTimeout(() => {
+    annotation = {
+      default: [
+        {
+          diseases: ["Neuroblastoma 3"],
+          index: "clinvar",
+          number_of_variants: 0,
+          significance: ["Uncertain significance"],
+        },
+        {
+          diseases: [""],
+          index: "mgennd",
+          number_of_variants: 0,
+          significance: [""],
+        },
+      ],
+      oncokb: [
+        {
+          mutation_effect: "",
+          oncogenic: "",
+        },
+      ],
+      prediction_score: [
+        {
+          CADD: 0.80477,
+          LRT: 0.47681,
+          MutationAssessor: 0.25572,
+          MutationTaster: 0.81001,
+          PROVEAN: 0.74051,
+          Polyphen2_HDIV: 0.90584,
+          Polyphen2_HVAR: 0.8317,
+          PrimateAI: 0.74897,
+          REVEL: 0.93266,
+          SIFT4G: 0.92824,
+          "fathmm-MKL": 0.89172,
+        },
+      ],
+    };
+  }, 1000);
+  // const handleFetchRequestDone = () => {
+  //   console.log("fetchRequestDone");
 
-    const response = window.$fetchedData;
-    annotation = response.annotation;
-  };
-  window.addEventListener("fetchRequestDone", handleFetchRequestDone);
+  //   const response = window.$fetchedData;
+  //   annotation = response.annotation;
+  // };
+  // window.addEventListener("fetchRequestDone", handleFetchRequestDone);
 </script>
 
 <div class="annotation-keyvalue">
   <h3 class="h3 title">Annotation</h3>
   {#if !!annotation}
-    {annotation.default[0].diseases}
+    <!-- {annotation.default[0].diseases} -->
   {/if}
   <table class="table">
     <thead>
@@ -77,12 +118,12 @@
       </tr>
     </thead>
     <tbody>
-      {#each annotationList as { th, significance, diseaseName, numberOfVariants }}
+      {#each annotation.default as { index, significance, diseases, number_of_variants }}
         <tr>
-          <th>{th}</th>
+          <th>{index}</th>
           <td>{significance}</td>
-          <td>{diseaseName}</td>
-          <td>{numberOfVariants}</td>
+          <td>{diseases}</td>
+          <td>{number_of_variants}</td>
         </tr>
       {/each}
     </tbody>
@@ -98,10 +139,10 @@
       </tr>
     </thead>
     <tbody>
-      {#each oncoKbList as { oncogenic, mutationEffect }}
+      {#each annotation.oncokb as { mutation_effect, oncogenic }}
         <tr>
           <td>{oncogenic}</td>
-          <td>{mutationEffect}</td>
+          <td>{mutation_effect}</td>
         </tr>
       {/each}
     </tbody>
