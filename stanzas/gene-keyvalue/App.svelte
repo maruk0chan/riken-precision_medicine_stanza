@@ -9,17 +9,22 @@
   ];
   let gene = [
     {
-      assembly: "hg38",
-      chromosome: "chr2",
-      position: 29222591,
+      assembly: "",
+      chromosome: "",
+      position: "",
     },
   ];
+  let assembly;
+  let chromosome;
+  let position;
 
   const handleFetchRequestDone = () => {
     console.log("fetchRequestDone");
 
     const response = window.$fetchedData;
-    gene = response.gene[0];
+    assembly = response.gene[0].assembly;
+    chromosome = response.gene[0].chromosome;
+    position = response.gene[0].position;
   };
   window.addEventListener("fetchRequestDone", handleFetchRequestDone);
 </script>
@@ -27,7 +32,10 @@
 <div class="gene-keyvalue">
   <h3 class="title">Gene Information</h3>
   {#if !!gene}
-    {gene[0].assembly}
+    <!-- {gene[0].assembly} -->
+    assembly:{assembly}
+    chromosome:{chromosome}
+    position:{position}
   {/if}
   <table>
     {#each geneList as { key, value }, index}
