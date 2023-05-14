@@ -2,10 +2,6 @@
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-  // let assembly;
-  // let chromosome;
-  // let position;
-
   let gene = [
     {
       assembly: "",
@@ -20,30 +16,30 @@
     { key: "Position", value: gene[0].position },
   ];
 
+  // TODO: use this after api is okay
   // const handleFetchRequestDone = () => {
   //   console.log("fetchRequestDone");
 
   //   const response = window.$fetchedData;
-  //   assembly = response.gene[0].assembly;
-  //   chromosome = response.gene[0].chromosome;
-  //   position = response.gene[0].position;
+  //   gene = response.gene
   // };
   // window.addEventListener("fetchRequestDone", handleFetchRequestDone);
+
+  // TODO: use this after api is not okay
+  // simulate api response
   setTimeout(() => {
-    gene[0].assembly = "hg38";
-    gene[0].chromosome = "chr1";
-    gene[0].position = "123456";
+    gene = [
+      {
+        assembly: "hg38",
+        chromosome: "chr1",
+        position: "123456",
+      },
+    ];
   }, 1000);
 </script>
 
 <div class="gene-keyvalue">
   <h3 class="title">Gene Information</h3>
-  {#if !!gene}
-    <!-- {gene[0].assembly} -->
-    <!-- assembly:{assembly}
-    chromosome:{chromosome}
-    position:{position} -->
-  {/if}
   <table>
     {#each geneList as { key, value }, index}
       <tr>
@@ -59,7 +55,7 @@
               />
             </span>
           {:else}
-            {value}
+            {value ? value : "Loading..."}
           {/if}
         </td>
       </tr>
