@@ -3,6 +3,7 @@
   import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
   export let genename;
 
+  // define the object structure from api
   let gene = [
     {
       assembly: "",
@@ -10,6 +11,8 @@
       position: "",
     },
   ];
+
+  // define the object structure for display
   $: geneList = [
     { key: "Symbol", value: genename },
     { key: "Assembly", value: gene[0].assembly },
