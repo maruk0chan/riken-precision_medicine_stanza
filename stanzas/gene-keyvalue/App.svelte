@@ -1,6 +1,7 @@
 <script>
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
+  export let genename;
 
   let gene = [
     {
@@ -10,7 +11,7 @@
     },
   ];
   $: geneList = [
-    { key: "Symbol", value: "" },
+    { key: "Symbol", value: genename },
     { key: "Assembly", value: gene[0].assembly },
     { key: "Chromosome", value: gene[0].chromosome },
     { key: "Position", value: gene[0].position },

@@ -13,6 +13,7 @@ export default class GeneKeyvalue extends Stanza {
       target: this.root.querySelector("main"),
       props: {
         params: toCamelCase(this.params)["dataUrl"],
+        genename: toCamelCase(this.params)["stanzaGenename"],
         root: this.root.querySelector("main"),
       },
     });

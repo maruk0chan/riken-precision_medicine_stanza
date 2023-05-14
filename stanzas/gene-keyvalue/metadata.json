@@ -18,9 +18,9 @@
       "stanza:required": true
     },
     {
-      "stanza:key": "data-gene",
-      "stanza:example": "",
-      "stanza:description": "Gene ID"
+      "stanza:key": "stanza-genename",
+      "stanza:example": "ALK",
+      "stanza:description": "Genename"
     }
   ],
   "stanza:menu-placement": "none",
