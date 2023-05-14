@@ -1,11 +1,16 @@
 <script>
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
+  
+  let assembly;
+  let chromosome;
+  let position;
+
   const geneList = [
     { key: "Symbol", value: "" },
-    { key: "Assembly", value: "" },
-    { key: "Chromosome", value: "" },
-    { key: "Position", value: "" },
+    { key: "Assembly", value: assembly },
+    { key: "Chromosome", value: chromosome },
+    { key: "Position", value: position },
   ];
   let gene = [
     {
@@ -14,19 +19,21 @@
       position: "",
     },
   ];
-  let assembly;
-  let chromosome;
-  let position;
 
-  const handleFetchRequestDone = () => {
-    console.log("fetchRequestDone");
+  // const handleFetchRequestDone = () => {
+  //   console.log("fetchRequestDone");
 
-    const response = window.$fetchedData;
-    assembly = response.gene[0].assembly;
-    chromosome = response.gene[0].chromosome;
-    position = response.gene[0].position;
-  };
-  window.addEventListener("fetchRequestDone", handleFetchRequestDone);
+  //   const response = window.$fetchedData;
+  //   assembly = response.gene[0].assembly;
+  //   chromosome = response.gene[0].chromosome;
+  //   position = response.gene[0].position;
+  // };
+  // window.addEventListener("fetchRequestDone", handleFetchRequestDone);
+  setTimeout(() => {
+    assembly = "hg38";
+    chromosome = "chr1";
+    position = "123456";
+  }, 1000);
 </script>
 
 <div class="gene-keyvalue">
