@@ -1,23 +1,23 @@
 <script>
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
-  
-  let assembly;
-  let chromosome;
-  let position;
 
-  const geneList = [
-    { key: "Symbol", value: "" },
-    { key: "Assembly", value: assembly },
-    { key: "Chromosome", value: chromosome },
-    { key: "Position", value: position },
-  ];
+  // let assembly;
+  // let chromosome;
+  // let position;
+
   let gene = [
     {
       assembly: "",
       chromosome: "",
       position: "",
     },
+  ];
+  $: geneList = [
+    { key: "Symbol", value: "" },
+    { key: "Assembly", value: gene[0].assembly },
+    { key: "Chromosome", value: gene[0].chromosome },
+    { key: "Position", value: gene[0].position },
   ];
 
   // const handleFetchRequestDone = () => {
@@ -30,9 +30,9 @@
   // };
   // window.addEventListener("fetchRequestDone", handleFetchRequestDone);
   setTimeout(() => {
-    assembly = "hg38";
-    chromosome = "chr1";
-    position = "123456";
+    gene[0].assembly = "hg38";
+    gene[0].chromosome = "chr1";
+    gene[0].position = "123456";
   }, 1000);
 </script>
 
@@ -40,9 +40,9 @@
   <h3 class="title">Gene Information</h3>
   {#if !!gene}
     <!-- {gene[0].assembly} -->
-    assembly:{assembly}
+    <!-- assembly:{assembly}
     chromosome:{chromosome}
-    position:{position}
+    position:{position} -->
   {/if}
   <table>
     {#each geneList as { key, value }, index}
