@@ -13,7 +13,7 @@ export default class SearchPosition extends Stanza {
       target: this.root.querySelector("main"),
       props: {
         assembly: toCamelCase(this.params)["stanzaAssembly"],
-        defaultPosition: toCamelCase(this.params)["stanzaPosition"],
+        defaultPosition: toCamelCase(this.params)["stanzaTerm"],
         root: this.root.querySelector("main"),
       },
     });

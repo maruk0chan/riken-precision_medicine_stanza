@@ -13,7 +13,7 @@ export default class SearchDisease extends Stanza {
       target: this.root.querySelector("main"),
       props: {
         assembly: toCamelCase(this.params)["stanzaAssembly"],
-        defaultDisease: toCamelCase(this.params)["stanzaDisease"],
+        defaultDisease: toCamelCase(this.params)["stanzaTerm"],
         root: this.root.querySelector("main"),
       },
     });

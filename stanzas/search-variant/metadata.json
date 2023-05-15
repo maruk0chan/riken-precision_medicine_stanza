@@ -17,7 +17,7 @@
       "stanza:description": "Assembly"
     },
     {
-      "stanza:key": "stanza-variant",
+      "stanza:key": "stanza-term",
       "stanza:example": "ALK+A1126T",
       "stanza:description": "Variant"
     }

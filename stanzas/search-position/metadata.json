@@ -17,7 +17,7 @@
       "stanza:description": "Assembly"
     },
     {
-      "stanza:key": "stanza-position",
+      "stanza:key": "stanza-term",
       "stanza:example": "chr2:29222590-29222591",
       "stanza:description": "Position"
     }

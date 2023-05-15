@@ -17,7 +17,7 @@
       "stanza:description": "Assembly"
     },
     {
-      "stanza:key": "stanza-genename",
+      "stanza:key": "stanza-term",
       "stanza:example": "ALK",
       "stanza:description": "Genename"
     }
