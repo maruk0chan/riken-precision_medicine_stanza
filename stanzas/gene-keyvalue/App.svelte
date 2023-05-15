@@ -21,25 +21,25 @@
   ];
 
   // TODO: use this after api is okay
-  // const handleFetchRequestDone = () => {
-  //   console.log("fetchRequestDone");
+  const handleFetchRequestDone = () => {
+    console.log("fetchRequestDone");
 
-  //   const response = window.$fetchedData;
-  //   gene = response.gene
-  // };
-  // window.addEventListener("fetchRequestDone", handleFetchRequestDone);
+    const response = window.$fetchedData;
+    gene = response.gene;
+  };
+  window.addEventListener("fetchRequestDone", handleFetchRequestDone);
 
   // TODO: use this after api is not okay
   // simulate api response
-  setTimeout(() => {
-    gene = [
-      {
-        assembly: "hg38",
-        chromosome: "chr1",
-        position: "123456",
-      },
-    ];
-  }, 1000);
+  // setTimeout(() => {
+  //   gene = [
+  //     {
+  //       assembly: "hg38",
+  //       chromosome: "chr1",
+  //       position: "123456",
+  //     },
+  //   ];
+  // }, 1000);
 </script>
 
 <div class="gene-keyvalue">
