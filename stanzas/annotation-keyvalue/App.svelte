@@ -11,12 +11,6 @@
   } from "./data.js";
   export let root;
 
-  const rootStyles = getComputedStyle(root);
-  const firstColor = rootStyles.getPropertyValue("--first-color");
-  const secondColor = rootStyles.getPropertyValue("--second-color");
-  const thirdColor = rootStyles.getPropertyValue("--third-color");
-  const colorRanges = [firstColor, secondColor, thirdColor];
-
   let annotation = {
     default: [
       {
@@ -132,10 +126,7 @@
       <tr>
         {#each predictionScore as score}
           <td class="cell-td">
-            <div
-              class="cell"
-              style="background-color:{getColor(score, colorRanges)}"
-            />
+            <div class="cell" style="background-color:{getColor(score)}" />
           </td>
         {/each}
       </tr>

@@ -14,13 +14,6 @@
   // const SAMPLE_JSON_PATH = "../assets/sample.json";
   // console.log(dataGene);
 
-  // Color
-  const rootStyles = getComputedStyle(root);
-  const firstColor = rootStyles.getPropertyValue("--first-color");
-  const secondColor = rootStyles.getPropertyValue("--second-color");
-  const thirdColor = rootStyles.getPropertyValue("--third-color");
-  const colorRanges = [firstColor, secondColor, thirdColor];
-
   let dataset = [];
   let calculationsCount = {};
   let calculationsLists = [];
@@ -344,10 +337,7 @@
                   <td class="cell-td"
                     ><div
                       class="cell"
-                      style="background-color:{getColor(
-                        data[key],
-                        colorRanges
-                      )}"
+                      style="background-color:{getColor(data[key])}"
                     /></td
                   >
                 {/each}
