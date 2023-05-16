@@ -1,55 +1,12 @@
 @use "@/common.scss";
-
 .search-disease {
-  overflow: auto;
-  border-radius: 3px;
-  // height: calc(var(--togostanza-canvas-height) * 1px);
-  .search-field {
-    display: flex;
-    margin: 3px;
-    gap: 5px;
-    position: sticky;
-    display: flex;
-    top: 0;
-    background-color: #11435c;
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      color: #fff;
-      background-color: var(--black_40);
-      border: none;
-      border-radius: 30px 0 0 30px;
-      &:focus-visible {
-        outline: 2px solid var(--white_20);
-      }
-    }
-    button {
-      width: 40px;
-      height: 35px;
-      padding-right: 5px;
-      cursor: pointer;
-      background-color: var(--black_40);
-      border: none;
-      border-radius: 0 30px 30px 0;
-      &:active {
-        background-color: var(--white_20);
-      }
-      &:focus-visible {
-        outline: 2px solid var(--white_20);
-      }
-      .svelte-fa {
-        padding-left: 0;
-      }
-    }
-  }
   table {
     width: 100%;
     line-height: 2;
+    white-space: nowrap;
     border-spacing: 0;
     border-top: 1px solid #fff;
     border-bottom: 1px solid #fff;
-    white-space: nowrap;
     tr {
       th {
         width: 120px;
@@ -73,15 +30,10 @@
           }
         }
         img {
-          vertical-align: middle;
           padding-right: 10px;
+          vertical-align: middle;
         }
       }
-    }
-    thead {
-      position: sticky;
-      top: 50px;
-      background-color: #11435c;
     }
   }
 }

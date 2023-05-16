@@ -1,10 +1,7 @@
 <script>
   import Fa from "svelte-fa";
-  import {
-    faCircleChevronRight,
-    faMagnifyingGlass,
-  } from "@fortawesome/free-solid-svg-icons";
-  export let assembly, defaultGene;
+  import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
+  export let assembly, term;
 
   const drugIcon =
     "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
@@ -12,7 +9,7 @@
     "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
 
   let dataset = {};
-  async function search(geneName) {
+  (async (geneName) => {
     try {
       const response = await fetch(
         `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/search?assembly=${assembly}&genename=${geneName}&limit=30`
@@ -25,38 +22,10 @@
     } catch (error) {
       console.error(error);
     }
-  }
-
-  let inputValue = defaultGene;
-  let searchGene = defaultGene;
-  search(defaultGene);
-  function searchInput(event) {
-    if (event.key === "Enter" && inputValue !== "") {
-      searchGene = inputValue;
-      search(searchGene);
-    }
-  }
-  function searchButton() {
-    if (inputValue !== "") {
-      searchGene = inputValue;
-      search(searchGene);
-    }
-  }
-  // $: console.log("inputValue", inputValue);
-  // $: console.log("searchGene", searchGene);
+  })(term);
 </script>
 
 <div class="search-gene">
-  <div class="search-field">
-    <input
-      placeholder="EFGR"
-      bind:value={inputValue}
-      on:keydown={searchInput}
-    />
-    <button on:click={searchButton}
-      ><Fa icon={faMagnifyingGlass} color="#fff" /></button
-    >
-  </div>
   <table class="table">
     <thead>
       <tr>
