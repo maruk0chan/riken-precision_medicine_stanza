@@ -36,7 +36,7 @@
     </thead>
     <tbody>
       {#await promise}
-        <tr><td colspan="10">Loading...</td></tr>
+        <tr><td colspan="3">Loading...</td></tr>
       {:then dataset}
         {#each dataset.data as { genename, uniprot_acc, calculation_type }}
           <tr>
@@ -60,7 +60,7 @@
         {/each}
       {:catch error}
         <tr
-          ><td class="error-message" colspan="10"
+          ><td class="error-message" colspan="3"
             ><Fa
               icon={faTriangleExclamation}
               size="90%"
