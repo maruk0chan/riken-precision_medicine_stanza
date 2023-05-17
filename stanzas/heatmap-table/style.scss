@@ -135,30 +135,32 @@ img {
             vertical-align: bottom;
             border-top: 1px solid #fff;
             border-bottom: 1px solid #fff;
+            &[rowspan="1"]{
+              border-top: none;
+            }
             &.th-gene {
               width: 20%;
               min-width: 120px;
               padding-left: 18px;
-              color: var(--gene-color);
             }
             &.th-variant {
               width: 20%;
               min-width: 105px;
-              color: var(--variant-color);
+              &[rowspan="1"]{
+                min-width: 160px;
+                border-top: none;
+              }
+            }
+            &.th-disease {
+              width: 20%;
+              min-width: 105px;
             }
             &.th-calc {
               width: 20%;
               min-width: 130px;
-              color: var(--calc-color);
-              &[data-calc="mutation"] {
-                min-width: 110px;
+              &[rowspan="1"]{
+                min-width: 160px;
                 border-top: none;
-              }
-              &.th-group {
-                font-size: 85%;
-                vertical-align: bottom;
-                border-top: 1px solid #fff;
-                border-bottom: none;
               }
             }
             &.th-heatmap {
@@ -174,6 +176,13 @@ img {
                 rotate: -20deg;
               }
             }
+            &.th-group {
+              font-size: 85%;
+              vertical-align: bottom;
+              border-top: 1px solid #fff;
+              border-bottom: none;
+            }
+
           }
         }
         tbody {
@@ -188,15 +197,15 @@ img {
                 padding: 8px;
               }
               &.td-variant {
-                color: var(--variant-color);
-                > span {
+                > a {
+                  color: var(--variant-color);
                   padding: 5px 5px 5px 2px;
                   cursor: pointer;
                 }
               }
               &.td-calc {
-                color: var(--calc-color);
-                > span {
+                > a {
+                  color: var(--calc-color);
                   padding: 5px 5px 5px 2px;
                   cursor: pointer;
                   img {
