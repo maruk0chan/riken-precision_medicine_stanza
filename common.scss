@@ -67,8 +67,8 @@ li {
 }
 
 .error-message{
-  white-space: normal;
-  color: red;
+  height: 200px;
+  text-align: center;
 }
 // Host CSS
 :host {
@@ -96,5 +96,7 @@ li {
   --first-color: #04ca41;
   --second-color: #e5d890;
   --third-color: #f00;
+
+  --warning-color: #ffae00;
 }
 

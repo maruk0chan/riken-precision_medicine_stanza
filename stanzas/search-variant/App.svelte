@@ -1,6 +1,9 @@
 <script>
   import Fa from "svelte-fa";
-  import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
+  import {
+    faCircleChevronRight,
+    faTriangleExclamation,
+  } from "@fortawesome/free-solid-svg-icons";
   export let assembly, isPosition, term;
   let promise = search(term);
 
@@ -47,7 +50,7 @@
     </thead>
     <tbody>
       {#await promise}
-        <tr><td>Loading...</td></tr>
+        <tr><td colspan="10">Loading...</td></tr>
       {:then dataset}
         {#each dataset.data as { variant, Ensembl_transcriptid, GenBank, clinvar_hgvs, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, end, start }}
           <tr>
@@ -76,9 +79,13 @@
       {:catch error}
         <tr
           ><td class="error-message" colspan="10"
-            >Unable to fetch data from the server. Please refresh the page or
-            try again later.<br />
-            Error Message:{error.message}
+            ><Fa
+              icon={faTriangleExclamation}
+              size="90%"
+              color="var(--warning-color)"
+            />
+            Unable to fetch data from the server. Please refresh the page or try
+            again later.<br />
           </td></tr
         >
       {/await}
