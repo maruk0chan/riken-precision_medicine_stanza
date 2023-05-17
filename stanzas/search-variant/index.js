@@ -13,6 +13,7 @@ export default class SearchVariant extends Stanza {
       target: this.root.querySelector("main"),
       props: {
         assembly: toCamelCase(this.params)["stanzaAssembly"],
+        isPosition: toCamelCase(this.params)["stanzaIsPosition"],
         term: toCamelCase(this.params)["stanzaTerm"],
         root: this.root.querySelector("main"),
       },

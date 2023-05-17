@@ -11,11 +11,11 @@
     "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
 
   async function search(geneName) {
-    const res = await fetch(
+    const response = await fetch(
       `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/search?assembly=${assembly}&genename=${geneName}&limit=300`
     );
-    const json = await res.json();
-    if (res.ok) {
+    const json = await response.json();
+    if (response.ok) {
       return json;
     } else {
       throw new Error(json);
@@ -40,7 +40,7 @@
           <tr>
             <td
               ><a
-                href={`${window.location.origin}/dev/genes/details?uniprot_acc=${uniprot_acc}&assembly=${assembly}&genename=${genename}`}
+                href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/genes/details?uniprot_acc=${uniprot_acc}&assembly=${assembly}&genename=${genename}`}
                 >{genename}<Fa
                   icon={faCircleChevronRight}
                   size="90%"
