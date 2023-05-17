@@ -57,7 +57,7 @@ li {
   color: var(--gene-color);
 }
 .th-variant {
-  color: var(--varint-color);
+  color: var(--variant-color);
 }
 .th-disease {
   color: var(--disease-color);
@@ -67,7 +67,7 @@ li {
 }
 
 .error-message{
-  white-space: pre-wrap;
+  white-space: normal;
   color: red;
 }
 // Host CSS
