@@ -89,7 +89,7 @@
           ><td class="error-message" colspan="10"
             >Unable to fetch data from the server. Please refresh the page or
             try again later.<br />
-            {error.message}
+            Error Message:{error.message}
           </td></tr
         >
       {/await}
