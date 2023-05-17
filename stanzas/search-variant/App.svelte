@@ -9,7 +9,6 @@
   const proteinIcon =
     "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
 
-  console.log(isPosition);
   async function search(term) {
     let response;
     if (isPosition) {
@@ -34,16 +33,16 @@
   <table class="table">
     <thead>
       <tr>
-        <th rowspan="2">Name</th>
-        <th colspan="3">HGVS</th>
-        <th rowspan="2">MGeND Significance</th>
-        <th rowspan="2">ClinVar Significance</th>
-        <th rowspan="2">Calculated</th>
+        <th class="th-variant" rowspan="2">Name</th>
+        <th class="th-variant" colspan="3">HGVS</th>
+        <th class="th-disease" rowspan="2">MGeND Significance</th>
+        <th class="th-disease" rowspan="2">ClinVar Significance</th>
+        <th class="th-calc" rowspan="2">Calculated</th>
       </tr>
       <tr>
-        <th>Ensembl_transcriptid</th>
-        <th>GenBank</th>
-        <th>ClinVar</th>
+        <th class="th-variant">Ensembl</th>
+        <th class="th-variant">GenBank</th>
+        <th class="th-variant">ClinVar</th>
       </tr>
     </thead>
     <tbody>
@@ -74,8 +73,13 @@
             </td>
           </tr>
         {/each}
-        <!-- {:catch error}
-        <tr><td style="color: red">{error.message}</td></tr> -->
+      {:catch error}
+        <tr
+          ><td style="color: red"
+            >Unable to fetch data from the server. Please refresh the page or
+            try again later.{error.message}</td
+          ></tr
+        >
       {/await}
     </tbody>
   </table>

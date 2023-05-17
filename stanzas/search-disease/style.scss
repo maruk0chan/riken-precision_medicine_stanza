@@ -1,19 +1,25 @@
 @use "@/common.scss";
 .search-disease {
+  white-space: nowrap;
   table {
     width: 100%;
     line-height: 2;
-    white-space: nowrap;
+    border-collapse: collapse;
     border-spacing: 0;
     border-top: 1px solid #fff;
     border-bottom: 1px solid #fff;
+    thead{
+      tr:last-child{
+        border-bottom: 1px solid #fff;
+      }
+    }
     tr {
       th {
         width: 120px;
         padding-left: 10px;
         font-weight: 500;
         text-align: left;
-        border-bottom: 1px solid #fff;
+        vertical-align: bottom;
       }
       td {
         padding-left: 10px;
@@ -24,7 +30,12 @@
         }
         > a {
           padding: 5px;
-          color: var(--disease-color);
+          &.link-gene{
+            color: var(--gene-color);
+          }
+          &.link-variant{
+            color: var(--variant-color);
+          }
           &:active {
             opacity: 0.7;
           }

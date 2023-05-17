@@ -1,13 +1,12 @@
 @use "@/common.scss";
 .search-variant {
   white-space: nowrap;
-  border-radius: 3px;
   table {
     width: 100%;
     line-height: 2;
     border-collapse: collapse;
     border-top: 1px solid #fff;
-    border-bottom: 4px solid #fff;
+    border-bottom: 1px solid #fff;
     thead{
       tr:last-child{
         border-bottom: 1px solid #fff;

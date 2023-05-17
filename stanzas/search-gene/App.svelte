@@ -4,7 +4,6 @@
   export let assembly, term;
   let promise = search(term);
 
-  const thead = ["Name", "Uniprot acc", "Calculated"];
   const drugIcon =
     "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
   const proteinIcon =
@@ -27,9 +26,9 @@
   <table class="table">
     <thead>
       <tr>
-        {#each thead as th}
-          <th>{th}</th>
-        {/each}
+        <th class="th-gene">Name</th>
+        <th class="th-gene">Uniprot acc</th>
+        <th class="th-calc">Calculated</th>
       </tr>
     </thead>
     <tbody>
@@ -56,8 +55,13 @@
             </td>
           </tr>
         {/each}
-        <!-- {:catch error}
-        <tr><td style="color: red">{error.message}</td></tr> -->
+      {:catch error}
+        <tr
+          ><td style="color: red"
+            >Unable to fetch data from the server. Please refresh the page or
+            try again later.{error.message}</td
+          ></tr
+        >
       {/await}
     </tbody>
   </table>
