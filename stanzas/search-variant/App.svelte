@@ -75,7 +75,7 @@
         {/each}
       {:catch error}
         <tr
-          ><td style="color: red"
+          ><td class="error-message" style="color: red"
             >Unable to fetch data from the server. Please refresh the page or
             try again later.{error.message}</td
           ></tr
