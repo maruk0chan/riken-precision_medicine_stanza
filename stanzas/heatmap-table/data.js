@@ -25,32 +25,35 @@ export const calculationType = (dataType) => {
       };
     default:
       return {
-        calcName: "protein",
-        className: "protein-icon",
-        src: proteinIcon,
-        alt: "protein icon",
+        calcName: "",
+        // className: "protein-icon",
+        // src: proteinIcon,
+        // alt: "protein icon",
       };
+      // return {
+      //   calcName: "protein",
+      //   className: "protein-icon",
+      //   src: proteinIcon,
+      //   alt: "protein icon",
+      // };
   }
 };
 
 export const scores = [
-  "caddRawRankscore",
-  "fathmmMklCodingRankscore",
-  "lrtConvertedRankscore",
-  "mutationTasterConvertedRankscore",
-  "mutationAssessorRankscore",
-  "polyphen2HdivRankscore",
-  "polyphen2HvarRankscore",
-  "primateAiRankscore",
-  "proveanConvertedRankscore",
-  "revelRankscore",
-  "sift4GConvertedRankscore",
+  "caddRaw",
+  "fathmmMklCoding",
+  "lrtConverted",
+  "mutationTasterConverted",
+  "mutationAssessor",
+  "polyphen2Hdiv",
+  "polyphen2Hvar",
+  "primateAi",
+  "proveanConverted",
+  "revel",
+  "sift4GConverted",
 ];
 
-export const variantsTheads = [
-  { className: "th-gene", label: "UniPort acc" },
-  { className: "th-variant", label: "Variant" },
-  { className: "th-calc", label: "Calculation" },
+export const scoreTheads = [
   { className: "th-heatmap", label: "CADD" },
   { className: "th-heatmap", label: "fathmm-MKL" },
   { className: "th-heatmap", label: "LRT" },
@@ -61,22 +64,5 @@ export const variantsTheads = [
   { className: "th-heatmap", label: "PrimateAI" },
   { className: "th-heatmap", label: "PROVEAN" },
   { className: "th-heatmap", label: "REVEL" },
-  { className: "th-heatmap", label: "SIFT4G" },
-];
-
-export const drugTheads = [
-  { className: "th-gene", label: "UniPort acc" },
-  { className: "th-variant", label: "Variant" },
-  { className: "th-calc th-group", label: "ΔΔG(kcal/mol)" },
-  { className: "th-heatmap", label: "CADD" },
-  { className: "th-heatmap", label: "fathmm-MKL" },
-  { className: "th-heatmap", label: "LRT" },
-  { className: "th-heatmap", label: "MutationTaster" },
-  { className: "th-heatmap", label: "MutationAssessor" },
-  { className: "th-heatmap", label: "Polyphen2_HDIV" },
-  { className: "th-heatmap", label: "Polyphen2_HVAR" },
-  { className: "th-heatmap", label: "PrimateAI" },
-  { className: "th-heatmap", label: "PROVEAN" },
-  { className: "th-heatmap", label: "REVEL" },
-  { className: "th-heatmap", label: "SIFT4G" },
-];
+  { className: "th-heatmap", label: "SIFT4G" }
+]

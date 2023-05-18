@@ -17,9 +17,16 @@
       "stanza:description": "Assembly"
     },
     {
-      "stanza:key": "stanza-variant",
+      "stanza:key": "stanza-is_position",
+      "stanza:type": "boolean",
+      "stanza:default": "false",
+      "stanza:label":"Is Position",
+      "stanza:description": "Query by position"
+    },
+    {
+      "stanza:key": "stanza-term",
       "stanza:example": "ALK+A1126T",
-      "stanza:description": "Variant"
+      "stanza:description": "Term e.g.)variant:ALK+A1126T, position:chr2:29222590-29222591"
     }
   ],
   "stanza:menu-placement": "none",

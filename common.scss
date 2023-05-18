@@ -53,6 +53,23 @@ li {
   }
 }
 
+.th-gene {
+  color: var(--gene-color);
+}
+.th-variant {
+  color: var(--variant-color);
+}
+.th-disease {
+  color: var(--disease-color);
+}
+.th-calc {
+  color: var(--calc-color);
+}
+
+.error-message{
+  height: 200px;
+  text-align: center;
+}
 // Host CSS
 :host {
   --togostanza-fadeout-opacity: 0.2;
@@ -79,4 +96,7 @@ li {
   --first-color: #04ca41;
   --second-color: #e5d890;
   --third-color: #f00;
+
+  --warning-color: #ffae00;
 }
+

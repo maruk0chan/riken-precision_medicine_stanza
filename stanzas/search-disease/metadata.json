@@ -17,7 +17,7 @@
       "stanza:description": "Assembly"
     },
     {
-      "stanza:key": "stanza-disease",
+      "stanza:key": "stanza-Term",
       "stanza:example": "cancer",
       "stanza:description": "Disease"
     }

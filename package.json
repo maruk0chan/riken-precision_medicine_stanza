@@ -16,7 +16,6 @@
     "@fortawesome/fontawesome-pro": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "d3-scale": "^4.0.2",
-    "molstar": "^3.34.0",
     "svelte-fa": "^3.0.3",
     "togostanza": "github:togostanza/togostanza"
   },

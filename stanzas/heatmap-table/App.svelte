@@ -2,25 +2,15 @@
   import getColor from "../../lib/ColorScale";
   import toCamelCase from "../../lib/CamelCase";
   import Fa from "svelte-fa";
-  import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
   import {
-    calculationType,
-    scores,
-    variantsTheads,
-    drugTheads,
-  } from "./data.js";
-  export let dataUrl, root;
-
-  // const SAMPLE_JSON_PATH = "../assets/sample.json";
-  // console.log(dataGene);
-
-  // Color
-  const rootStyles = getComputedStyle(root);
-  const firstColor = rootStyles.getPropertyValue("--first-color");
-  const secondColor = rootStyles.getPropertyValue("--second-color");
-  const thirdColor = rootStyles.getPropertyValue("--third-color");
-  const colorRanges = [firstColor, secondColor, thirdColor];
-
+    faCircleChevronRight,
+    faTriangleExclamation,
+  } from "@fortawesome/free-solid-svg-icons";
+  import { calculationType, scores, scoreTheads } from "./data.js";
+  export let uniprotAcc, assembly, genename, root;
+  let promise = fetchData();
+  // let dataUrl =
+  //   "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/sample.json";
   let dataset = [];
   let calculationsCount = {};
   let calculationsLists = [];
@@ -30,19 +20,9 @@
   let selectDrugList = [];
   let selectedListName = "variants";
   let currentTabeList = [];
-  let theads = drugTheads;
-  $: switch (calculationType(selectedListName).calcName) {
-    case "variants":
-    case "protein":
-      theads = variantsTheads;
-      break;
-    case "mutation":
-      theads = drugTheads;
-      break;
-  }
 
   const getCalculationsLists = (dataset) => {
-    const calculations = dataset.map((d) => d.calculation);
+    const calculations = dataset.map((d) => d.calculationType);
     calculationsCount = calculations.reduce((acc, item) => {
       acc[item] = (acc[item] || 0) + 1;
       return acc;
@@ -54,32 +34,34 @@
     ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
   ];
 
-  (async () => {
-    try {
-      const response = await fetch(dataUrl);
-      // const response = await fetch(SAMPLE_JSON_PATH);
-      const json = await response.json();
-      if (!response.ok) {
-        throw new Error(json);
-      }
-      dataset = json.map(toCamelCase);
+  async function fetchData() {
+    // const response = await fetch(dataUrl);
+    const response = await fetch(
+      // `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}&limit=1000`
+      `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=Q9UM73&assembly=hg38&genename=ALK&limit=1000`
+    );
+    const json = await response.json();
+    if (response.ok) {
+      dataset = json.data.map(toCamelCase);
       currentTabeList = dataset;
       calculationsLists = getCalculationsLists(dataset);
       datasetMap = new Map([["variants", dataset]]);
 
       calculationsLists.forEach((calc) => {
-        const filteredData = dataset.filter((d) => d.calculation === calc);
+        const filteredData = dataset.filter((d) => d.calculationType === calc);
         datasetMap.set(calc, filteredData);
 
+        // Create a crossing list with drugs
         if (calculationType(calc).calcName === "mutation") {
           drugListMap.set(calc, getdrugList(datasetMap.get(calc)));
         }
       });
       drugList = getdrugList(dataset);
-    } catch (error) {
-      console.error(error);
+      return json;
+    } else {
+      throw new Error(json);
     }
-  })();
+  }
 
   const initTableSelected = () => {
     if (root.querySelector("tbody")) {
@@ -276,25 +258,46 @@
       <table>
         <thead>
           <tr>
-            {#each theads as { className, label }}
-              {#if calculationType(selectedListName).calcName === "mutation" && className.includes("th-group")}
-                <th class={className} colspan="2"><p>{label}</p></th>
-              {:else if calculationType(selectedListName).calcName === "mutation"}
-                <th class={className} rowspan="2"><p>{label}</p></th>
-              {:else}
-                <th class={className}><p>{label}</p></th>
-              {/if}
+            <th class="th-gene" rowspan="2">UniPort acc</th>
+            <th class="th-variant" rowspan="2">Variant</th>
+            <th class="th-variant th-group" colspan="3">HGVS</th>
+            <th class="th-disease th-group" colspan="2">Significance</th>
+            {#if calculationType(selectedListName).calcName !== "variants"}
+              <th class="th-calc th-group" colspan="1"
+                ><p>Single Calculation</p></th
+              >
+              <th class="th-calc th-group" colspan="2"
+                ><p>Multiple Calculation</p></th
+              >
+            {/if}
+            <th class="th-calc" rowspan="2">Calculation</th>
+            {#each scoreTheads as { className, label }}
+              <th class={className} rowspan="2"><p>{label}</p></th>
             {/each}
           </tr>
-          {#if calculationType(selectedListName).calcName === "mutation"}
-            <tr>
-              <th class="th-calc" data-calc="mutation"><p>MEAN</p></th>
-              <th class="th-calc" data-calc="mutation"><p>SD</p></th>
-            </tr>
-          {/if}
+          <tr>
+            <th class="th-variant" rowspan="1">Ensembl</th>
+            <th class="th-variant" rowspan="1">GenBank</th>
+            <th class="th-variant" rowspan="1">ClinVar</th>
+            <th class="th-disease" rowspan="1">MGeND</th>
+            <th class="th-disease" rowspan="1">ClinVar</th>
+            {#if calculationType(selectedListName).calcName !== "variants"}
+              <th class="th-calc" rowspan="1" data-calc="mutation"
+                ><p>ΔΔG(cal/mol)</p></th
+              >
+              <th class="th-calc" rowspan="1" data-calc="mutation"
+                ><p>Average ΔΔG(cal/mol)</p></th
+              >
+              <th class="th-calc" rowspan="1" data-calc="mutation"
+                ><p>Standard deviation</p></th
+              >
+            {/if}
+          </tr>
         </thead>
-        {#if dataset.length > 0}
-          <tbody>
+        <tbody>
+          {#await promise}
+            <tr><td colspan="3" class="loading-message">Loading...</td></tr>
+          {:then json}
             {#each currentTabeList as data, index}
               <tr
                 class={index === 0 ? "selected" : ""}
@@ -311,50 +314,89 @@
                   {data.uniprotAcc}
                 </td>
                 <td class="td-variant">
-                  <span>
+                  <a
+                    href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/variants/details?alt=T&assembly=${data.assembly}&chr=chr2&end=29222591&ref=C&start=29222591&variant=${data.variant}`}
+                  >
                     {data.variant}<Fa
                       icon={faCircleChevronRight}
                       size="90%"
                       color="var(--variant-color)"
-                    /></span
+                    /></a
                   >
                 </td>
-                {#if calculationType(selectedListName).calcName === "variants"}
-                  <td class="td-calc"
-                    ><span
-                      ><img
-                        class={calculationType(data.calculation).className}
-                        src={calculationType(data.calculation).src}
-                        alt={calculationType(data.calculation).alt}
-                      />
-                      {calculationType(data.calculation).calcName}<Fa
+                <td
+                  >{data.ensemblTranscriptid
+                    ? "-"
+                    : data.ensemblTranscriptid}</td
+                >
+                <td>{data.genBank ? "-" : data.genBank}</td>
+                <td>{data.clinvarHgvs ? "-" : data.clinvarHgvs}</td>
+                <td
+                  >{data.mGeNdClinicalSignificance
+                    ? "-"
+                    : data.mGeNdClinicalSignificance}</td
+                >
+                <td
+                  >{data.clinVarClinicalSignificance
+                    ? "-"
+                    : data.clinVarClinicalSignificance}</td
+                >
+                {#if calculationType(selectedListName).calcName !== "variants"}
+                  <td>{data.feBind === undefined ? "-" : data.feBind}</td>
+                  <td>{data.feBindMean}</td>
+                  <td>{data.feBindStd}</td>
+                {/if}
+                <td class="td-calc"
+                  ><a
+                    href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/calculated_results?Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&calculation_type=${data.calculationType}&variant=${data.variant}&assembly=${data.assembly}&genename=${data.genename}`}
+                    ><img
+                      class={calculationType(data.calculationType).className
+                        ? calculationType(data.calculationType).className
+                        : ""}
+                      src={calculationType(data.calculationType).src
+                        ? calculationType(data.calculationType).src
+                        : ""}
+                      alt={calculationType(data.calculation).alt
+                        ? calculationType(data.calculation).alt
+                        : ""}
+                    />
+                    {calculationType(data.calculationType).calcName
+                      ? calculationType(data.calculationType).calcName
+                      : ""}
+                    {#if calculationType(data.calculationType).calcName !== ""}
+                      <Fa
                         icon={faCircleChevronRight}
                         size="90%"
                         color="var(--calc-color)"
-                      /></span
-                    ></td
-                  >
-                {:else if calculationType(selectedListName).calcName === "mutation"}
-                  <td>{data.feBindMean}</td>
-                  <td>{data.feBindStd}</td>
-                {:else}
-                  <td>{calculationType(data.calculation).calcName}</td>
-                {/if}
+                      />
+                    {/if}</a
+                  ></td
+                >
                 {#each scores as key}
                   <td class="cell-td"
                     ><div
                       class="cell"
-                      style="background-color:{getColor(
-                        data[key],
-                        colorRanges
-                      )}"
+                      style="background-color:{getColor(data[key])}"
                     /></td
                   >
                 {/each}
               </tr>
             {/each}
-          </tbody>
-        {/if}
+          {:catch error}
+            <tr
+              ><td class="error-message" colspan="3"
+                ><Fa
+                  icon={faTriangleExclamation}
+                  size="90%"
+                  color="var(--warning-color)"
+                />
+
+                Unable to fetch data from the server. Please refresh the page or
+                try again later.<br />
+              </td></tr
+            >
+          {/await}
+        </tbody>
       </table>
     </div>
     <div class="legend">

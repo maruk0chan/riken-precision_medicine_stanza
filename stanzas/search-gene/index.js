@@ -13,7 +13,7 @@ export default class SearchGene extends Stanza {
       target: this.root.querySelector("main"),
       props: {
         assembly: toCamelCase(this.params)["stanzaAssembly"],
-        defaultGene: toCamelCase(this.params)["stanzaGenename"],
+        term: toCamelCase(this.params)["stanzaTerm"],
         root: this.root.querySelector("main"),
       },
     });
