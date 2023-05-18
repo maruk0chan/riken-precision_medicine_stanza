@@ -2,9 +2,13 @@
   import getColor from "../../lib/ColorScale";
   import toCamelCase from "../../lib/CamelCase";
   import Fa from "svelte-fa";
-  import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
+  import {
+    faCircleChevronRight,
+    faTriangleExclamation,
+  } from "@fortawesome/free-solid-svg-icons";
   import { calculationType, scores, scoreTheads } from "./data.js";
   export let uniprotAcc, assembly, genename, root;
+  let promise = fetchData();
   // let dataUrl =
   //   "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/sample.json";
   let dataset = [];
@@ -30,17 +34,14 @@
     ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
   ];
 
-  (async () => {
-    try {
-      // const response = await fetch(dataUrl);
-      const response = await fetch(
-        // `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}&limit=1000`
-        `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=Q9UM73&assembly=hg38&genename=ALK&limit=1000`
-      );
-      const json = await response.json();
-      if (!response.ok) {
-        throw new Error(json);
-      }
+  async function fetchData() {
+    // const response = await fetch(dataUrl);
+    const response = await fetch(
+      // `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}&limit=1000`
+      `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=Q9UM73&assembly=hg38&genename=ALK&limit=1000`
+    );
+    const json = await response.json();
+    if (response.ok) {
       dataset = json.data.map(toCamelCase);
       currentTabeList = dataset;
       calculationsLists = getCalculationsLists(dataset);
@@ -56,10 +57,11 @@
         }
       });
       drugList = getdrugList(dataset);
-    } catch (error) {
-      console.error(error);
+      return json;
+    } else {
+      throw new Error(json);
     }
-  })();
+  }
 
   const initTableSelected = () => {
     if (root.querySelector("tbody")) {
@@ -292,8 +294,10 @@
             {/if}
           </tr>
         </thead>
-        {#if dataset.length > 0}
-          <tbody>
+        <tbody>
+          {#await promise}
+            <tr><td colspan="3" class="loading-message">Loading...</td></tr>
+          {:then json}
             {#each currentTabeList as data, index}
               <tr
                 class={index === 0 ? "selected" : ""}
@@ -378,8 +382,21 @@
                 {/each}
               </tr>
             {/each}
-          </tbody>
-        {/if}
+          {:catch error}
+            <tr
+              ><td class="error-message" colspan="3"
+                ><Fa
+                  icon={faTriangleExclamation}
+                  size="90%"
+                  color="var(--warning-color)"
+                />
+
+                Unable to fetch data from the server. Please refresh the page or
+                try again later.<br />
+              </td></tr
+            >
+          {/await}
+        </tbody>
       </table>
     </div>
     <div class="legend">

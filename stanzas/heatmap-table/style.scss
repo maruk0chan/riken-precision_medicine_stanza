@@ -231,6 +231,10 @@ img {
         }
       }
     }
+    .loading-message, .error-message{
+      height: 230px;
+      vertical-align: top;
+    }
     .legend {
       margin-right: 30px;
       .legend-bar {
