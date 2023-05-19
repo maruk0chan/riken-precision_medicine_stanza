@@ -24,6 +24,7 @@
         position: fetchGeneData[0].position,
       },
     ];
+    window.dispatchEvent(new CustomEvent('childHasGotData'))
   };
   window.addEventListener("fetchRequestDone", handleFetchRequestDone);
 
