@@ -1,5 +1,4 @@
 import Stanza from "togostanza/stanza";
-import toCamelCase from "../../lib/CamelCase";
 import App from "./App.svelte";
 
 export default class HgvsKeyvalue extends Stanza {
@@ -12,7 +11,6 @@ export default class HgvsKeyvalue extends Stanza {
     this.app = new App({
       target: this.root.querySelector("main"),
       props: {
-        params: toCamelCase(this.params)["dataUrl"],
         root: this.root.querySelector("main"),
       },
     });

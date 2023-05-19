@@ -48,7 +48,7 @@
     },
   ];
   const handleFetchRequestDone = () => {
-    console.log("fetchRequestDone");
+    // console.log("fetchRequestDone");
 
     const response = window.$fetchedData;
     calculatedResults = response.calculated_results;

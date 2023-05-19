@@ -12,13 +12,7 @@
   "stanza:updated": "2023-04-05",
   "stanza:parameter": [
     {
-      "stanza:key": "data-url",
-      "stanza:example": "https://raw.githubusercontent.com/YukikoNoda/precision-medicine/feature/heatmap-table/assets/sample.json",
-      "stanza:description": "Data source URL",
-      "stanza:required": true
-    },
-    {
-      "stanza:key": "stanza-genename",
+      "stanza:key": "stanza-term",
       "stanza:example": "ALK",
       "stanza:description": "Genename"
     }
