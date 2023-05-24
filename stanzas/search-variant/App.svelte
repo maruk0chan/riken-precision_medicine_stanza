@@ -56,7 +56,7 @@
           <tr>
             <td
               ><a
-                href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/variants/details?alt=T&assembly=hg38&chr=chr2&end=${end}&ref=C&start=${start}&variant=${variant}}`}
+                href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/variants/details?alt=T&assembly=hg38&chr=chr2&end=${end}&ref=C&start=${start}&variant=${variant}`}
                 >{variant}<Fa
                   icon={faCircleChevronRight}
                   size="90%"
