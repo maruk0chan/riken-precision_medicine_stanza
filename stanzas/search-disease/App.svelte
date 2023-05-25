@@ -55,7 +55,7 @@
             <td
               ><a
                 class="link-gene"
-                href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev//genes/details?uniprot_acc=${uniprot_acc}&assembly=${assembly}&genename=${genename}`}
+                href={`${window.location.origin}/dev//genes/details?uniprot_acc=${uniprot_acc}&assembly=${assembly}&genename=${genename}`}
                 >{genename}<Fa
                   icon={faCircleChevronRight}
                   size="90%"
@@ -70,7 +70,7 @@
             <td
               ><a
                 class="link-variant"
-                href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/variants/details?alt=T&assembly=${assembly}&chr=chr2&end=29222591&ref=C&start=29222591&variant=${variant}`}
+                href={`${window.location.origin}/dev/variants/details?alt=T&assembly=${assembly}&chr=chr2&end=29222591&ref=C&start=29222591&variant=${variant}`}
                 >{variant}<Fa
                   icon={faCircleChevronRight}
                   size="90%"

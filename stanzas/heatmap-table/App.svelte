@@ -315,7 +315,7 @@
                 </td>
                 <td class="td-variant">
                   <a
-                    href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/variants/details?alt=T&assembly=${data.assembly}&chr=chr2&end=29222591&ref=C&start=29222591&variant=${data.variant}`}
+                    href={`${window.location.origin}/dev/variants/details?alt=T&assembly=${data.assembly}&chr=chr2&end=29222591&ref=C&start=29222591&variant=${data.variant}`}
                   >
                     {data.variant}<Fa
                       icon={faCircleChevronRight}
@@ -348,7 +348,7 @@
                 {/if}
                 <td class="td-calc"
                   ><a
-                    href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/calculated_results?Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&calculation_type=${data.calculationType}&variant=${data.variant}&assembly=${data.assembly}&genename=${data.genename}`}
+                    href={`${window.location.origin}/dev/calculated_results?Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&calculation_type=${data.calculationType}&variant=${data.variant}&assembly=${data.assembly}&genename=${data.genename}`}
                     ><img
                       class={calculationType(data.calculationType).className
                         ? calculationType(data.calculationType).className

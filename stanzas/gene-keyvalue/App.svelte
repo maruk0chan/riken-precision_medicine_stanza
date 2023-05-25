@@ -24,7 +24,7 @@
         position: fetchGeneData[0].position,
       },
     ];
-    window.dispatchEvent(new CustomEvent('childHasGotData'))
+    window.dispatchEvent(new CustomEvent("childHasGotData"));
   };
   window.addEventListener("fetchRequestDone", handleFetchRequestDone);
 
@@ -57,7 +57,7 @@
         <td>
           {#if index === 0}
             <a
-              href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/genes/details?uniprot_acc=Q9UM73&assembly=grch38&genename=${term}`}
+              href={`${window.location.origin}/dev/genes/details?uniprot_acc=Q9UM73&assembly=grch38&genename=${term}`}
               >{value}
               <Fa
                 icon={faCircleChevronRight}
