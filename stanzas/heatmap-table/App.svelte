@@ -7,7 +7,7 @@
     faTriangleExclamation,
   } from "@fortawesome/free-solid-svg-icons";
   import { calculationType, scores, scoreTheads } from "./data.js";
-  export let uniprotAcc, assembly, genename, root;
+  export let root;
   let promise = fetchData();
   // let dataUrl =
   //   "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/sample.json";

@@ -56,7 +56,7 @@
           <tr>
             <td
               ><a
-                href={`${window.location.origin}/dev/variants/details?alt=T&assembly=hg38&chr=chr2&end=${end}&ref=C&start=${start}&variant=${variant}}`}
+                href={`${window.location.origin}/dev/variants/details?alt=T&assembly=hg38&chr=chr2&end=${end}&ref=C&start=${start}&variant=${variant}`}
                 >{variant}<Fa
                   icon={faCircleChevronRight}
                   size="90%"
