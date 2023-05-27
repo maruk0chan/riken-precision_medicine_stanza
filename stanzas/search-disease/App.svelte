@@ -43,7 +43,7 @@
       {#await promise}
         <tr><td colspan="10">Loading...</td></tr>
       {:then dataset}
-        {#each dataset.data as { ClinVar_DiseaseName, genename, uniprot_acc, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, assembly }}
+        {#each dataset.data as { ClinVar_DiseaseName, genename, uniprot_acc, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, assembly, chr, alt, ref, start, end }}
           <tr>
             <td>{@html ClinVar_DiseaseName.join("<br>")}</td>
             <td
@@ -61,7 +61,11 @@
             <td
               ><a
                 class="link-variant"
-                href={`${window.location.origin}/dev/variants/details?alt=T&assembly=${assembly}&chr=chr2&end=29222591&ref=C&start=29222591&variant=${variant}`}
+                href={`${
+                  window.location.origin
+                }/dev/variants/details?assembly=${assembly}&chr=${
+                  chr ? chr : "chr2"
+                }&start=${start}&end=${end}&alt=${alt}&ref=${ref}&variant=${variant}`}
                 >{variant}<Fa
                   icon={faCircleChevronRight}
                   size="90%"
@@ -69,11 +73,21 @@
                 />
               </a></td
             >
-            <td>{MGeND_ClinicalSignificance}</td>
-            <td>{ClinVar_ClinicalSignificance}</td>
+            <td>
+              {MGeND_ClinicalSignificance[0] === ""
+                ? "-"
+                : MGeND_ClinicalSignificance}</td
+            >
+            <td
+              >{ClinVar_ClinicalSignificance[0] === ""
+                ? "-"
+                : ClinVar_ClinicalSignificance}</td
+            >
             <td
               >{#if calculation_type === "Mutation_FEP"}
-                <img src={drugIcon} alt="drug" />
+                <a href={`${window.location.origin}/dev/calculation/details/`}>
+                  <img src={drugIcon} alt="drug" />
+                </a>
               {/if}
             </td>
           </tr>

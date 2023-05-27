@@ -7,7 +7,7 @@
     faTriangleExclamation,
   } from "@fortawesome/free-solid-svg-icons";
   import { calculationType, scores, scoreTheads } from "./data.js";
-  export let root;
+  export let uniprotAcc, assembly, genename, root;
   let promise = fetchData();
   // let dataUrl =
   //   "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/sample.json";
@@ -37,8 +37,7 @@
   async function fetchData() {
     // const response = await fetch(dataUrl);
     const response = await fetch(
-      // `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}&limit=1000`
-      `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=Q9UM73&assembly=hg38&genename=ALK&limit=1000`
+      `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}&limit=1000`
     );
     const json = await response.json();
     if (response.ok) {
@@ -260,7 +259,7 @@
           <tr>
             <th class="th-gene" rowspan="2">UniPort acc</th>
             <th class="th-variant" rowspan="2">Variant</th>
-            <th class="th-variant th-group" colspan="3">HGVS</th>
+            <th class="th-variant" rowspan="2">GenBank</th>
             <th class="th-disease th-group" colspan="2">Significance</th>
             {#if calculationType(selectedListName).calcName !== "variants"}
               <th class="th-calc th-group" colspan="1"
@@ -276,9 +275,6 @@
             {/each}
           </tr>
           <tr>
-            <th class="th-variant" rowspan="1">Ensembl</th>
-            <th class="th-variant" rowspan="1">GenBank</th>
-            <th class="th-variant" rowspan="1">ClinVar</th>
             <th class="th-disease" rowspan="1">MGeND</th>
             <th class="th-disease" rowspan="1">ClinVar</th>
             {#if calculationType(selectedListName).calcName !== "variants"}
@@ -324,20 +320,14 @@
                     /></a
                   >
                 </td>
+                <td>{data.genBank === null ? "-" : data.genBank}</td>
                 <td
-                  >{data.ensemblTranscriptid
-                    ? "-"
-                    : data.ensemblTranscriptid}</td
-                >
-                <td>{data.genBank ? "-" : data.genBank}</td>
-                <td>{data.clinvarHgvs ? "-" : data.clinvarHgvs}</td>
-                <td
-                  >{data.mGeNdClinicalSignificance
+                  >{data.mGeNdClinicalSignificance[0] === ""
                     ? "-"
                     : data.mGeNdClinicalSignificance}</td
                 >
                 <td
-                  >{data.clinVarClinicalSignificance
+                  >{data.clinVarClinicalSignificance[0] === ""
                     ? "-"
                     : data.clinVarClinicalSignificance}</td
                 >
@@ -348,7 +338,7 @@
                 {/if}
                 <td class="td-calc"
                   ><a
-                    href={`${window.location.origin}/dev/calculated_results?Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&calculation_type=${data.calculationType}&variant=${data.variant}&assembly=${data.assembly}&genename=${data.genename}`}
+                    href={`${window.location.origin}/dev/calculation/details/`}
                     ><img
                       class={calculationType(data.calculationType).className
                         ? calculationType(data.calculationType).className
@@ -390,7 +380,6 @@
                   size="90%"
                   color="var(--warning-color)"
                 />
-
                 Unable to fetch data from the server. Please refresh the page or
                 try again later.<br />
               </td></tr
