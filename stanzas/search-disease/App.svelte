@@ -30,26 +30,20 @@
   <table class="table">
     <thead>
       <tr>
-        <th class="th-disease" rowspan="2">Name</th>
-        <th class="th-gene" rowspan="2">Gene</th>
-        <th class="th-gene" rowspan="2">UniProt acc</th>
-        <th class="th-variant" colspan="3">HGVS</th>
-        <th class="th-variant" rowspan="2">Variant</th>
-        <th class="th-disease" rowspan="2">MGeND Significance</th>
-        <th class="th-disease" rowspan="2">ClinVar Significance</th>
-        <th class="th-calc" rowspan="2">Calculated</th>
-      </tr>
-      <tr>
-        <th class="th-variant">Ensembl</th>
-        <th class="th-variant">GenBank</th>
-        <th class="th-variant">ClinVar</th>
+        <th class="th-disease">Name</th>
+        <th class="th-gene">Gene</th>
+        <th class="th-gene">UniProt acc</th>
+        <th class="th-variant">Variant</th>
+        <th class="th-disease">MGeND Significance</th>
+        <th class="th-disease">ClinVar Significance</th>
+        <th class="th-calc">Calculated</th>
       </tr>
     </thead>
     <tbody>
       {#await promise}
         <tr><td colspan="10">Loading...</td></tr>
       {:then dataset}
-        {#each dataset.data as { ClinVar_DiseaseName, genename, uniprot_acc, Ensembl_transcriptid, GenBank, clinvar_hgvs, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, assembly }}
+        {#each dataset.data as { ClinVar_DiseaseName, genename, uniprot_acc, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, assembly }}
           <tr>
             <td>{@html ClinVar_DiseaseName.join("<br>")}</td>
             <td
@@ -64,9 +58,6 @@
               </a></td
             >
             <td> {uniprot_acc}</td>
-            <td>{Ensembl_transcriptid}</td>
-            <td>{GenBank}</td>
-            <td>{clinvar_hgvs}</td>
             <td
               ><a
                 class="link-variant"
