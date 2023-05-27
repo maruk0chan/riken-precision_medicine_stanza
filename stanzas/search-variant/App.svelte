@@ -5,6 +5,7 @@
     faTriangleExclamation,
   } from "@fortawesome/free-solid-svg-icons";
   export let assembly, isPosition, term;
+  const grch = `GRCh${assembly.replace(/\D/g, "")}`;
   let promise = search(term);
 
   const drugIcon =
@@ -36,42 +37,52 @@
   <table class="table">
     <thead>
       <tr>
-        <th class="th-variant" rowspan="2">Name</th>
-        <th class="th-variant" colspan="3">HGVS</th>
-        <th class="th-disease" rowspan="2">MGeND Significance</th>
-        <th class="th-disease" rowspan="2">ClinVar Significance</th>
-        <th class="th-calc" rowspan="2">Calculated</th>
-      </tr>
-      <tr>
-        <th class="th-variant">Ensembl</th>
-        <th class="th-variant">GenBank</th>
-        <th class="th-variant">ClinVar</th>
+        <th class="th-variant">Name</th>
+        <th class="th-disease">MGeND Significance</th>
+        <th class="th-disease">ClinVar Significance</th>
+        <th class="th-calc">Calculated</th>
       </tr>
     </thead>
     <tbody>
       {#await promise}
         <tr><td colspan="10">Loading...</td></tr>
       {:then dataset}
-        {#each dataset.data as { variant, Ensembl_transcriptid, GenBank, clinvar_hgvs, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, end, start }}
+        {#each dataset.data as { chr, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, end, start, alt, ref }}
           <tr>
             <td
               ><a
                 href={`${window.location.origin}/dev/variants/details?alt=T&assembly=hg38&chr=chr2&end=${end}&ref=C&start=${start}&variant=${variant}`}
-                >{variant}<Fa
+              >
+                {`
+                ${grch}${chr ? `_${chr}` : ""}
+                ${start ? `_${start}` : ""}
+                ${end ? `_${end}` : ""}
+                ${alt ? `_${alt}` : ""}
+                ${ref ? `_${ref}` : ""}
+                ${variant ? `_${variant}` : ""}
+                `}
+                <Fa
                   icon={faCircleChevronRight}
                   size="90%"
                   color="var(--variant-color)"
                 />
-              </a></td
+              </a>
+            </td>
+            <td>
+              {MGeND_ClinicalSignificance[0] === ""
+                ? "-"
+                : MGeND_ClinicalSignificance}</td
             >
-            <td>{Ensembl_transcriptid}</td>
-            <td>{GenBank}</td>
-            <td>{clinvar_hgvs}</td>
-            <td>{MGeND_ClinicalSignificance}</td>
-            <td>{ClinVar_ClinicalSignificance}</td>
+            <td
+              >{ClinVar_ClinicalSignificance[0] === ""
+                ? "-"
+                : ClinVar_ClinicalSignificance}</td
+            >
             <td
               >{#if calculation_type === "Mutation_FEP"}
-                <img src={drugIcon} alt="drug" />
+                <a href={`${window.location.origin}/dev/calculation/details/`}>
+                  <img src={drugIcon} alt="drug" />
+                </a>
               {/if}
             </td>
           </tr>
