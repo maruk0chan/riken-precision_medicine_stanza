@@ -51,7 +51,11 @@
           <tr>
             <td
               ><a
-                href={`${window.location.origin}/dev/variants/details?alt=T&assembly=hg38&chr=chr2&end=${end}&ref=C&start=${start}&variant=${variant}`}
+                href={`${
+                  window.location.origin
+                }/dev/variants/details?assembly=${assembly}&chr=${
+                  chr ? chr : "chr2"
+                }&start=${start}&end=${end}&alt=${alt}&ref=${ref}&variant=${variant}`}
               >
                 {`
                 ${grch}${chr ? `_${chr}` : ""}
