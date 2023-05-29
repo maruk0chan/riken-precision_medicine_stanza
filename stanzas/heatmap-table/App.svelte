@@ -21,8 +21,17 @@
   let selectedListName = "variants";
   let currentTabeList = [];
 
+  // const getCalculationsLists = (dataset) => {
+  //   const calculations = dataset.map((d) => d.calculationType);
+  //   calculationsCount = calculations.reduce((acc, item) => {
+  //     acc[item] = (acc[item] || 0) + 1;
+  //     return acc;
+  //   }, {});
+  //   return [...new Set(calculations.filter(Boolean))];
+  // };
+
   const getCalculationsLists = (dataset) => {
-    const calculations = dataset.map((d) => d.calculationType);
+    const calculations = dataset.map((d) => d.calculationType.toString());
     calculationsCount = calculations.reduce((acc, item) => {
       acc[item] = (acc[item] || 0) + 1;
       return acc;
@@ -45,6 +54,8 @@
       dataset = json.data.map(toCamelCase);
       currentTabeList = dataset;
       calculationsLists = getCalculationsLists(dataset);
+      // console.log(dataset);
+
       datasetMap = new Map([["variants", dataset]]);
 
       calculationsLists.forEach((calc) => {
