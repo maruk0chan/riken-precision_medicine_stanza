@@ -261,7 +261,7 @@
       <table>
         <thead>
           <tr>
-            <th class="th-gene" rowspan="2">UniPort acc</th>
+            <th class="th-gene" rowspan="2">UniProt acc</th>
             <th class="th-variant" rowspan="2">Variant</th>
             <th class="th-variant" rowspan="2">GenBank</th>
             <th class="th-disease th-group" colspan="2">Significance</th>
@@ -324,48 +324,62 @@
                     /></a
                   >
                 </td>
-                <td>{data.genBank === null ? "-" : data.genBank}</td>
+                <td>{data.genBank[0] === undefined ? "-" : data.genBank}</td>
                 <td
-                  >{data.mGeNdClinicalSignificance[0] === ""
+                  >{data.mGeNdClinicalSignificance[0] === undefined
                     ? "-"
                     : data.mGeNdClinicalSignificance}</td
                 >
                 <td
-                  >{data.clinVarClinicalSignificance[0] === ""
+                  >{data.clinVarClinicalSignificance[0] === undefined
                     ? "-"
                     : data.clinVarClinicalSignificance}</td
                 >
                 {#if calculationType(selectedListName).calcName !== "variants"}
-                  <td>{data.feBind === undefined ? "-" : data.feBind}</td>
-                  <td>{data.feBindMean}</td>
-                  <td>{data.feBindStd}</td>
+                  {#if data.feBind.length === 0}
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  {:else if data.feBind.length === 1}
+                    <td>{data.feBind}</td>
+                    <td>-</td>
+                    <td>-</td>
+                  {:else}
+                    <td>-</td>
+                    <td>{data.feBindMean}</td>
+                    <td>{data.feBindStd}</td>
+                  {/if}
                 {/if}
-                <td class="td-calc"
-                  ><a
+                <td class="td-calc">
+                  <a
                     href={`${window.location.origin}/dev/calculation/details/`}
-                    ><img
-                      class={calculationType(data.calculationType).className
-                        ? calculationType(data.calculationType).className
+                  >
+                    <!-- 以下を.toString()にしているが、配列で複数になるはずなので変更する -->
+                    <img
+                      class={calculationType(data.calculationType.toString())
+                        .className
+                        ? calculationType(data.calculationType.toString())
+                            .className
                         : ""}
-                      src={calculationType(data.calculationType).src
-                        ? calculationType(data.calculationType).src
+                      src={calculationType(data.calculationType.toString()).src
+                        ? calculationType(data.calculationType.toString()).src
                         : ""}
-                      alt={calculationType(data.calculation).alt
-                        ? calculationType(data.calculation).alt
+                      alt={calculationType(data.calculationType.toString()).alt
+                        ? calculationType(data.calculationType.toString()).alt
                         : ""}
                     />
-                    {calculationType(data.calculationType).calcName
-                      ? calculationType(data.calculationType).calcName
+                    {data.calculationType.toString()
+                      ? data.calculationType.toString()
                       : ""}
-                    {#if calculationType(data.calculationType).calcName !== ""}
+                    {#if calculationType(data.calculationType.toString()).calcName !== ""}
                       <Fa
                         icon={faCircleChevronRight}
                         size="90%"
                         color="var(--calc-color)"
                       />
-                    {/if}</a
-                  ></td
-                >
+                    {/if}
+                  </a>
+                </td>
                 {#each scores as key}
                   <td class="cell-td"
                     ><div

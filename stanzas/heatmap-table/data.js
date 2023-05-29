@@ -30,27 +30,27 @@ export const calculationType = (dataType) => {
         // src: proteinIcon,
         // alt: "protein icon",
       };
-      // return {
-      //   calcName: "protein",
-      //   className: "protein-icon",
-      //   src: proteinIcon,
-      //   alt: "protein icon",
-      // };
+    // return {
+    //   calcName: "protein",
+    //   className: "protein-icon",
+    //   src: proteinIcon,
+    //   alt: "protein icon",
+    // };
   }
 };
 
 export const scores = [
-  "caddRaw",
-  "fathmmMklCoding",
-  "lrtConverted",
-  "mutationTasterConverted",
+  "cadd",
+  "fathmmMkl",
+  "lrt",
+  "mutationTaster",
   "mutationAssessor",
   "polyphen2Hdiv",
   "polyphen2Hvar",
   "primateAi",
-  "proveanConverted",
+  "provean",
   "revel",
-  "sift4GConverted",
+  "sift4G",
 ];
 
 export const scoreTheads = [
@@ -64,5 +64,5 @@ export const scoreTheads = [
   { className: "th-heatmap", label: "PrimateAI" },
   { className: "th-heatmap", label: "PROVEAN" },
   { className: "th-heatmap", label: "REVEL" },
-  { className: "th-heatmap", label: "SIFT4G" }
-]
+  { className: "th-heatmap", label: "SIFT4G" },
+];
