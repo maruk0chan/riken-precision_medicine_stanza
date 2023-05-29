@@ -9,8 +9,7 @@
   import { calculationType, scores, scoreTheads } from "./data.js";
   export let uniprotAcc, assembly, genename, root;
   let promise = fetchData();
-  // let dataUrl =
-  //   "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/sample.json";
+
   let dataset = [];
   let calculationsCount = {};
   let calculationsLists = [];
@@ -20,15 +19,6 @@
   let selectDrugList = [];
   let selectedListName = "variants";
   let currentTabeList = [];
-
-  // const getCalculationsLists = (dataset) => {
-  //   const calculations = dataset.map((d) => d.calculationType);
-  //   calculationsCount = calculations.reduce((acc, item) => {
-  //     acc[item] = (acc[item] || 0) + 1;
-  //     return acc;
-  //   }, {});
-  //   return [...new Set(calculations.filter(Boolean))];
-  // };
 
   const getCalculationsLists = (dataset) => {
     const calculations = dataset.map((d) => d.calculationType.toString());
@@ -44,10 +34,8 @@
   ];
 
   async function fetchData() {
-    // const response = await fetch(dataUrl);
     const response = await fetch(
-      // `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}&limit=1000`
-      `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=Q9UM73&assembly=hg38&genename=ALK&limit=1000`
+      `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}`
     );
     const json = await response.json();
     if (response.ok) {
