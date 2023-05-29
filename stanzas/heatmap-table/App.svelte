@@ -21,7 +21,10 @@
   let currentTabeList = [];
 
   const getCalculationsLists = (dataset) => {
-    const calculations = dataset.map((d) => d.calculationType.toString());
+    let calculations = [];
+    dataset.forEach((data) =>
+      data.calculationType.forEach((d) => calculations.push(d))
+    );
     calculationsCount = calculations.reduce((acc, item) => {
       acc[item] = (acc[item] || 0) + 1;
       return acc;
@@ -42,12 +45,13 @@
       dataset = json.data.map(toCamelCase);
       currentTabeList = dataset;
       calculationsLists = getCalculationsLists(dataset);
-      // console.log(dataset);
 
       datasetMap = new Map([["variants", dataset]]);
 
       calculationsLists.forEach((calc) => {
-        const filteredData = dataset.filter((d) => d.calculationType === calc);
+        const filteredData = dataset.filter((d) =>
+          d.calculationType.includes(calc)
+        );
         datasetMap.set(calc, filteredData);
 
         // Create a crossing list with drugs
