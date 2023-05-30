@@ -30,7 +30,7 @@
     <thead>
       <tr>
         <th class="th-gene">Name</th>
-        <th class="th-gene">UniPort acc</th>
+        <th class="th-gene">UniProt acc</th>
         <th class="th-calc">Calculated</th>
       </tr>
     </thead>
@@ -42,7 +42,7 @@
           <tr>
             <td
               ><a
-                href={`${window.location.origin}/dev/genes/details?uniprot_acc=${uniprot_acc}&assembly=${assembly}&genename=${genename}`}
+                href={`${window.location.origin}/dev/genes/details?assembly=${assembly}&genename=${genename}&uniprot_acc=${uniprot_acc}`}
                 >{genename}<Fa
                   icon={faCircleChevronRight}
                   size="90%"
@@ -51,9 +51,12 @@
               </a></td
             >
             <td>{uniprot_acc}</td>
-            <td
-              >{#if calculation_type === "Mutation_FEP"}
-                <img src={drugIcon} alt="drug" />
+            <td class="td-calc">
+              {#if calculation_type.length > 0}
+                {#each calculation_type as calc}
+                  <img src={drugIcon} alt="drug" />
+                  {calc}
+                {/each}
               {/if}
             </td>
           </tr>

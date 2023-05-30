@@ -303,7 +303,7 @@
                 class={index === 0 ? "selected" : ""}
                 on:click={tableHandleClick}
               >
-                <td class="td-uniport">
+                <td class="td-uniprot">
                   <input
                     class="radio-button"
                     type="radio"
