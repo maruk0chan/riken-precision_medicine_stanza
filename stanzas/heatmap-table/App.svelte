@@ -315,7 +315,7 @@
                 </td>
                 <td class="td-variant">
                   <a
-                    href={`${window.location.origin}/dev/variants/details?alt=T&assembly=${data.assembly}&chr=chr2&end=29222591&ref=C&start=29222591&variant=${data.variant}`}
+                    href={`${window.location.origin}/dev/variants/details?assembly=${data.assembly}&chr=${data.chr}&start=${data.start}&end=${data.end}&ref=${data.ref}&alt=${data.alt}&variant=${data.variant}`}
                   >
                     {data.variant}<Fa
                       icon={faCircleChevronRight}

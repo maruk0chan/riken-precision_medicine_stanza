@@ -30,7 +30,7 @@
     <thead>
       <tr>
         <th class="th-gene">Name</th>
-        <th class="th-gene">Uniprot acc</th>
+        <th class="th-gene">UniPort acc</th>
         <th class="th-calc">Calculated</th>
       </tr>
     </thead>
