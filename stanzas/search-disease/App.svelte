@@ -30,7 +30,8 @@
   <table class="table">
     <thead>
       <tr>
-        <th class="th-disease">Name</th>
+        <th class="th-disease">Name (MGeND)</th>
+        <th class="th-disease">Name (Clinvar)</th>
         <th class="th-gene">Gene</th>
         <th class="th-gene">UniProt acc</th>
         <th class="th-variant">Variant</th>
@@ -43,9 +44,10 @@
       {#await promise}
         <tr><td colspan="10">Loading...</td></tr>
       {:then dataset}
-        {#each dataset.data as { ClinVar_DiseaseName, genename, uniprot_acc, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, assembly, chr, alt, ref, start, end }}
+        {#each dataset.data as { MGeND_DiseaseName, ClinVar_DiseaseName, genename, uniprot_acc, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, assembly, chr, alt, ref, start, end }}
           <tr>
-            <td>{@html ClinVar_DiseaseName.join("<br>")}</td>
+            <td class="td-disease">{@html MGeND_DiseaseName.join("<br>")}</td>
+            <td class="td-disease">{@html ClinVar_DiseaseName.join("<br>")}</td>
             <td
               ><a
                 class="link-gene"
