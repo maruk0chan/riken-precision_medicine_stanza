@@ -352,7 +352,7 @@
                 {/if}
                 <td class="td-calc">
                   <a
-                    href={`${window.location.origin}/dev/calculation/details/`}
+                    href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${data.calculationType}&Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&variant=${data.variant}`}
                   >
                     <!-- 以下を.toString()にしているが、配列で複数になるはずなので変更する -->
                     <img
