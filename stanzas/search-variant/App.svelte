@@ -47,24 +47,14 @@
       {#await promise}
         <tr><td colspan="10">Loading...</td></tr>
       {:then dataset}
-        {#each dataset.data as { chr, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, end, start, alt, ref }}
+        {#each dataset.data as { chr, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, end, start, alt, ref, genename, Compound_ID, PDB_ID }}
           <tr>
             <td
               ><a
-                href={`${
-                  window.location.origin
-                }/dev/variants/details?assembly=${assembly}&chr=${
-                  chr ? chr : "chr2"
-                }&start=${start}&end=${end}&alt=${alt}&ref=${ref}&variant=${variant}`}
+                class="link-variant"
+                href={`${window.location.origin}/dev/variants/details?assembly=${assembly}&chr=${chr}&start=${start}&end=${end}&ref=${ref}&alt=${alt}&variant=${variant}`}
               >
-                {`
-                ${grch}${chr ? `_${chr}` : ""}
-                ${start ? `_${start}` : ""}
-                ${end ? `_${end}` : ""}
-                ${alt ? `_${alt}` : ""}
-                ${ref ? `_${ref}` : ""}
-                ${variant ? `_${variant}` : ""}
-                `}
+                {`${grch}_${chr}_${start}_${end}_${ref}_${alt}_${variant}`}
                 <Fa
                   icon={faCircleChevronRight}
                   size="90%"
@@ -73,20 +63,31 @@
               </a>
             </td>
             <td>
-              {MGeND_ClinicalSignificance[0] === ""
+              {MGeND_ClinicalSignificance.length === 0
                 ? "-"
-                : MGeND_ClinicalSignificance}</td
-            >
+                : MGeND_ClinicalSignificance}
+            </td>
             <td
-              >{ClinVar_ClinicalSignificance[0] === ""
+              >{ClinVar_ClinicalSignificance.length === 0
                 ? "-"
-                : ClinVar_ClinicalSignificance}</td
-            >
+                : ClinVar_ClinicalSignificance}
+            </td>
             <td
-              >{#if calculation_type === "Mutation_FEP"}
-                <a href={`${window.location.origin}/dev/calculation/details/`}>
-                  <img src={drugIcon} alt="drug" />
-                </a>
+              >{#if calculation_type.length > 0}
+                {#each calculation_type as calc}
+                  <a
+                    class="link-calc"
+                    href={`${window.location.origin}/dev/calculation/details?assembly=${assembly}&genename=${genename}&calculation_type=${calc}&Compound_ID=${Compound_ID}&PDB_ID=${PDB_ID}&variant=${variant}`}
+                  >
+                    <img src={drugIcon} alt="drug" />
+                    {calc}
+                    <Fa
+                      icon={faCircleChevronRight}
+                      size="90%"
+                      color="var(--calc-color)"
+                    />
+                  </a>
+                {/each}
               {/if}
             </td>
           </tr>

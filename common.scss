@@ -56,14 +56,15 @@ li {
 .th-gene {
   color: var(--gene-color);
 }
-.th-variant {
+.th-variant,
+.link-variant {
   color: var(--variant-color);
 }
 .th-disease {
   color: var(--disease-color);
 }
 .th-calc,
-.td-calc {
+.link-calc {
   color: var(--calc-color);
 }
 

@@ -51,7 +51,7 @@
               </a></td
             >
             <td>{uniprot_acc}</td>
-            <td class="td-calc">
+            <td>
               {#if calculation_type.length > 0}
                 {#each calculation_type as calc}
                   <img src={drugIcon} alt="drug" />
