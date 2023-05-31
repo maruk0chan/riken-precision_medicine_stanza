@@ -1,13 +1,5 @@
-export const arrowTheme = {
-  secondaryOpacity: 1,
-  primaryColor: "transparent",
-  size: "90%",
-};
-
-const drugIcon =
-  "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
-const proteinIcon =
-  "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
+import drugIcon from "@/assets/drug.svg";
+// import proteinIcon from "@/assets/protein.svg";
 export const calculationType = (dataType) => {
   switch (dataType) {
     case "variants":
@@ -15,8 +7,6 @@ export const calculationType = (dataType) => {
         calcName: "variants",
       };
     case "Mutation_FEP":
-    case "Mutation_FEP1":
-    case "Mutation_FEP2":
       return {
         calcName: "mutation",
         className: "drug-icon",
@@ -30,12 +20,6 @@ export const calculationType = (dataType) => {
         // src: proteinIcon,
         // alt: "protein icon",
       };
-    // return {
-    //   calcName: "protein",
-    //   className: "protein-icon",
-    //   src: proteinIcon,
-    //   alt: "protein icon",
-    // };
   }
 };
 

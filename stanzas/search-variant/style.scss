@@ -23,7 +23,8 @@
       td {
         padding-left: 10px;
         border-bottom: 1px solid var(--white_20);
-        &:nth-of-type(1) {
+        &:nth-of-type(1),
+        &.td-calc {
           padding-left: 5px;
         }
         > a {
@@ -31,10 +32,6 @@
           &:active {
             opacity: 0.7;
           }
-        }
-        img {
-          padding-right: 3px;
-          vertical-align: middle;
         }
       }
     }

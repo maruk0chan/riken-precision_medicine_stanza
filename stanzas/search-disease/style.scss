@@ -30,7 +30,8 @@
         &.th-disease {
           max-width: 100px;
         }
-        &:nth-of-type(1) {
+        &:nth-of-type(1),
+        &.td-calc {
           padding-left: 5px;
         }
         > a {
@@ -38,10 +39,6 @@
           &:active {
             opacity: 0.7;
           }
-        }
-        img {
-          padding-right: 10px;
-          vertical-align: middle;
         }
       }
     }

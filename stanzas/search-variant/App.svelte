@@ -4,14 +4,12 @@
     faCircleChevronRight,
     faTriangleExclamation,
   } from "@fortawesome/free-solid-svg-icons";
+  import drugIcon from "@/assets/drug.svg";
+  import proteinIcon from "@/assets/protein.svg";
+
   export let assembly, isPosition, term;
   const grch = `GRCh${assembly.replace(/\D/g, "")}`;
   let promise = search(term);
-
-  const drugIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
-  const proteinIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
 
   async function search(term) {
     let response;
@@ -72,14 +70,14 @@
                 ? "-"
                 : ClinVar_ClinicalSignificance}
             </td>
-            <td
+            <td class="td-calc"
               >{#if calculation_type.length > 0}
                 {#each calculation_type as calc}
                   <a
                     class="link-calc"
                     href={`${window.location.origin}/dev/calculation/details?assembly=${assembly}&genename=${genename}&calculation_type=${calc}&Compound_ID=${Compound_ID}&PDB_ID=${PDB_ID}&variant=${variant}`}
                   >
-                    <img src={drugIcon} alt="drug" />
+                    <img class="icon" src={drugIcon} alt="drug" />
                     {calc}
                     <Fa
                       icon={faCircleChevronRight}

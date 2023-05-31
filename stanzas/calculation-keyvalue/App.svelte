@@ -1,10 +1,8 @@
 <script>
   import Fa from "svelte-fa";
   import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
-  const drugIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
-  const proteinIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
+  import drugIcon from "@/assets/drug.svg";
+  import proteinIcon from "@/assets/protein.svg";
 
   const calcList = [
     { title: "MutationFEP", src: drugIcon, alt: "drug icon" },

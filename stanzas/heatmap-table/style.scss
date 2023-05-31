@@ -1,15 +1,9 @@
 @use "@/common.scss";
 
 // Icon
-img {
-  width: 17px;
-  margin-right: 5px;
+.icon {
+  width: 20px;
   vertical-align: sub;
-  &.drug-icon {
-    width: 14px;
-    margin-right: 7px;
-    margin-left: 2px;
-  }
 }
 .radio-button {
   width: 14px;
@@ -204,14 +198,8 @@ img {
               }
               &.td-calc {
                 > a {
-                  color: var(--calc-color);
-                  padding: 5px 5px 5px 2px;
+                  padding: 5px 0;
                   cursor: pointer;
-                  img {
-                    width: 12px;
-                    margin-right: 2px;
-                    margin-left: 0;
-                  }
                 }
               }
               &.td-variant > span:active,

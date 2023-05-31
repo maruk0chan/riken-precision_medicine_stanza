@@ -223,7 +223,7 @@
             tabindex="-1"
           >
             <img
-              class={calculationType(calc).className}
+              class="icon"
               src={calculationType(calc).src}
               alt={calculationType(calc).alt}
             />{calc}<span class="num">{calculationsCount[calc]}</span>
@@ -352,15 +352,12 @@
                 {/if}
                 <td class="td-calc">
                   <a
+                    class="link-calc"
                     href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${data.calculationType}&Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&variant=${data.variant}`}
                   >
                     <!-- 以下を.toString()にしているが、配列で複数になるはずなので変更する -->
                     <img
-                      class={calculationType(data.calculationType.toString())
-                        .className
-                        ? calculationType(data.calculationType.toString())
-                            .className
-                        : ""}
+                      class="icon"
                       src={calculationType(data.calculationType.toString()).src
                         ? calculationType(data.calculationType.toString()).src
                         : ""}

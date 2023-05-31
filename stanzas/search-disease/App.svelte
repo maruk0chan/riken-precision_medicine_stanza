@@ -4,15 +4,11 @@
     faCircleChevronRight,
     faTriangleExclamation,
   } from "@fortawesome/free-solid-svg-icons";
+  import drugIcon from "@/assets/drug.svg";
+  import proteinIcon from "@/assets/protein.svg";
   export let assembly, term;
   let promise = search(term);
 
-  const drugIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
-  const proteinIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
-
-  let dataset = {};
   async function search(disease) {
     const response = await fetch(
       `https://precisionmd-db.med.kyoto-u.ac.jp/api/positions/search?assembly=${assembly}&disease=${disease}`
@@ -44,7 +40,7 @@
       {#await promise}
         <tr><td colspan="10">Loading...</td></tr>
       {:then dataset}
-        {#each dataset.data as { MGeND_DiseaseName, ClinVar_DiseaseName, genename, uniprot_acc, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, assembly, chr, alt, ref, start, end }}
+        {#each dataset.data as { MGeND_DiseaseName, ClinVar_DiseaseName, genename, uniprot_acc, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, assembly, chr, alt, ref, start, end, Compound_ID, PDB_ID }}
           <tr>
             <td class="td-disease">{@html MGeND_DiseaseName.join("<br>")}</td>
             <td class="td-disease">{@html ClinVar_DiseaseName.join("<br>")}</td>
@@ -76,20 +72,31 @@
               </a></td
             >
             <td>
-              {MGeND_ClinicalSignificance[0] === ""
+              {MGeND_ClinicalSignificance.length === 0
                 ? "-"
                 : MGeND_ClinicalSignificance}</td
             >
             <td
-              >{ClinVar_ClinicalSignificance[0] === ""
+              >{ClinVar_ClinicalSignificance.length === 0
                 ? "-"
                 : ClinVar_ClinicalSignificance}</td
             >
-            <td
-              >{#if calculation_type === "Mutation_FEP"}
-                <a href={`${window.location.origin}/dev/calculation/details/`}>
-                  <img src={drugIcon} alt="drug" />
-                </a>
+            <td class="td-calc"
+              >{#if calculation_type.length > 0}
+                {#each calculation_type as calc}
+                  <a
+                    class="link-calc"
+                    href={`${window.location.origin}/dev/calculation/details?assembly=${assembly}&genename=${genename}&calculation_type=${calc}&Compound_ID=${Compound_ID}&PDB_ID=${PDB_ID}&variant=${variant}`}
+                  >
+                    <img class="icon" src={drugIcon} alt="drug" />
+                    {calc}
+                    <Fa
+                      icon={faCircleChevronRight}
+                      size="90%"
+                      color="var(--calc-color)"
+                    />
+                  </a>
+                {/each}
               {/if}
             </td>
           </tr>

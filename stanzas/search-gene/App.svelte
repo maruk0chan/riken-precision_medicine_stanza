@@ -4,13 +4,10 @@
     faCircleChevronRight,
     faTriangleExclamation,
   } from "@fortawesome/free-solid-svg-icons";
+  import drugIcon from "@/assets/drug.svg";
+  // import proteinIcon from "@/assets/protein.svg";
   export let assembly, term;
   let promise = search(term);
-
-  const drugIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
-  const proteinIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
 
   async function search(geneName) {
     const response = await fetch(
@@ -42,6 +39,7 @@
           <tr>
             <td
               ><a
+                class="link-gene"
                 href={`${window.location.origin}/dev/genes/details?assembly=${assembly}&genename=${genename}&uniprot_acc=${uniprot_acc}`}
                 >{genename}<Fa
                   icon={faCircleChevronRight}
@@ -54,7 +52,7 @@
             <td>
               {#if calculation_type.length > 0}
                 {#each calculation_type as calc}
-                  <img src={drugIcon} alt="drug" />
+                  <img class="icon" src={drugIcon} alt="drug" />
                   {calc}
                 {/each}
               {/if}

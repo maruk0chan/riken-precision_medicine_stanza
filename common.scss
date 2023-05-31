@@ -73,6 +73,12 @@ li {
   height: 200px;
   text-align: center;
 }
+
+.icon {
+  width: 27px;
+  vertical-align: middle;
+}
+
 // Host CSS
 :host {
   --togostanza-fadeout-opacity: 0.2;
