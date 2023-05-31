@@ -33,11 +33,11 @@
       font-size: 14px;
     }
     > ul > li {
+      height: 25px;
       padding: 2px 5px;
       margin-bottom: 5px;
       cursor: pointer;
       border-radius: 2px;
-      line-height: 1.5;
       &:focus {
         outline: none;
       }
