@@ -404,9 +404,9 @@
       </table>
     </div>
     <div class="legend">
-      <p>benign</p>
+      <p>Benign</p>
       <div class="legend-bar" />
-      <p>pathogenic</p>
+      <p>Pathogenic</p>
     </div>
   </div>
 </div>

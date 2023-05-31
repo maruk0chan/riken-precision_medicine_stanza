@@ -15,9 +15,11 @@ th,
 td,
 label,
 input,
-button {
+button,
+a {
   padding: 0;
   margin: 0;
+  line-height: 1.5;
 }
 a {
   text-underline-offset: 3px;
@@ -51,6 +53,12 @@ li {
     );
     border-radius: 10px;
   }
+}
+
+th,
+td {
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .th-gene,
