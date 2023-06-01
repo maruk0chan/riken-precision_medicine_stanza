@@ -78,10 +78,6 @@
       if (root.querySelector("tbody > tr.selected")) {
         root.querySelector("tbody > tr.selected").classList.remove("selected");
       }
-      root.querySelector("tbody").firstChild.classList.add("selected");
-      root
-        .querySelector("tbody")
-        .firstChild.querySelector('input[type="radio"]').checked = true;
     }
   };
 
@@ -305,17 +301,13 @@
             <tr><td colspan="3" class="loading-message">Loading...</td></tr>
           {:then json}
             {#each currentTabeList as data, index}
-              <tr
-                class={index === 0 ? "selected" : ""}
-                on:click={(event) => tableHandleClick(event, data)}
-              >
+              <tr on:click={(event) => tableHandleClick(event, data)}>
                 <td class="td-uniprot">
                   <input
                     class="radio-button"
                     type="radio"
                     name="variantid"
                     value={data.uniprotAcc}
-                    checked={index === 0}
                   />
                   {data.uniprotAcc}
                 </td>
