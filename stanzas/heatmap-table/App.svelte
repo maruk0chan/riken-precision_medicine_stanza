@@ -7,65 +7,106 @@
     faTriangleExclamation,
   } from "@fortawesome/free-solid-svg-icons";
   import { calculationType, scores, scoreTheads } from "./data.js";
+  import sampleData from "@/stanzas/heatmap-table/assets/geneVariantSample.json";
   export let uniprotAcc, assembly, genename, root;
-  let promise = fetchData();
+  // let promise = fetchData();
 
-  let dataset = [];
-  let calculationsCount = {};
-  let calculationsLists = [];
-  let drugList = [];
-  let datasetMap = [];
-  let drugListMap = new Map();
+  // let dataset = [];
+  // let calculationsCount = {};
+  // let calculationsLists = [];
+  // let drugList = [];
+  // let datasetMap = [];
+  // let drugListMap = new Map();
   let selectDrugList = [];
   let selectedListName = "variants";
-  let currentTabeList = [];
+  // let currentTabeleList = [];
+
+  // const getCalculationsLists = (dataset) => {
+  //   let calculations = [];
+  //   dataset.forEach((data) =>
+  //     data.calculationType.forEach((d) => calculations.push(d))
+  //   );
+  //   calculationsCount = calculations.reduce((acc, item) => {
+  //     acc[item] = (acc[item] || 0) + 1;
+  //     return acc;
+  //   }, {});
+  //   return [...new Set(calculations.filter(Boolean))];
+  // };
+
+  // const getdrugList = (dataset) => [
+  //   ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
+  // ];
+
+  // async function fetchData() {
+  //   const response = await fetch(
+  //     `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}`
+  //   );
+  //   const json = await response.json();
+  //   if (response.ok) {
+  //     dataset = json.data.map(toCamelCase);
+  //     currentTabeleList = dataset;
+  //     calculationsLists = getCalculationsLists(dataset);
+  //     datasetMap = new Map([["variants", dataset]]);
+
+  //     calculationsLists.forEach((calc) => {
+  //       const filteredData = dataset.filter((d) =>
+  //         d.calculationType.includes(calc)
+  //       );
+  //       datasetMap.set(calc, filteredData);
+
+  //       // Create a crossing list with drugs
+  //       if (calculationType(calc).calcName === "mutation") {
+  //         drugListMap.set(calc, getdrugList(datasetMap.get(calc)));
+  //       }
+  //     });
+  //     drugList = getdrugList(dataset);
+  //     return json;
+  //   } else {
+  //     throw new Error(json);
+  //   }
+  // }
+
+  //--------------------------------------------------
 
   const getCalculationsLists = (dataset) => {
     let calculations = [];
     dataset.forEach((data) =>
-      data.calculationType.forEach((d) => calculations.push(d))
+      data.calculation.forEach((d) => calculations.push(d.calculation_type))
     );
+
+    let calculationsCount = {};
     calculationsCount = calculations.reduce((acc, item) => {
       acc[item] = (acc[item] || 0) + 1;
       return acc;
     }, {});
-    return [...new Set(calculations.filter(Boolean))];
+    return [[...new Set(calculations.filter(Boolean))], calculationsCount];
   };
 
-  const getdrugList = (dataset) => [
-    ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
-  ];
+  const dataset = sampleData.data.map(toCamelCase);
 
-  async function fetchData() {
-    const response = await fetch(
-      `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}`
+  let currentTabeleList = dataset;
+  const [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
+  const datasetMap = new Map([["variants", dataset]]);
+  let drugListMap = new Map();
+
+  calculationsLists.forEach((calc) => {
+    const filteredData = [];
+    dataset.forEach((data) =>
+      data.calculation.forEach((type) =>
+        type.calculation_type === calc ? filteredData.push(data) : ""
+      )
     );
-    const json = await response.json();
-    if (response.ok) {
-      dataset = json.data.map(toCamelCase);
-      currentTabeList = dataset;
-      calculationsLists = getCalculationsLists(dataset);
+    datasetMap.set(calc, filteredData);
 
-      datasetMap = new Map([["variants", dataset]]);
+    // Create a crossing list with drugs
+    const compoundList = [];
+    filteredData.forEach((data) => {
+      compoundList.push(data.compoundId);
+    });
+    drugListMap.set(calc, [...new Set(compoundList)]);
+  });
 
-      calculationsLists.forEach((calc) => {
-        const filteredData = dataset.filter((d) =>
-          d.calculationType.includes(calc)
-        );
-        datasetMap.set(calc, filteredData);
-
-        // Create a crossing list with drugs
-        if (calculationType(calc).calcName === "mutation") {
-          drugListMap.set(calc, getdrugList(datasetMap.get(calc)));
-        }
-      });
-      drugList = getdrugList(dataset);
-      return json;
-    } else {
-      throw new Error(json);
-    }
-  }
-
+  //--------------------------------------------------
   const initTableSelected = () => {
     if (root.querySelector("tbody")) {
       const trs = root.querySelectorAll("tbody > tr");
@@ -90,7 +131,7 @@
     const clickedItem = event.target.closest("li");
     selectedListName = clickedItem.dataset.calc;
     selectDrugList = drugListMap.get(selectedListName);
-    currentTabeList = datasetMap.get(selectedListName);
+    currentTabeleList = datasetMap.get(selectedListName);
     if (clickedItem !== selectedListEl) {
       const ul = clickedItem.parentElement;
       const listItems = ul.querySelectorAll("li");
@@ -142,7 +183,7 @@
         break;
     }
     selectedListName = selectedListEl.dataset.calc;
-    currentTabeList = datasetMap.get(selectedListName);
+    currentTabeleList = datasetMap.get(selectedListName);
     selectDrugList = drugListMap.get(selectedListName);
   };
 
@@ -166,11 +207,11 @@
           currentMutationTabeList.push(data);
         }
       });
-      currentTabeList = currentMutationTabeList;
+      currentTabeleList = currentMutationTabeList;
     } else {
       selectedDrug = null;
       clickedItem.classList.remove("selected");
-      currentTabeList = currentDrugDataset;
+      currentTabeleList = currentDrugDataset;
     }
 
     initTableSelected();
@@ -235,23 +276,23 @@
   {#if calculationType(selectedListName).calcName === "mutation"}
     <div class="drugs-list">
       <h3>Drugs</h3>
-      {#if drugList.length > 0}
-        <ul class="drugs-ul">
-          {#each selectDrugList as drugName}
-            <li
-              data-compound={drugName}
-              on:click={drugsHandleClick}
-              on:keydown={drugsHandleClick}
-            >
-              {drugName}<Fa
-                icon={faCircleChevronRight}
-                size="90%"
-                color="var(--calc-color)"
-              />
-            </li>
-          {/each}
-        </ul>
-      {/if}
+      <!-- {#if drugList.length > 0} -->
+      <ul class="drugs-ul">
+        {#each selectDrugList as drugName}
+          <li
+            data-compound={drugName}
+            on:click={drugsHandleClick}
+            on:keydown={drugsHandleClick}
+          >
+            {drugName}<Fa
+              icon={faCircleChevronRight}
+              size="90%"
+              color="var(--calc-color)"
+            />
+          </li>
+        {/each}
+      </ul>
+      <!-- {/if} -->
     </div>
   {/if}
 
@@ -295,99 +336,101 @@
           </tr>
         </thead>
         <tbody>
-          {#await promise}
-            <tr><td colspan="3" class="loading-message">Loading...</td></tr>
-          {:then json}
-            {#each currentTabeList as data, index}
-              <tr
-                class={index === 0 ? "selected" : ""}
-                on:click={tableHandleClick}
+          <!-- {#await promise}
+            <tr><td colspan="3" class="loading-message">Loading...</td></tr> -->
+          <!-- {:then json} -->
+          {#each currentTabeleList as data, index}
+            <tr
+              class={index === 0 ? "selected" : ""}
+              on:click={tableHandleClick}
+            >
+              <td class="td-uniprot">
+                <input
+                  class="radio-button"
+                  type="radio"
+                  name="variantid"
+                  value={data.uniprotAcc}
+                  checked={index === 0}
+                />
+                {data.uniprotAcc}
+              </td>
+              <td class="td-variant">
+                <a
+                  href={`${window.location.origin}/dev/variants/details?assembly=${data.assembly}&chr=${data.chr}&start=${data.start}&end=${data.end}&ref=${data.ref}&alt=${data.alt}&variant=${data.variant}`}
+                >
+                  {data.variant}<Fa
+                    icon={faCircleChevronRight}
+                    size="90%"
+                    color="var(--variant-color)"
+                  /></a
+                >
+              </td>
+              <td>{data.genBank[0] === undefined ? "-" : data.genBank}</td>
+              <td
+                >{data.mGeNdClinicalSignificance[0] === undefined
+                  ? "-"
+                  : data.mGeNdClinicalSignificance}</td
               >
-                <td class="td-uniprot">
-                  <input
-                    class="radio-button"
-                    type="radio"
-                    name="variantid"
-                    value={data.uniprotAcc}
-                    checked={index === 0}
-                  />
-                  {data.uniprotAcc}
-                </td>
-                <td class="td-variant">
-                  <a
-                    href={`${window.location.origin}/dev/variants/details?assembly=${data.assembly}&chr=${data.chr}&start=${data.start}&end=${data.end}&ref=${data.ref}&alt=${data.alt}&variant=${data.variant}`}
-                  >
-                    {data.variant}<Fa
+              <td
+                >{data.clinVarClinicalSignificance[0] === undefined
+                  ? "-"
+                  : data.clinVarClinicalSignificance}</td
+              >
+              {#if calculationType(selectedListName).calcName !== "variants"}
+                <!-- {console.log(selectedListName)} -->
+                {console.log(data.calculation)}
+                <!-- {#if data.feBind.length === 0}
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                {:else if data.feBind.length === 1}
+                  <td>{data.feBind}</td>
+                  <td>-</td>
+                  <td>-</td>
+                {:else}
+                  <td>-</td>
+                  <td>{data.feBindMean}</td>
+                  <td>{data.feBindStd}</td>
+                {/if} -->
+              {/if}
+              <td class="td-calc">
+                <a
+                  class="link-calc"
+                  href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${data.calculationType}&Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&variant=${data.variant}`}
+                >
+                  <!-- 以下を.toString()にしているが、配列で複数になるはずなので変更する -->
+                  <!-- <img
+                    class="icon"
+                    src={calculationType(data.calculationType.toString()).src
+                      ? calculationType(data.calculationType.toString()).src
+                      : ""}
+                    alt={calculationType(data.calculationType.toString()).alt
+                      ? calculationType(data.calculationType.toString()).alt
+                      : ""}
+                  /> -->
+                  <!-- {data.calculationType.toString()
+                    ? data.calculationType.toString()
+                    : ""} -->
+                  <!-- {#if calculationType(data.calculationType.toString()).calcName !== ""}
+                    <Fa
                       icon={faCircleChevronRight}
                       size="90%"
-                      color="var(--variant-color)"
-                    /></a
-                  >
-                </td>
-                <td>{data.genBank[0] === undefined ? "-" : data.genBank}</td>
-                <td
-                  >{data.mGeNdClinicalSignificance[0] === undefined
-                    ? "-"
-                    : data.mGeNdClinicalSignificance}</td
-                >
-                <td
-                  >{data.clinVarClinicalSignificance[0] === undefined
-                    ? "-"
-                    : data.clinVarClinicalSignificance}</td
-                >
-                {#if calculationType(selectedListName).calcName !== "variants"}
-                  {#if data.feBind.length === 0}
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  {:else if data.feBind.length === 1}
-                    <td>{data.feBind}</td>
-                    <td>-</td>
-                    <td>-</td>
-                  {:else}
-                    <td>-</td>
-                    <td>{data.feBindMean}</td>
-                    <td>{data.feBindStd}</td>
-                  {/if}
-                {/if}
-                <td class="td-calc">
-                  <a
-                    class="link-calc"
-                    href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${data.calculationType}&Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&variant=${data.variant}`}
-                  >
-                    <!-- 以下を.toString()にしているが、配列で複数になるはずなので変更する -->
-                    <img
-                      class="icon"
-                      src={calculationType(data.calculationType.toString()).src
-                        ? calculationType(data.calculationType.toString()).src
-                        : ""}
-                      alt={calculationType(data.calculationType.toString()).alt
-                        ? calculationType(data.calculationType.toString()).alt
-                        : ""}
+                      color="var(--calc-color)"
                     />
-                    {data.calculationType.toString()
-                      ? data.calculationType.toString()
-                      : ""}
-                    {#if calculationType(data.calculationType.toString()).calcName !== ""}
-                      <Fa
-                        icon={faCircleChevronRight}
-                        size="90%"
-                        color="var(--calc-color)"
-                      />
-                    {/if}
-                  </a>
-                </td>
-                {#each scores as key}
-                  <td class="cell-td"
-                    ><div
-                      class="cell"
-                      style="background-color:{getColor(data[key])}"
-                    /></td
-                  >
-                {/each}
-              </tr>
-            {/each}
-          {:catch error}
+                  {/if} -->
+                </a>
+              </td>
+              {#each scores as key}
+                <td class="cell-td"
+                  ><div
+                    class="cell"
+                    style="background-color:{getColor(data[key])}"
+                  /></td
+                >
+              {/each}
+            </tr>
+          {/each}
+          <!-- {:catch error}
             <tr
               ><td class="error-message" colspan="3"
                 ><Fa
@@ -399,7 +442,7 @@
                 try again later.<br />
               </td></tr
             >
-          {/await}
+          {/await} -->
         </tbody>
       </table>
     </div>
