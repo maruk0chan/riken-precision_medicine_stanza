@@ -245,11 +245,7 @@
               on:click={drugsHandleClick}
               on:keydown={drugsHandleClick}
             >
-              {drugName}<Fa
-                icon={faCircleChevronRight}
-                size="90%"
-                color="var(--calc-color)"
-              />
+              {drugName}
             </li>
           {/each}
         </ul>
@@ -285,13 +281,13 @@
             <th class="th-disease" rowspan="1">ClinVar</th>
             {#if calculationType(selectedListName).calcName !== "variants"}
               <th class="th-calc" rowspan="1" data-calc="mutation"
-                ><p>ΔΔG(cal/mol)</p></th
+                ><p>ΔΔG (cal/mol)</p></th
               >
               <th class="th-calc" rowspan="1" data-calc="mutation"
-                ><p>Average ΔΔG(cal/mol)</p></th
+                ><p>Average ΔΔG (cal/mol)</p></th
               >
               <th class="th-calc" rowspan="1" data-calc="mutation"
-                ><p>Standard deviation</p></th
+                ><p>Standard Deviation</p></th
               >
             {/if}
           </tr>
@@ -311,8 +307,9 @@
                   />
                   {data.uniprotAcc}
                 </td>
-                <td class="td-variant">
+                <td>
                   <a
+                    class="link-variant"
                     href={`${window.location.origin}/dev/variants/details?assembly=${data.assembly}&chr=${data.chr}&start=${data.start}&end=${data.end}&ref=${data.ref}&alt=${data.alt}&variant=${data.variant}`}
                   >
                     {data.variant}<Fa
@@ -348,7 +345,7 @@
                     <td>{data.feBindStd}</td>
                   {/if}
                 {/if}
-                <td class="td-calc">
+                <td>
                   <a
                     class="link-calc"
                     href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${data.calculationType}&Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&variant=${data.variant}`}
