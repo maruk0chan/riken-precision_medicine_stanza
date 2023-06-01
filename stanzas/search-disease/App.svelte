@@ -27,7 +27,7 @@
     <thead>
       <tr>
         <th class="th-disease">Name (MGeND)</th>
-        <th class="th-disease">Name (Clinvar)</th>
+        <th class="th-disease">Name (ClinVar)</th>
         <th class="th-gene">Gene</th>
         <th class="th-gene">UniProt acc</th>
         <th class="th-variant">Variant</th>
