@@ -218,7 +218,7 @@
   };
 
   let tableSelectedItem = null;
-  const tableHandleClick = (event) => {
+  const tableHandleClick = (event, data) => {
     const variantLink = event.target.closest(".td-variant > span");
     const calculationList = event.target.closest(".td-calc > span");
     if (variantLink || calculationList) return;
@@ -234,6 +234,12 @@
       tableSelectedItem = clickedItem;
       tableSelectedItem.classList.add("selected");
       radioButton.checked = true;
+      window.dispatchEvent(
+        new CustomEvent("updateMolstar", {
+          // TODO: change to data.variant to data.pdbId (or others)
+          detail: { pdbId: data.variant },
+        })
+      );
     } else {
       tableSelectedItem = null;
       clickedItem.classList.remove("selected");
@@ -342,7 +348,7 @@
           {#each currentTabeleList as data, index}
             <tr
               class={index === 0 ? "selected" : ""}
-              on:click={tableHandleClick}
+              on:click={(event) => tableHandleClick(event, data)}
             >
               <td class="td-uniprot">
                 <input
