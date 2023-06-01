@@ -239,8 +239,9 @@
       <h3>Drugs</h3>
       {#if drugList.length > 0}
         <ul class="drugs-ul">
-          {#each selectDrugList as drugName}
+          {#each selectDrugList as drugName, index}
             <li
+              class={index === 0 ? "selected" : ""}
               data-compound={drugName}
               on:click={drugsHandleClick}
               on:keydown={drugsHandleClick}
