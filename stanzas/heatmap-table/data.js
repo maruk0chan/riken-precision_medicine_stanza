@@ -1,13 +1,5 @@
-export const arrowTheme = {
-  secondaryOpacity: 1,
-  primaryColor: "transparent",
-  size: "90%",
-};
-
-const drugIcon =
-  "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
-const proteinIcon =
-  "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
+import drugIcon from "@/assets/drug.svg";
+// import proteinIcon from "@/assets/protein.svg";
 export const calculationType = (dataType) => {
   switch (dataType) {
     case "variants":
@@ -15,8 +7,6 @@ export const calculationType = (dataType) => {
         calcName: "variants",
       };
     case "Mutation_FEP":
-    case "Mutation_FEP1":
-    case "Mutation_FEP2":
       return {
         calcName: "mutation",
         className: "drug-icon",
@@ -30,27 +20,21 @@ export const calculationType = (dataType) => {
         // src: proteinIcon,
         // alt: "protein icon",
       };
-      // return {
-      //   calcName: "protein",
-      //   className: "protein-icon",
-      //   src: proteinIcon,
-      //   alt: "protein icon",
-      // };
   }
 };
 
 export const scores = [
-  "caddRaw",
-  "fathmmMklCoding",
-  "lrtConverted",
-  "mutationTasterConverted",
+  "cadd",
+  "fathmmMkl",
+  "lrt",
+  "mutationTaster",
   "mutationAssessor",
   "polyphen2Hdiv",
   "polyphen2Hvar",
   "primateAi",
-  "proveanConverted",
+  "provean",
   "revel",
-  "sift4GConverted",
+  "sift4G",
 ];
 
 export const scoreTheads = [
@@ -64,5 +48,5 @@ export const scoreTheads = [
   { className: "th-heatmap", label: "PrimateAI" },
   { className: "th-heatmap", label: "PROVEAN" },
   { className: "th-heatmap", label: "REVEL" },
-  { className: "th-heatmap", label: "SIFT4G" }
-]
+  { className: "th-heatmap", label: "SIFT4G" },
+];

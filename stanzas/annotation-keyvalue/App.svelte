@@ -2,14 +2,11 @@
   import getColor from "../../lib/ColorScale";
   import {
     annotationTh,
-    annotationList,
     oncoKbTh,
-    oncoKbList,
     oncoKbLevelList,
     predictionScoreTh,
     predictionScore,
   } from "./data.js";
-  export let root;
 
   $: annotation = {
     default: [

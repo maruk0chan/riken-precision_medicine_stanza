@@ -4,15 +4,11 @@
     faCircleChevronRight,
     faTriangleExclamation,
   } from "@fortawesome/free-solid-svg-icons";
+  import drugIcon from "@/assets/drug.svg";
+  import proteinIcon from "@/assets/protein.svg";
   export let assembly, term;
   let promise = search(term);
 
-  const drugIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
-  const proteinIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
-
-  let dataset = {};
   async function search(disease) {
     const response = await fetch(
       `https://precisionmd-db.med.kyoto-u.ac.jp/api/positions/search?assembly=${assembly}&disease=${disease}`
@@ -30,32 +26,28 @@
   <table class="table">
     <thead>
       <tr>
-        <th class="th-disease" rowspan="2">Name</th>
-        <th class="th-gene" rowspan="2">Gene</th>
-        <th class="th-gene" rowspan="2">UniProt acc</th>
-        <th class="th-variant" colspan="3">HGVS</th>
-        <th class="th-variant" rowspan="2">Variant</th>
-        <th class="th-disease" rowspan="2">MGeND Significance</th>
-        <th class="th-disease" rowspan="2">ClinVar Significance</th>
-        <th class="th-calc" rowspan="2">Calculated</th>
-      </tr>
-      <tr>
-        <th class="th-variant">Ensembl</th>
-        <th class="th-variant">GenBank</th>
-        <th class="th-variant">ClinVar</th>
+        <th class="th-disease">Name (MGeND)</th>
+        <th class="th-disease">Name (Clinvar)</th>
+        <th class="th-gene">Gene</th>
+        <th class="th-gene">UniProt acc</th>
+        <th class="th-variant">Variant</th>
+        <th class="th-disease">MGeND Significance</th>
+        <th class="th-disease">ClinVar Significance</th>
+        <th class="th-calc">Calculated</th>
       </tr>
     </thead>
     <tbody>
       {#await promise}
         <tr><td colspan="10">Loading...</td></tr>
       {:then dataset}
-        {#each dataset.data as { ClinVar_DiseaseName, genename, uniprot_acc, Ensembl_transcriptid, GenBank, clinvar_hgvs, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, assembly }}
+        {#each dataset.data as { MGeND_DiseaseName, ClinVar_DiseaseName, genename, uniprot_acc, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, assembly, chr, alt, ref, start, end, Compound_ID, PDB_ID }}
           <tr>
-            <td>{@html ClinVar_DiseaseName.join("<br>")}</td>
+            <td class="td-disease">{@html MGeND_DiseaseName.join("<br>")}</td>
+            <td class="td-disease">{@html ClinVar_DiseaseName.join("<br>")}</td>
             <td
               ><a
                 class="link-gene"
-                href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev//genes/details?uniprot_acc=${uniprot_acc}&assembly=${assembly}&genename=${genename}`}
+                href={`${window.location.origin}/dev/genes/details?uniprot_acc=${uniprot_acc}&assembly=${assembly}&genename=${genename}`}
                 >{genename}<Fa
                   icon={faCircleChevronRight}
                   size="90%"
@@ -64,13 +56,14 @@
               </a></td
             >
             <td> {uniprot_acc}</td>
-            <td>{Ensembl_transcriptid}</td>
-            <td>{GenBank}</td>
-            <td>{clinvar_hgvs}</td>
             <td
               ><a
                 class="link-variant"
-                href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/variants/details?alt=T&assembly=${assembly}&chr=chr2&end=29222591&ref=C&start=29222591&variant=${variant}`}
+                href={`${
+                  window.location.origin
+                }/dev/variants/details?assembly=${assembly}&chr=${
+                  chr ? chr : "chr2"
+                }&start=${start}&end=${end}&alt=${alt}&ref=${ref}&variant=${variant}`}
                 >{variant}<Fa
                   icon={faCircleChevronRight}
                   size="90%"
@@ -78,11 +71,32 @@
                 />
               </a></td
             >
-            <td>{MGeND_ClinicalSignificance}</td>
-            <td>{ClinVar_ClinicalSignificance}</td>
+            <td>
+              {MGeND_ClinicalSignificance.length === 0
+                ? "-"
+                : MGeND_ClinicalSignificance}</td
+            >
             <td
-              >{#if calculation_type === "Mutation_FEP"}
-                <img src={drugIcon} alt="drug" />
+              >{ClinVar_ClinicalSignificance.length === 0
+                ? "-"
+                : ClinVar_ClinicalSignificance}</td
+            >
+            <td class="td-calc"
+              >{#if calculation_type.length > 0}
+                {#each calculation_type as calc}
+                  <a
+                    class="link-calc"
+                    href={`${window.location.origin}/dev/calculation/details?assembly=${assembly}&genename=${genename}&calculation_type=${calc}&Compound_ID=${Compound_ID}&PDB_ID=${PDB_ID}&variant=${variant}`}
+                  >
+                    <img class="icon" src={drugIcon} alt="drug" />
+                    {calc}
+                    <Fa
+                      icon={faCircleChevronRight}
+                      size="90%"
+                      color="var(--calc-color)"
+                    />
+                  </a>
+                {/each}
               {/if}
             </td>
           </tr>

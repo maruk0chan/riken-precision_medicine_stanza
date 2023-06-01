@@ -15,12 +15,14 @@ th,
 td,
 label,
 input,
-button {
+button,
+a {
   padding: 0;
   margin: 0;
+  line-height: 1.5;
 }
 a {
-  text-decoration: none;
+  text-underline-offset: 3px;
 }
 li {
   list-style: none;
@@ -53,23 +55,38 @@ li {
   }
 }
 
-.th-gene {
+th,
+td {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.th-gene,
+.link-gene {
   color: var(--gene-color);
 }
-.th-variant {
+.th-variant,
+.link-variant {
   color: var(--variant-color);
 }
 .th-disease {
   color: var(--disease-color);
 }
-.th-calc {
+.th-calc,
+.link-calc {
   color: var(--calc-color);
 }
 
-.error-message{
+.error-message {
   height: 200px;
   text-align: center;
 }
+
+.icon {
+  width: 27px;
+  vertical-align: middle;
+}
+
 // Host CSS
 :host {
   --togostanza-fadeout-opacity: 0.2;
@@ -99,4 +116,3 @@ li {
 
   --warning-color: #ffae00;
 }
-

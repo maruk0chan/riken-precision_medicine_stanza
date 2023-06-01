@@ -4,13 +4,12 @@
     faCircleChevronRight,
     faTriangleExclamation,
   } from "@fortawesome/free-solid-svg-icons";
-  export let assembly, isPosition, term;
-  let promise = search(term);
+  import drugIcon from "@/assets/drug.svg";
+  import proteinIcon from "@/assets/protein.svg";
 
-  const drugIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
-  const proteinIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
+  export let assembly, isPosition, term;
+  const grch = `GRCh${assembly.replace(/\D/g, "")}`;
+  let promise = search(term);
 
   async function search(term) {
     let response;
@@ -36,42 +35,57 @@
   <table class="table">
     <thead>
       <tr>
-        <th class="th-variant" rowspan="2">Name</th>
-        <th class="th-variant" colspan="3">HGVS</th>
-        <th class="th-disease" rowspan="2">MGeND Significance</th>
-        <th class="th-disease" rowspan="2">ClinVar Significance</th>
-        <th class="th-calc" rowspan="2">Calculated</th>
-      </tr>
-      <tr>
-        <th class="th-variant">Ensembl</th>
-        <th class="th-variant">GenBank</th>
-        <th class="th-variant">ClinVar</th>
+        <th class="th-variant">Name</th>
+        <th class="th-disease">MGeND Significance</th>
+        <th class="th-disease">ClinVar Significance</th>
+        <th class="th-calc">Calculated</th>
       </tr>
     </thead>
     <tbody>
       {#await promise}
         <tr><td colspan="10">Loading...</td></tr>
       {:then dataset}
-        {#each dataset.data as { variant, Ensembl_transcriptid, GenBank, clinvar_hgvs, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, end, start }}
+        {#each dataset.data as { chr, variant, MGeND_ClinicalSignificance, ClinVar_ClinicalSignificance, calculation_type, end, start, alt, ref, genename, Compound_ID, PDB_ID }}
           <tr>
             <td
               ><a
-                href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/variants/details?alt=T&assembly=hg38&chr=chr2&end=${end}&ref=C&start=${start}&variant=${variant}`}
-                >{variant}<Fa
+                class="link-variant"
+                href={`${window.location.origin}/dev/variants/details?assembly=${assembly}&chr=${chr}&start=${start}&end=${end}&ref=${ref}&alt=${alt}&variant=${variant}`}
+              >
+                {`${grch}_${chr}_${start}_${end}_${ref}_${alt}_${variant}`}
+                <Fa
                   icon={faCircleChevronRight}
                   size="90%"
                   color="var(--variant-color)"
                 />
-              </a></td
-            >
-            <td>{Ensembl_transcriptid}</td>
-            <td>{GenBank}</td>
-            <td>{clinvar_hgvs}</td>
-            <td>{MGeND_ClinicalSignificance}</td>
-            <td>{ClinVar_ClinicalSignificance}</td>
+              </a>
+            </td>
+            <td>
+              {MGeND_ClinicalSignificance.length === 0
+                ? "-"
+                : MGeND_ClinicalSignificance}
+            </td>
             <td
-              >{#if calculation_type === "Mutation_FEP"}
-                <img src={drugIcon} alt="drug" />
+              >{ClinVar_ClinicalSignificance.length === 0
+                ? "-"
+                : ClinVar_ClinicalSignificance}
+            </td>
+            <td class="td-calc"
+              >{#if calculation_type.length > 0}
+                {#each calculation_type as calc}
+                  <a
+                    class="link-calc"
+                    href={`${window.location.origin}/dev/calculation/details?assembly=${assembly}&genename=${genename}&calculation_type=${calc}&Compound_ID=${Compound_ID}&PDB_ID=${PDB_ID}&variant=${variant}`}
+                  >
+                    <img class="icon" src={drugIcon} alt="drug" />
+                    {calc}
+                    <Fa
+                      icon={faCircleChevronRight}
+                      size="90%"
+                      color="var(--calc-color)"
+                    />
+                  </a>
+                {/each}
               {/if}
             </td>
           </tr>

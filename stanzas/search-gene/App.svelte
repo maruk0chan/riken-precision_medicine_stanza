@@ -4,13 +4,10 @@
     faCircleChevronRight,
     faTriangleExclamation,
   } from "@fortawesome/free-solid-svg-icons";
+  import drugIcon from "@/assets/drug.svg";
+  // import proteinIcon from "@/assets/protein.svg";
   export let assembly, term;
   let promise = search(term);
-
-  const drugIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/drug.png";
-  const proteinIcon =
-    "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/protein.png";
 
   async function search(geneName) {
     const response = await fetch(
@@ -30,7 +27,7 @@
     <thead>
       <tr>
         <th class="th-gene">Name</th>
-        <th class="th-gene">Uniprot acc</th>
+        <th class="th-gene">UniProt acc</th>
         <th class="th-calc">Calculated</th>
       </tr>
     </thead>
@@ -42,7 +39,8 @@
           <tr>
             <td
               ><a
-                href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/genes/details?uniprot_acc=${uniprot_acc}&assembly=${assembly}&genename=${genename}`}
+                class="link-gene"
+                href={`${window.location.origin}/dev/genes/details?assembly=${assembly}&genename=${genename}&uniprot_acc=${uniprot_acc}`}
                 >{genename}<Fa
                   icon={faCircleChevronRight}
                   size="90%"
@@ -51,9 +49,12 @@
               </a></td
             >
             <td>{uniprot_acc}</td>
-            <td
-              >{#if calculation_type === "Mutation_FEP"}
-                <img src={drugIcon} alt="drug" />
+            <td>
+              {#if calculation_type.length > 0}
+                {#each calculation_type as calc}
+                  <img class="icon" src={drugIcon} alt="drug" />
+                  {calc}
+                {/each}
               {/if}
             </td>
           </tr>

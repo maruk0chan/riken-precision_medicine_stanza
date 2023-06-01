@@ -9,8 +9,7 @@
   import { calculationType, scores, scoreTheads } from "./data.js";
   export let uniprotAcc, assembly, genename, root;
   let promise = fetchData();
-  // let dataUrl =
-  //   "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/main/assets/sample.json";
+
   let dataset = [];
   let calculationsCount = {};
   let calculationsLists = [];
@@ -22,7 +21,10 @@
   let currentTabeList = [];
 
   const getCalculationsLists = (dataset) => {
-    const calculations = dataset.map((d) => d.calculationType);
+    let calculations = [];
+    dataset.forEach((data) =>
+      data.calculationType.forEach((d) => calculations.push(d))
+    );
     calculationsCount = calculations.reduce((acc, item) => {
       acc[item] = (acc[item] || 0) + 1;
       return acc;
@@ -35,20 +37,21 @@
   ];
 
   async function fetchData() {
-    // const response = await fetch(dataUrl);
     const response = await fetch(
-      // `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}&limit=1000`
-      `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=Q9UM73&assembly=hg38&genename=ALK&limit=1000`
+      `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}`
     );
     const json = await response.json();
     if (response.ok) {
       dataset = json.data.map(toCamelCase);
       currentTabeList = dataset;
       calculationsLists = getCalculationsLists(dataset);
+
       datasetMap = new Map([["variants", dataset]]);
 
       calculationsLists.forEach((calc) => {
-        const filteredData = dataset.filter((d) => d.calculationType === calc);
+        const filteredData = dataset.filter((d) =>
+          d.calculationType.includes(calc)
+        );
         datasetMap.set(calc, filteredData);
 
         // Create a crossing list with drugs
@@ -226,7 +229,7 @@
             tabindex="-1"
           >
             <img
-              class={calculationType(calc).className}
+              class="icon"
               src={calculationType(calc).src}
               alt={calculationType(calc).alt}
             />{calc}<span class="num">{calculationsCount[calc]}</span>
@@ -264,9 +267,9 @@
       <table>
         <thead>
           <tr>
-            <th class="th-gene" rowspan="2">UniPort acc</th>
+            <th class="th-gene" rowspan="2">UniProt acc</th>
             <th class="th-variant" rowspan="2">Variant</th>
-            <th class="th-variant th-group" colspan="3">HGVS</th>
+            <th class="th-variant" rowspan="2">GenBank</th>
             <th class="th-disease th-group" colspan="2">Significance</th>
             {#if calculationType(selectedListName).calcName !== "variants"}
               <th class="th-calc th-group" colspan="1"
@@ -282,9 +285,6 @@
             {/each}
           </tr>
           <tr>
-            <th class="th-variant" rowspan="1">Ensembl</th>
-            <th class="th-variant" rowspan="1">GenBank</th>
-            <th class="th-variant" rowspan="1">ClinVar</th>
             <th class="th-disease" rowspan="1">MGeND</th>
             <th class="th-disease" rowspan="1">ClinVar</th>
             {#if calculationType(selectedListName).calcName !== "variants"}
@@ -309,7 +309,7 @@
                 class={index === 0 ? "selected" : ""}
                 on:click={(event) => tableHandleClick(event, data)}
               >
-                <td class="td-uniport">
+                <td class="td-uniprot">
                   <input
                     class="radio-button"
                     type="radio"
@@ -321,7 +321,7 @@
                 </td>
                 <td class="td-variant">
                   <a
-                    href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/variants/details?alt=T&assembly=${data.assembly}&chr=chr2&end=29222591&ref=C&start=29222591&variant=${data.variant}`}
+                    href={`${window.location.origin}/dev/variants/details?assembly=${data.assembly}&chr=${data.chr}&start=${data.start}&end=${data.end}&ref=${data.ref}&alt=${data.alt}&variant=${data.variant}`}
                   >
                     {data.variant}<Fa
                       icon={faCircleChevronRight}
@@ -330,54 +330,59 @@
                     /></a
                   >
                 </td>
+                <td>{data.genBank[0] === undefined ? "-" : data.genBank}</td>
                 <td
-                  >{data.ensemblTranscriptid
-                    ? "-"
-                    : data.ensemblTranscriptid}</td
-                >
-                <td>{data.genBank ? "-" : data.genBank}</td>
-                <td>{data.clinvarHgvs ? "-" : data.clinvarHgvs}</td>
-                <td
-                  >{data.mGeNdClinicalSignificance
+                  >{data.mGeNdClinicalSignificance[0] === undefined
                     ? "-"
                     : data.mGeNdClinicalSignificance}</td
                 >
                 <td
-                  >{data.clinVarClinicalSignificance
+                  >{data.clinVarClinicalSignificance[0] === undefined
                     ? "-"
                     : data.clinVarClinicalSignificance}</td
                 >
                 {#if calculationType(selectedListName).calcName !== "variants"}
-                  <td>{data.feBind === undefined ? "-" : data.feBind}</td>
-                  <td>{data.feBindMean}</td>
-                  <td>{data.feBindStd}</td>
+                  {#if data.feBind.length === 0}
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  {:else if data.feBind.length === 1}
+                    <td>{data.feBind}</td>
+                    <td>-</td>
+                    <td>-</td>
+                  {:else}
+                    <td>-</td>
+                    <td>{data.feBindMean}</td>
+                    <td>{data.feBindStd}</td>
+                  {/if}
                 {/if}
-                <td class="td-calc"
-                  ><a
-                    href={`https://precisionmd-db.med.kyoto-u.ac.jp/dev/calculated_results?Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&calculation_type=${data.calculationType}&variant=${data.variant}&assembly=${data.assembly}&genename=${data.genename}`}
-                    ><img
-                      class={calculationType(data.calculationType).className
-                        ? calculationType(data.calculationType).className
+                <td class="td-calc">
+                  <a
+                    class="link-calc"
+                    href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${data.calculationType}&Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&variant=${data.variant}`}
+                  >
+                    <!-- 以下を.toString()にしているが、配列で複数になるはずなので変更する -->
+                    <img
+                      class="icon"
+                      src={calculationType(data.calculationType.toString()).src
+                        ? calculationType(data.calculationType.toString()).src
                         : ""}
-                      src={calculationType(data.calculationType).src
-                        ? calculationType(data.calculationType).src
-                        : ""}
-                      alt={calculationType(data.calculation).alt
-                        ? calculationType(data.calculation).alt
+                      alt={calculationType(data.calculationType.toString()).alt
+                        ? calculationType(data.calculationType.toString()).alt
                         : ""}
                     />
-                    {calculationType(data.calculationType).calcName
-                      ? calculationType(data.calculationType).calcName
+                    {data.calculationType.toString()
+                      ? data.calculationType.toString()
                       : ""}
-                    {#if calculationType(data.calculationType).calcName !== ""}
+                    {#if calculationType(data.calculationType.toString()).calcName !== ""}
                       <Fa
                         icon={faCircleChevronRight}
                         size="90%"
                         color="var(--calc-color)"
                       />
-                    {/if}</a
-                  ></td
-                >
+                    {/if}
+                  </a>
+                </td>
                 {#each scores as key}
                   <td class="cell-td"
                     ><div
@@ -396,7 +401,6 @@
                   size="90%"
                   color="var(--warning-color)"
                 />
-
                 Unable to fetch data from the server. Please refresh the page or
                 try again later.<br />
               </td></tr
@@ -406,9 +410,9 @@
       </table>
     </div>
     <div class="legend">
-      <p>benign</p>
+      <p>Benign</p>
       <div class="legend-bar" />
-      <p>pathogenic</p>
+      <p>Pathogenic</p>
     </div>
   </div>
 </div>
