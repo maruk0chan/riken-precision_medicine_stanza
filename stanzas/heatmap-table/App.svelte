@@ -9,6 +9,7 @@
   import { calculationType, scores, scoreTheads } from "./data.js";
   import sampleData from "@/stanzas/heatmap-table/assets/geneVariantSample.json";
   export let uniprotAcc, assembly, genename, root;
+
   // let promise = fetchData();
 
   // let dataset = [];
@@ -16,10 +17,12 @@
   // let calculationsLists = [];
   // let drugList = [];
   // let datasetMap = [];
-  // let drugListMap = new Map();
-  let selectDrugList = [];
-  let selectedListName = "variants";
+  // let compoundMap = new Map();
+  let currentCompoundList = [];
+  let selectedCalcName = "variants";
   // let currentTabeleList = [];
+
+  // ul.style.display = "none";
 
   // const getCalculationsLists = (dataset) => {
   //   let calculations = [];
@@ -56,7 +59,7 @@
 
   //       // Create a crossing list with drugs
   //       if (calculationType(calc).calcName === "mutation") {
-  //         drugListMap.set(calc, getdrugList(datasetMap.get(calc)));
+  //         compoundMap.set(calc, getdrugList(datasetMap.get(calc)));
   //       }
   //     });
   //     drugList = getdrugList(dataset);
@@ -84,10 +87,20 @@
 
   const dataset = sampleData.data.map(toCamelCase);
 
+  const sortCompoundCalc = () => {
+    dataset.forEach((data) => {
+      data.calculation.forEach((calc) => {
+        if (calc.calculation_type === "MP-CAFEE") {
+          return calc;
+        }
+      });
+    });
+  };
+
   let currentTabeleList = dataset;
   const [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
   const datasetMap = new Map([["variants", dataset]]);
-  let drugListMap = new Map();
+  let compoundMap = new Map();
 
   calculationsLists.forEach((calc) => {
     const filteredData = [];
@@ -103,7 +116,7 @@
     filteredData.forEach((data) => {
       compoundList.push(data.compoundId);
     });
-    drugListMap.set(calc, [...new Set(compoundList)]);
+    compoundMap.set(calc, [...new Set(compoundList)]);
   });
 
   //--------------------------------------------------
@@ -122,22 +135,21 @@
     }
   };
 
-  let selectedListEl = null;
-  const listHandleClick = (event) => {
+  let selectedCalcEl = null;
+  let changeCalc = true;
+  const calcHandleClick = (event) => {
     const clickedItem = event.target.closest("li");
-    selectedListName = clickedItem.dataset.calc;
-    selectDrugList = drugListMap.get(selectedListName);
-    currentTabeleList = datasetMap.get(selectedListName);
-    if (clickedItem !== selectedListEl) {
-      const ul = clickedItem.parentElement;
-      const listItems = ul.querySelectorAll("li");
-      listItems.forEach((li) => {
+    selectedCalcName = clickedItem.dataset.calc;
+    currentTabeleList = datasetMap.get(selectedCalcName);
+    currentCompoundList = compoundMap.get(selectedCalcName);
+    if (clickedItem !== selectedCalcEl) {
+      clickedItem.parentElement.querySelectorAll("li").forEach((li) => {
         if (li.classList.contains("selected")) {
           li.classList.remove("selected");
         }
       });
-      selectedListEl = clickedItem;
-      selectedListEl.classList.add("selected");
+      selectedCalcEl = clickedItem;
+      selectedCalcEl.classList.add("selected");
       initTableSelected();
     }
   };
@@ -158,11 +170,11 @@
         if (selectedIndex > 0) {
           listItems[selectedIndex].classList.remove("selected");
           listItems[selectedIndex - 1].classList.add("selected");
-          selectedListEl = listItems[selectedIndex - 1];
+          selectedCalcEl = listItems[selectedIndex - 1];
         } else {
           listItems[0].classList.remove("selected");
           listItems[listItems.length - 1].classList.add("selected");
-          selectedListEl = listItems[listItems.length - 1];
+          selectedCalcEl = listItems[listItems.length - 1];
         }
         break;
 
@@ -170,44 +182,56 @@
         if (selectedIndex < listItems.length - 1) {
           listItems[selectedIndex].classList.remove("selected");
           listItems[selectedIndex + 1].classList.add("selected");
-          selectedListEl = listItems[selectedIndex + 1];
+          selectedCalcEl = listItems[selectedIndex + 1];
         } else {
           listItems[listItems.length - 1].classList.remove("selected");
           listItems[0].classList.add("selected");
-          selectedListEl = listItems[0];
+          selectedCalcEl = listItems[0];
         }
         break;
     }
-    selectedListName = selectedListEl.dataset.calc;
-    currentTabeleList = datasetMap.get(selectedListName);
-    selectDrugList = drugListMap.get(selectedListName);
+    selectedCalcName = selectedCalcEl.dataset.calc;
+    currentTabeleList = datasetMap.get(selectedCalcName);
+    currentCompoundList = compoundMap.get(selectedCalcName);
   };
 
-  let selectedDrug = null;
-  let currentMutationTabeList = [];
-  const drugsHandleClick = (event) => {
+  let currentCompoundTabeleList = [];
+  let selectedCompoundEl = null;
+  const compoundHandleClick = (event) => {
     const clickedItem = event.target.closest("li");
-    const currentDrugDataset = datasetMap.get(selectedListName);
-    currentMutationTabeList = [];
+    const currentCalcDataset = datasetMap.get(selectedCalcName);
+    currentCompoundTabeleList = [];
 
-    if (clickedItem !== selectedDrug) {
-      if (selectedDrug) {
-        selectedDrug.classList.remove("selected");
-        currentMutationTabeList = [];
+    if (clickedItem !== selectedCompoundEl) {
+      if (selectedCompoundEl) {
+        selectedCompoundEl.classList.remove("selected");
+        currentCompoundTabeleList = [];
       }
-      selectedDrug = clickedItem;
-      selectedDrug.classList.add("selected");
 
-      currentDrugDataset.forEach((data) => {
+      selectedCompoundEl = clickedItem;
+
+      if (
+        clickedItem.parentElement.firstElementChild.classList.contains(
+          "selected"
+        )
+      ) {
+        clickedItem.parentElement.firstElementChild.classList.remove(
+          "selected"
+        );
+      } else {
+        selectedCompoundEl.classList.add("selected");
+      }
+
+      currentCalcDataset.forEach((data) => {
         if (data.compoundId === clickedItem.dataset.compound) {
-          currentMutationTabeList.push(data);
+          currentCompoundTabeleList.push(data);
         }
       });
-      currentTabeleList = currentMutationTabeList;
+      currentTabeleList = currentCompoundTabeleList;
     } else {
-      selectedDrug = null;
+      selectedCompoundEl = null;
       clickedItem.classList.remove("selected");
-      currentTabeleList = currentDrugDataset;
+      currentTabeleList = currentCalcDataset;
     }
 
     initTableSelected();
@@ -252,7 +276,7 @@
         <li
           class="selected"
           data-calc={"variants"}
-          on:click={listHandleClick}
+          on:click={calcHandleClick}
           on:keydown={listHandleKeyDown}
           tabindex="-1"
         >
@@ -261,7 +285,7 @@
         {#each calculationsLists as calc}
           <li
             data-calc={calc}
-            on:click={listHandleClick}
+            on:click={calcHandleClick}
             on:keydown={listHandleKeyDown}
             tabindex="-1"
           >
@@ -275,23 +299,21 @@
       </ul>
     {/if}
   </div>
-  {#if calculationType(selectedListName).calcName === "mutation"}
+  {#if calculationType(selectedCalcName).calcName === "mutation"}
     <div class="drugs-list">
       <h3>Drugs</h3>
-      <!-- {#if drugList.length > 0} -->
       <ul class="drugs-ul">
-        {#each selectDrugList as drugName, index}
+        {#each currentCompoundList as drugName, index}
           <li
             class={index === 0 ? "selected" : ""}
             data-compound={drugName}
-            on:click={drugsHandleClick}
-            on:keydown={drugsHandleClick}
+            on:click={compoundHandleClick}
+            on:keydown={compoundHandleClick}
           >
             {drugName}
           </li>
         {/each}
       </ul>
-      <!-- {/if} -->
     </div>
   {/if}
 
@@ -305,7 +327,7 @@
             <th class="th-variant" rowspan="2">Variant</th>
             <th class="th-variant" rowspan="2">GenBank</th>
             <th class="th-disease th-group" colspan="2">Significance</th>
-            {#if calculationType(selectedListName).calcName !== "variants"}
+            {#if calculationType(selectedCalcName).calcName !== "variants"}
               <th class="th-calc th-group" colspan="1"
                 ><p>Single Calculation</p></th
               >
@@ -321,7 +343,7 @@
           <tr>
             <th class="th-disease" rowspan="1">MGeND</th>
             <th class="th-disease" rowspan="1">ClinVar</th>
-            {#if calculationType(selectedListName).calcName !== "variants"}
+            {#if calculationType(selectedCalcName).calcName !== "variants"}
               <th class="th-calc" rowspan="1" data-calc="mutation"
                 ><p>ΔΔG (cal/mol)</p></th
               >
@@ -364,17 +386,16 @@
               <td>{data.genBank[0] === undefined ? "-" : data.genBank}</td>
               <td
                 >{data.mGeNdClinicalSignificance[0] === undefined
-                  ? "-"
+                  ? ""
                   : data.mGeNdClinicalSignificance}</td
               >
               <td
                 >{data.clinVarClinicalSignificance[0] === undefined
-                  ? "-"
+                  ? ""
                   : data.clinVarClinicalSignificance}</td
               >
-              {#if calculationType(selectedListName).calcName !== "variants"}
-                <!-- {console.log(selectedListName)} -->
-                {console.log(data.calculation)}
+              {#if calculationType(selectedCalcName).calcName !== "variants"}
+                {console.log(calculationType(selectedCalcName))}
                 <!-- {#if data.feBind.length === 0}
                   <td>-</td>
                   <td>-</td>
