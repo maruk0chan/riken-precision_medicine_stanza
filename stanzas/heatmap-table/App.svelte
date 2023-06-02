@@ -87,16 +87,6 @@
 
   const dataset = sampleData.data.map(toCamelCase);
 
-  const sortCompoundCalc = () => {
-    dataset.forEach((data) => {
-      data.calculation.forEach((calc) => {
-        if (calc.calculation_type === "MP-CAFEE") {
-          return calc;
-        }
-      });
-    });
-  };
-
   let currentTabeleList = dataset;
   const [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
   const datasetMap = new Map([["variants", dataset]]);
@@ -195,6 +185,22 @@
     currentCompoundList = compoundMap.get(selectedCalcName);
   };
 
+  const extractCompoundCalc = (calcType, compoundId) => {
+    const calcList = [];
+    dataset.forEach((data) => {
+      data.calculation.forEach((calc) => {
+        if (
+          calc.calculation_type === calcType &&
+          data.compoundId === compoundId
+        ) {
+          calcList.push(calc);
+        }
+      });
+    });
+    return calcList;
+  };
+  // console.log(extractCompoundCalc("MP-CAFEE", "alectinib"));
+
   let currentCompoundTabeleList = [];
   let selectedCompoundEl = null;
   const compoundHandleClick = (event) => {
@@ -227,7 +233,16 @@
           currentCompoundTabeleList.push(data);
         }
       });
-      currentTabeleList = currentCompoundTabeleList;
+      const mergedArray = currentCompoundTabeleList.map((item, index) => {
+        return {
+          ...item,
+          ...extractCompoundCalc("MP-CAFEE", "alectinib")[index],
+        };
+      });
+
+      currentTabeleList = mergedArray;
+      console.log(currentTabeleList);
+      console.log(extractCompoundCalc("MP-CAFEE", "alectinib"));
     } else {
       selectedCompoundEl = null;
       clickedItem.classList.remove("selected");
@@ -395,20 +410,19 @@
                   : data.clinVarClinicalSignificance}</td
               >
               {#if calculationType(selectedCalcName).calcName !== "variants"}
-                {console.log(calculationType(selectedCalcName))}
-                <!-- {#if data.feBind.length === 0}
+                {#if data.FE_Bind?.length === 0}
                   <td>-</td>
                   <td>-</td>
                   <td>-</td>
-                {:else if data.feBind.length === 1}
-                  <td>{data.feBind}</td>
+                {:else if data.FE_Bind?.length === 1}
+                  <td>{data.FE_Bind}</td>
                   <td>-</td>
                   <td>-</td>
                 {:else}
                   <td>-</td>
-                  <td>{data.feBindMean}</td>
-                  <td>{data.feBindStd}</td>
-                {/if} -->
+                  <td>{data.FE_Bind_mean}</td>
+                  <td>{data.FE_Bind_std}</td>
+                {/if}
               {/if}
               <td>
                 <a
