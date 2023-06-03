@@ -7,7 +7,6 @@
     faTriangleExclamation,
   } from "@fortawesome/free-solid-svg-icons";
   import { calculationType, scores, scoreTheads } from "./data.js";
-  import sampleData from "@/stanzas/heatmap-table/assets/geneVariantSample.json";
   export let uniprotAcc, assembly, genename, root;
 
   let promise = fetchData();
@@ -16,29 +15,12 @@
   let calculationsLists = [];
   let calculationsCount = {};
   // let drugList = [];
-  // let datasetMap = [];
-  // let compoundMap = new Map();
+  let datasetMap = [];
+
+  let compoundMap = new Map();
   let currentCompoundList = [];
   let selectedCalcName = "variants";
   let currentTabeleList = [];
-
-  // ul.style.display = "none";
-
-  // const getCalculationsLists = (dataset) => {
-  //   let calculations = [];
-  //   dataset.forEach((data) =>
-  //     data.calculationType.forEach((d) => calculations.push(d))
-  //   );
-  //   calculationsCount = calculations.reduce((acc, item) => {
-  //     acc[item] = (acc[item] || 0) + 1;
-  //     return acc;
-  //   }, {});
-  //   return [...new Set(calculations.filter(Boolean))];
-  // };
-
-  // const getdrugList = (dataset) => [
-  //   ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
-  // ];
 
   const getCalculationsLists = (dataset) => {
     let calculations = [];
@@ -54,7 +36,6 @@
     return [[...new Set(calculations.filter(Boolean))], calculationsCount];
   };
 
-  // const dataset = sampleData.data.map(toCamelCase);
   async function fetchData() {
     const response = await fetch(
       //`https://precisionmd-db.med.kyoto-u.ac.jp/testapi/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}&limit=10000`
@@ -64,53 +45,33 @@
 
     const json = await response.json();
     if (response.ok) {
-      dataset = json.data;
+      dataset = json.data.map(toCamelCase);
       currentTabeleList = dataset;
       [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
-      console.log(calculationsLists);
-      //     datasetMap = new Map([["variants", dataset]]);
-      //     calculationsLists.forEach((calc) => {
-      //       const filteredData = dataset.filter((d) =>
-      //         d.calculationType.includes(calc)
-      //       );
-      //       datasetMap.set(calc, filteredData);
-      //       // Create a crossing list with drugs
-      //       if (calculationType(calc).calcName === "mutation") {
-      //         compoundMap.set(calc, getdrugList(datasetMap.get(calc)));
-      //       }
-      //     });
-      //     drugList = getdrugList(dataset);
-      //     return json;
+      datasetMap = new Map([["variants", dataset]]);
+
+      //↓関数にして外側に定義する
+      calculationsLists.forEach((calc) => {
+        const filteredData = [];
+        dataset.forEach((data) =>
+          data.calculation.forEach((type) =>
+            type.calculation_type === calc ? filteredData.push(data) : ""
+          )
+        );
+        datasetMap.set(calc, filteredData);
+
+        // Create a crossing list with drugs
+        const compoundList = [];
+        filteredData.forEach((data) => {
+          compoundList.push(data.compoundId);
+        });
+        compoundMap.set(calc, [...new Set(compoundList)]);
+      });
     } else {
       throw new Error(json);
     }
   }
 
-  //--------------------------------------------------
-
-  // let currentTabeleList = dataset;
-  // const [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
-  const datasetMap = new Map([["variants", dataset]]);
-  let compoundMap = new Map();
-
-  calculationsLists.forEach((calc) => {
-    const filteredData = [];
-    dataset.forEach((data) =>
-      data.calculation.forEach((type) =>
-        type.calculation_type === calc ? filteredData.push(data) : ""
-      )
-    );
-    datasetMap.set(calc, filteredData);
-
-    // Create a crossing list with drugs
-    const compoundList = [];
-    filteredData.forEach((data) => {
-      compoundList.push(data.compoundId);
-    });
-    compoundMap.set(calc, [...new Set(compoundList)]);
-  });
-
-  //--------------------------------------------------
   const initTableSelected = () => {
     if (root.querySelector("tbody")) {
       const trs = root.querySelectorAll("tbody > tr");
@@ -242,8 +203,6 @@
       });
 
       currentTabeleList = mergedArray;
-      console.log(currentTabeleList);
-      console.log(extractCompoundCalc("MP-CAFEE", "alectinib"));
     } else {
       selectedCompoundEl = null;
       clickedItem.classList.remove("selected");
