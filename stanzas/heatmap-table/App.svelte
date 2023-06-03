@@ -10,9 +10,9 @@
   import sampleData from "@/stanzas/heatmap-table/assets/geneVariantSample.json";
   export let uniprotAcc, assembly, genename, root;
 
-  // let promise = fetchData();
+  let promise = fetchData();
 
-  // let dataset = [];
+  let dataset = [];
   // let calculationsCount = {};
   // let calculationsLists = [];
   // let drugList = [];
@@ -40,34 +40,35 @@
   //   ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
   // ];
 
-  // async function fetchData() {
-  //   const response = await fetch(
-  //     `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}`
-  //   );
-  //   const json = await response.json();
-  //   if (response.ok) {
-  //     dataset = json.data.map(toCamelCase);
-  //     currentTabeleList = dataset;
-  //     calculationsLists = getCalculationsLists(dataset);
-  //     datasetMap = new Map([["variants", dataset]]);
+  async function fetchData() {
+    const response = await fetch(
+      `https://precisionmd-db.med.kyoto-u.ac.jp/testapi/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}&limit=10000`
+      // `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}`
+    );
+    const json = await response.json();
+    if (response.ok) {
+      dataset = json.data;
+      console.log(dataset);
 
-  //     calculationsLists.forEach((calc) => {
-  //       const filteredData = dataset.filter((d) =>
-  //         d.calculationType.includes(calc)
-  //       );
-  //       datasetMap.set(calc, filteredData);
-
-  //       // Create a crossing list with drugs
-  //       if (calculationType(calc).calcName === "mutation") {
-  //         compoundMap.set(calc, getdrugList(datasetMap.get(calc)));
-  //       }
-  //     });
-  //     drugList = getdrugList(dataset);
-  //     return json;
-  //   } else {
-  //     throw new Error(json);
-  //   }
-  // }
+      currentTabeleList = dataset;
+      //     calculationsLists = getCalculationsLists(dataset);
+      //     datasetMap = new Map([["variants", dataset]]);
+      //     calculationsLists.forEach((calc) => {
+      //       const filteredData = dataset.filter((d) =>
+      //         d.calculationType.includes(calc)
+      //       );
+      //       datasetMap.set(calc, filteredData);
+      //       // Create a crossing list with drugs
+      //       if (calculationType(calc).calcName === "mutation") {
+      //         compoundMap.set(calc, getdrugList(datasetMap.get(calc)));
+      //       }
+      //     });
+      //     drugList = getdrugList(dataset);
+      //     return json;
+    } else {
+      throw new Error(json);
+    }
+  }
 
   //--------------------------------------------------
 
@@ -85,7 +86,7 @@
     return [[...new Set(calculations.filter(Boolean))], calculationsCount];
   };
 
-  const dataset = sampleData.data.map(toCamelCase);
+  // const dataset = sampleData.data.map(toCamelCase);
 
   let currentTabeleList = dataset;
   const [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
@@ -316,7 +317,6 @@
   </div>
   {#if calculationType(selectedCalcName).calcName === "mutation"}
     <div class="drugs-list">
-      <h3>Drugs</h3>
       <ul class="drugs-ul">
         {#each currentCompoundList as drugName, index}
           <li
@@ -372,65 +372,65 @@
           </tr>
         </thead>
         <tbody>
-          <!-- {#await promise}
-            <tr><td colspan="3" class="loading-message">Loading...</td></tr> -->
-          <!-- {:then json} -->
-          {#each currentTabeleList as data, index}
-            <tr on:click={(event) => tableHandleClick(event, data)}>
-              <td class="td-uniprot">
-                <input
-                  class="radio-button"
-                  type="radio"
-                  name="variantid"
-                  value={data.uniprotAcc}
-                />
-                {data.uniprotAcc}
-              </td>
-              <td>
-                <a
-                  class="link-variant"
-                  href={`${window.location.origin}/dev/variants/details?assembly=${data.assembly}&chr=${data.chr}&start=${data.start}&end=${data.end}&ref=${data.ref}&alt=${data.alt}&variant=${data.variant}`}
+          {#await promise}
+            <tr><td colspan="3" class="loading-message">Loading...</td></tr>
+          {:then json}
+            {#each currentTabeleList as data, index}
+              <tr on:click={(event) => tableHandleClick(event, data)}>
+                <td class="td-uniprot">
+                  <input
+                    class="radio-button"
+                    type="radio"
+                    name="variantid"
+                    value={data.uniprotAcc}
+                  />
+                  {data.uniprotAcc}
+                </td>
+                <td>
+                  <a
+                    class="link-variant"
+                    href={`${window.location.origin}/dev/variants/details?assembly=${data.assembly}&chr=${data.chr}&start=${data.start}&end=${data.end}&ref=${data.ref}&alt=${data.alt}&variant=${data.variant}`}
+                  >
+                    {data.variant}<Fa
+                      icon={faCircleChevronRight}
+                      size="90%"
+                      color="var(--variant-color)"
+                    /></a
+                  >
+                </td>
+                <td>{data.genBank[0] === undefined ? "-" : data.genBank}</td>
+                <td
+                  >{data.mGeNdClinicalSignificance[0] === undefined
+                    ? ""
+                    : data.mGeNdClinicalSignificance}</td
                 >
-                  {data.variant}<Fa
-                    icon={faCircleChevronRight}
-                    size="90%"
-                    color="var(--variant-color)"
-                  /></a
+                <td
+                  >{data.clinVarClinicalSignificance[0] === undefined
+                    ? ""
+                    : data.clinVarClinicalSignificance}</td
                 >
-              </td>
-              <td>{data.genBank[0] === undefined ? "-" : data.genBank}</td>
-              <td
-                >{data.mGeNdClinicalSignificance[0] === undefined
-                  ? ""
-                  : data.mGeNdClinicalSignificance}</td
-              >
-              <td
-                >{data.clinVarClinicalSignificance[0] === undefined
-                  ? ""
-                  : data.clinVarClinicalSignificance}</td
-              >
-              {#if calculationType(selectedCalcName).calcName !== "variants"}
-                {#if data.FE_Bind?.length === 0}
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                {:else if data.FE_Bind?.length === 1}
-                  <td>{data.FE_Bind}</td>
-                  <td>-</td>
-                  <td>-</td>
-                {:else}
-                  <td>-</td>
-                  <td>{data.FE_Bind_mean}</td>
-                  <td>{data.FE_Bind_std}</td>
+                {#if calculationType(selectedCalcName).calcName !== "variants"}
+                  {#if data.FE_Bind?.length === 0}
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  {:else if data.FE_Bind?.length === 1}
+                    <td>{data.FE_Bind}</td>
+                    <td>-</td>
+                    <td>-</td>
+                  {:else}
+                    <td>-</td>
+                    <td>{data.FE_Bind_mean}</td>
+                    <td>{data.FE_Bind_std}</td>
+                  {/if}
                 {/if}
-              {/if}
-              <td>
-                <a
-                  class="link-calc"
-                  href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${data.calculationType}&Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&variant=${data.variant}`}
-                >
-                  <!-- 以下を.toString()にしているが、配列で複数になるはずなので変更する -->
-                  <!-- <img
+                <td>
+                  <a
+                    class="link-calc"
+                    href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${data.calculationType}&Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&variant=${data.variant}`}
+                  >
+                    <!-- 以下を.toString()にしているが、配列で複数になるはずなので変更する -->
+                    <!-- <img
                     class="icon"
                     src={calculationType(data.calculationType.toString()).src
                       ? calculationType(data.calculationType.toString()).src
@@ -439,29 +439,29 @@
                       ? calculationType(data.calculationType.toString()).alt
                       : ""}
                   /> -->
-                  <!-- {data.calculationType.toString()
+                    <!-- {data.calculationType.toString()
                     ? data.calculationType.toString()
                     : ""} -->
-                  <!-- {#if calculationType(data.calculationType.toString()).calcName !== ""}
+                    <!-- {#if calculationType(data.calculationType.toString()).calcName !== ""}
                     <Fa
                       icon={faCircleChevronRight}
                       size="90%"
                       color="var(--calc-color)"
                     />
                   {/if} -->
-                </a>
-              </td>
-              {#each scores as key}
-                <td class="cell-td"
-                  ><div
-                    class="cell"
-                    style="background-color:{getColor(data[key])}"
-                  /></td
-                >
-              {/each}
-            </tr>
-          {/each}
-          <!-- {:catch error}
+                  </a>
+                </td>
+                {#each scores as key}
+                  <td class="cell-td"
+                    ><div
+                      class="cell"
+                      style="background-color:{getColor(data[key])}"
+                    /></td
+                  >
+                {/each}
+              </tr>
+            {/each}
+          {:catch error}
             <tr
               ><td class="error-message" colspan="3"
                 ><Fa
@@ -473,7 +473,7 @@
                 try again later.<br />
               </td></tr
             >
-          {/await} -->
+          {/await}
         </tbody>
       </table>
     </div>
