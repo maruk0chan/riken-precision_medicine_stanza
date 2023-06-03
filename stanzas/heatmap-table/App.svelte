@@ -13,14 +13,14 @@
   let promise = fetchData();
 
   let dataset = [];
-  // let calculationsCount = {};
-  // let calculationsLists = [];
+  let calculationsLists = [];
+  let calculationsCount = {};
   // let drugList = [];
   // let datasetMap = [];
   // let compoundMap = new Map();
   let currentCompoundList = [];
   let selectedCalcName = "variants";
-  // let currentTabeleList = [];
+  let currentTabeleList = [];
 
   // ul.style.display = "none";
 
@@ -40,18 +40,34 @@
   //   ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
   // ];
 
+  const getCalculationsLists = (dataset) => {
+    let calculations = [];
+    dataset.forEach((data) =>
+      data.calculation.forEach((d) => calculations.push(d.calculation_type))
+    );
+
+    let calculationsCount = {};
+    calculationsCount = calculations.reduce((acc, item) => {
+      acc[item] = (acc[item] || 0) + 1;
+      return acc;
+    }, {});
+    return [[...new Set(calculations.filter(Boolean))], calculationsCount];
+  };
+
+  // const dataset = sampleData.data.map(toCamelCase);
   async function fetchData() {
     const response = await fetch(
-      `https://precisionmd-db.med.kyoto-u.ac.jp/testapi/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}&limit=10000`
-      // `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}`
+      //`https://precisionmd-db.med.kyoto-u.ac.jp/testapi/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}&limit=10000`
+      "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/feature/fetch-heatmap/stanzas/heatmap-table/assets/geneVariantSample.json"
+      //`https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}`
     );
+
     const json = await response.json();
     if (response.ok) {
       dataset = json.data;
-      console.log(dataset);
-
       currentTabeleList = dataset;
-      //     calculationsLists = getCalculationsLists(dataset);
+      [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
+      console.log(calculationsLists);
       //     datasetMap = new Map([["variants", dataset]]);
       //     calculationsLists.forEach((calc) => {
       //       const filteredData = dataset.filter((d) =>
@@ -72,24 +88,8 @@
 
   //--------------------------------------------------
 
-  const getCalculationsLists = (dataset) => {
-    let calculations = [];
-    dataset.forEach((data) =>
-      data.calculation.forEach((d) => calculations.push(d.calculation_type))
-    );
-
-    let calculationsCount = {};
-    calculationsCount = calculations.reduce((acc, item) => {
-      acc[item] = (acc[item] || 0) + 1;
-      return acc;
-    }, {});
-    return [[...new Set(calculations.filter(Boolean))], calculationsCount];
-  };
-
-  // const dataset = sampleData.data.map(toCamelCase);
-
-  let currentTabeleList = dataset;
-  const [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
+  // let currentTabeleList = dataset;
+  // const [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
   const datasetMap = new Map([["variants", dataset]]);
   let compoundMap = new Map();
 
