@@ -182,42 +182,51 @@
     currentCompoundTabeleList = [];
 
     if (clickedItem !== selectedCompoundEl) {
-      if (selectedCompoundEl) {
-        selectedCompoundEl.classList.remove("selected");
-        currentCompoundTabeleList = [];
-      }
-
-      selectedCompoundEl = clickedItem;
-
-      if (
-        clickedItem.parentElement.firstElementChild.classList.contains(
-          "selected"
-        )
-      ) {
-        clickedItem.parentElement.firstElementChild.classList.remove(
-          "selected"
-        );
-      } else {
-        selectedCompoundEl.classList.add("selected");
-      }
-
-      currentCalcDataset.forEach((data) => {
-        if (data.compoundId === clickedItem.dataset.compound) {
-          currentCompoundTabeleList.push(data);
+      clickedItem.parentElement.querySelectorAll("li").forEach((li) => {
+        if (li.classList.contains("selected")) {
+          li.classList.remove("selected");
         }
       });
-      const mergedArray = currentCompoundTabeleList.map((item, index) => {
-        return {
-          ...item,
-          ...extractCompoundCalc("MP-CAFEE", "alectinib")[index],
-        };
-      });
 
-      currentTabeleList = mergedArray;
-    } else {
-      selectedCompoundEl = null;
-      clickedItem.classList.remove("selected");
-      currentTabeleList = currentCalcDataset;
+      selectedCompoundEl = clickedItem;
+      selectedCompoundEl.classList.add("selected");
+
+      // if (selectedCompoundEl) {
+      //   selectedCompoundEl.classList.remove("selected");
+      //   currentCompoundTabeleList = [];
+      // }
+
+      // selectedCompoundEl = clickedItem;
+
+      // if (
+      //   clickedItem.parentElement.firstElementChild.classList.contains(
+      //     "selected"
+      //   )
+      // ) {
+      //   clickedItem.parentElement.firstElementChild.classList.remove(
+      //     "selected"
+      //   );
+      // } else {
+      //   selectedCompoundEl.classList.add("selected");
+      // }
+
+      // currentCalcDataset.forEach((data) => {
+      //   if (data.compoundId === clickedItem.dataset.compound) {
+      //     currentCompoundTabeleList.push(data);
+      //   }
+      // });
+      // const mergedArray = currentCompoundTabeleList.map((item, index) => {
+      //   return {
+      //     ...item,
+      //     ...extractCompoundCalc("MP-CAFEE", "alectinib")[index],
+      //   };
+      // });
+
+      //   currentTabeleList = mergedArray;
+      // } else {
+      //   selectedCompoundEl = null;
+      //   clickedItem.classList.remove("selected");
+      //   currentTabeleList = currentCalcDataset;
     }
 
     initTableSelected();
