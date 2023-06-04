@@ -52,7 +52,9 @@
         const calculationTypes = dataItem.calculation.map(
           (item) => item.calculation_type
         );
+        const pdbId = dataItem.calculation.map((item) => item.PDB_ID);
         dataItem.calculationType = calculationTypes;
+        dataItem.pdbId = pdbId;
         return dataItem;
       });
       currentTabeleList = variantsArray;
@@ -394,10 +396,10 @@
                   {/if}
                 {/if}
                 <td>
-                  {#each data.calculationType as type}
+                  {#each data.calculationType as type, i}
                     <a
                       class="link-calc"
-                      href={`{window.location.origin}/dev/calculation/details?assembly={data.assembly}&genename={data.genename}&calculation_type={type}&Compound_ID={data.compoundId}&PDB_ID={data.pdbId}&variant={data.variant}`}
+                      href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${type}&Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId[i]}&variant=${data.variant}`}
                     >
                       <img
                         class="icon"
