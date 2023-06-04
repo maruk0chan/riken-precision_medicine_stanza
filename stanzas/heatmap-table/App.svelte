@@ -12,7 +12,7 @@
   let promise = fetchData();
 
   let dataset = [];
-  let variantsArray = [];
+  let reconstructedVariantData = [];
   let calculationsLists = [];
   let calculationsCount = {};
   // let drugList = [];
@@ -22,19 +22,37 @@
   let currentCompoundList = [];
   let selectedCalcName = "variants";
   let currentTabeleList = [];
-  $: console.log(currentTabeleList);
 
   const getCalculationsLists = (dataset) => {
-    let calculations = [];
-    dataset.forEach((data) =>
-      data.calculation.forEach((d) => calculations.push(d.calculation_type))
+    const calculations = dataset.flatMap((data) =>
+      data.calculation.map((d) => d.calculation_type)
     );
-    let calculationsCount = {};
-    calculationsCount = calculations.reduce((acc, item) => {
-      acc[item] = (acc[item] || 0) + 1;
+    const uniqueCalculations = [...new Set(calculations.filter(Boolean))];
+    const calculationsCount = calculations.reduce((acc, calcType) => {
+      acc[calcType] = (acc[calcType] || 0) + 1;
       return acc;
     }, {});
-    return [[...new Set(calculations.filter(Boolean))], calculationsCount];
+
+    return [uniqueCalculations, calculationsCount];
+  };
+
+  const getMapLists = () => {
+    calculationsLists.forEach((calc) => {
+      const filteredData = dataset.flatMap((data) =>
+        data.calculation
+          .filter((type) => type.calculation_type === calc)
+          .map((type) => ({ ...data, calculationType: [calc] }))
+      );
+      datasetMap.set(calc, filteredData);
+
+      const compoundList = [
+        "All Drugs",
+        ...filteredData.map((data) => data.compoundId),
+      ];
+      compoundMap.set(calc, [...new Set(compoundList)]);
+    });
+
+    return [datasetMap, compoundMap];
   };
 
   async function fetchData() {
@@ -48,7 +66,7 @@
     if (response.ok) {
       dataset = json.data.map(toCamelCase);
       [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
-      const variantsArray = dataset.map((dataItem) => {
+      const reconstructedVariantData = dataset.map((dataItem) => {
         const calculationTypes = dataItem.calculation.map(
           (item) => item.calculation_type
         );
@@ -57,28 +75,9 @@
         dataItem.pdbId = pdbId;
         return dataItem;
       });
-      currentTabeleList = variantsArray;
-      datasetMap = new Map([["variants", variantsArray]]);
-
-      //↓関数にして外側に定義する
-      calculationsLists.forEach((calc) => {
-        const filteredData = [];
-        dataset.forEach((data) =>
-          data.calculation.forEach((type) =>
-            type.calculation_type === calc
-              ? filteredData.push({ ...data, calculationType: [calc] })
-              : ""
-          )
-        );
-        datasetMap.set(calc, filteredData);
-
-        // Create a crossing list with drugs
-        const compoundList = [];
-        filteredData.forEach((data) => {
-          compoundList.push(data.compoundId);
-        });
-        compoundMap.set(calc, [...new Set(compoundList)]);
-      });
+      currentTabeleList = reconstructedVariantData;
+      datasetMap = new Map([["variants", reconstructedVariantData]]);
+      [datasetMap, compoundMap] = getMapLists();
     } else {
       throw new Error(json);
     }
