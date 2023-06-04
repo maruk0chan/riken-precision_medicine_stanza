@@ -165,8 +165,10 @@
 
   let currentCompoundTabeleList = [];
   let selectedCompoundEl = null;
+  let selectedCompoundName = "All Drugs";
   const compoundHandleClick = (event) => {
     const clickedItem = event.target.closest("li");
+    selectedCompoundName = clickedItem.textContent;
     const currentCalcDataset = datasetMap.get(selectedCalcName);
     currentCompoundTabeleList = [];
     if (clickedItem !== selectedCompoundEl) {
@@ -178,16 +180,18 @@
 
       selectedCompoundEl = clickedItem;
       selectedCompoundEl.classList.add("selected");
+      // console.log(selectedCalcName);
+      console.log(compoundMap.get(selectedCalcName));
+      console.log(selectedCompoundName);
+      console.log(compoundMap.get(selectedCalcName).selectedCompoundName);
+      // console.log(clickedItem.textContent);
 
       // if (selectedCompoundEl) {
-      //   selectedCompoundEl.classList.remove("selected");
       //   currentCompoundTabeleList = [];
       // }
 
       // selectedCompoundEl = clickedItem;
 
-      // } else {
-      //   selectedCompoundEl.classList.add("selected");
       // }
 
       // currentCalcDataset.forEach((data) => {
