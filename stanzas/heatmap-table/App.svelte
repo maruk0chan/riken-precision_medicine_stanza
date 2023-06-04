@@ -36,19 +36,17 @@
   const getMapLists = () => {
     datasetMap = new Map([["variants", dataset]]);
     calculationsLists.forEach((calc) => {
-      let filteredData = [];
-      dataset.forEach((data) =>
-        data.calculation.forEach((type) =>
-          type.calculation_type === calc ? filteredData.push(data) : ""
+      const filteredData = dataset
+        .filter((data) =>
+          data.calculation.some((type) => type.calculation_type === calc)
         )
-      );
+        .map((data) => ({
+          ...data,
+          calculation: data.calculation.filter(
+            (item) => item.calculation_type === calc
+          ),
+        }));
 
-      filteredData.map((data) => ({
-        ...data,
-        calculation: data.calculation.filter(
-          (item) => item.calculation_type === calc
-        ),
-      }));
       datasetMap.set(calc, filteredData);
 
       // console.log(calc, filteredData);
@@ -380,18 +378,18 @@
                     : data.clinVarClinicalSignificance}</td
                 >
                 {#if calculationType(selectedCalcName).calcName !== "variants"}
-                  {#if data.FE_Bind?.length === 0}
+                  {#if data.calculation[0]?.FE_Bind?.length === 0}
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
                   {:else if data.FE_Bind?.length === 1}
-                    <td>{data.FE_Bind}</td>
+                    <td>{data.calculation[0]?.FE_Bind}</td>
                     <td>-</td>
                     <td>-</td>
                   {:else}
                     <td>-</td>
-                    <td>{data.FE_Bind_mean}</td>
-                    <td>{data.FE_Bind_std}</td>
+                    <td>{data.calculation[0]?.FE_Bind_mean}</td>
+                    <td>{data.calculation[0]?.FE_Bind_std}</td>
                   {/if}
                 {/if}
                 <td>
