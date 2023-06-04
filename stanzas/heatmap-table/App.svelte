@@ -64,7 +64,7 @@
         dataset.forEach((data) =>
           data.calculation.forEach((type) =>
             type.calculation_type === calc
-              ? filteredData.push({ ...data, calculationType: calc })
+              ? filteredData.push({ ...data, calculationType: [calc] })
               : ""
           )
         );
@@ -399,7 +399,15 @@
                       class="link-calc"
                       href={`{window.location.origin}/dev/calculation/details?assembly={data.assembly}&genename={data.genename}&calculation_type={type}&Compound_ID={data.compoundId}&PDB_ID={data.pdbId}&variant={data.variant}`}
                     >
-                      <span>{type}</span>
+                      <img
+                        class="icon"
+                        src={calculationType(type.toString()).src
+                          ? calculationType(type.toString()).src
+                          : ""}
+                        alt={calculationType(type.toString()).alt
+                          ? calculationType(type.toString()).alt
+                          : ""}
+                      /><span>{type}</span>
                     </a>
                     <br />
                   {/each}
