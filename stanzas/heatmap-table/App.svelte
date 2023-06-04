@@ -382,7 +382,7 @@
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
-                  {:else if data.FE_Bind?.length === 1}
+                  {:else if data.calculation[0]?.FE_Bind?.length === 1}
                     <td>{data.calculation[0]?.FE_Bind}</td>
                     <td>-</td>
                     <td>-</td>
