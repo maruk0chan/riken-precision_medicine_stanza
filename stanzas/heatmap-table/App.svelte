@@ -12,7 +12,6 @@
   let promise = fetchData();
 
   let dataset = [];
-  let reconstructedVariantData = [];
   let calculationsLists = [];
   let calculationsCount = {};
   // let drugList = [];
@@ -22,6 +21,8 @@
   let currentCompoundList = [];
   let selectedCalcName = "variants";
   let currentTabeleList = [];
+
+  $: console.log(datasetMap);
 
   const getCalculationsLists = (dataset) => {
     const calculations = dataset.flatMap((data) =>
@@ -38,11 +39,12 @@
 
   const getMapLists = () => {
     calculationsLists.forEach((calc) => {
-      const filteredData = dataset.flatMap((data) =>
-        data.calculation
-          .filter((type) => type.calculation_type === calc)
-          .map((type) => ({ ...data, calculationType: [calc] }))
-      );
+      const filteredData = dataset.map((data) => ({
+        ...data,
+        calculation: data.calculation.filter(
+          (item) => item.calculation_type === calc
+        ),
+      }));
       datasetMap.set(calc, filteredData);
 
       const compoundList = [
@@ -66,17 +68,8 @@
     if (response.ok) {
       dataset = json.data.map(toCamelCase);
       [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
-      const reconstructedVariantData = dataset.map((dataItem) => {
-        const calculationTypes = dataItem.calculation.map(
-          (item) => item.calculation_type
-        );
-        const pdbId = dataItem.calculation.map((item) => item.PDB_ID);
-        dataItem.calculationType = calculationTypes;
-        dataItem.pdbId = pdbId;
-        return dataItem;
-      });
-      currentTabeleList = reconstructedVariantData;
-      datasetMap = new Map([["variants", reconstructedVariantData]]);
+      currentTabeleList = dataset;
+      datasetMap = new Map([["variants", dataset]]);
       [datasetMap, compoundMap] = getMapLists();
     } else {
       throw new Error(json);
@@ -404,20 +397,28 @@
                   {/if}
                 {/if}
                 <td>
-                  {#each data.calculationType as type, i}
+                  {#each data.calculation as calculation}
                     <a
                       class="link-calc"
-                      href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${type}&Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId[i]}&variant=${data.variant}`}
+                      href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${calculation.calculation_type}&Compound_ID=${data.compoundId}&PDB_ID=${calculation.PDB_ID}&variant=${data.variant}`}
                     >
                       <img
                         class="icon"
-                        src={calculationType(type.toString()).src
-                          ? calculationType(type.toString()).src
+                        src={calculationType(
+                          calculation.calculation_type.toString()
+                        ).src
+                          ? calculationType(
+                              calculation.calculation_type.toString()
+                            ).src
                           : ""}
-                        alt={calculationType(type.toString()).alt
-                          ? calculationType(type.toString()).alt
+                        alt={calculationType(
+                          calculation.calculation_type.toString()
+                        ).alt
+                          ? calculationType(
+                              calculation.calculation_type.toString()
+                            ).alt
                           : ""}
-                      /><span>{type}</span>
+                      /><span>{calculation.calculation_type}</span>
                     </a>
                     <br />
                   {/each}
