@@ -46,16 +46,19 @@
             (item) => item.calculation_type === calc
           ),
         }));
-
       datasetMap.set(calc, filteredData);
 
-      // console.log(calc, filteredData);
+      const compoundGroup = filteredData.reduce((acc, data) => {
+        const compound = data.compoundId;
+        if (!acc[compound]) {
+          acc[compound] = [];
+        }
+        acc[compound].push(data);
+        return acc;
+      }, {});
 
-      const compoundList = [
-        { "All Drugs": ["a", "b", "c"] },
-        ...filteredData.map((data) => data.compoundId),
-      ];
-      compoundMap.set(calc, [...new Set(compoundList)]);
+      const compoundList = [{ "All Drugs": filteredData, ...compoundGroup }];
+      compoundMap.set(calc, ...compoundList);
     });
 
     return [datasetMap, compoundMap];
@@ -74,9 +77,6 @@
       currentTabeleList = dataset;
       [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
       [datasetMap, compoundMap] = getMapLists();
-      console.log(datasetMap);
-      console.log(compoundMap);
-      // console.log(Object.keys(compoundMap.get("MP-CAFEE")[0]));
     } else {
       throw new Error(json);
     }
@@ -98,12 +98,15 @@
   };
 
   let selectedCalcEl = null;
-  let changeCalc = true;
   const calcHandleClick = (event) => {
     const clickedItem = event.target.closest("li");
     selectedCalcName = clickedItem.dataset.calc;
     currentTabeleList = datasetMap.get(selectedCalcName);
-    currentCompoundList = compoundMap.get(selectedCalcName);
+    currentCompoundList =
+      selectedCalcName === "variants"
+        ? ""
+        : Object.keys(compoundMap.get(selectedCalcName));
+
     if (clickedItem !== selectedCalcEl) {
       clickedItem.parentElement.querySelectorAll("li").forEach((li) => {
         if (li.classList.contains("selected")) {
@@ -154,22 +157,10 @@
     }
     selectedCalcName = selectedCalcEl.dataset.calc;
     currentTabeleList = datasetMap.get(selectedCalcName);
-    currentCompoundList = compoundMap.get(selectedCalcName);
-  };
-
-  const extractCompoundCalc = (calcType, compoundId) => {
-    const calcList = [];
-    dataset.forEach((data) => {
-      data.calculation.forEach((calc) => {
-        if (
-          calc.calculation_type === calcType &&
-          data.compoundId === compoundId
-        ) {
-          calcList.push(calc);
-        }
-      });
-    });
-    return calcList;
+    currentCompoundList =
+      selectedCalcName === "variants"
+        ? ""
+        : Object.keys(compoundMap.get(selectedCalcName));
   };
 
   let currentCompoundTabeleList = [];
