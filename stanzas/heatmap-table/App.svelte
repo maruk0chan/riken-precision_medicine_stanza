@@ -379,15 +379,15 @@
                 >
                 {#if calculationType(selectedCalcName).calcName !== "variants"}
                   {#if data.calculation[0]?.FE_Bind?.length === 0}
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
                   {:else if data.calculation[0]?.FE_Bind?.length === 1}
                     <td>{data.calculation[0]?.FE_Bind}</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
                   {:else}
-                    <td>-</td>
+                    <td>&nbsp;</td>
                     <td>{data.calculation[0]?.FE_Bind_mean}</td>
                     <td>{data.calculation[0]?.FE_Bind_std}</td>
                   {/if}
@@ -400,49 +400,16 @@
                     >
                       <img
                         class="icon"
-                        src={calculationType(
-                          calculation.calculation_type.toString()
-                        ).src
-                          ? calculationType(
-                              calculation.calculation_type.toString()
-                            ).src
+                        src={calculationType(calculation.calculation_type).src
+                          ? calculationType(calculation.calculation_type).src
                           : ""}
-                        alt={calculationType(
-                          calculation.calculation_type.toString()
-                        ).alt
-                          ? calculationType(
-                              calculation.calculation_type.toString()
-                            ).alt
+                        alt={calculationType(calculation.calculation_type).alt
+                          ? calculationType(calculation.calculation_type).alt
                           : ""}
                       /><span>{calculation.calculation_type}</span>
                     </a>
                     <br />
                   {/each}
-                  <!-- <a
-                    class="link-calc"
-                    href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${data.calculationType}&Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&variant=${data.variant}`}
-                    >{data.calculationType} -->
-                  <!-- 以下を.toString()にしているが、配列で複数になるはずなので変更する -->
-                  <!-- <img
-                    class="icon"
-                    src={calculationType(data.calculationType.toString()).src
-                      ? calculationType(data.calculationType.toString()).src
-                      : ""}
-                    alt={calculationType(data.calculationType.toString()).alt
-                      ? calculationType(data.calculationType.toString()).alt
-                      : ""}
-                  /> -->
-                  <!-- {data.calculationType.toString()
-                    ? data.calculationType.toString()
-                    : ""} -->
-                  <!-- {#if calculationType(data.calculationType.toString()).calcName !== ""}
-                    <Fa
-                      icon={faCircleChevronRight}
-                      size="90%"
-                      color="var(--calc-color)"
-                    />
-                  {/if} -->
-                  <!-- </a> -->
                 </td>
                 {#each scores as key}
                   <td class="cell-td"
