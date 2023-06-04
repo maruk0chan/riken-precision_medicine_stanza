@@ -12,6 +12,7 @@
   let promise = fetchData();
 
   let dataset = [];
+  let variantsArray = [];
   let calculationsLists = [];
   let calculationsCount = {};
   // let drugList = [];
@@ -21,13 +22,13 @@
   let currentCompoundList = [];
   let selectedCalcName = "variants";
   let currentTabeleList = [];
+  $: console.log(currentTabeleList);
 
   const getCalculationsLists = (dataset) => {
     let calculations = [];
     dataset.forEach((data) =>
       data.calculation.forEach((d) => calculations.push(d.calculation_type))
     );
-
     let calculationsCount = {};
     calculationsCount = calculations.reduce((acc, item) => {
       acc[item] = (acc[item] || 0) + 1;
@@ -46,16 +47,25 @@
     const json = await response.json();
     if (response.ok) {
       dataset = json.data.map(toCamelCase);
-      currentTabeleList = dataset;
       [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
-      datasetMap = new Map([["variants", dataset]]);
+      const variantsArray = dataset.map((dataItem) => {
+        const calculationTypes = dataItem.calculation.map(
+          (item) => item.calculation_type
+        );
+        dataItem.calculationType = calculationTypes;
+        return dataItem;
+      });
+      currentTabeleList = variantsArray;
+      datasetMap = new Map([["variants", variantsArray]]);
 
       //↓関数にして外側に定義する
       calculationsLists.forEach((calc) => {
         const filteredData = [];
         dataset.forEach((data) =>
           data.calculation.forEach((type) =>
-            type.calculation_type === calc ? filteredData.push(data) : ""
+            type.calculation_type === calc
+              ? filteredData.push({ ...data, calculationType: [calc] })
+              : ""
           )
         );
         datasetMap.set(calc, filteredData);
@@ -384,12 +394,29 @@
                   {/if}
                 {/if}
                 <td>
-                  <a
+                  {#each data.calculationType as type}
+                    <a
+                      class="link-calc"
+                      href={`{window.location.origin}/dev/calculation/details?assembly={data.assembly}&genename={data.genename}&calculation_type={type}&Compound_ID={data.compoundId}&PDB_ID={data.pdbId}&variant={data.variant}`}
+                    >
+                      <img
+                        class="icon"
+                        src={calculationType(type.toString()).src
+                          ? calculationType(type.toString()).src
+                          : ""}
+                        alt={calculationType(type.toString()).alt
+                          ? calculationType(type.toString()).alt
+                          : ""}
+                      /><span>{type}</span>
+                    </a>
+                    <br />
+                  {/each}
+                  <!-- <a
                     class="link-calc"
                     href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${data.calculationType}&Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&variant=${data.variant}`}
-                  >
-                    <!-- 以下を.toString()にしているが、配列で複数になるはずなので変更する -->
-                    <!-- <img
+                    >{data.calculationType} -->
+                  <!-- 以下を.toString()にしているが、配列で複数になるはずなので変更する -->
+                  <!-- <img
                     class="icon"
                     src={calculationType(data.calculationType.toString()).src
                       ? calculationType(data.calculationType.toString()).src
@@ -398,17 +425,17 @@
                       ? calculationType(data.calculationType.toString()).alt
                       : ""}
                   /> -->
-                    <!-- {data.calculationType.toString()
+                  <!-- {data.calculationType.toString()
                     ? data.calculationType.toString()
                     : ""} -->
-                    <!-- {#if calculationType(data.calculationType.toString()).calcName !== ""}
+                  <!-- {#if calculationType(data.calculationType.toString()).calcName !== ""}
                     <Fa
                       icon={faCircleChevronRight}
                       size="90%"
                       color="var(--calc-color)"
                     />
                   {/if} -->
-                  </a>
+                  <!-- </a> -->
                 </td>
                 {#each scores as key}
                   <td class="cell-td"
