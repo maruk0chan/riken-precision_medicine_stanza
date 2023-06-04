@@ -168,7 +168,7 @@
   let selectedCompoundName = "All Drugs";
   const compoundHandleClick = (event) => {
     const clickedItem = event.target.closest("li");
-    selectedCompoundName = clickedItem.textContent;
+    selectedCompoundName = clickedItem.textContent.trim();
     const currentCalcDataset = datasetMap.get(selectedCalcName);
     currentCompoundTabeleList = [];
     if (clickedItem !== selectedCompoundEl) {
@@ -182,8 +182,7 @@
       selectedCompoundEl.classList.add("selected");
       // console.log(selectedCalcName);
       console.log(compoundMap.get(selectedCalcName));
-      console.log(selectedCompoundName);
-      console.log(compoundMap.get(selectedCalcName).selectedCompoundName);
+      console.log(compoundMap.get(selectedCalcName)[selectedCompoundName]);
       // console.log(clickedItem.textContent);
 
       // if (selectedCompoundEl) {
