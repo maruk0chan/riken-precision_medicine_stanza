@@ -14,15 +14,11 @@
   let dataset = [];
   let calculationsLists = [];
   let calculationsCount = {};
-  // let drugList = [];
   let datasetMap = [];
-
   let compoundMap = new Map();
   let currentCompoundList = [];
   let selectedCalcName = "variants";
   let currentTabeleList = [];
-
-  $: console.log(datasetMap);
 
   const getCalculationsLists = (dataset) => {
     const calculations = dataset.flatMap((data) =>
@@ -38,8 +34,16 @@
   };
 
   const getMapLists = () => {
+    datasetMap = new Map([["variants", dataset]]);
     calculationsLists.forEach((calc) => {
-      const filteredData = dataset.map((data) => ({
+      let filteredData = [];
+      dataset.forEach((data) =>
+        data.calculation.forEach((type) =>
+          type.calculation_type === calc ? filteredData.push(data) : ""
+        )
+      );
+
+      filteredData.map((data) => ({
         ...data,
         calculation: data.calculation.filter(
           (item) => item.calculation_type === calc
@@ -47,8 +51,10 @@
       }));
       datasetMap.set(calc, filteredData);
 
+      // console.log(calc, filteredData);
+
       const compoundList = [
-        "All Drugs",
+        { "All Drugs": ["a", "b", "c"] },
         ...filteredData.map((data) => data.compoundId),
       ];
       compoundMap.set(calc, [...new Set(compoundList)]);
@@ -67,10 +73,12 @@
     const json = await response.json();
     if (response.ok) {
       dataset = json.data.map(toCamelCase);
-      [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
       currentTabeleList = dataset;
-      datasetMap = new Map([["variants", dataset]]);
+      [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
       [datasetMap, compoundMap] = getMapLists();
+      console.log(datasetMap);
+      console.log(compoundMap);
+      // console.log(Object.keys(compoundMap.get("MP-CAFEE")[0]));
     } else {
       throw new Error(json);
     }
@@ -165,7 +173,6 @@
     });
     return calcList;
   };
-  // console.log(extractCompoundCalc("MP-CAFEE", "alectinib"));
 
   let currentCompoundTabeleList = [];
   let selectedCompoundEl = null;
@@ -173,7 +180,6 @@
     const clickedItem = event.target.closest("li");
     const currentCalcDataset = datasetMap.get(selectedCalcName);
     currentCompoundTabeleList = [];
-
     if (clickedItem !== selectedCompoundEl) {
       clickedItem.parentElement.querySelectorAll("li").forEach((li) => {
         if (li.classList.contains("selected")) {
@@ -191,14 +197,6 @@
 
       // selectedCompoundEl = clickedItem;
 
-      // if (
-      //   clickedItem.parentElement.firstElementChild.classList.contains(
-      //     "selected"
-      //   )
-      // ) {
-      //   clickedItem.parentElement.firstElementChild.classList.remove(
-      //     "selected"
-      //   );
       // } else {
       //   selectedCompoundEl.classList.add("selected");
       // }
