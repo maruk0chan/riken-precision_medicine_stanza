@@ -163,13 +163,11 @@
         : Object.keys(compoundMap.get(selectedCalcName));
   };
 
-  let currentCompoundTabeleList = [];
   let selectedCompoundEl = null;
   let selectedCompoundName = "All Drugs";
   const compoundHandleClick = (event) => {
     const clickedItem = event.target.closest("li");
     selectedCompoundName = clickedItem.textContent.trim();
-    currentCompoundTabeleList = [];
     if (clickedItem !== selectedCompoundEl) {
       clickedItem.parentElement.querySelectorAll("li").forEach((li) => {
         if (li.classList.contains("selected")) {
@@ -186,7 +184,7 @@
     initTableSelected();
   };
 
-  let tableSelectedItem = null;
+  let tableSelectedEl = null;
   const tableHandleClick = (event, data) => {
     const variantLink = event.target.closest(".td-variant > span");
     const calculationList = event.target.closest(".td-calc > span");
@@ -195,13 +193,13 @@
     const clickedItem = event.target.closest("tr");
     const radioButton = clickedItem.querySelector('input[type="radio"]');
     clickedItem.parentElement.firstChild.classList.remove("selected");
-    if (clickedItem !== tableSelectedItem) {
-      if (tableSelectedItem) {
-        tableSelectedItem.classList.remove("selected");
-        tableSelectedItem.querySelector('input[type="radio"]').checked = false;
+    if (clickedItem !== tableSelectedEl) {
+      if (tableSelectedEl) {
+        tableSelectedEl.classList.remove("selected");
+        tableSelectedEl.querySelector('input[type="radio"]').checked = false;
       }
-      tableSelectedItem = clickedItem;
-      tableSelectedItem.classList.add("selected");
+      tableSelectedEl = clickedItem;
+      tableSelectedEl.classList.add("selected");
       radioButton.checked = true;
       window.dispatchEvent(
         new CustomEvent("updateMolstar", {
@@ -210,7 +208,7 @@
         })
       );
     } else {
-      tableSelectedItem = null;
+      tableSelectedEl = null;
       clickedItem.classList.remove("selected");
       radioButton.checked = false;
     }
