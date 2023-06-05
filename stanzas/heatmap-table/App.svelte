@@ -168,8 +168,7 @@
   let selectedCompoundName = "All Drugs";
   const compoundHandleClick = (event) => {
     const clickedItem = event.target.closest("li");
-    selectedCompoundName = clickedItem.textContent;
-    const currentCalcDataset = datasetMap.get(selectedCalcName);
+    selectedCompoundName = clickedItem.textContent.trim();
     currentCompoundTabeleList = [];
     if (clickedItem !== selectedCompoundEl) {
       clickedItem.parentElement.querySelectorAll("li").forEach((li) => {
@@ -180,37 +179,8 @@
 
       selectedCompoundEl = clickedItem;
       selectedCompoundEl.classList.add("selected");
-      // console.log(selectedCalcName);
-      console.log(compoundMap.get(selectedCalcName));
-      console.log(selectedCompoundName);
-      console.log(compoundMap.get(selectedCalcName).selectedCompoundName);
-      // console.log(clickedItem.textContent);
-
-      // if (selectedCompoundEl) {
-      //   currentCompoundTabeleList = [];
-      // }
-
-      // selectedCompoundEl = clickedItem;
-
-      // }
-
-      // currentCalcDataset.forEach((data) => {
-      //   if (data.compoundId === clickedItem.dataset.compound) {
-      //     currentCompoundTabeleList.push(data);
-      //   }
-      // });
-      // const mergedArray = currentCompoundTabeleList.map((item, index) => {
-      //   return {
-      //     ...item,
-      //     ...extractCompoundCalc("MP-CAFEE", "alectinib")[index],
-      //   };
-      // });
-
-      //   currentTabeleList = mergedArray;
-      // } else {
-      //   selectedCompoundEl = null;
-      //   clickedItem.classList.remove("selected");
-      //   currentTabeleList = currentCalcDataset;
+      currentTabeleList =
+        compoundMap.get(selectedCalcName)[selectedCompoundName];
     }
 
     initTableSelected();
