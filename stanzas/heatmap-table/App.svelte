@@ -164,13 +164,11 @@
         : Object.keys(compoundMap.get(selectedCalcName));
   };
 
-  let currentCompoundTabeleList = [];
   let selectedCompoundEl = null;
   let selectedCompoundName = "All Drugs";
   const compoundHandleClick = (event) => {
     const clickedItem = event.target.closest("li");
     selectedCompoundName = clickedItem.textContent.trim();
-    currentCompoundTabeleList = [];
     if (clickedItem !== selectedCompoundEl) {
       clickedItem.parentElement.querySelectorAll("li").forEach((li) => {
         if (li.classList.contains("selected")) {
@@ -313,10 +311,10 @@
             <th class="th-disease" rowspan="1">ClinVar</th>
             {#if calculationType(selectedCalcName).calcName !== "variants"}
               <th class="th-calc" rowspan="1" data-calc="mutation"
-                ><p>ΔΔG (cal/mol)</p></th
+                ><p>ΔΔG (kcal/mol)</p></th
               >
               <th class="th-calc" rowspan="1" data-calc="mutation"
-                ><p>Average ΔΔG (cal/mol)</p></th
+                ><p>Average ΔΔG (kcal/mol)</p></th
               >
               <th class="th-calc" rowspan="1" data-calc="mutation"
                 ><p>Standard Deviation</p></th
