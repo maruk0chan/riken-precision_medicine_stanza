@@ -191,9 +191,7 @@
       new CustomEvent("updateGraphs", {
         // TODO: change to data.variant to data.pdbId (or others)
         detail: {
-          pdbIds: data.pdBlistSingleWild,
-          variant: data.variant,
-          selectedItem: tableSelectedItem,
+          hovered: data,
         },
       })
     );
@@ -220,9 +218,7 @@
         new CustomEvent("updateGraphs", {
           // TODO: change to data.variant to data.pdbId (or others)
           detail: {
-            pdbIds: data.pdBlistSingleWild,
-            variant: data.variant,
-            tableSelectedItem,
+            clicked: tableSelectedItem,
           },
         })
       );
