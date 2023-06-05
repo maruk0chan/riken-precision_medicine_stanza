@@ -19,6 +19,7 @@
   let currentCompoundList = [];
   let selectedCalcName = "variants";
   let currentTabeleList = [];
+  let tableSelectedItem = {};
 
   const getCalculationsLists = (dataset) => {
     const calculations = dataset.flatMap((data) =>
@@ -185,8 +186,21 @@
 
     initTableSelected();
   };
-
-  let tableSelectedItem = null;
+  const updateGraphs = (data) => {
+    // TODO: if option is selected that return this function
+    if (Object.keys(tableSelectedItem).length !== 0) return;
+    window.dispatchEvent(
+      new CustomEvent("updateGraphs", {
+        // TODO: change to data.variant to data.pdbId (or others)
+        detail: {
+          pdbIds: data.pdBlistSingleWild,
+          variant: data.variant,
+          selectedItem: tableSelectedItem,
+        },
+      })
+    );
+  };
+  let tableSelectedEl = null;
   const tableHandleClick = (event, data) => {
     const variantLink = event.target.closest(".td-variant > span");
     const calculationList = event.target.closest(".td-calc > span");
@@ -195,22 +209,28 @@
     const clickedItem = event.target.closest("tr");
     const radioButton = clickedItem.querySelector('input[type="radio"]');
     clickedItem.parentElement.firstChild.classList.remove("selected");
-    if (clickedItem !== tableSelectedItem) {
-      if (tableSelectedItem) {
-        tableSelectedItem.classList.remove("selected");
-        tableSelectedItem.querySelector('input[type="radio"]').checked = false;
+    if (clickedItem !== tableSelectedEl) {
+      if (tableSelectedEl) {
+        tableSelectedEl.classList.remove("selected");
+        tableSelectedEl.querySelector('input[type="radio"]').checked = false;
       }
-      tableSelectedItem = clickedItem;
-      tableSelectedItem.classList.add("selected");
+      tableSelectedEl = clickedItem;
+      tableSelectedEl.classList.add("selected");
       radioButton.checked = true;
+      tableSelectedItem = data;
       window.dispatchEvent(
-        new CustomEvent("updateMolstar", {
+        new CustomEvent("updateGraphs", {
           // TODO: change to data.variant to data.pdbId (or others)
-          detail: { pdbId: data.variant },
+          detail: {
+            pdbIds: data.pdBlistSingleWild,
+            variant: data.variant,
+            tableSelectedItem,
+          },
         })
       );
     } else {
-      tableSelectedItem = null;
+      tableSelectedEl = null;
+      tableSelectedItem = {};
       clickedItem.classList.remove("selected");
       radioButton.checked = false;
     }
@@ -309,7 +329,15 @@
             <tr><td colspan="3" class="loading-message">Loading...</td></tr>
           {:then json}
             {#each currentTabeleList as data, index}
-              <tr on:click={(event) => tableHandleClick(event, data)}>
+              <tr
+                on:click={(event) => tableHandleClick(event, data)}
+                on:focus={() => {
+                  updateGraphs(data);
+                }}
+                on:mouseover={() => {
+                  updateGraphs(data);
+                }}
+              >
                 <td class="td-uniprot">
                   <input
                     class="radio-button"
