@@ -323,10 +323,10 @@
             <th class="th-disease" rowspan="1">ClinVar</th>
             {#if calculationType(selectedCalcName).calcName !== "variants"}
               <th class="th-calc" rowspan="1" data-calc="mutation"
-                ><p>ΔΔG (cal/mol)</p></th
+                ><p>ΔΔG (kcal/mol)</p></th
               >
               <th class="th-calc" rowspan="1" data-calc="mutation"
-                ><p>Average ΔΔG (cal/mol)</p></th
+                ><p>Average ΔΔG (kcal/mol)</p></th
               >
               <th class="th-calc" rowspan="1" data-calc="mutation"
                 ><p>Standard Deviation</p></th
