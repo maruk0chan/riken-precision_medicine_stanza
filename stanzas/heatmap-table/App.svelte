@@ -68,7 +68,8 @@
   async function fetchData() {
     const response = await fetch(
       //`https://precisionmd-db.med.kyoto-u.ac.jp/testapi/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}&limit=10000`
-      "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/feature/fetch-heatmap/stanzas/heatmap-table/assets/geneVariantSample.json"
+      // "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/feature/fetch-heatmap/stanzas/heatmap-table/assets/geneVariantSample.json"
+      "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/feature/fetch-heatmap/stanzas/heatmap-table/assets/geneVariantSample2.json"
       //`https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}`
     );
 
