@@ -40,8 +40,8 @@
       "genename": "ALK",
       "ref": "A",
       "start": 29196786,
-      "uniprot_acc": "Q9UM73",
-      "variant": "Test Data"
+      "uniprot_acc": "dummy1",
+      "variant": "I1383T"
     },
     {
       "CADD": 0.85186,
@@ -91,8 +91,8 @@
       "genename": "ALK",
       "ref": "A",
       "start": 29196786,
-      "uniprot_acc": "Q9UM73",
-      "variant": "Test Data"
+      "uniprot_acc": "dummy2",
+      "variant": "I1383T"
     },
     {
       "CADD": 0.85186,
@@ -143,8 +143,8 @@
       "genename": "ALK",
       "ref": "A",
       "start": 29196786,
-      "uniprot_acc": "Q9UM73",
-      "variant": "Test Data"
+      "uniprot_acc": "dummy3",
+      "variant": "I1383T"
     },
     {
       "CADD": 0.85186,
