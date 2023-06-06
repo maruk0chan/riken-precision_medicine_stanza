@@ -9,6 +9,152 @@
       "MGeND_ClinicalSignificance": [],
       "MutationAssessor": 0.52871,
       "MutationTaster": 0.81001,
+      "PDBlist_single_wild": ["2kuq", "2ys5", "2yt2"],
+      "PROVEAN": 0.78891,
+      "Polyphen2_HDIV": 0.90584,
+      "Polyphen2_HVAR": 0.97372,
+      "PrimateAI": 0.80235,
+      "REVEL": 0.95765,
+      "SIFT4G": 0.79402,
+      "alt": "G",
+      "assembly": "hg38",
+      "calculation": [
+        {
+          "FE_Bind": [-0.3179],
+          "FE_Bind_mean": -0.3179,
+          "FE_Bind_std": null,
+          "PDB_ID": "3AOX",
+          "calculation_type": "MP-CAFEE"
+        },
+        {
+          "FE_Bind": [0.046, 0.132, 0.196],
+          "FE_Bind_mean": 0.1247,
+          "FE_Bind_std": 0.0753,
+          "PDB_ID": "3AOX",
+          "calculation_type": "Mutation_FEP"
+        }
+      ],
+      "chr": "chr2",
+      "end": 29196786,
+      "fathmm-MKL": 0.72607,
+      "genename": "ALK",
+      "ref": "A",
+      "start": 29196786,
+      "uniprot_acc": "dummy1",
+      "variant": "I1383T"
+    },
+    {
+      "CADD": 0.85186,
+      "ClinVar_ClinicalSignificance": ["Uncertain significance"],
+      "Compound_ID": "alectinib",
+      "GenBank": ["NM_004304"],
+      "LRT": 0.47286,
+      "MGeND_ClinicalSignificance": [],
+      "MutationAssessor": 0.52871,
+      "MutationTaster": 0.81001,
+      "PDBlist_single_wild": [
+        "4ccu",
+        "5imx",
+        "4ctc",
+        "4ccb",
+        "4tt7",
+        "6cdt",
+        "4ctb"
+      ],
+      "PROVEAN": 0.78891,
+      "Polyphen2_HDIV": 0.90584,
+      "Polyphen2_HVAR": 0.97372,
+      "PrimateAI": 0.80235,
+      "REVEL": 0.95765,
+      "SIFT4G": 0.79402,
+      "alt": "G",
+      "assembly": "hg38",
+      "calculation": [
+        {
+          "FE_Bind": [-0.3179],
+          "FE_Bind_mean": -0.3179,
+          "FE_Bind_std": null,
+          "PDB_ID": "3AOX",
+          "calculation_type": "MP-CAFEE"
+        },
+        {
+          "FE_Bind": [0.046, 0.132, 0.196],
+          "FE_Bind_mean": 0.1247,
+          "FE_Bind_std": 0.0753,
+          "PDB_ID": "3AOX",
+          "calculation_type": "Mutation_FEP"
+        }
+      ],
+      "chr": "chr2",
+      "end": 29196786,
+      "fathmm-MKL": 0.72607,
+      "genename": "ALK",
+      "ref": "A",
+      "start": 29196786,
+      "uniprot_acc": "dummy2",
+      "variant": "I1383T"
+    },
+    {
+      "CADD": 0.85186,
+      "ClinVar_ClinicalSignificance": ["Uncertain significance"],
+      "Compound_ID": "alectinib",
+      "GenBank": ["NM_004304"],
+      "LRT": 0.47286,
+      "MGeND_ClinicalSignificance": [],
+      "MutationAssessor": 0.52871,
+      "MutationTaster": 0.81001,
+      "PDBlist_single_wild": [
+        "6edl",
+        "4ccu",
+        "5imx",
+        "4ctc",
+        "4ccb",
+        "4tt7",
+        "6cdt",
+        "4ctb"
+      ],
+      "PROVEAN": 0.78891,
+      "Polyphen2_HDIV": 0.90584,
+      "Polyphen2_HVAR": 0.97372,
+      "PrimateAI": 0.80235,
+      "REVEL": 0.95765,
+      "SIFT4G": 0.79402,
+      "alt": "G",
+      "assembly": "hg38",
+      "calculation": [
+        {
+          "FE_Bind": [-0.3179],
+          "FE_Bind_mean": -0.3179,
+          "FE_Bind_std": null,
+          "PDB_ID": "3AOX",
+          "calculation_type": "MP-CAFEE"
+        },
+        {
+          "FE_Bind": [0.046, 0.132, 0.196],
+          "FE_Bind_mean": 0.1247,
+          "FE_Bind_std": 0.0753,
+          "PDB_ID": "3AOX",
+          "calculation_type": "Mutation_FEP"
+        }
+      ],
+      "chr": "chr2",
+      "end": 29196786,
+      "fathmm-MKL": 0.72607,
+      "genename": "ALK",
+      "ref": "A",
+      "start": 29196786,
+      "uniprot_acc": "dummy3",
+      "variant": "I1383T"
+    },
+    {
+      "CADD": 0.85186,
+      "ClinVar_ClinicalSignificance": ["Uncertain significance"],
+      "Compound_ID": "alectinib",
+      "GenBank": ["NM_004304"],
+      "LRT": 0.47286,
+      "MGeND_ClinicalSignificance": [],
+      "MutationAssessor": 0.52871,
+      "MutationTaster": 0.81001,
       "PDBlist_single_wild": [
         "6EDL",
         "4CCU",
