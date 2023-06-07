@@ -184,18 +184,6 @@
 
     initTableSelected();
   };
-  const updateGraphs = (data) => {
-    // TODO: if option is selected that return this function
-    if (Object.keys(tableSelectedItem).length !== 0) return;
-    window.dispatchEvent(
-      new CustomEvent("updateGraphs", {
-        // TODO: change to data.variant to data.pdbId (or others)
-        detail: {
-          hovered: data,
-        },
-      })
-    );
-  };
   let tableSelectedEl = null;
   const tableHandleClick = (event, data) => {
     const variantLink = event.target.closest(".td-variant > span");
@@ -325,12 +313,6 @@
             {#each currentTabeleList as data, index}
               <tr
                 on:click={(event) => tableHandleClick(event, data)}
-                on:focus={() => {
-                  updateGraphs(data);
-                }}
-                on:mouseover={() => {
-                  updateGraphs(data);
-                }}
               >
                 <td class="td-uniprot">
                   <input
