@@ -1,0 +1,325 @@
+html,
+body,
+h2,
+h3,
+h4,
+div,
+span,
+p,
+ul,
+li,
+table,
+tr,
+th,
+td,
+label,
+input,
+button,
+a {
+  padding: 0;
+  margin: 0;
+  line-height: 1.5;
+}
+
+li {
+  list-style: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.svelte-fa {
+  padding-left: 5px;
+}
+
+.legend {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 12px;
+}
+.legend .legend-bar {
+  width: 100px;
+  min-width: 30px;
+  height: 7px;
+  background: linear-gradient(to right, var(--first-color), var(--second-color), var(--third-color));
+  border-radius: 10px;
+}
+
+th,
+td {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.th-gene,
+.link-gene {
+  color: var(--gene-color);
+}
+
+.th-variant,
+.link-variant {
+  color: var(--variant-color);
+}
+
+.th-disease {
+  color: var(--disease-color);
+}
+
+.th-calc,
+.link-calc {
+  color: var(--calc-color);
+}
+
+.error-message {
+  height: 200px;
+  text-align: center;
+}
+
+.icon {
+  width: 27px;
+  vertical-align: middle;
+}
+
+:host {
+  --togostanza-fadeout-opacity: 0.2;
+  --togostanza-fadeout-transition: opacity 0.2s ease-in;
+  display: block;
+  font-family: var(--togostanza-fonts-font_family);
+  font-size: calc(var(--togostanza-fonts-font_size_primary) * 1px);
+  color: var(--togostanza-fonts-font_color);
+  --black_20: rgb(0 0 0 / 20%);
+  --black_40: rgb(0 0 0 / 40%);
+  --white_20: rgb(255 255 255 / 20%);
+  --gene-color: rgb(156 229 60);
+  --gene-color_30: rgb(156 229 60 /30%);
+  --variant-color: rgb(95 222 222);
+  --variant-color_30: rgb(95 222 222 / 30%);
+  --disease-color: rgb(214 131 211);
+  --disease-color_30: rgb(214 131 211 /30%);
+  --calc-color: rgb(252 185 0);
+  --calc-color_30: rgb(252 185 0/ 30%);
+  --first-color: #04ca41;
+  --second-color: #e5d890;
+  --third-color: #f00;
+  --warning-color: #ffae00;
+}
+
+.icon {
+  width: 20px;
+  vertical-align: sub;
+}
+
+.radio-button {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  vertical-align: text-top;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  appearance: none;
+}
+.radio-button:checked {
+  background-color: #fff;
+  border: 4px solid #29abe2;
+}
+
+.heatmap-table {
+  display: flex;
+  height: calc(var(--togostanza-canvas-height) * 1px);
+  white-space: nowrap;
+}
+.heatmap-table .column-list,
+.heatmap-table .drugs-list {
+  padding: 10px;
+}
+.heatmap-table .column-list > h3,
+.heatmap-table .drugs-list > h3 {
+  padding: 2px 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+.heatmap-table .column-list > ul > li,
+.heatmap-table .drugs-list > ul > li {
+  height: 25px;
+  padding: 2px 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.heatmap-table .column-list > ul > li:focus,
+.heatmap-table .drugs-list > ul > li:focus {
+  outline: none;
+}
+.heatmap-table .column-list > ul > li:hover, .heatmap-table .column-list > ul > li.selected,
+.heatmap-table .drugs-list > ul > li:hover,
+.heatmap-table .drugs-list > ul > li.selected {
+  clip-path: polygon(0% 0%, calc(100% - 10px) 0%, 100% 50%, calc(100% - 10px) 100%, 0% 100%);
+  color: #000;
+  background-color: var(--calc-color);
+}
+.heatmap-table .column-list > ul > li:active,
+.heatmap-table .drugs-list > ul > li:active {
+  background-color: var(--calc-color_30);
+}
+.heatmap-table .column-list > ul > li:active .svelte-fa,
+.heatmap-table .drugs-list > ul > li:active .svelte-fa {
+  display: none;
+}
+.heatmap-table .column-list.column-list,
+.heatmap-table .drugs-list.column-list {
+  width: 15%;
+  min-width: 190px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.heatmap-table .column-list.column-list > ul > li:first-child:hover, .heatmap-table .column-list.column-list > ul > li:first-child.selected,
+.heatmap-table .drugs-list.column-list > ul > li:first-child:hover,
+.heatmap-table .drugs-list.column-list > ul > li:first-child.selected {
+  clip-path: polygon(0% 0%, calc(100% - 10px) 0%, 100% 50%, calc(100% - 10px) 100%, 0% 100%);
+  color: #000;
+  cursor: pointer;
+  background-color: var(--variant-color);
+  border-radius: 2px;
+}
+.heatmap-table .column-list.column-list > ul > li:first-child:active,
+.heatmap-table .drugs-list.column-list > ul > li:first-child:active {
+  background-color: var(--variant-color_30);
+}
+.heatmap-table .column-list.column-list .num,
+.heatmap-table .drugs-list.column-list .num {
+  padding: 0 5px;
+  margin-left: 4px;
+  background-color: var(--white_20);
+  border-radius: 2px;
+}
+.heatmap-table .column-list.column-list h3:hover .num,
+.heatmap-table .column-list.column-list li:hover .num,
+.heatmap-table .column-list.column-list h3.selected .num,
+.heatmap-table .column-list.column-list li.selected .num,
+.heatmap-table .drugs-list.column-list h3:hover .num,
+.heatmap-table .drugs-list.column-list li:hover .num,
+.heatmap-table .drugs-list.column-list h3.selected .num,
+.heatmap-table .drugs-list.column-list li.selected .num {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.heatmap-table .column-list.drugs-list,
+.heatmap-table .drugs-list.drugs-list {
+  width: 10%;
+  min-width: 120px;
+  background-color: var(--black_40);
+}
+.heatmap-table .table-container {
+  flex: 1;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+}
+.heatmap-table .table-container .table-wrapper {
+  border-bottom: 1px solid #fff;
+  height: calc(100% - 15px);
+  overflow: auto;
+}
+.heatmap-table .table-container .table-wrapper table {
+  border-spacing: 0;
+}
+.heatmap-table .table-container .table-wrapper table thead {
+  position: sticky;
+  top: 0;
+  height: 50px;
+  background-color: #102e41;
+  border-top: 1px solid #fff;
+}
+.heatmap-table .table-container .table-wrapper table thead th {
+  padding-bottom: 4px;
+  text-align: left;
+  vertical-align: bottom;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+.heatmap-table .table-container .table-wrapper table thead th[rowspan="1"] {
+  border-top: none;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-gene {
+  width: 20%;
+  min-width: 120px;
+  padding-left: 8px;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-variant {
+  width: 20%;
+  min-width: 120px;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-variant[rowspan="1"] {
+  min-width: 160px;
+  border-top: none;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-disease {
+  width: 20%;
+  min-width: 160px;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-calc {
+  width: 20%;
+  min-width: 160px;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-calc[rowspan="1"] {
+  min-width: 160px;
+  border-top: none;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-heatmap {
+  width: 1%;
+  max-width: 35px;
+  padding-right: 35px;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-heatmap p {
+  position: relative;
+  top: 6px;
+  left: -10px;
+  font-size: 12px;
+  transform-origin: top left;
+  rotate: -20deg;
+}
+.heatmap-table .table-container .table-wrapper table thead th.th-group {
+  font-size: 85%;
+  vertical-align: bottom;
+  border-top: 1px solid #fff;
+  border-bottom: none;
+}
+.heatmap-table .table-container .table-wrapper table tbody tr:hover, .heatmap-table .table-container .table-wrapper table tbody tr.selected {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.heatmap-table .table-container .table-wrapper table tbody tr td {
+  padding: 5px 0;
+  border-bottom: 1px solid var(--white_20);
+}
+.heatmap-table .table-container .table-wrapper table tbody tr td.td-uniprot {
+  padding: 8px;
+}
+.heatmap-table .table-container .table-wrapper table tbody tr td > a {
+  padding: 5px 5px 5px 0;
+  cursor: pointer;
+}
+.heatmap-table .table-container .table-wrapper table tbody tr td > a:active {
+  opacity: 0.7;
+}
+.heatmap-table .table-container .table-wrapper table tbody tr td.cell-td > .cell {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+}
+.heatmap-table .table-container .loading-message,
+.heatmap-table .table-container .error-message {
+  line-height: 4;
+  height: 300px;
+  vertical-align: top;
+}
+.heatmap-table .table-container .legend {
+  margin-top: 5px;
+  margin-right: 20px;
+}
+.heatmap-table .table-container .legend .legend-bar {
+  width: 100px;
+  height: 7px;
+}

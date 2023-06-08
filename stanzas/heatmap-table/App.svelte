@@ -8,59 +8,76 @@
   } from "@fortawesome/free-solid-svg-icons";
   import { calculationType, scores, scoreTheads } from "./data.js";
   export let uniprotAcc, assembly, genename, root;
+
   let promise = fetchData();
 
   let dataset = [];
-  let calculationsCount = {};
   let calculationsLists = [];
-  let drugList = [];
+  let calculationsCount = {};
   let datasetMap = [];
-  let drugListMap = new Map();
-  let selectDrugList = [];
-  let selectedListName = "variants";
-  let currentTabeList = [];
+  let compoundMap = new Map();
+  let currentCompoundList = [];
+  let selectedCalcName = "variants";
+  let currentTabeleList = [];
+  let tableSelectedItem = {};
 
   const getCalculationsLists = (dataset) => {
-    let calculations = [];
-    dataset.forEach((data) =>
-      data.calculationType.forEach((d) => calculations.push(d))
+    const calculations = dataset.flatMap((data) =>
+      data.calculation.map((d) => d.calculation_type)
     );
-    calculationsCount = calculations.reduce((acc, item) => {
-      acc[item] = (acc[item] || 0) + 1;
+    const uniqueCalculations = [...new Set(calculations.filter(Boolean))];
+    const calculationsCount = calculations.reduce((acc, calcType) => {
+      acc[calcType] = (acc[calcType] || 0) + 1;
       return acc;
     }, {});
-    return [...new Set(calculations.filter(Boolean))];
+
+    return [uniqueCalculations, calculationsCount];
   };
 
-  const getdrugList = (dataset) => [
-    ...new Set(dataset.map((d) => d.compoundId).filter(Boolean)),
-  ];
+  const getMapLists = () => {
+    datasetMap = new Map([["variants", dataset]]);
+    calculationsLists.forEach((calc) => {
+      const filteredData = dataset
+        .filter((data) =>
+          data.calculation.some((type) => type.calculation_type === calc)
+        )
+        .map((data) => ({
+          ...data,
+          calculation: data.calculation.filter(
+            (item) => item.calculation_type === calc
+          ),
+        }));
+      datasetMap.set(calc, filteredData);
+
+      const compoundGroup = filteredData.reduce((acc, data) => {
+        const compound = data.compoundId;
+        if (!acc[compound]) {
+          acc[compound] = [];
+        }
+        acc[compound].push(data);
+        return acc;
+      }, {});
+
+      const compoundList = [{ "All Drugs": filteredData, ...compoundGroup }];
+      compoundMap.set(calc, ...compoundList);
+    });
+
+    return [datasetMap, compoundMap];
+  };
 
   async function fetchData() {
     const response = await fetch(
-      `https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}`
+      //`https://precisionmd-db.med.kyoto-u.ac.jp/testapi/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}&limit=10000`
+      "https://raw.githubusercontent.com/PENQEinc/riken-precision_medicine_stanza/feature/fetch-heatmap/stanzas/heatmap-table/assets/geneVariantSample.json?token=$(date +%s)"
+      //`https://precisionmd-db.med.kyoto-u.ac.jp/api/genes/variants?uniprot_acc=${uniprotAcc}&assembly=${assembly}&genename=${genename}`
     );
+
     const json = await response.json();
     if (response.ok) {
       dataset = json.data.map(toCamelCase);
-      currentTabeList = dataset;
-      calculationsLists = getCalculationsLists(dataset);
-
-      datasetMap = new Map([["variants", dataset]]);
-
-      calculationsLists.forEach((calc) => {
-        const filteredData = dataset.filter((d) =>
-          d.calculationType.includes(calc)
-        );
-        datasetMap.set(calc, filteredData);
-
-        // Create a crossing list with drugs
-        if (calculationType(calc).calcName === "mutation") {
-          drugListMap.set(calc, getdrugList(datasetMap.get(calc)));
-        }
-      });
-      drugList = getdrugList(dataset);
-      return json;
+      currentTabeleList = dataset;
+      [calculationsLists, calculationsCount] = getCalculationsLists(dataset);
+      [datasetMap, compoundMap] = getMapLists();
     } else {
       throw new Error(json);
     }
@@ -81,22 +98,24 @@
     }
   };
 
-  let selectedListEl = null;
-  const listHandleClick = (event) => {
+  let selectedCalcEl = null;
+  const calcHandleClick = (event) => {
     const clickedItem = event.target.closest("li");
-    selectedListName = clickedItem.dataset.calc;
-    selectDrugList = drugListMap.get(selectedListName);
-    currentTabeList = datasetMap.get(selectedListName);
-    if (clickedItem !== selectedListEl) {
-      const ul = clickedItem.parentElement;
-      const listItems = ul.querySelectorAll("li");
-      listItems.forEach((li) => {
+    selectedCalcName = clickedItem.dataset.calc;
+    currentTabeleList = datasetMap.get(selectedCalcName);
+    currentCompoundList =
+      selectedCalcName === "variants"
+        ? ""
+        : Object.keys(compoundMap.get(selectedCalcName));
+
+    if (clickedItem !== selectedCalcEl) {
+      clickedItem.parentElement.querySelectorAll("li").forEach((li) => {
         if (li.classList.contains("selected")) {
           li.classList.remove("selected");
         }
       });
-      selectedListEl = clickedItem;
-      selectedListEl.classList.add("selected");
+      selectedCalcEl = clickedItem;
+      selectedCalcEl.classList.add("selected");
       initTableSelected();
     }
   };
@@ -117,11 +136,11 @@
         if (selectedIndex > 0) {
           listItems[selectedIndex].classList.remove("selected");
           listItems[selectedIndex - 1].classList.add("selected");
-          selectedListEl = listItems[selectedIndex - 1];
+          selectedCalcEl = listItems[selectedIndex - 1];
         } else {
           listItems[0].classList.remove("selected");
           listItems[listItems.length - 1].classList.add("selected");
-          selectedListEl = listItems[listItems.length - 1];
+          selectedCalcEl = listItems[listItems.length - 1];
         }
         break;
 
@@ -129,50 +148,43 @@
         if (selectedIndex < listItems.length - 1) {
           listItems[selectedIndex].classList.remove("selected");
           listItems[selectedIndex + 1].classList.add("selected");
-          selectedListEl = listItems[selectedIndex + 1];
+          selectedCalcEl = listItems[selectedIndex + 1];
         } else {
           listItems[listItems.length - 1].classList.remove("selected");
           listItems[0].classList.add("selected");
-          selectedListEl = listItems[0];
+          selectedCalcEl = listItems[0];
         }
         break;
     }
-    selectedListName = selectedListEl.dataset.calc;
-    currentTabeList = datasetMap.get(selectedListName);
-    selectDrugList = drugListMap.get(selectedListName);
+    selectedCalcName = selectedCalcEl.dataset.calc;
+    currentTabeleList = datasetMap.get(selectedCalcName);
+    currentCompoundList =
+      selectedCalcName === "variants"
+        ? ""
+        : Object.keys(compoundMap.get(selectedCalcName));
   };
 
-  let selectedDrug = null;
-  let currentMutationTabeList = [];
-  const drugsHandleClick = (event) => {
+  let selectedCompoundEl = null;
+  let selectedCompoundName = "All Drugs";
+  const compoundHandleClick = (event) => {
     const clickedItem = event.target.closest("li");
-    const currentDrugDataset = datasetMap.get(selectedListName);
-    currentMutationTabeList = [];
-
-    if (clickedItem !== selectedDrug) {
-      if (selectedDrug) {
-        selectedDrug.classList.remove("selected");
-        currentMutationTabeList = [];
-      }
-      selectedDrug = clickedItem;
-      selectedDrug.classList.add("selected");
-
-      currentDrugDataset.forEach((data) => {
-        if (data.compoundId === clickedItem.dataset.compound) {
-          currentMutationTabeList.push(data);
+    selectedCompoundName = clickedItem.textContent.trim();
+    if (clickedItem !== selectedCompoundEl) {
+      clickedItem.parentElement.querySelectorAll("li").forEach((li) => {
+        if (li.classList.contains("selected")) {
+          li.classList.remove("selected");
         }
       });
-      currentTabeList = currentMutationTabeList;
-    } else {
-      selectedDrug = null;
-      clickedItem.classList.remove("selected");
-      currentTabeList = currentDrugDataset;
+
+      selectedCompoundEl = clickedItem;
+      selectedCompoundEl.classList.add("selected");
+      currentTabeleList =
+        compoundMap.get(selectedCalcName)[selectedCompoundName];
     }
 
     initTableSelected();
   };
-
-  let tableSelectedItem = null;
+  let tableSelectedEl = null;
   const tableHandleClick = (event, data) => {
     const variantLink = event.target.closest(".td-variant > span");
     const calculationList = event.target.closest(".td-calc > span");
@@ -181,22 +193,26 @@
     const clickedItem = event.target.closest("tr");
     const radioButton = clickedItem.querySelector('input[type="radio"]');
     clickedItem.parentElement.firstChild.classList.remove("selected");
-    if (clickedItem !== tableSelectedItem) {
-      if (tableSelectedItem) {
-        tableSelectedItem.classList.remove("selected");
-        tableSelectedItem.querySelector('input[type="radio"]').checked = false;
+    if (clickedItem !== tableSelectedEl) {
+      if (tableSelectedEl) {
+        tableSelectedEl.classList.remove("selected");
+        tableSelectedEl.querySelector('input[type="radio"]').checked = false;
       }
-      tableSelectedItem = clickedItem;
-      tableSelectedItem.classList.add("selected");
+      tableSelectedEl = clickedItem;
+      tableSelectedEl.classList.add("selected");
       radioButton.checked = true;
+      tableSelectedItem = data;
       window.dispatchEvent(
-        new CustomEvent("updateMolstar", {
+        new CustomEvent("updateGraphs", {
           // TODO: change to data.variant to data.pdbId (or others)
-          detail: { pdbId: data.variant },
+          detail: {
+            clicked: tableSelectedItem,
+          },
         })
       );
     } else {
-      tableSelectedItem = null;
+      tableSelectedEl = null;
+      tableSelectedItem = {};
       clickedItem.classList.remove("selected");
       radioButton.checked = false;
     }
@@ -211,7 +227,7 @@
         <li
           class="selected"
           data-calc={"variants"}
-          on:click={listHandleClick}
+          on:click={calcHandleClick}
           on:keydown={listHandleKeyDown}
           tabindex="-1"
         >
@@ -220,7 +236,7 @@
         {#each calculationsLists as calc}
           <li
             data-calc={calc}
-            on:click={listHandleClick}
+            on:click={calcHandleClick}
             on:keydown={listHandleKeyDown}
             tabindex="-1"
           >
@@ -234,23 +250,20 @@
       </ul>
     {/if}
   </div>
-  {#if calculationType(selectedListName).calcName === "mutation"}
+  {#if calculationType(selectedCalcName).calcName === "mutation"}
     <div class="drugs-list">
-      <h3>Drugs</h3>
-      {#if drugList.length > 0}
-        <ul class="drugs-ul">
-          {#each selectDrugList as drugName, index}
-            <li
-              class={index === 0 ? "selected" : ""}
-              data-compound={drugName}
-              on:click={drugsHandleClick}
-              on:keydown={drugsHandleClick}
-            >
-              {drugName}
-            </li>
-          {/each}
-        </ul>
-      {/if}
+      <ul class="drugs-ul">
+        {#each currentCompoundList as drugName, index}
+          <li
+            class={index === 0 ? "selected" : ""}
+            data-compound={drugName}
+            on:click={compoundHandleClick}
+            on:keydown={compoundHandleClick}
+          >
+            {drugName}
+          </li>
+        {/each}
+      </ul>
     </div>
   {/if}
 
@@ -264,7 +277,7 @@
             <th class="th-variant" rowspan="2">Variant</th>
             <th class="th-variant" rowspan="2">GenBank</th>
             <th class="th-disease th-group" colspan="2">Significance</th>
-            {#if calculationType(selectedListName).calcName !== "variants"}
+            {#if calculationType(selectedCalcName).calcName !== "variants"}
               <th class="th-calc th-group" colspan="1"
                 ><p>Single Calculation</p></th
               >
@@ -280,12 +293,12 @@
           <tr>
             <th class="th-disease" rowspan="1">MGeND</th>
             <th class="th-disease" rowspan="1">ClinVar</th>
-            {#if calculationType(selectedListName).calcName !== "variants"}
+            {#if calculationType(selectedCalcName).calcName !== "variants"}
               <th class="th-calc" rowspan="1" data-calc="mutation"
-                ><p>ΔΔG (cal/mol)</p></th
+                ><p>ΔΔG (kcal/mol)</p></th
               >
               <th class="th-calc" rowspan="1" data-calc="mutation"
-                ><p>Average ΔΔG (cal/mol)</p></th
+                ><p>Average ΔΔG (kcal/mol)</p></th
               >
               <th class="th-calc" rowspan="1" data-calc="mutation"
                 ><p>Standard Deviation</p></th
@@ -297,8 +310,10 @@
           {#await promise}
             <tr><td colspan="3" class="loading-message">Loading...</td></tr>
           {:then json}
-            {#each currentTabeList as data, index}
-              <tr on:click={(event) => tableHandleClick(event, data)}>
+            {#each currentTabeleList as data, index}
+              <tr
+                on:click={(event) => tableHandleClick(event, data)}
+              >
                 <td class="td-uniprot">
                   <input
                     class="radio-button"
@@ -323,55 +338,47 @@
                 <td>{data.genBank[0] === undefined ? "-" : data.genBank}</td>
                 <td
                   >{data.mGeNdClinicalSignificance[0] === undefined
-                    ? "-"
+                    ? ""
                     : data.mGeNdClinicalSignificance}</td
                 >
                 <td
                   >{data.clinVarClinicalSignificance[0] === undefined
-                    ? "-"
+                    ? ""
                     : data.clinVarClinicalSignificance}</td
                 >
-                {#if calculationType(selectedListName).calcName !== "variants"}
-                  {#if data.feBind.length === 0}
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  {:else if data.feBind.length === 1}
-                    <td>{data.feBind}</td>
-                    <td>-</td>
-                    <td>-</td>
+                {#if calculationType(selectedCalcName).calcName !== "variants"}
+                  {#if data.calculation[0]?.FE_Bind?.length === 0}
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  {:else if data.calculation[0]?.FE_Bind?.length === 1}
+                    <td>{data.calculation[0]?.FE_Bind}</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
                   {:else}
-                    <td>-</td>
-                    <td>{data.feBindMean}</td>
-                    <td>{data.feBindStd}</td>
+                    <td>&nbsp;</td>
+                    <td>{data.calculation[0]?.FE_Bind_mean}</td>
+                    <td>{data.calculation[0]?.FE_Bind_std}</td>
                   {/if}
                 {/if}
                 <td>
-                  <a
-                    class="link-calc"
-                    href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${data.calculationType}&Compound_ID=${data.compoundId}&PDB_ID=${data.pdbId}&variant=${data.variant}`}
-                  >
-                    <!-- 以下を.toString()にしているが、配列で複数になるはずなので変更する -->
-                    <img
-                      class="icon"
-                      src={calculationType(data.calculationType.toString()).src
-                        ? calculationType(data.calculationType.toString()).src
-                        : ""}
-                      alt={calculationType(data.calculationType.toString()).alt
-                        ? calculationType(data.calculationType.toString()).alt
-                        : ""}
-                    />
-                    {data.calculationType.toString()
-                      ? data.calculationType.toString()
-                      : ""}
-                    {#if calculationType(data.calculationType.toString()).calcName !== ""}
-                      <Fa
-                        icon={faCircleChevronRight}
-                        size="90%"
-                        color="var(--calc-color)"
-                      />
-                    {/if}
-                  </a>
+                  {#each data.calculation as calculation}
+                    <a
+                      class="link-calc"
+                      href={`${window.location.origin}/dev/calculation/details?assembly=${data.assembly}&genename=${data.genename}&calculation_type=${calculation.calculation_type}&Compound_ID=${data.compoundId}&PDB_ID=${calculation.PDB_ID}&variant=${data.variant}`}
+                    >
+                      <img
+                        class="icon"
+                        src={calculationType(calculation.calculation_type).src
+                          ? calculationType(calculation.calculation_type).src
+                          : ""}
+                        alt={calculationType(calculation.calculation_type).alt
+                          ? calculationType(calculation.calculation_type).alt
+                          : ""}
+                      /><span>{calculation.calculation_type}</span>
+                    </a>
+                    <br />
+                  {/each}
                 </td>
                 {#each scores as key}
                   <td class="cell-td"

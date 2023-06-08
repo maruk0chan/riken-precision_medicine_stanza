@@ -7,6 +7,7 @@ export const calculationType = (dataType) => {
         calcName: "variants",
       };
     case "Mutation_FEP":
+    case "MP-CAFEE":
       return {
         calcName: "mutation",
         className: "drug-icon",
